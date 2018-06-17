@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>switchClass demo</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+
+
+        .container {
+            display: grid;
+            grid-template-areas: 'heading heading' 'content keywords' 'image1 keywords';
+        }
+
+
+    </style>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <script>
+
+
+        /*$(document).ready(function () {
+            $("button").click(function () {
+                $("#p1").css("color", "red")
+                    .slideUp(2000)
+                    .slideDown(2000);
+            });
+        });
+*/
+
+        (function ($) {  // start IIFE
+
+            $(document).ready(function () {
+
+
+                var queue = [];
+
+                // Start Queue
+                $('#startQueue').bind('click', function (e) {
+                    // Go through Each Element and Fade Out //
+
+                    $('[data-animation-step]').each(function (i, $el) {
+                        queue.push($(this).fadeOut(5000));
+
+                    })
+
+
+                    /*$('.queueItem').each(function (i, $el) {
+                        // Don't Delay First Element//
+                        if (i == 0) {
+                            queue.push($(this).fadeOut(5000));
+                        } else {
+                            queue.push($(this).delay(5000 * i).fadeOut(5000));
+                        }
+                    });*/
+                });
+
+
+                // Create the array of Velocity calls
+                var loadingSequence = [
+                    { e: $element1, p: { translateX: 100, opacity: 1 }, o: { duration: 1000 } },
+                    { e: $element2, p: { translateX: 200, opacity: 1 }, o: { duration: 1000 } },
+                    { e: $element3, p: { translateX: 300, opacity: 1 }, o: { duration: 1000 } }
+                ];
+// Pass the array into $.Velocity.RunSequence to kick off the sequence
+                $.Velocity.RunSequence(loadingSequence);
+
+
+                // Stop Clear Queue
+                /*$('#clearQueue').bind('click', function (e) {
+                    $.each(queue, function (i, $el) {
+                        // Stop Animation and Reset Elements //
+                        $el.stop(true, true).css({
+                            display: 'block',
+                            opacity: '1'
+                        });
+
+                        // Clear Queue Array //
+                        queue = [];
+                    });
+                });*/
+
+
+                /*$('[data-animation-step]').each(function () {
+                    $(this).animate({
+                        opacity: 0.25,
+                        left: "+=50",
+                        height: "toggle"
+                    }, 5000, function () {
+                        // Animation complete.
+                    });
+                    // Do somting with element
+                    console.log('element' + element);
+                });*/
+
+
+                /* $('[[data-animation-step]').each(function() {
+                     var sequenceDelay = 0;
+                     $(this).animate
+
+
+                     $(this).find('.').each(function() {
+                         sr.reveal(this, {
+                             delay: sequenceDelay
+                         });
+
+                         sequenceDelay += sequenceInterval;
+                     });
+                 });
+
+
+
+                 $(this).animate({
+                         opacity: 0.25,
+                         left: "+=50",
+                         height: "toggle"
+                     }, 5000, function() {
+                         // Animation complete.
+                     });*/
+
+
+                /* $.each($('[data-animation-step]').data(), function(i, v) {
+                     console.log('"' + i + '":"' + v + '",');
+                 });*/
+
+            });
+
+        }(jQuery)); // END IIFE
+
+
+        /*console.log('dafg')
+
+        ()($.each($('aside').data(), function(i, v) {
+            alert('"' + i + '":"' + v + '",');
+        });
+
+        $("button").click(function () {
+            $( "#book" ).animate({
+                opacity: 0.25,
+                left: "+=50",
+                height: "toggle"
+            }, 5000, function() {
+                // Animation complete.
+            });
+        });*/
+
+    </script>
+
+    <a data-type="file" data-path="/some/path" data-size="849858">Link</a>
+
+    <div style="grid-area: heading;" class="heading" data-animation-step="1" data-animation-type="a"
+         data-animation-duration="2">
+        <h1>Orginisation <span class="white">types</span></h1>
+        <button>Start Animation</button>
+        <button id="startQueue">Go</button>
+    </div>
+    <section style="grid-area: content;" data-animation-step="2" data-animation-type="b" data-animation-duration="2">
+        <h2>Introduction</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem distinctio dolorem ea earum inventore,
+            iusto neque odio quae qui, recusandae rem tempore totam unde veritatis. Accusantium dolor expedita inventore
+            iusto minima minus mollitia nostrum optio quia repudiandae, soluta veniam. Aliquam, assumenda cum cumque
+            distinctio exercitationem explicabo maxime molestias officia perferendis quidem quod, rem sed ut voluptatem,
+            voluptatum. Aliquid dolorum nostrum quasi voluptas. Consectetur debitis delectus sunt? A alias atque, esse
+            eveniet excepturi harum hic inventore, iste magnam nesciunt non numquam perspiciatis praesentium quo
+            repellendus. Aut cum deserunt, ex illum in, ipsum itaque numquam perferendis quia quisquam sequi voluptatem
+            voluptates.</p>
+        <p>Culpa eum ex fuga harum, labore laborum nemo nisi nostrum officia quo soluta suscipit vel. Amet, at culpa
+            debitis delectus dicta eos est et hic illo iure laboriosam magnam optio praesentium quod repellendus unde
+            veniam. Aperiam corporis dolor ea in ipsum natus non officia quod recusandae repellat tenetur, totam unde
+            vitae? Aliquid aperiam asperiores blanditiis consequatur dolores eaque enim est expedita harum in ipsam
+            itaque iusto minus officiis optio praesentium qui quis ratione sequi, soluta suscipit temporibus totam
+            voluptatibus! Commodi facilis perferendis quisquam quod? Adipisci aliquid ea eius, error expedita ipsa
+            labore laborum quasi quos, ratione reiciendis rem repellat unde?</p>
+    </section>
+    <div style="grid-area: image1;" class="image-container" data-animation-step="3" data-animation-type="c"
+         data-animation-duration="2">
+        <img src="image.png" alt="">
+    </div>
+    <aside style="grid-area: keywords;" data-animation-step="4" data-animation-type="d" data-animation-duration="2">
+        <h3>Key Terms</h3>
+        <div class="keyterm">
+            <h4>Purpose</h4>
+            <div class="keyterm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolores dolorum
+                exercitationem nam provident quaerat ratione voluptatum? Delectus dicta distinctio dolore fugit iure
+                iusto officia, quas quidem rem rerum? Expedita?
+            </div>
+        </div>
+        <div class="keyterm">
+            <h4>Activities</h4>
+            <div class="keyterm">Ab accusamus architecto aspernatur corporis, cupiditate delectus dolorem dolores
+                ducimus earum error fugiat in laborum libero magnam molestias nisi pariatur quas quasi similique
+                tempora tempore temporibus ut veniam voluptates, voluptatibus.
+            </div>
+        </div>
+        <div class="keyterm">
+            <h4>Aims</h4>
+            <div class="keyterm">Accusantium asperiores corporis cupiditate error est ipsa molestias optio
+                perspiciatis provident, reprehenderit. Architecto at earum error fugiat illum in non officiis, optio
+                quas quibusdam recusandae repellat sed tenetur velit voluptas.
+            </div>
+        </div>
+        <div class="keyterm">
+            <h4>Values</h4>
+            <div class="keyterm">A amet autem beatae commodi consequatur dicta dolore doloribus eum expedita facere
+                facilis impedit inventore itaque laborum nesciunt numquam obcaecati pariatur quisquam quod quos
+                tenetur veniam, vitae voluptatibus! Eligendi, iure.
+            </div>
+        </div>
+        <div class="keyterm">
+            <h4>Vision for the future</h4>
+            <div class="keyterm">A amet autem beatae commodi consequatur dicta dolore doloribus eum expedita facere
+                facilis impedit inventore itaque laborum nesciunt numquam obcaecati pariatur quisquam quod quos
+                tenetur veniam, vitae voluptatibus! Eligendi, iure.
+            </div>
+        </div>
+    </aside>
+
+
+</div>
+
+
+</body>
+</html>
