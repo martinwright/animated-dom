@@ -3,113 +3,48 @@
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <style>
-        .container{display:grid;grid-template-areas:'heading heading' 'content keywords' 'image1 keywords';grid-template-columns:60% 40%;font-family:'Source Sans Pro',sans-serif}.container section{padding:1.5em}.container section h2{text-transform:uppercase;font-weight:500;font-size:200%;margin:0}img{width:100%}.heading{background-color:#7fffd4;text-transform:uppercase;padding:0 1em;font-family:'Noto Sans',sans-serif}.heading h1{margin:.3em 0}.heading span.white{color:#fff}
-    </style>
-    <link rel="preload" href="css/style.c2a6cfed.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/style.c2a6cfed.css"></noscript>
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="./libs/jquery/dist/jquery.min.js"></script>
     <script src="./libs/animejs/anime.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet"></noscript>
-    <script>!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);</script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">
 
 
 </head>
 <body>
-    <script src="js/app.js"></script>
-
-    <div class="container">
-
-        <!--<div class="ball"></div>
-
-        <a data-type="file" data-path="/some/path" data-size="849858">Link</a>-->
-
-        <div style="grid-area: heading;" class="heading" data-animate="" data-step="1" data-type="top-slide" data-duration="2">
-            <h1>Orginisation
-                <span class="white">types</span>
-            </h1>
-        </div>
-
-        <section>
-            <div style="grid-area: content;" data-animate="" data-step="2" data-type="fade" data-duration="2">
-                <h2>Introduction</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem distinctio dolorem ea earum
-                    inventore,
-                    iusto neque odio quae qui, recusandae rem tempore totam unde veritatis. Accusantium dolor expedita
-                    inventore
-                    iusto minima minus mollitia nostrum optio quia repudiandae, soluta veniam. Aliquam, assumenda cum
-                    cumque
-                    distinctio exercitationem explicabo maxime molestias officia perferendis quidem quod, rem sed ut
-                    voluptatem,
-                    voluptatum. Aliquid dolorum nostrum quasi voluptas. Consectetur debitis delectus sunt? A alias
-                    atque.</p>
-                <p>Culpa eum ex fuga harum, labore laborum nemo nisi nostrum officia quo soluta suscipit vel. Amet, at
-                    culpa
-                    debitis delectus dicta eos est et hic illo iure laboriosam magnam optio praesentium quod repellendus
-                    unde
-                    veniam. Aperiam corporis dolor ea in ipsum natus non officia quod recusandae repellat tenetur, totam
-                    unde
-                    vitae? Aliquid aperiam asperiores blanditiis consequatur dolores eaque enim est expedita harum in
-                    ipsam</p>
-            </div>
-
-            <div style="grid-area: image1;" class="image-container" data-animate="" data-step="3" data-type="fade" data-duration="2">
-                <img src="images/img1.png" alt="">
-            </div>
-        </section>
-
-        <aside style="grid-area: keywords;" data-step="4" data-animate="" data-type="right-slide" data-duration="2">
-            <h3>Key Terms</h3>
-            <div class="keyterm">
-                <h4>Purpose</h4>
-                <div class="keyterm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolores dolorum
-                    exercitationem nam provident quaerat ratione voluptatum? Delectus dicta distinctio dolore fugit iure
-                    iusto officia, quas quidem rem rerum? Expedita?
-                </div>
-            </div>
-            <div class="keyterm">
-                <h4>Activities</h4>
-                <div class="keyterm">Ab accusamus architecto aspernatur corporis, cupiditate delectus dolorem dolores
-                    ducimus earum error fugiat in laborum libero magnam molestias nisi pariatur quas quasi similique
-                    tempora tempore temporibus ut veniam voluptates, voluptatibus.
-                </div>
-            </div>
-            <div class="keyterm">
-                <h4>Aims</h4>
-                <div class="keyterm">Accusantium asperiores corporis cupiditate error est ipsa molestias optio
-                    perspiciatis provident, reprehenderit. Architecto at earum error fugiat illum in non officiis, optio
-                    quas quibusdam recusandae repellat sed tenetur velit voluptas.
-                </div>
-            </div>
-            <div class="keyterm">
-                <h4>Values</h4>
-                <div class="keyterm">A amet autem beatae commodi consequatur dicta dolore doloribus eum expedita facere
-                    facilis impedit inventore itaque laborum nesciunt numquam obcaecati pariatur quisquam quod quos
-                    tenetur veniam, vitae voluptatibus! Eligendi, iure.
-                </div>
-            </div>
-            <div class="keyterm">
-                <h4>Vision for the future</h4>
-                <div class="keyterm">A amet autem beatae commodi consequatur dicta dolore doloribus eum expedita facere
-                    facilis impedit inventore itaque laborum nesciunt numquam obcaecati pariatur quisquam quod quos
-                    tenetur veniam, vitae voluptatibus! Eligendi, iure.
-                </div>
-            </div>
-        </aside>
+<script src="js/bundle.js"></script>
 
 
-    </div>
+<div class="container layout-2">
+    <header class="header"><h1>Orginisation types</h1></header>
+    <main class="main">MAIN</main>
+    <aside class="graphic">GRAPHIC</aside>
+    <aside class="table">
+        <div class="cell a"></div>
+        <div class="cell b"><h3>Public</h3></div>
+        <div class="cell c"><h3>Private</h3></div>
+        <div class="cell d"><h3>Third</h3></div>
+        <div class="cell a"><h4>Purpose</h4></div>
+        <div class="cell b">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, minima?</div>
+        <div class="cell c">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, minus?</div>
+        <div class="cell d">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quos?</div>
+        <div class="cell a"><h4>Finance</h4></div>
+        <div class="cell b">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, minima?</div>
+        <div class="cell c">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, minus?</div>
+        <div class="cell d">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quos?</div>
+        <div class="cell a"><h4>Method</h4></div>
+        <div class="cell b">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, minima?</div>
+        <div class="cell c">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, minus?</div>
+        <div class="cell d">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quos?</div>
+        <div class="cell a"><h4>Profit surplus</h4></div>
+        <div class="cell b">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, minima?</div>
+        <div class="cell c">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, minus?</div>
+        <div class="cell d">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, quos?</div>
 
-    <footer>
-
-        <div class="navigation">
-            <button class="play">Play</button>
-            <button class="pause">Pause</button>
-        </div>
-    </footer>
+    </aside>
+</div>
 
 
 </body>
