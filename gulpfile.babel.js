@@ -135,16 +135,17 @@ gulp.task('styles', () => {
 /* HTML
 /* ----------------- */
 
-gulp.task('html', ['cssmin'], () => {
-    return gulp.src('src/index.html')
+gulp.task('html', () => {
+    return gulp.src('src/**/*.html')
         .pipe(replace(/\.\.\/node_modules(.*)\/(.*).js/g, './libs$1/$2.js'))
-        .pipe(critical.stream({
+        .pipe(replace(/src="js\/app.js"/g, 'src="js\/bundle.js"'))
+        /*.pipe(critical.stream({
             'base': 'build/',
             'inline': true,
             'extract': true,
             'minify': true,
             'css': ['./build/css/style.css']
-        }))
+        }))*/
         .pipe(gulp.dest('build'))
         .pipe(browserSync.stream());
 });
