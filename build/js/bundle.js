@@ -64,6 +64,21 @@ console.log('shape ', shape)*/
                         targets: elTarget,
                         opacity: 0,
                         translateX: -250,
+                        easing: 'easeInQuad',
+                        duration: 500,
+                        direction: 'reverse'
+                    });
+                    break;
+                case 'left-roll':
+                    myTimeline.add({
+                        targets: elTarget,
+                        opacity: 0,
+                        translateX: -250,
+                        rotate: {
+                            value: 25,
+                            duration: 500,
+                            easing: 'easeInOutSine'
+                        },
                         direction: 'reverse'
                     });
                     break;
@@ -146,22 +161,23 @@ console.log('shape ', shape)*/
          });*/
 
         // Start Queue
-        $('#startQueue').bind('click', function (e) {
-            // Go through Each Element and Fade Out //
+        //$('#startQueue').bind('click', function (e) {
+        // Go through Each Element and Fade Out //
 
-            /*$('[data-animation-step]').each(function (i, $el) {
+        /*$('[data-animation-step]').each(function (i, $el) {
+            queue.push($(this).fadeOut(5000));
+         })*/
+
+        /*$('.queueItem').each(function (i, $el) {
+            // Don't Delay First Element//
+            if (i == 0) {
                 queue.push($(this).fadeOut(5000));
-             })*/
+            } else {
+                queue.push($(this).delay(5000 * i).fadeOut(5000));
+            }
+        });*/
+        //});
 
-            /*$('.queueItem').each(function (i, $el) {
-                // Don't Delay First Element//
-                if (i == 0) {
-                    queue.push($(this).fadeOut(5000));
-                } else {
-                    queue.push($(this).delay(5000 * i).fadeOut(5000));
-                }
-            });*/
-        });
 
         // Create the array of Velocity calls
         /*var loadingSequence = [
