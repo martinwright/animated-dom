@@ -101,9 +101,16 @@ $xl-screen: 120em;
   display: flex;
   justify-content: center;
 
+  nav {
+    position: fixed;
+    z-index: 1;
+  }
+
+
   .container {
     padding: 1em;
     max-width: 1024px;
+    overflow: hidden;
 
     &.layout-2 {
       font-family: 'Source Sans Pro', sans-serif;
@@ -113,7 +120,7 @@ $xl-screen: 120em;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: 50px auto;
       grid-template-areas: "h h h h h h" "g g g g g g" "m m m m m m" "t t t t t t";
-      font-size: 11px;
+      font-size: 14px;
 
      /* @include desktop {
         grid-template-columns: repeat(12, 1fr);
@@ -144,7 +151,7 @@ $xl-screen: 120em;
 
       header.header {
         grid-area: h;
-        background-color: aquamarine;
+        background-color: white;
         display: flex;
         align-items: center;
         h1 {
@@ -170,7 +177,7 @@ $xl-screen: 120em;
 
       header.subtitle {
         grid-area: g;
-        background-color: darkorchid;
+        background-color: white;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -190,12 +197,14 @@ $xl-screen: 120em;
 
         grid-column-gap: 0;
         grid-row-gap: 1px;
-        background-color: #3f3f3f;
+        background-color: #ffffff;
 
         .cell {
           padding: .5rem;
           display: flex;
           /*border-bottom: dotted 2px #000;*/
+
+
 
           &:nth-child(-n+4) {
 
@@ -215,6 +224,10 @@ $xl-screen: 120em;
           }
           &:nth-child(odd) {
             background-color: #fff;
+          }
+
+          &:nth-last-child(-n+4) {
+           /* background-color: green;*/
           }
 
           &:nth-child(4n+1) {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./scss/style.scss">
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/animejs/anime.min.js"></script>
@@ -19,38 +19,89 @@
 <div class="wrapper">
 
 
+    <nav>
+        <div class="navigation">
+            <button class="play">Play</button>
+            <button class="pause">Pause</button>
+            <button class="restart">Restart</button>
+        </div>
+    </nav>
+
 
     <div class="container layout-2">
-        <header class="header" data-animate data-step="1" data-type="left-slide"
-                data-duration="2"><h1>Orginisation types</h1></header>
+
+        <header class="header"
+                data-animate data-step="6"
+                data-type="left-slide"
+                data-duration="200"
+                data-offset="-=50"><h1>Orginisation types</h1>
+        </header>
+
         <main class="main">
+
+            <figure class="pentagon"
+                    data-animate
+                    data-step="7"
+                    data-type="left-roll"
+                    data-duration="800"
+                    data-offset="-=700">
+                <svg width="140" height="140" viewBox="0 0 140 140">
+                    <g fill="none" fill-rule="evenodd">
+                        <g fill="green" fill-opacity=".15">
+                            <polygon
+                                points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
+                        </g>
+                    </g>
+                </svg>
+            </figure>
+
             <section>
 
-                <figure class="pentagon">
-                    <svg width="140" height="140" viewBox="0 0 140 140">
-                        <g fill="none" fill-rule="evenodd">
-                            <g fill="green" fill-opacity=".15">
-                                <polygon points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
-                            </g>
-                        </g>
-                    </svg>
-                </figure>
-                <p>Organisations can be grouped in one of three sectors:</p>
-
+                <p data-animate
+                   data-step="5"
+                   data-type="left-slide"
+                   data-duration="200"
+                   data-offset="-=50">Organisations can be grouped in one of three sectors:</p>
                 <ul>
-                    <li><strong>Private</strong> <br>organisations that exist to make a profit (eg retailers) and are owned by shareholders
-                        which may number from one to thousands; companies whose shares may be bought by the public are identified
-                        by the letters plc after their name.</li>
-                    <li><strong>Public</strong><br>organisations funded by public money (ie taxes), which include hospitals, schools, etc.</li>
-                    <li><strong>Not-for-profit</strong><br>(the community and voluntary sector) – charitable organisations such as Oxfam.</li>
+                    <li data-animate
+                        data-step="4"
+                        data-type="right-slide"
+                        data-duration="200"
+                        data-offset="-=50"><strong>Private</strong> <br>organisations that exist to make a profit (eg retailers) and are
+                        owned by shareholders
+                        which may number from one to thousands; companies whose shares may be bought by the public are
+                        identified
+                        by the letters plc after their name.
+                    </li>
+                    <li data-animate
+                        data-step="3"
+                        data-type="right-slide"
+                        data-duration="200"
+                        data-offset="-=50"><strong>Public</strong><br>organisations funded by public money (ie taxes), which include
+                        hospitals, schools, etc.
+                    </li>
+                    <li data-animate
+                        data-step="2"
+                        data-type="right-slide"
+                        data-duration="200"
+                        data-offset="-=50"><strong>Not-for-profit</strong><br>(the community and voluntary sector) – charitable
+                        organisations such as Oxfam.
+                    </li>
 
                 </ul>
 
-                <p>There are major differences between these three groups or sectors, mainly in terms of their purposes,
-                    the way they are run, how they are financed and what they do with their profits or surpluses of cash.
+                <p data-animate
+                   data-step="1"
+                   data-type="left-slide"
+                   data-duration="200"
+                   data-offset="0">There are major differences between these three groups or sectors, mainly in terms of their purposes,
+                    the way they are run, how they are financed and what they do with their profits or surpluses of
+                    cash.
                     The following table shows the main differences between the public, private and not-for profit
                     (or third) sectors:</p>
             </section>
+
+
 
 
         </main>
@@ -77,7 +128,9 @@
             <div class="cell d">Appeals, fundraising activities, charity shops</div>
             <div class="cell a">Profit<br>surplus</div>
             <div class="cell b">Goes back to central government</div>
-            <div class="cell c">Pays shareholders dividends and then invested into the business with a view to making more money</div>
+            <div class="cell c">Pays shareholders dividends and then invested into the business with a view to making
+                more money
+            </div>
             <div class="cell d">Spent on supporting the organisation's main aim</div>
             <div class="cell a">Examples of<br>organisations</div>
             <div class="cell b">NHS, government departments, schools</div>
@@ -90,14 +143,6 @@
     </div>
 
 </div>
-
-<footer>
-
-    <div class="navigation">
-        <button class="play">Play</button>
-        <button class="pause">Pause</button>
-    </div>
-</footer>
 
 
 </body>
