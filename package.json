@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "animejs": "^2.2.0",
+    "babel-polyfill": "^6.26.0",
     "jquery": "^3.3.1"
   }
 }

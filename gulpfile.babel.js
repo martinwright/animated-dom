@@ -12,6 +12,7 @@ import changed from 'gulp-changed';
 import notify from 'gulp-notify';
 import npmDist from 'gulp-npm-dist';
 import replace from 'gulp-replace';
+import "babel-polyfill";
 
 /* ----------------- */
 /* Development
@@ -139,6 +140,7 @@ gulp.task('html', () => {
     return gulp.src('src/**/*.html')
         .pipe(replace(/\.\.\/node_modules(.*)\/(.*).js/g, './libs$1/$2.js'))
         .pipe(replace(/src="js\/app.js"/g, 'src="js\/bundle.js"'))
+        .pipe(replace(/href="\.\/scss\/(.*)\.scss"/g, 'href="./css/$1.css"'))
         /*.pipe(critical.stream({
             'base': 'build/',
             'inline': true,
