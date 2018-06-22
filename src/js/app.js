@@ -60,23 +60,19 @@ class App {
 
         var myTimeline = anime.timeline({
             direction: 'reverse',
-            //autoplay: false
+            autoplay: false
         });
-
 
 
         const nodelist = document.querySelectorAll("[data-step]");
 
-        const tableRowList = document.querySelectorAll(".cell:nth-last-child(-n+4)");
-
-        console.log("tableRowList", tableRowList);
-
 
         const nodesArray = Array.prototype.slice.call(nodelist);
+
         //const nodesArray = [...Array.from(document.querySelectorAll("[data-step]"))];
 
         function sorter(obj1, obj2) {
-            return (parseInt(obj1.dataset.step) - parseInt(obj2.dataset.step)).toString();
+            return obj1.dataset.step - obj2.dataset.step;
         }
 
         function renumber(obj, n) {
@@ -85,87 +81,127 @@ class App {
         }
 
 
+        let tCols = 4, tRows = 6;
+        for (let i = 5; i >= 0; i--) {
+            console.log('nth ', (i * 4) + 1, (i * 4) + 4);
 
-        Array.from(tableRowList).forEach(function (el) {
-            myTimeline.add({
-                targets: el,
-                opacity: '0',
-                translateX: '250',
-                easing: 'easeInQuad',
-                duration: 200,
-                offset: 0
+            let start = (i * 4) + 1, end = (i * 4) + 4,
+                offset = (end === 24 && start === 21) ? '0' : '-=25';
+
+            Array.from(document.querySelectorAll(`.cell:nth-child(n+${start}):nth-child(-n+${end})`)).forEach(function (el) {
+                myTimeline.add({
+                    targets: el,
+                    opacity: '0',
+                    translateX: '100',
+                    easing: 'easeInQuad',
+                    duration: 50,
+                    offset: offset
+                });
             });
-        });
+        }
 
-        Array.from(nodesArray)
-            //.sort(sorter)
-            .reverse()
+
+        let myArr = Array.from(nodesArray).sort(sorter).reverse();
+        console.log('myArr ', typeof myArr);
+        console.log('myArr ', myArr);
+
+        //return;
+
+        Array.from(myArr)
+        //.sort(sorter)
+        //.reverse()
             .forEach(function (el) {
-            //console.log(this.dataset.step);
-            //console.log(this);
-            //console.log(this.dataset);
-            let elTarget = `[data-step="${el.dataset.step}"]`;
+                //console.log(this.dataset.step);
+                //console.log(this);
+                //console.log(this.dataset);
+                let elTarget = `[data-step="${el.dataset.step}"]`;
 
-            let elOffset = el.dataset.offset;
-            let elDuration = el.dataset.duration;
+                let elOffset = el.dataset.offset;
+                let elDuration = el.dataset.duration;
 
-            console.log('elDuration', elDuration);
-            let obj;
+                console.log('elDuration', elDuration);
+                let obj;
 
                 switch (el.dataset.type) {
-                case 'fade':
-                    myTimeline.add({
-                        targets: elTarget,
-                        opacity: 0,
-                        scale: 0.5,
-                        //direction: 'reverse'
-                    });
-                    break;
-                case 'right-slide':
-                    myTimeline.add({
-                        targets: elTarget,
-                        opacity: '0',
-                        translateX: '250',
-                        easing: 'easeInQuad',
-                        duration: elDuration,
-                        offset: elOffset
-                    });
-                    break;
-                case 'left-slide':
-                    myTimeline.add({
-                        targets: elTarget,
-                        opacity: '0',
-                        translateX: '-250',
-                        easing: 'easeInQuad',
-                        duration: elDuration,
-                        offset: elOffset
-                        //direction: 'reverse'
-                    });
-                    break;
-                case 'left-roll':
-                    myTimeline.add({
-                        targets: elTarget,
-                        opacity: '0',
-                        //translateX: '20em',
-                        rotate: '1turn',
-                        easing: 'easeInQuad',
-                        duration: elDuration,
-                        offset: elOffset,
-                        scale: 2,
-                        translateX: '-350'
-                        /*rotate: {
-                            value: 25,
-                            duration: 2000,
-                            easing: 'easeInOutSine'
-                        }*/
-                        //direction: 'reverse'
-                    });
-                    break;
-            }
-        });
+                    case 'fade':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: 0,
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset
+                            //direction: 'reverse'
+                        });
+                        break;
+                    case 'right-slide':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: '0',
+                            translateX: '150',
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset
+                        });
+                        break;
+                    case 'left-slide':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: '0',
+                            translateX: '-150',
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset
+                            //direction: 'reverse'
+                        });
+                        break;
+                    case 'left-roll':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: '0',
+                            //translateX: '20em',
+                            rotate: '-1turn',
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset,
+                            scale: 4,
+                            translateX: '350'
+                            /*rotate: {
+                                value: 25,
+                                duration: 2000,
+                                easing: 'easeInOutSine'
+                            }*/
+                            //direction: 'reverse'
+                        });
+                        break;
+                }
+            });
 
 
-        console.log('myTimeline ', myTimeline);
+        myTimeline.begin = function () {
+            console.log('#################### myTimeline ');
+
+            let wait = setTimeout(function () {
+                let wrapper = document.getElementsByClassName("wrapper")[0];
+                wrapper.classList.remove('hidden');
+            }, 10);
+        };
+
+        myTimeline.complete = function() {
+            //let wrapper = document.getElementsByClassName("wrapper")[0];
+            //wrapper.classList.remove('hidden');
+
+            (document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
+
+            [].slice.call(document.getElementsByClassName('cell'))
+                .forEach(function(elem) {
+                    elem.classList.add('--bottom-border');
+                });
+
+        };
+
+        myTimeline.play();
+
+        //console.log('myTimeline ', myTimeline);
 
     }
 }
