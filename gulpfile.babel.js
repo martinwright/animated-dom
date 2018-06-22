@@ -38,11 +38,41 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
 });
 
 
-// Copy dependencies to ./public/libs/
+// Copy dependencies to ./build/libs/
 gulp.task('libs', function() {
     gulp.src(npmDist(), {base:'./node_modules'})
         .pipe(gulp.dest('./build/libs'));
 });
+
+
+
+/* ----------------- */
+/* Fonts
+/* ----------------- */
+gulp.task('fonts', () => {
+    // Copy vendor files
+    gulp.src('src/scss/fonts/*')
+        .pipe(plumber({
+            errorHandler: onError
+        }))
+        .pipe(gulp.dest('build/css/fonts'))
+        .pipe(notify({message: 'Images task complete'}));
+});
+
+
+/* ----------------- */
+/* Vendor JS
+/* ----------------- */
+gulp.task('vendor', () => {
+    // Copy vendor files
+    gulp.src('src/vendor/**')
+        .pipe(plumber({
+            errorHandler: onError
+        }))
+        .pipe(gulp.dest('build/vendor'))
+        .pipe(notify({message: 'Images task complete'}));
+});
+
 
 /* ----------------- */
 /* Scripts
@@ -85,18 +115,6 @@ var onError = function(err) {
 }
 
 
-/* ----------------- */
-/* Vendor JS
-/* ----------------- */
-gulp.task('vendor', () => {
-    // Copy vendor files
-    gulp.src('src/vendor/**')
-        .pipe(plumber({
-            errorHandler: onError
-        }))
-        .pipe(gulp.dest('build/vendor'))
-        .pipe(notify({message: 'Images task complete'}));
-});
 
 
 /* ----------------- */
@@ -198,4 +216,4 @@ gulp.task('jsmin', () => {
 /* ----------------- */
 
 gulp.task('default', ['development']);
-gulp.task('deploy', ['html', 'jsmin', 'libs']);
+gulp.task('deploy', ['html', 'jsmin', 'libs', 'vendor', 'fonts']);
