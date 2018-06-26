@@ -1,0 +1,100 @@
+
+/* Media Query Mixins
+------------------------------------*/
+/* Phablet SASS */
+$phablet: 40em;
+@mixin phablet {
+  @media (min-width: $phablet) {
+    @content;
+  }
+}
+
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+/* Tablet SASS */
+$tablet: 48em;
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+/* Tablet SASS */
+$small-screen: 64em;
+@mixin small-screen {
+  @media (min-width: $small-screen) {
+    @content;
+  }
+}
+
+/* Large Screen SASS */
+$large-screen: 90em;
+@mixin large-screen {
+  @media (min-width: $large-screen) {
+    @content;
+  }
+}
+
+/* Large Screen SASS */
+$xl-screen: 120em;
+@mixin xl-screen {
+  @media (min-width: $xl-screen) {
+    @content;
+  }
+}
+
+/* Portrait */
+@mixin portrait {
+  @media screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+/* Landscape */
+@mixin landscape {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+/* Non-Retina */
+@mixin non-retina {
+  @media screen and (-webkit-max-device-pixel-ratio: 1) {
+    @content
+  }
+}
+
+/* Retina */
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}

@@ -3,9 +3,10 @@
 //import '../css/style.scss';
 //import Icon from './img1.png';
 //import { Shapes } from './app'
-import "babel-polyfill";
+//import "babel-polyfill";
 import {$on} from './util';
 import DocReady from './windowLoaded';
+import Slider from './slider';
 
 //(function (document, window) {
 
@@ -17,7 +18,6 @@ import DocReady from './windowLoaded';
     }*/
 
 //(function ($) {  // start IIFE
-
 
 DocReady(() => {
     console.log("DocReady");
@@ -37,24 +37,66 @@ class App {
 
     };
 
+
     startUp() {
 
+        const sliderEl = document.querySelector('#slider1')
 
-        /*var reverse = anime({
-            targets: '[data-animation-step="1"]',
-            translateX: 250,
-            direction: 'reverse'
-        });*/
+        const slider = new Slider(sliderEl, {
+            slide: true,
+            callback: transitioned
+        });
 
-        console.log('ddd', this);
-        document.querySelector('.navigation .play').onclick = (e) => {
+        return;
+
+        function transitioned (slide){
+            console.log('transitioned ', slide.children[0]);
+        }
+
+        //document.addEventListener('DOMContentLoaded', ready);
+
+
+        /*let opts = {
+            el: '#root',
+            btnGpEl: '#pg-control',
+            renderFn: f
+        }*/
+
+        // init
+        //var p = new Pager(opts)
+
+        // change page
+        //p.prev();
+        //p.next();
+
+        // update list
+        //p.setState({
+        //list: [...]
+        //});
+
+        // render function
+        /*function f(val, index, arr) {
+            const d = document.createElement('p');
+            d.innerText = val;
+            return d;
+        }*/
+
+
+        document.querySelector('.js-play').onclick = (e) => {
             myTimeline.play()
         };
-        document.querySelector('.navigation .pause').onclick = (e) => {
+        document.querySelector(' .js-pause').onclick = (e) => {
             myTimeline.pause()
         };
-        document.querySelector('.navigation .restart').onclick = (e) => {
+        document.querySelector('.js-restart').onclick = (e) => {
             myTimeline.restart()
+        };
+
+        document.querySelector('.js-next').onclick = (e) => {
+            p.next();
+        };
+        document.querySelector('.js-back').onclick = (e) => {
+            p.prev();
         };
 
 
@@ -64,7 +106,7 @@ class App {
         });
 
 
-        const nodelist = document.querySelectorAll("[data-step]");
+        const nodelist = document.querySelectorAll('[data-page="1"] [data-step]');
 
 
         const nodesArray = Array.prototype.slice.call(nodelist);
@@ -88,7 +130,7 @@ class App {
             let start = (i * 4) + 1, end = (i * 4) + 4,
                 offset = (end === 24 && start === 21) ? '0' : '-=25';
 
-            Array.from(document.querySelectorAll(`.cell:nth-child(n+${start}):nth-child(-n+${end})`)).forEach(function (el) {
+            Array.from(document.querySelectorAll(`[data-page="1"] .cell:nth-child(n+${start}):nth-child(-n+${end})`)).forEach(function (el) {
                 myTimeline.add({
                     targets: el,
                     opacity: '0',
@@ -186,14 +228,14 @@ class App {
             }, 10);
         };
 
-        myTimeline.complete = function() {
+        myTimeline.complete = function () {
             //let wrapper = document.getElementsByClassName("wrapper")[0];
             //wrapper.classList.remove('hidden');
 
             (document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
 
             [].slice.call(document.getElementsByClassName('cell'))
-                .forEach(function(elem) {
+                .forEach(function (elem) {
                     elem.classList.add('--bottom-border');
                 });
 

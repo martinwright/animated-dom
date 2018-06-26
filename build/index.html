@@ -1,155 +1,205 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated DOM</title>
+
+    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
 
-    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
-    <script src="./libs/animejs/anime.min.js"></script>
-    <script src="./vendor/normalize.css"></script>
-
-    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
-          rel="stylesheet">-->
-
-
+    <style>
+        .slider-container {
+            position: relative;
+            width: auto;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
-<script src="js/bundle.js"></script>
-
-<div class="wrapper hidden">
 
 
-    <nav>
-        <div class="navigation">
-            <button class="play">Play</button>
-            <button class="pause">Pause</button>
-            <button class="restart">Restart</button>
+
+<div class="nav-bar">
+    <div class="nav-bar__container">
+        <button class="button--navigation js-back">Back</button>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
         </div>
-    </nav>
-
-
-    <div class="container layout-2 ">
-
-        <header class="header"
-                data-animate data-step="2"
-                data-type="left-slide"
-                data-duration="200"
-                data-offset="-=50"><h1>Orginisation types</h1>
-        </header>
-
-        <main class="main">
-
-            <figure class="pentagon"
-                    data-animate
-                    data-step="1"
-                    data-type="left-roll"
-                    data-duration="1800"
-                    data-offset="-=1500">
-                <svg width="140" height="140" viewBox="0 0 140 140">
-                    <g fill="none" fill-rule="evenodd">
-                        <g fill="green" fill-opacity=".15">
-                            <polygon
-                                points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
-                        </g>
-                    </g>
-                </svg>
-            </figure>
-
-            <section>
-
-                <p data-animate
-                   data-step="4"
-                   data-type="fade"
-                   data-duration="100"
-                   data-offset="-=50">Organisations can be grouped in one of three sectors:</p>
-                <ul>
-                    <li data-animate
-                        data-step="5"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Private</strong> <br>organisations that exist to make a profit (eg retailers) and are
-                        owned by shareholders
-                        which may number from one to thousands; companies whose shares may be bought by the public are
-                        identified
-                        by the letters plc after their name.
-                    </li>
-                    <li data-animate
-                        data-step="6"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Public</strong><br>organisations funded by public money (ie taxes), which include
-                        hospitals, schools, etc.
-                    </li>
-                    <li data-animate
-                        data-step="7"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Not-for-profit</strong><br>(the community and voluntary sector) – charitable
-                        organisations such as Oxfam.
-                    </li>
-
-                </ul>
-
-                <p data-animate
-                   data-step="8"
-                   data-type="fade"
-                   data-duration="200"
-                   data-offset="-=50">There are major differences between these three groups or sectors, mainly in terms of their purposes,
-                    the way they are run, how they are financed and what they do with their profits or surpluses of
-                    cash.
-                    The following table shows the main differences between the public, private and not-for profit
-                    (or third) sectors:</p>
-            </section>
-
-
-
-
-        </main>
-
-        <header class="subtitle"
-                data-animate
-                data-step="3"
-                data-type="right-slide"
-                data-duration="200"
-                data-offset="-=50"><h2>The Public Sector</h2></header>
-
-
-        <aside class="table">
-            <div class="cell a"></div>
-            <div class="cell b"><h3>Public</h3></div>
-            <div class="cell c"><h3>Private</h3></div>
-            <div class="cell d"><h3>Third</h3></div>
-            <div class="cell a"><h4>Purpose</h4></div>
-            <div class="cell b">To provide a good service to the public</div>
-            <div class="cell c">To make a profit for its shareholders</div>
-            <div class="cell d">To provide free services for those in need</div>
-            <div class="cell a"><h4>Finance</h4></div>
-            <div class="cell b">Public taxation</div>
-            <div class="cell c">Make a profit from shares and shareholder investment</div>
-            <div class="cell d">Donations</div>
-            <div class="cell a"><h4>Method</h4></div>
-            <div class="cell b">Meeting targets within a budget</div>
-            <div class="cell c">Increasing sales and lowering operating costs</div>
-            <div class="cell d">Appeals, fundraising activities, charity shops</div>
-            <div class="cell a"><h4>Profit<br>surplus</h4></div>
-            <div class="cell b">Goes back to central government</div>
-            <div class="cell c">Pays shareholders dividends and then invested into the business with a view to making
-                more money
-            </div>
-            <div class="cell d">Spent on supporting the organisation's main aim</div>
-            <div class="cell a"><h4>Examples of<br>organisations</h4></div>
-            <div class="cell b">NHS, government departments, schools</div>
-            <div class="cell c">Marks & Spencer, Virgin</div>
-            <div class="cell d">Greenpeace, Save the Children, RSPCA</div>
-
-        </aside>
-
-
+        <button class="button--navigation js-next">Next</button>
     </div>
-
 </div>
 
 
+<div class="slider-container">
+    <div id="slider1" class="slider">
+        <div class="slider-list" role="list">
+            <div class="slider-list-item active">
+
+
+
+
+                <div class="slide-container layout-2 " data-page="1" >
+
+                    <header class="header"
+                            data-animate data-step="2"
+                            data-type="left-slide"
+                            data-duration="200"
+                            data-offset="-=50"><h1>Orginisation types</h1>
+                    </header>
+
+                    <main class="main">
+
+                        <figure class="pentagon"
+                                data-animate
+                                data-step="1"
+                                data-type="left-roll"
+                                data-duration="1800"
+                                data-offset="-=1500">
+                            <svg width="140" height="140" viewBox="0 0 140 140">
+                                <g fill="none" fill-rule="evenodd">
+                                    <g fill="green" fill-opacity=".15">
+                                        <polygon
+                                            points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
+                                    </g>
+                                </g>
+                            </svg>
+                        </figure>
+
+                        <section>
+
+                            <p data-animate
+                               data-step="4"
+                               data-type="fade"
+                               data-duration="100"
+                               data-offset="-=50">Organisations can be grouped in one of three sectors:</p>
+                            <ul>
+                                <li data-animate
+                                    data-step="5"
+                                    data-type="right-slide"
+                                    data-duration="200"
+                                    data-offset="-=50"><strong>Private</strong> <br>organisations that exist to make a profit (eg
+                                    retailers) and are
+                                    owned by shareholders
+                                    which may number from one to thousands; companies whose shares may be bought by the public are
+                                    identified
+                                    by the letters plc after their name.
+                                </li>
+                                <li data-animate
+                                    data-step="6"
+                                    data-type="right-slide"
+                                    data-duration="200"
+                                    data-offset="-=50"><strong>Public</strong><br>organisations funded by public money (ie taxes),
+                                    which include
+                                    hospitals, schools, etc.
+                                </li>
+                                <li data-animate
+                                    data-step="7"
+                                    data-type="right-slide"
+                                    data-duration="200"
+                                    data-offset="-=50"><strong>Not-for-profit</strong><br>(the community and voluntary sector) –
+                                    charitable
+                                    organisations such as Oxfam.
+                                </li>
+
+                            </ul>
+
+                            <p data-animate
+                               data-step="8"
+                               data-type="fade"
+                               data-duration="200"
+                               data-offset="-=50">There are major differences between these three groups or sectors, mainly in terms
+                                of their purposes,
+                                the way they are run, how they are financed and what they do with their profits or surpluses of
+                                cash.
+                                The following table shows the main differences between the public, private and not-for profit
+                                (or third) sectors:</p>
+                        </section>
+
+
+                    </main>
+
+                    <header class="subtitle"
+                            data-animate
+                            data-step="3"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><h2>The Public Sector</h2></header>
+
+
+                    <aside class="table">
+                        <div class="cell a"></div>
+                        <div class="cell b"><h3>Public</h3></div>
+                        <div class="cell c"><h3>Private</h3></div>
+                        <div class="cell d"><h3>Third</h3></div>
+                        <div class="cell a"><h4>Purpose</h4></div>
+                        <div class="cell b">To provide a good service to the public</div>
+                        <div class="cell c">To make a profit for its shareholders</div>
+                        <div class="cell d">To provide free services for those in need</div>
+                        <div class="cell a"><h4>Finance</h4></div>
+                        <div class="cell b">Public taxation</div>
+                        <div class="cell c">Make a profit from shares and shareholder investment</div>
+                        <div class="cell d">Donations</div>
+                        <div class="cell a"><h4>Method</h4></div>
+                        <div class="cell b">Meeting targets within a budget</div>
+                        <div class="cell c">Increasing sales and lowering operating costs</div>
+                        <div class="cell d">Appeals, fundraising activities, charity shops</div>
+                        <div class="cell a"><h4>Profit<br>surplus</h4></div>
+                        <div class="cell b">Goes back to central government</div>
+                        <div class="cell c">Pays shareholders dividends and then invested into the business with a view to making
+                            more money
+                        </div>
+                        <div class="cell d">Spent on supporting the organisation's main aim</div>
+                        <div class="cell a"><h4>Examples of<br>organisations</h4></div>
+                        <div class="cell b">NHS, government departments, schools</div>
+                        <div class="cell c">Marks & Spencer, Virgin</div>
+                        <div class="cell d">Greenpeace, Save the Children, RSPCA</div>
+
+                    </aside>
+
+
+                </div>
+
+
+
+
+            </div>
+            <div class="slider-list-item">
+                <div class="slide-container layout-2 " data-page="2" >
+                    <img src="http://www.travelettes.net/wp-content/uploads/2012/06/mystery2-600x600.jpg" />
+                </div>
+
+
+            </div>
+            <div class="slider-list-item">
+
+                <div class="slide-container layout-2 " data-page="3" >
+                    <img src="http://brasilcalibracao.com.br/images/produtos/josh-holland-illustrations-8-600x600.jpg" />
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="slider-control prev" role="button" data-direction="prev"></div>
+        <div class="slider-control next" role="button" data-direction="next"></div>
+    </div>
+</div>
+
+<script src="js/bundle.js"></script>
+
+<!--<script src="js/bundle.js"></script>-->
+<script type="text/javascript">
+    /*function ready() {
+        const slider1 = new Slider('#slider1', {
+            slide: true,
+            interval: 4000
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', ready);*/
+</script>
 </body>
 </html>
