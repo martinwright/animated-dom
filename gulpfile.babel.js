@@ -216,4 +216,4 @@ gulp.task('jsmin', () => {
 /* ----------------- */
 
 gulp.task('default', ['development']);
-gulp.task('deploy', ['html', 'jsmin', 'libs', 'vendor', 'fonts']);
+gulp.task('deploy', ['html', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
