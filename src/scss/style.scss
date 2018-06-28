@@ -25,6 +25,7 @@ $desktop-width: 1024px;
   font-style: normal;
 }
 
+
 /* Media Query Mixins
 ------------------------------------*/
 /* Phablet SASS */
@@ -202,12 +203,12 @@ button {
   border-color: #9c3304;
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
 
 .wrapper {
-  &.hidden {
-    display: none;
-  }
-
   display: flex;
   justify-content: center;
 }
@@ -219,7 +220,7 @@ button {
   width: 100%;
   z-index: 1;
   bottom: 0;
-  visibility: hidden;
+  //visibility: hidden;
 }
 
 .nav-bar__container {
@@ -231,26 +232,45 @@ button {
 }
 
 .container__background {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 85%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
   opacity: 0.8;
   padding: 0;
   margin: 0;
   z-index: -1;
+  @include for-size(tablet-landscape-up) {
+    width: 85%;
+  }
   img {
     width: 100%;
     height: 100%;
   }
 }
+
+article {
+  position: relative;
+}
 figure.square-green {
   position: absolute;
+
+  svg {
+    width: 10vw;
+    height: 10vw;
+  }
   bottom: 4em;
-  right: 0;
+  /*@include for-size(tablet-landscape-up) {
+    right: 0;
+    width: 14%
+  }*/
+  right: 45vw;
+  //width: 19%;
   margin: 0;
 
+
 }
+
 figure.pentagon {
   position: absolute;
   bottom: 0;
@@ -258,27 +278,33 @@ figure.pentagon {
 }
 
 
-header.main-heading {
+h1.main-heading {
   grid-area: h;
   display: flex;
   align-items: center;
-  h1 {
-    margin: 0;
+  margin: 0.3em 0;
+  @include for-size(phone-only) {
+    margin: 0.2em 0;
   }
 }
 
-header.sub-heading {
+h2.sub-heading {
   grid-area: g;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  h2 {
-    margin: 0;
+  margin: 0.3em 0;
+  @include for-size(phone-only) {
+    margin: 0.2em 0;
   }
 }
-header.sub-heading--right {
-  @extend .sub-heading;
+h2.sub-heading--right {
+  @extend h2.sub-heading;
   justify-content: flex-end;
+  margin: 0.3em 0;
+  @include for-size(phone-only) {
+    margin: 0.2em 0;
+  }
 }
 
 
@@ -321,7 +347,7 @@ main.container__main {
   @extend .container;
 
   display: grid;
-  grid-gap: .1em;
+  grid-gap: .5em;
 
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
@@ -362,6 +388,7 @@ aside.table {
       font-weight: bold;
       margin: 0;
       text-transform: uppercase;
+      font-size: 80%;
     }
 
     &:nth-child(even) {

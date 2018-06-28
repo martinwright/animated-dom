@@ -47,13 +47,13 @@ class App {
         });*/
 
         console.log('ddd', this);
-        document.querySelector('.navigation .play').onclick = (e) => {
+        document.querySelector('.nav-bar .js-play').onclick = (e) => {
             myTimeline.play()
         };
-        document.querySelector('.navigation .pause').onclick = (e) => {
+        document.querySelector('.nav-bar .js-pause').onclick = (e) => {
             myTimeline.pause()
         };
-        document.querySelector('.navigation .restart').onclick = (e) => {
+        document.querySelector('.nav-bar .js-restart').onclick = (e) => {
             myTimeline.restart()
         };
 
@@ -165,6 +165,25 @@ class App {
                             offset: elOffset,
                             scale: 4,
                             translateX: '350'
+                            /*rotate: {
+                                value: 25,
+                                duration: 2000,
+                                easing: 'easeInOutSine'
+                            }*/
+                            //direction: 'reverse'
+                        });
+                        break;
+                    case 'top-roll':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: '0',
+                            //translateX: '20em',
+                            rotate: '-1turn',
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset,
+                            scale: 4,
+                            translateY: '-1350'
                             /*rotate: {
                                 value: 25,
                                 duration: 2000,

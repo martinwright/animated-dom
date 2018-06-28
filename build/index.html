@@ -8,7 +8,8 @@
 
     <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
     <script src="./libs/animejs/anime.min.js"></script>
-    <!--<script src="./vendor/normalize.css"></script>-->
+
+    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
     <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
           rel="stylesheet">-->
@@ -16,275 +17,281 @@
 
 </head>
 <body>
-<!--<script src="js/bundle.js"></script>-->
+    <script src="js/bundle.js"></script>
 
-<div class="wrapper xhidden">
+    <div class="wrapper hidden">
 
 
-    <div class="nav-bar">
-        <div class="nav-bar__container">
-            <button class="button--navigation js-back">Back</button>
-            <div class="nav-bar__controls">
-                <button class="button--control js-play">Play</button>
-                <button class="button--control js-pause">Pause</button>
-                <button class="button--control js-restart">Restart</button>
+        <div class="nav-bar">
+            <div class="nav-bar__container">
+                <button class="button--navigation js-back">Back</button>
+                <div class="nav-bar__controls">
+                    <button class="button--control js-play">Play</button>
+                    <button class="button--control js-pause">Pause</button>
+                    <button class="button--control js-restart">Restart</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container--layout-1">
+        <div class="container--layout-1 -hidden">
 
-        <header class="main-heading" style="grid-area: t"
+            <h1 class="main-heading" style="grid-area: t"
                 data-animate data-step="2"
                 data-type="left-slide"
                 data-duration="200"
-                data-offset="-=50"><h1>Orginisation types</h1>
-        </header>
+                data-offset="-=50">Orginisation types</h1>
 
 
-        <main class="container__main" style="grid-area: l">
-
-            <figure class="container__background"
-                    data-animate
-                    data-step="1"
-                    data-type="left-roll"
-                    data-duration="1800"
-                    data-offset="-=1500">
-                <img src="./images/slide3.png" alt="" />
-            </figure>
-
-            <figure class="square-green"
-                    data-animate
-                    data-step="1"
-                    data-type="left-roll"
-                    data-duration="1800"
-                    data-offset="-=1500">
-                <svg width="140" height="140" viewBox="0 0 140 140">
-                    <g fill="none" fill-rule="evenodd">
-                        <g fill="#9ce634" fill-opacity=".75">
-                            <polygon
-                                points="140 0 140 140 0 140 0 0"></polygon>
-                        </g>
-                    </g>
-                </svg>
-            </figure>
-
-            <header class="sub-heading"
-                    data-animate
-                    data-step="3"
-                    data-type="right-slide"
-                    data-duration="200"
-                    data-offset="-=50"><h2>Introduction</h2>
-            </header>
+            <article style="grid-area: l">
 
 
-            <section>
-
-                <p data-animate
-                   data-step="4"
-                   data-type="fade"
-                   data-duration="100"
-                   data-offset="-=50">Your organisation will form part of one of three sectors: the public sector,
-                    the private sector or the third sector. There are major differences between these three sectors,
-                    mainly in their purpose, the way they are run and financed, as well as what they do with any
-                    profits.</p>
-                <p>To understand how your organisation's policies and procedures affect your role, it is important to
-                    recognise the differences between the three sectors. Talk to your employer and colleagues about
-                    your organisation – they will have an insight into the way its aims relate to its sector.</p>
-
-            </section>
-
-
-        </main>
-
-
-        <main class="container__main" style="grid-area: r">
-
-
-            </header>
-
-            <section>
-
-                <header class="sub-heading"
+                <figure class="square-green"
                         data-animate
-                        data-step="3"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><h2>Key terms</h2>
-                </header>
+                        data-step="1"
+                        data-type="top-roll"
+                        data-duration="1800"
+                        data-offset="-=1300">
+                    <svg width="140" height="140" >
+                        <g fill="none" fill-rule="evenodd">
+                            <g fill="#9ce634" fill-opacity=".75">
+                                <polygon
+                                        points="140 0 140 140 0 140 0 0"></polygon>
+                            </g>
+                        </g>
+                    </svg>
+                </figure>
 
-                <ul>
-                    <li data-animate
-                        data-step="5"
+
+                <section>
+
+                    <h2 class="sub-heading"
+                        data-animate
+                        data-step="4"
                         data-type="right-slide"
                         data-duration="200"
-                        data-offset="-=50"><strong>Purpose </strong> <br>the reason for which something exists.
-                    </li>
-                    <li data-animate
-                        data-step="6"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Activities</strong><br>actions undertaken by organisations, such
-                        as buying, selling, marketing or investing, for the purpose of generating profits or
-                        developing economic opportunities.
-                    </li>
-                    <li data-animate
+                        data-offset="-=50">Introduction</h2>
+
+                    <p data-animate
+                       data-step="5"
+                       data-type="right-slide"
+                       data-duration="100"
+                       data-offset="-=50">Your organisation will form part of one of three sectors: the public sector,
+                        the private sector or the third sector. There are major differences between these three sectors,
+                        mainly in their purpose, the way they are run and financed, as well as what they do with any
+                        profits.</p>
+                    <p data-animate
+                       data-step="6"
+                       data-type="right-slide"
+                       data-duration="100"
+                       data-offset="-=50">To understand how your organisation's policies and procedures affect your
+                        role, it is important
+                        to
+                        recognise the differences between the three sectors. Talk to your employer and colleagues about
+                        your organisation – they will have an insight into the way its aims relate to its sector.</p>
+
+                </section>
+
+                <section class="container__background"
+                         data-animate
+                         data-step="3"
+                         data-type="fade"
+                         data-duration="100"
+                         data-offset="-=50">
+                    <figure>
+                        <img src="./images/slide3.png" alt=""/>
+                    </figure>
+                </section>
+
+
+            </article>
+
+
+            <article class="container__main" style="grid-area: r">
+
+
+                <section>
+
+                    <h2 class="sub-heading"
+                        data-animate
                         data-step="7"
                         data-type="right-slide"
                         data-duration="200"
-                        data-offset="-=50"><strong>Aims</strong><br>where the business wants to go in the future, its
-                        goals, a
-                        statement of resolve.
-                    </li>
-                    <li data-animate
-                        data-step="7"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Values </strong><br>the operating philosophies or principles that
-                        guide an organisation's conduct and its relationship with customers, partners and shareholders.
-                    </li>
-                    <li data-animate
-                        data-step="7"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Vision for the future</strong><br>where the organisation wants
-                        to go rather than its current state.
-                    </li>
+                        data-offset="-=50">Key terms</h2>
 
-                </ul>
+                    <ul>
+                        <li data-animate
+                            data-step="8"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Purpose </strong> <br>the reason for which something exists.
+                        </li>
+                        <li data-animate
+                            data-step="9"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Activities</strong><br>actions undertaken by organisations, such
+                            as buying, selling, marketing or investing, for the purpose of generating profits or
+                            developing economic opportunities.
+                        </li>
+                        <li data-animate
+                            data-step="10"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Aims</strong><br>where the business wants to go in the future,
+                            its
+                            goals, a
+                            statement of resolve.
+                        </li>
+                        <li data-animate
+                            data-step="11"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Values </strong><br>the operating philosophies or principles that
+                            guide an organisation's conduct and its relationship with customers, partners and
+                            shareholders.
+                        </li>
+                        <li data-animate
+                            data-step="12"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Vision for the future</strong><br>where the organisation wants
+                            to go rather than its current state.
+                        </li>
 
-            </section>
+                    </ul>
+
+                </section>
 
 
-        </main>
+            </article>
 
 
-    </div>
+        </div>
 
 
-    <div class="container--layout-2" style="visibility: hidden; display: none;">
+        <!--<div class="container&#45;&#45;layout-2" >
 
-        <header class="main-heading"
+            <h1 class="main-heading"
                 data-animate data-step="2"
                 data-type="left-slide"
                 data-duration="200"
-                data-offset="-=50"><h1>Orginisation types</h1>
-        </header>
+                data-offset="-=50">Orginisation types</h1>
 
-        <main class="container__main">
+            <main class="container__main">
 
-            <figure class="pentagon"
-                    data-animate
-                    data-step="1"
-                    data-type="left-roll"
-                    data-duration="1800"
-                    data-offset="-=1500">
-                <svg width="140" height="140" viewBox="0 0 140 140">
-                    <g fill="none" fill-rule="evenodd">
-                        <g fill="green" fill-opacity=".15">
-                            <polygon
-                                points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
+                <figure class="pentagon"
+                        data-animate
+                        data-step="1"
+                        data-type="left-roll"
+                        data-duration="1800"
+                        data-offset="-=1500">
+                    <svg width="140" height="140" viewBox="0 0 140 140">
+                        <g fill="none" fill-rule="evenodd">
+                            <g fill="green" fill-opacity=".15">
+                                <polygon
+                                        points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
+                            </g>
                         </g>
-                    </g>
-                </svg>
-            </figure>
+                    </svg>
+                </figure>
 
-            <section>
+                <section>
 
-                <p data-animate
-                   data-step="4"
-                   data-type="fade"
-                   data-duration="100"
-                   data-offset="-=50">Organisations can be grouped in one of three sectors:</p>
-                <ul>
-                    <li data-animate
-                        data-step="5"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Private</strong> <br>organisations that exist to make a profit
-                        (eg retailers) and are
-                        owned by shareholders
-                        which may number from one to thousands; companies whose shares may be bought by the public
-                        are
-                        identified
-                        by the letters plc after their name.
-                    </li>
-                    <li data-animate
-                        data-step="6"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Public</strong><br>organisations funded by public money (ie
-                        taxes), which include
-                        hospitals, schools, etc.
-                    </li>
-                    <li data-animate
-                        data-step="7"
-                        data-type="right-slide"
-                        data-duration="200"
-                        data-offset="-=50"><strong>Not-for-profit</strong><br>(the community and voluntary sector) –
-                        charitable
-                        organisations such as Oxfam.
-                    </li>
+                    <p data-animate
+                       data-step="4"
+                       data-type="fade"
+                       data-duration="100"
+                       data-offset="-=50">Organisations can be grouped in one of three sectors:</p>
+                    <ul>
+                        <li data-animate
+                            data-step="5"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Private</strong> <br>organisations that exist to make a profit
+                            (eg retailers) and are
+                            owned by shareholders
+                            which may number from one to thousands; companies whose shares may be bought by the public
+                            are
+                            identified
+                            by the letters plc after their name.
+                        </li>
+                        <li data-animate
+                            data-step="6"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Public</strong><br>organisations funded by public money (ie
+                            taxes), which include
+                            hospitals, schools, etc.
+                        </li>
+                        <li data-animate
+                            data-step="7"
+                            data-type="right-slide"
+                            data-duration="200"
+                            data-offset="-=50"><strong>Not-for-profit</strong><br>(the community and voluntary sector) –
+                            charitable
+                            organisations such as Oxfam.
+                        </li>
 
-                </ul>
+                    </ul>
 
-                <p data-animate
-                   data-step="8"
-                   data-type="fade"
-                   data-duration="200"
-                   data-offset="-=50">There are major differences between these three groups or sectors, mainly in
-                    terms of their purposes,
-                    the way they are run, how they are financed and what they do with their profits or surpluses of
-                    cash.
-                    The following table shows the main differences between the public, private and not-for profit
-                    (or third) sectors:</p>
-            </section>
+                    <p data-animate
+                       data-step="8"
+                       data-type="fade"
+                       data-duration="200"
+                       data-offset="-=50">There are major differences between these three groups or sectors, mainly in
+                        terms of their purposes,
+                        the way they are run, how they are financed and what they do with their profits or surpluses of
+                        cash.
+                        The following table shows the main differences between the public, private and not-for profit
+                        (or third) sectors:</p>
+                </section>
 
 
-        </main>
+            </main>
 
-        <header class="sub-heading--right"
+            <h2 class="sub-heading&#45;&#45;right"
                 data-animate
                 data-step="3"
                 data-type="right-slide"
                 data-duration="200"
-                data-offset="-=50"><h2>The Public Sector</h2></header>
+                data-offset="-=50">The Public Sector</h2>
 
 
-        <aside class="table">
-            <div class="cell a"></div>
-            <div class="cell b"><h3>Public</h3></div>
-            <div class="cell c"><h3>Private</h3></div>
-            <div class="cell d"><h3>Third</h3></div>
-            <div class="cell a"><h4>Purpose</h4></div>
-            <div class="cell b">To provide a good service to the public</div>
-            <div class="cell c">To make a profit for its shareholders</div>
-            <div class="cell d">To provide free services for those in need</div>
-            <div class="cell a"><h4>Finance</h4></div>
-            <div class="cell b">Public taxation</div>
-            <div class="cell c">Make a profit from shares and shareholder investment</div>
-            <div class="cell d">Donations</div>
-            <div class="cell a"><h4>Method</h4></div>
-            <div class="cell b">Meeting targets within a budget</div>
-            <div class="cell c">Increasing sales and lowering operating costs</div>
-            <div class="cell d">Appeals, fundraising activities, charity shops</div>
-            <div class="cell a"><h4>Profit<br>surplus</h4></div>
-            <div class="cell b">Goes back to central government</div>
-            <div class="cell c">Pays shareholders dividends and then invested into the business with a view to
-                making
-                more money
-            </div>
-            <div class="cell d">Spent on supporting the organisation's main aim</div>
-            <div class="cell a"><h4>Examples of<br>organisations</h4></div>
-            <div class="cell b">NHS, government departments, schools</div>
-            <div class="cell c">Marks & Spencer, Virgin</div>
-            <div class="cell d">Greenpeace, Save the Children, RSPCA</div>
 
-        </aside>
+            <aside class="table">
+                <div class="cell a"></div>
+                <div class="cell b"><h3>Public</h3></div>
+                <div class="cell c"><h3>Private</h3></div>
+                <div class="cell d"><h3>Third</h3></div>
+                <div class="cell a"><h4>Purpose</h4></div>
+                <div class="cell b">To provide a good service to the public</div>
+                <div class="cell c">To make a profit for its shareholders</div>
+                <div class="cell d">To provide free services for those in need</div>
+                <div class="cell a"><h4>Finance</h4></div>
+                <div class="cell b">Public taxation</div>
+                <div class="cell c">Make a profit from shares and shareholder investment</div>
+                <div class="cell d">Donations</div>
+                <div class="cell a"><h4>Method</h4></div>
+                <div class="cell b">Meeting targets within a budget</div>
+                <div class="cell c">Increasing sales and lowering operating costs</div>
+                <div class="cell d">Appeals, fundraising activities, charity shops</div>
+                <div class="cell a"><h4>Profit<br>surplus</h4></div>
+                <div class="cell b">Goes back to central government</div>
+                <div class="cell c">Pays shareholders dividends and then invested into the business with a view to
+                    making
+                    more money
+                </div>
+                <div class="cell d">Spent on supporting the organisation's main aim</div>
+                <div class="cell a"><h4>Examples of<br>organisations</h4></div>
+                <div class="cell b">NHS, government departments, schools</div>
+                <div class="cell c">Marks & Spencer, Virgin</div>
+                <div class="cell d">Greenpeace, Save the Children, RSPCA</div>
 
+            </aside>
+
+
+        </div>-->
 
     </div>
-
-</div>
 </body>
 </html>

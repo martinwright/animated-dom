@@ -13,6 +13,7 @@ import notify from 'gulp-notify';
 import npmDist from 'gulp-npm-dist';
 import replace from 'gulp-replace';
 import "babel-polyfill";
+import autoprefixer from 'gulp-autoprefixer';
 
 /* ----------------- */
 /* Development
@@ -143,6 +144,7 @@ gulp.task('styles', () => {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(plugins().sass().on('error', plugins().sass.logError))
+        .pipe(autoprefixer())
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest('./build/css/'))
         .pipe(notify({message: 'styles task complete'}))

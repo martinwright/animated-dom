@@ -7613,13 +7613,13 @@ var App = function () {
             });*/
 
             console.log('ddd', this);
-            document.querySelector('.navigation .play').onclick = function (e) {
+            document.querySelector('.nav-bar .js-play').onclick = function (e) {
                 myTimeline.play();
             };
-            document.querySelector('.navigation .pause').onclick = function (e) {
+            document.querySelector('.nav-bar .js-pause').onclick = function (e) {
                 myTimeline.pause();
             };
-            document.querySelector('.navigation .restart').onclick = function (e) {
+            document.querySelector('.nav-bar .js-restart').onclick = function (e) {
                 myTimeline.restart();
             };
 
@@ -7733,6 +7733,25 @@ var App = function () {
                             offset: elOffset,
                             scale: 4,
                             translateX: '350'
+                            /*rotate: {
+                                value: 25,
+                                duration: 2000,
+                                easing: 'easeInOutSine'
+                            }*/
+                            //direction: 'reverse'
+                        });
+                        break;
+                    case 'top-roll':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: '0',
+                            //translateX: '20em',
+                            rotate: '-1turn',
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset,
+                            scale: 4,
+                            translateY: '-1350'
                             /*rotate: {
                                 value: 25,
                                 duration: 2000,
