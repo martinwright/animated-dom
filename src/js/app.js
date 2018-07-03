@@ -56,6 +56,14 @@ class App {
         document.querySelector('.nav-bar .js-restart').onclick = (e) => {
             myTimeline.restart()
         };
+        document.querySelector('.nav-bar .js-back').onclick = (e) => {
+           console.log('back')
+            window.location.href = "index.html";
+        };
+        document.querySelector('.nav-bar .js-next').onclick = (e) => {
+            console.log('next')
+            window.location.href = "page2.html";
+        };
 
 
         var myTimeline = anime.timeline({
@@ -129,7 +137,8 @@ class App {
                             opacity: 0,
                             easing: 'easeInQuad',
                             duration: elDuration,
-                            offset: elOffset
+                            offset: elOffset,
+                            scale: .5
                             //direction: 'reverse'
                         });
                         break;
@@ -173,12 +182,31 @@ class App {
                             //direction: 'reverse'
                         });
                         break;
-                    case 'top-roll':
+                    case 'right-roll':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: '0',
+                            translateX: '20em',
+                            rotate: '2turn',
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: Number(elOffset)
+                            //scale: 4
+                            //translateX: '-350'
+                            /*rotate: {
+                                value: 25,
+                                duration: 2000,
+                                easing: 'easeInOutSine'
+                            }*/
+                            //direction: 'reverse'
+                        });
+                        break;
+                    case 'roll-from-left':
                         myTimeline.add({
                             targets: elTarget,
                             opacity: '0',
                             //translateX: '20em',
-                            rotate: '-1turn',
+                            rotate: '-2turn',
                             easing: 'easeInQuad',
                             duration: elDuration,
                             offset: elOffset,
@@ -189,6 +217,27 @@ class App {
                                 duration: 2000,
                                 easing: 'easeInOutSine'
                             }*/
+                            //direction: 'reverse'
+                        });
+                        break;
+
+                    case 'top-roll':
+                        myTimeline.add({
+                            targets: elTarget,
+                            opacity: 0.1,
+                            //translateX: '20em',
+                            rotate: 270,
+                            easing: 'easeInQuad',
+                            duration: elDuration,
+                            offset: elOffset,
+                            //scale: 4,
+                            translateY: 1200,
+                            translateX: 1200
+                            /*rotate: {
+                                value: 45,
+                                duration: 800,
+                                easing: 'easeInOutSine'
+                            },*/
                             //direction: 'reverse'
                         });
                         break;
