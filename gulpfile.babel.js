@@ -24,6 +24,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
         'server': {
             baseDir: "build/"
         },
+        startPath: "/unit-1.html",
         'snippetOptions': {
             'rule': {
                 'match': /<\/body>/i,

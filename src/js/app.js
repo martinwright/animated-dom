@@ -23,7 +23,7 @@ class App {
     startUp() {
 
         console.log('ddd', this);
-        document.querySelector('.nav-bar .js-play').onclick = (e) => {
+        /*document.querySelector('.nav-bar .js-play').onclick = (e) => {
             myTimeline.play()
         };
         document.querySelector('.nav-bar .js-pause').onclick = (e) => {
@@ -39,7 +39,7 @@ class App {
         document.querySelector('.nav-bar .js-next').onclick = (e) => {
             console.log('next')
             window.location.href = "page2.html";
-        };
+        };*/
 
         let myTimeline = anime.timeline({
             direction: 'reverse',

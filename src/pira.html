@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        PiRA 1 Spring
+    </title>
+    <link rel="stylesheet" type="text/css" href="activity/build/activity.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/1726/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Hammersmith+One|Source+Sans+Pro:400,400italic,700,700italic|Open+Sans:400,400italic,700italic,700|Muli|Space+Mono:400,400i,700,700i"/>
+    <script type="text/javascript" src="activity/build/activity.js" defer></script>
+    <script type="text/javascript" src="/api_handlers/rsa.min.js" defer></script>
+</head>
+<body>
+
+
+
+
+<ic-screens class="ks1 spring1">
+    <footer>
+        <nav>
+            <ic-box>
+                <ic-button ic-button="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 39.3 18.9" xml:space="preserve">
+						<path d="m0 9.4 18.1 9.5-3.7-8.1 24.9 2.9 0-8.5L14.5 8.1 18.1 0 0 9.4Z"/>
+					</svg>
+                    <span>
+						 Back
+					</span>
+                </ic-button>
+            </ic-box>
+            <ic-box></ic-box>
+            <ic-box>
+                <ic-button ic-button="next">
+					<span>
+						Next
+					</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 39.3 18.9" xml:space="preserve">
+						<path d="M39.3 9.4l-18.1 9.5 3.7-8.1L0 13.7V5.2l24.8 2.9L21.2 0 39.3 9.4z"/>
+					</svg>
+                </ic-button>
+            </ic-box>
+        </nav>
+    </footer>
+    <header>
+        <nav>
+            <ic-box>
+                %%name%%
+            </ic-box>
+            <ic-box>
+                <ic-button ic-button="right">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 20.8 20" xml:space="preserve">
+						<path d="M10 20L0 10 10 0V20zM20.8 20l-10-10 10-10V20z"/>
+					</svg>
+                </ic-button>
+                <ic-nav></ic-nav>
+                <ic-button ic-button="left">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 20.8 20" xml:space="preserve">
+						<path d="m10.8 20 10-10-10-10 0 20zM0 20 10 10 0 0 0 20Z"/>
+					</svg>
+                </ic-button>
+                <ic-box style="left:calc(50% + 8.3rem);">
+                    <ic-button ic-button="toggle">
+                        Review
+                        <ic-box ic-box="modal" style="background:rgba(255,255,255,0.7);">
+                            <ic-box ic-box="panel">
+                                <h1>
+                                    Review
+                                    <em>
+                                        &#160;
+                                    </em>
+                                </h1>
+                                <ic-box>
+                                    <h2>
+                                        <div style="text-align:left;padding-bottom:0.5em;">
+                                            Use the review panel to go back and review your answer to any question.
+                                        </div>
+                                        <div style="text-align:left;padding-bottom:0.5em;">
+                                            Questions you have answered already are shown in blue, and those you still have to answer are shown in red.
+                                        </div>
+                                    </h2>
+                                    <ic-nav></ic-nav>
+                                </ic-box>
+                            </ic-box>
+                        </ic-box>
+                    </ic-button>
+                </ic-box>
+            </ic-box>
+            <ic-box>
+                <div>
+                    Time:
+                </div>
+                <ic-timer data-json="{&quot;minutes&quot;:45}" ic-timer="i:s">
+                    45:00
+                </ic-timer>
+            </ic-box>
+        </nav>
+    </header>
+    <ic-box ic-box="modal" ic-box-loading>
+        <ic-box>
+            <h1>
+                Connecting to server
+            </h1>
+            <h2>
+                Loading...
+            </h2>
+        </ic-box>
+    </ic-box>
+    <ic-box ic-box="modal" ic-box-error>
+        <ic-box>
+            <h1>
+                Error
+            </h1>
+            <h2>
+                Connection error, please reload...
+            </h2>
+        </ic-box>
+    </ic-box>
+    <ic-box ic-box="modal" ic-box-warning>
+        <ic-box>
+            <h1>
+                Connection error
+            </h1>
+            <h2>
+                Trying to connect...
+            </h2>
+        </ic-box>
+    </ic-box>
+    <ic-box ic-box="modal" ic-box-ok>
+        <ic-box>
+            <h1>
+                Connection ok
+            </h1>
+            <h2>
+                Click button to continue...
+            </h2>
+            <ic-button ic-button="resume" onclick="IC.resume();this.closest('.ict-box-modal').style.display='';">
+                Resume
+            </ic-button>
+        </ic-box>
+    </ic-box>
+    <ic-box ic-box="modal" ic-box-continue>
+        <ic-box style="font-size:1.5em;padding-top:1em;">
+            <h1 style="width:80%;margin:0 auto;text-align:left;border-bottom:0.3rem dotted #aaa;">
+                Ready to continue?
+            </h1>
+            <h2 style="text-align:left;">
+                There are
+                <strong class="questions">
+                    19
+                </strong>
+                questions worth a total of
+                <strong class="questions">
+                    25
+                </strong>
+                marks.
+                <br/>
+                You have
+                <strong class="timelimit">
+                    %%time%%
+                </strong>
+                minutes remaining.
+            </h2>
+            <h2 style="text-align:left;">
+                Work as quickly as you can.
+            </h2>
+            <ic-button ic-button="resume" onclick="IC.resume();this.closest('.ict-box-modal').style.display='';" style="line-height:1.2;border-radius:1em;">
+                Continue Test
+            </ic-button>
+        </ic-box>
+    </ic-box>
+    <ic-screen>
+        %%content%%
+    </ic-screen>
+</ic-screens>
+
+
+
+</body>
+</html>

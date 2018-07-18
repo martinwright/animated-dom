@@ -7588,23 +7588,23 @@ var App = function () {
         value: function startUp() {
 
             console.log('ddd', this);
-            document.querySelector('.nav-bar .js-play').onclick = function (e) {
-                myTimeline.play();
+            /*document.querySelector('.nav-bar .js-play').onclick = (e) => {
+                myTimeline.play()
             };
-            document.querySelector('.nav-bar .js-pause').onclick = function (e) {
-                myTimeline.pause();
+            document.querySelector('.nav-bar .js-pause').onclick = (e) => {
+                myTimeline.pause()
             };
-            document.querySelector('.nav-bar .js-restart').onclick = function (e) {
-                myTimeline.restart();
+            document.querySelector('.nav-bar .js-restart').onclick = (e) => {
+                myTimeline.restart()
             };
-            document.querySelector('.nav-bar .js-back').onclick = function (e) {
-                console.log('back');
+            document.querySelector('.nav-bar .js-back').onclick = (e) => {
+               console.log('back')
                 window.location.href = "index.html";
             };
-            document.querySelector('.nav-bar .js-next').onclick = function (e) {
-                console.log('next');
+            document.querySelector('.nav-bar .js-next').onclick = (e) => {
+                console.log('next')
                 window.location.href = "page2.html";
-            };
+            };*/
 
             var myTimeline = anime.timeline({
                 direction: 'reverse',
