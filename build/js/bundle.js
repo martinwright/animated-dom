@@ -7606,6 +7606,50 @@ var App = function () {
                 window.location.href = "page2.html";
             };*/
 
+            //data-step="9"
+            //data-type="right-slide"
+            //data-duration="200"
+            //data-offset="-=50"
+
+            var defaultDuration = "200",
+                defaultOffset = "-=50";
+
+            var anims = {
+                'business-admin-l3_t1-u1-p5': {
+                    1: {
+                        type: "right-slide"
+                    },
+                    2: {
+                        type: "right-slide"
+                    },
+                    3: {
+                        type: "right-slide"
+                    },
+                    4: {
+                        type: "right-slide"
+                    }
+                }
+            };
+
+            var url = window.location.pathname;
+            var filename = url.substring(url.lastIndexOf('/') + 1);
+
+            if (anims[filename]) {
+                var animElements = document.querySelectorAll("[data-animate]");
+
+                Array.from(document.querySelectorAll("[data-animate]")).forEach(function (el) {
+                    var animStep = el.dataset.animate;
+                    myTimeline.add({
+                        targets: el,
+                        opacity: '0',
+                        translateX: '100',
+                        easing: 'easeInQuad',
+                        duration: el.dataset.duration || anims[filename][animStep].duration || defaultDuration,
+                        offset: el.dataset.offset || anims[filename][animStep].offset || defaultoffset
+                    });
+                });
+            }
+
             var myTimeline = anime.timeline({
                 direction: 'reverse',
                 autoplay: false

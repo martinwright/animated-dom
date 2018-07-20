@@ -41,6 +41,54 @@ class App {
             window.location.href = "page2.html";
         };*/
 
+        //data-step="9"
+        //data-type="right-slide"
+        //data-duration="200"
+        //data-offset="-=50"
+
+        let defaultDuration = "200",
+            defaultOffset = "-=50";
+
+        let anims = {
+            'business-admin-l3_t1-u1-p5': {
+                1 : {
+                    type: "right-slide"
+                },
+                2 : {
+                    type: "right-slide"
+                },
+                3 : {
+                    type: "right-slide"
+                },
+                4 : {
+                    type: "right-slide"
+                }
+            }
+        };
+
+        let url = window.location.pathname;
+        let filename = url.substring(url.lastIndexOf('/')+1);
+
+
+        if (anims[filename]) {
+            const animElements = document.querySelectorAll("[data-animate]");
+
+            Array.from(document.querySelectorAll("[data-animate]")).forEach(function (el) {
+                let animStep = el.dataset.animate;
+                myTimeline.add({
+                    targets: el,
+                    opacity: '0',
+                    translateX: '100',
+                    easing: 'easeInQuad',
+                    duration: el.dataset.duration || anims[filename][animStep].duration || defaultDuration,
+                    offset: el.dataset.offset || anims[filename][animStep].offset || defaultoffset
+                });
+            });
+
+        }
+
+        
+
         let myTimeline = anime.timeline({
             direction: 'reverse',
             autoplay: false
