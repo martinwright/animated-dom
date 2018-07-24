@@ -67,10 +67,27 @@ class App {
         };
 
         let url = window.location.pathname;
-        let filename = url.substring(url.lastIndexOf('/')+1);
+        //let filename = url.substring(url.lastIndexOf('/')+1);
+
+        let filename = (url.split('\\').pop().split('/').pop().split('.'))[0];
+        console.log('filename: ', filename);
 
 
-        if (anims[filename]) {
+
+        let myTimeline = anime.timeline({
+            direction: 'reverse',
+            autoplay: false
+        });
+
+        function getAnimProp(file, step, prop, defaultVal) {
+            try {
+                return anims[file][step][prop];
+            } catch (e) {
+                return defaultVal;
+            }
+        }
+
+        /*if (anims[filename]) {
             const animElements = document.querySelectorAll("[data-animate]");
 
             Array.from(document.querySelectorAll("[data-animate]")).forEach(function (el) {
@@ -80,19 +97,11 @@ class App {
                     opacity: '0',
                     translateX: '100',
                     easing: 'easeInQuad',
-                    duration: el.dataset.duration || anims[filename][animStep].duration || defaultDuration,
-                    offset: el.dataset.offset || anims[filename][animStep].offset || defaultoffset
+                    duration: el.dataset.duration || getAnimProp(filename, animStep, 'duration', defaultDuration),
+                    offset: el.dataset.offset || getAnimProp(filename, animStep, 'offset', defaultDuration)
                 });
             });
-
-        }
-
-        
-
-        let myTimeline = anime.timeline({
-            direction: 'reverse',
-            autoplay: false
-        });
+        }*/
 
         const nodelist = document.querySelectorAll("[data-step]");
         const nodesArray = Array.prototype.slice.call(nodelist);
