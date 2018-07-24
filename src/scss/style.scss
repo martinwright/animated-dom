@@ -115,11 +115,17 @@ h1.main-heading {
 nav.nav-bar {
   position: fixed;
   background-color: #e2e2e2;
-  width: 100%;
+  width: calc(100% - 2rem);
   z-index: 1;
   bottom: 0;
   height: 3rem;
   //visibility: hidden;
+
+  padding: 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .nav-bar__container {
   display: flex;
@@ -158,8 +164,7 @@ button {
 
 
 
-
-.wrapper {
+/*.wrapper {
   display: flex;
   justify-content: center;
   margin-top: 4rem;
@@ -169,46 +174,9 @@ button {
 .hidden {
   display: none;
   visibility: hidden;
-}
+}*/
 
 
-
-
-.container__background {
-  position: absolute;
-  //display: flex;
-  //justify-content: center;
-  //text-align: center;
-  width: 100%;
-  opacity: 0.8;
-  padding: 0;
-  margin: 0;
-  //z-index: -1;
-  @include for-size(tablet-landscape-up) {
-    //width: 85%;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.article {
-  position: relative;
-
-  @include for-size(tablet-landscape-up) {
-    line-height: 1.3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-main.container__main {
-  grid-area: m;
-  position: relative;
-
-
-}
 
 .container {
   padding: 0.5rem;
@@ -228,11 +196,65 @@ main.container__main {
   @extend .container;
 }
 
+.container__background {
+  position: absolute;
+  //display: flex;
+  //justify-content: center;
+  //text-align: center;
+  width: 100%;
+  opacity: 0.8;
+  padding: 0;
+  margin: 0;
+  //z-index: -1;
+  @include for-size(tablet-landscape-up) {
+    //width: 85%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.container--layout-2 {
+  @extend .container;
+
+  display: grid;
+  grid-gap: .5em;
+
+  /*grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "h h h h h h" "g g g g g g" "m m m m m m" "t t t t t t";*/
+
+  @include for-size(tablet-landscape-up) {
+    line-height: 1.3;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: "h h h h h g g g g g g g" "m m m m m t t t t t t t";
+  }
+}
 
 
+//--------------------------//
+////// ARTICLE or Slide //////
+//// One or more section  ////
+//--------------------------//
+.article {
+  position: relative;
+}
+
+.article--50-50 {
+  @extend .article;
+  @include for-size(tablet-landscape-up) {
+    line-height: 1.3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
 
-h2.sub-heading {
+//--------------------------//
+////////// SECTION ///////////
+///// A single section  //////
+//--------------------------//
+section>h2.sub-heading {
   grid-area: g;
   display: flex;
   align-items: center;
@@ -242,7 +264,7 @@ h2.sub-heading {
     margin: 0.2em 0;
   }
 }
-h2.sub-heading--right {
+section>h2.sub-heading--right {
   @extend h2.sub-heading;
   justify-content: flex-end;
   margin: 0.3em 0;
@@ -250,9 +272,17 @@ h2.sub-heading--right {
     margin: 0.2em 0;
   }
 }
+section>h3 {
+  color: cornflowerblue;
+}
+section>h4 {
+  color: #028b50;
+}
 
 
-
+//-------------//
+///// SHAPES ////
+//-------------//
 figure.square-green-large {
   position: absolute;
   top: -19em;
@@ -291,13 +321,13 @@ figure.pentagon {
   right: 0;
 }
 
+
+
 .xxxcontainer--layout-1 {
   @extend .container;
 
   display: grid;
   grid-gap: .1em;
-
-
 
   /*grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
@@ -311,23 +341,7 @@ figure.pentagon {
 
 }
 
-.container--layout-2 {
-  @extend .container;
 
-  display: grid;
-  grid-gap: .5em;
-
-  /*grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto;
-  grid-template-areas: "h h h h h h" "g g g g g g" "m m m m m m" "t t t t t t";*/
-
-  @include for-size(tablet-landscape-up) {
-    line-height: 1.3;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-areas: "h h h h h g g g g g g g" "m m m m m t t t t t t t";
-  }
-
-}
 
 div.table {
   display: grid;
@@ -373,7 +387,6 @@ div.table {
       //background-color: red;
     }
   }
-
 }
 
 
