@@ -30,6 +30,7 @@
     "gulp-env": "^0.4.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-load-plugins": "^1.5.0",
+    "gulp-newer": "^1.4.0",
     "gulp-notify": "^3.2.0",
     "gulp-npm-dist": "^1.0.2",
     "gulp-plumber": "^1.2.0",
@@ -37,6 +38,8 @@
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
+    "merge-stream": "^1.0.1",
+    "merge2": "^1.2.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
