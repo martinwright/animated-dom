@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Delivering projects</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h2 data-animate="2">Management tools for monitoring progress</h2>
+
+                <img src="./images/t13/different_problem_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>By using management tools, the project manager can monitor progress and see when it is time to
+                    implement the next stage of delivery of the project. For our example of the volunteers working at
+                    the charity concert, the sequence might include:</p>
+
+                <ul>
+                    <li>establishing the uniform sizes needed for the new recruits
+                    </li>
+
+                    <li>giving a provisional order to the supplier – so that they can start to prepare
+                    </li>
+
+                    <li>finishing recruitment of volunteers
+                    </li>
+
+                    <li>confirming the uniform sizes that are needed and making the final order a month before the
+                        concert – the company needs two weeks to print and deliver the uniforms.
+                    </li>
+                </ul>
+
+                <p>Until the volunteer recruitment has been finalised, it is not possible to make the final uniform
+                    order. As a contingency, a few extras of the standard sizes will be ordered. By tracking all of this
+                    information using, for example, a PERT diagram or a Gantt chart, the project manager can identify
+                    critical points and make sure that everything is on track.</p>
+
+                <p>Using the project management tools we mentioned before, here are some suggestions about how they
+                    might be used to monitor progress in the recruitment and training of team members in our charity
+                    concert example:</p>
+
+                <div class="table--1fr-1fr-1fr-1fr-1fr">
+                    <div class="cell">Management tool/method</div>
+                    <div class="cell"><h3>Suggestions of how this could be applied to monitoring progress</h3></div>
+
+                    <div class="cell"><h4>SWOT analysis</h4></div>
+                    <div class="cell">To track the strengths and weaknesses of recruitment policies compared to expected
+                        targets; to review the opportunities for finding the right people if there are issues; to review
+                        the threats to progress to make sure that they are still relevant
+                    </div>
+
+                    <div class="cell"><h4>Work breakdown structures (WBS)</h4></div>
+                    <div class="cell">To monitor the job descriptions set out in the initial WBS to make sure that the
+                        right people are being selected; to monitor training programmes set out in the WBS to make sure
+                        that they are relevant and suitable
+                    </div>
+
+                    <div class="cell"><h4>PERT diagrams</h4></div>
+                    <div class="cell">To have a visual record of how a delay in advertising vacancies has a knock-on
+                        effect on applications, interviews and training
+                    </div>
+
+                    <div class="cell"><h4>SMART objectives</h4></div>
+                    <div class="cell">To review levels of recruitment and training against the SMART targets on a
+                        regular basis
+                    </div>
+
+                    <div class="cell"><h4>Gantt charts</h4></div>
+                    <div class="cell">To see how the recruitment and training elements of the project are progressing in
+                        relation to all other aspects of the project, such as physical resources and finance
+                    </div>
+
+                    <div class="cell"><h4>Plan on a page</h4></div>
+                    <div class="cell">To prepare a quick overview for progress meetings and interim management reports
+                    </div>
+
+                    <div class="cell"><h4>RACI matrix</h4></div>
+                    <div class="cell">To use as a guide to make sure that communication is as expected and agreed
+                        between different stakeholders – eg to ensure that the relevant directors and external
+                        stakeholders are being informed of progress
+                    </div>
+                </div>
+
+                <p>Another useful tool to use when monitoring a project’s progress is to show the
+                    <strong>RAG</strong>status – <strong>red, amber, green</strong>. During the planning stage, the
+                    planning team can set parameters about what the colours mean, for example:</p>
+
+                <ul>
+                    <li><strong>Red</strong><br>major problems that will affect the viability of the whole project and
+                        cannot be resolved by the project manager – the matter should be escalated to the project board
+                        member.
+                    </li>
+
+                    <li><strong>Amber</strong><br>problems that have a negative effect on one or more aspects of the
+                        project’s viability and performance – problems can be dealt with by the project manager and
+                        their team, who then notify the board about progress.
+                    </li>
+
+                    <li><strong>Green</strong><br>the project is performing to plan – all problems are within tolerances
+                        and expectations and can be dealt with within normal limits of authority.
+                    </li>
+                </ul>
+
+                <p>There can be drawbacks to the traffic-light system; it can oversimplify a project’s progress and it
+                    is very dependent on the integrity of the information that can turn an element from red to amber or
+                    green. As a visual aid, it is effective as it draws attention to the problem areas and shows when
+                    everything is on track.</p>
+
+                <p>It can really help to keep everyone involved and motivated by letting them know how things are going.
+                    If the news is not very good, it can help to reassure everyone, so that they work harder to get back
+                    on track and understand the problems behind problems and potential issues. If things are going well,
+                    the team and other stakeholders benefit from knowing and getting some positive praise and feedback.
+                    This lifts morale and helps to keep people motivated and focused.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

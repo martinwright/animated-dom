@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Equality, diversity and inclusion</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h2 data-animate="2">What documents do you use?</h2>
+
+
+                <ul>
+                    <li><strong>Diversity</strong><br>recognising individual as well as group differences, treating
+                        people as individuals and placing positive value on diversity.
+                    </li>
+
+                    <li><strong>Equality</strong><br>the state of being equal, especially in status, rights or
+                        opportunities.
+                    </li>
+
+                    <li><strong>Inclusion</strong><br>the idea that all people should freely, openly and without pity
+                        accommodate any person with a disability without restrictions or limitations of any kind.
+                    </li>
+
+                    <li><strong>Equality Act 2010</strong><br>the main law that serves to legally protect people from
+                        discrimination. It replaced previous anti-discrimination laws with a single act, making the law
+                        easier to understand and strengthening protection in some situations. The Act sets out the
+                        different ways in which it’s unlawful to treat someone. Before the Equality Act 2010 came into
+                        force there were several pieces of legislation to cover discrimination, including the following:
+                    </li>
+
+                    <li>Sex Discrimination Act 1975
+                    </li>
+
+                    <li>Race Relations Act 1976.
+                    </li>
+
+                    <li><strong>Culture</strong><br>the set of shared attitudes, values, goals and practices that
+                        characterises an organisation.
+                    </li>
+
+                    <li><strong>Prevailing</strong><br>usual, common or widespread.
+                    </li>
+
+                    <li><strong>Inappropriate</strong><br>not suitable or proper in the circumstances.
+                    </li>
+
+                    <li><strong>Role model</strong><br>a person who serves as an example of values, attitudes and
+                        behaviours and distinguishes themselves in such a way that others admire and want to emulate
+                        them.
+                    </li>
+
+                </ul>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">IT packages and systems</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">9 Preventing loss and data security</h4>
+
+                <img src="./images/t15/information_security_07.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Tips to help you find files quickly:</p>
+
+                <ul>
+                    <li>name them appropriately
+                    </li>
+
+                    <li>store them correctly in folders (directories) according to content.
+                    </li>
+                </ul>
+
+                <p>Here are some precautions against unexpected data loss:</p>
+
+                <ul>
+                    <li>autosave
+                    </li>
+
+                    <li>back up
+                    </li>
+
+                    <li>write protect by changing the file properties
+                    </li>
+
+                    <li>individual files can be password protected to prevent unauthorised access or changes.
+                    </li>
+                </ul>
+
+                <p>It is useful to print the name and location of the file in a footer, this is an auto feature of most
+                    software packages.</p>
+
+                <p><strong>Autosave</strong> – this is a feature whereby a copy of the file on screen is automatically
+                    saved to a
+                    temporary location so that, in the event of power loss, the file can be recovered. The interval
+                    between autosaves can be adjusted.</p>
+
+                <p><strong>Back-ups</strong> – it is sensible to have a copy of any file in case the original is lost or
+                    corrupted. In
+                    most organisations, the files saved on the network server will be copied (backed up) every night
+                    onto a separate storage area. In the case of corruption or loss, data can then be retrieved from the
+                    copied files. It is still sensible to have your own copy of any important files (as this will save
+                    you the time and embarrassment if you accidentally delete a file and have to wait for a copy to be
+                    found by IT technicians). The use of portable, external hard drives and USB flash drives are a
+                    suitable way to store back-up copies, assuming your organisation approves of their use.</p>
+
+                <p>Ease of editing files means that sometimes data content may be lost accidentally. This can be
+                    prevented by write-protecting a file. Read only, allows the file to be opened and read but no
+                    changes may be saved to it. (Of course you could save any changes made but with a new name,
+                    therefore preserving the original version.) This ensures the safety of a file.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

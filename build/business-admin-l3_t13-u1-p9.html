@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Project lifecycle and roles</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Budget</h4>
+
+                <img src="./images/t13/delivering_value_for_money_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>When planning or preparing a project, the overall <strong>budget</strong> may already be set. The
+                    organisers might have already allocated funds and the people running the project will have to
+                    deliver it within the budget they have been given. Early in the process, they need to check the
+                    budget to make sure that they can achieve what is expected.</p>
+
+                <p>For other projects, part of the planning process might be to research the likely costs and to
+                    forecast the budget that will be needed to deliver the project. The project managers will then
+                    negotiate and agree budgets with the organisation before starting on the main planning, preparation
+                    and delivery of the project.</p>
+
+                <p>Most projects have a contingency budget that is also agreed at the beginning. This is a separate
+                    budget to cover unexpected problems – eg last-minute employment of agency staff to cover sudden
+                    sickness of staff and volunteers.</p>
+
+                <p>Budgets need to be agreed and allocated to different elements of the project – eg staff costs,
+                    stationery costs, catering and hospitality.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

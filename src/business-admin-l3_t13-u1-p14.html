@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Project lifecycle and roles</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Roles within the project team</h3>
+
+                <h4 data-animate="2">1 Board members</h4>
+
+                <img src="./images/t13/roles_within_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>There may be board members who have direct or indirect functions on a project team. In our charity
+                    concert example, for instance, input from board members could have included:</p>
+
+                <ul>
+                    <li><strong>the managing director</strong><br>providing initial ideas and overall strategy; weekly
+                        progress meetings to monitor and evaluate progress and plans; main contact to agree budgets at
+                        organisational level
+                    </li>
+
+                    <li><strong>charity trustees</strong><br>on the board to oversee operations from a distance and ensure compliance with regulatory requirements of the Charities Commission and the charity’s own constitution
+                    </li>
+
+                    <li><strong>shareholder representative</strong><br>to monitor shareholders’ interests and funds
+                    </li>
+
+                    <li><strong>sales director </strong><br>with an interest in sales revenue.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

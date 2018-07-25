@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Delivering projects</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Tools used for project management</h3>
+
+                <h4 data-animate="2">1 SWOT analyses</h4>
+
+                <img src="./images/t13/problem_solving_01_c.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>In the workplace, a SWOT analysis can be used in many different situations to identify and measure:</p>
+
+                <ul>
+                    <li><strong>Strengths of a project</strong><br>eg well supported; well financed.
+                    </li>
+
+                    <li><strong>Weaknesses of a project</strong><br>eg very short on time; not enough trained staff to do all the tasks effectively.
+                    </li>
+
+                    <li><strong>Opportunities to improve</strong><br>eg recruitment drive to bring in the staff needed.
+                    </li>
+
+                    <li><strong>Threats to progress</strong><br>eg competition from other employers who need to recruit
+                        staff with the same skills.
+                    </li>
+
+                </ul>
+
+                <p>The SWOT analysis can be applied at any scale and can be simple or more detailed. It acts as a
+                    snapshot and does not track progress or interdependency of tasks, goals or resources. It can be used
+                    in any part of the project that needs a simple, focused analysis on where we are now, where we need
+                    to be and how we are going to get there.</p>
+
+                <p>Watch this ILM video on Undertaking a SWOT analysis:</p>
+
+                <p>https://youtu.be/nX9JoY7_tjQ</p>
+                
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

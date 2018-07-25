@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Compliance</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">3 Working Time Regulations</h4>
+
+                <img src="./images/t14/employment_legislation_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>The Working Time Regulations generally provide rights for employees to have:</p>
+
+                <ul>
+                    <li>a limit of an average 48-hour working week, although individuals may choose to work longer by
+                        ‘opting out’
+                    </li>
+
+                    <li>5.6 weeks of paid leave a year
+                    </li>
+
+                    <li>11 consecutive hours’ rest in any 24-hour period
+                    </li>
+
+                    <li>a 20-minute rest break if the working day is longer than six hours
+                    </li>
+
+                    <li>one day off each week
+                    </li>
+
+                    <li>a limit on the normal working hours of night workers to an average of eight hours in any 24-hour
+                        period, and an entitlement for night workers to receive regular health assessments.
+                    </li>
+
+                </ul>
+
+                <p>There are special regulations for young workers, which restrict their working hours to eight hours
+                    per day and 40 hours per week. The rest break is 30 minutes if their work lasts more than four and a
+                    half hours, and they are entitled to two days off each week.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

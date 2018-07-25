@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">IT packages and systems</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">10 Data protection</h4>
+
+                <img src="./images/t15/information_security_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>In producing documents, you must be careful not to include personal information about third
+                    parties.</p>
+
+                <p>Personal data includes:</p>
+
+                <ul>
+                    <li>anything that identifies a living individual, eg name, contact details
+                    </li>
+
+                    <li>anything that can be related to a living individual, eg unique account number, showing the
+                        current salary of a job post when there is only one person carrying out that job.
+                    </li>
+                </ul>
+
+                <p>The Data Protection Act 1998 has been written to protect any living, identifiable individual from the
+                    misuse or unauthorised disclosure of personal data. The term personal data also covers any
+                    expression of opinion about the individual.</p>
+
+                <p>Organisations holding personal data must register with the Office of the Data Protection
+                    Commissioners and pay the current annual fee.</p>
+
+                <p>Under the LINK Data Protection Act LINK, data is classed as:</p>
+
+                <ul>
+                    <li>information recorded or processed by a computer
+                    </li>
+
+                    <li>information recorded as part of a relevant filing system, or with the intention of being part of
+                        a filing system, or which forms part of an accessible record, eg health records.
+                    </li>
+                </ul>
+
+                <p>All organisations must comply with what’s known as the eight principles of the Data Protection Act
+                    for handling and storing personal details.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

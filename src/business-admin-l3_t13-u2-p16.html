@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Delivering projects</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">7 RACI matrix</h4>
+
+                <img src="./images/t13/tools_used_07.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>The RACI model is a straightforward tool that is used in project management to identify roles and
+                    responsibilities. It stands for:</p>
+
+                <ul>
+                    <li><strong>Responsible</strong><br>the person who does the work to achieve the task.
+                    </li>
+
+                    <li><strong>Accountable</strong><br>the person who is accountable for the correct completion of the
+                        task – eg the project manager who approves the responsible person’s work.
+                    </li>
+
+                    <li><strong>Consulted</strong><br>the people who provide information for the project in two-way
+                        communication – eg subject specialists.
+                    </li>
+
+                    <li><strong>Informed</strong><br>the people who are affected by the outcomes of tasks and need to be
+                        kept informed about progress in one-way communication – eg shareholders, directors or senior
+                        managers who are not involved with the day-to-day running of the project.
+                    </li>
+                </ul>
+
+                <p>This helps to avoid confusion about the decision-making process by providing a clear illustration for
+                    all relevant stakeholders to see who is responsible for tasks, and who needs to be informed along
+                    the way. A RACI model can help the project manager to manage expectations and identify roles and
+                    responsibilities early in the project.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
