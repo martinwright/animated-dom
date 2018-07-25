@@ -19,31 +19,89 @@ const newer = require('gulp-newer');
 import fs from 'fs';
 
 const merge = require('merge-stream');
+const packConfig = require('./pack-config.json');
 
-
-let packs = [];
-for (let i = 1; i <= 32; i++) {
-    packs.push(i);
-}
 /* ----------------- */
 /* Development
 /* ----------------- */
 
 
-gulp.task('unit-folders', () => {
-    let folders = [];
-    for (let i = 1; i <= 32; i++) {
-        folders.push('packs/unit-' + i + '/');
-    }
+gulp.task('build-packs', () => {
+
     if (!fs.existsSync('packs'))
         fs.mkdirSync('packs'),
             console.log('📁  folder created:', 'packs');
 
-    folders.forEach(dir => {
+    let jsBundleStreams = [],
+        courseName = packConfig.course;
+
+    packConfig.packs.map(pack => {
+
+        // set pack folder name
+        let dir = pack.title.toLowerCase();
+        dir = dir.replace(/,/g, '');
+        dir = dir.replace(/\s/g, '-');
+        dir = 'packs/' + pack.topic + '-' + pack.unit + '-' + dir;
+        //console.log('📁  dir:', dir);
+
+        // Create pack folder and Contents folder
         if (!fs.existsSync(dir))
             fs.mkdirSync(dir),
                 console.log('📁  folder created:', dir);
+        dir = dir + '/Contents';
+        if (!fs.existsSync(dir))
+            fs.mkdirSync(dir),
+                console.log('📁  folder created:', dir);
+
+        // Add CSS from build to to pack if newer
+        let cssSrc = `build/css/**`,
+            cssDest = `${dir}/css`;
+        jsBundleStreams.push(gulp.src(cssSrc)
+            .pipe(newer(cssDest))
+            .pipe(plumber({errorHandler: onError}))
+            .pipe(gulp.dest(cssDest))
+            .pipe(notify({message: `js copy task complete`})));
+
+        // Add JS from build to to pack if newer
+        let jsSrc = `build/js/**`,
+            jsDest = `${dir}/js`;
+        jsBundleStreams.push(gulp.src(jsSrc)
+            .pipe(newer(jsDest))
+            .pipe(plumber({errorHandler: onError}))
+            .pipe(gulp.dest(jsDest))
+            .pipe(notify({message: `js copy ${pack} task complete`})));
+
+        // Add Libs from build to to pack if newer
+        let libSrc = `build/libs/**`,
+            libDest = `${dir}/libs`;
+        jsBundleStreams.push(gulp.src(libSrc)
+            .pipe(newer(libDest))
+            .pipe(plumber({errorHandler: onError}))
+            .pipe(gulp.dest(libDest))
+            .pipe(notify({message: `libs copy ${pack} task complete`})));
+
+        // Add Images from build to to pack if newer
+        let imgSrc = `build/images/${pack.topic}-${pack.unit}/**`,
+            imgDest = `${dir}/images/${pack.topic}-${pack.unit}`;
+        jsBundleStreams.push(gulp.src(imgSrc)
+            .pipe(newer(imgDest))
+            .pipe(plumber({errorHandler: onError}))
+            .pipe(imagemin())
+            .pipe(gulp.dest(imgDest))
+            .pipe(notify({message: `imgs copy ${pack} task complete`})));
+
+        // Add HTML from build to to pack if newer
+        let htmlSrc = `build/${courseName}_${pack.topic}-${pack.unit}-*.html`,
+            htmlDest = `${dir}`;
+        jsBundleStreams.push(gulp.src(htmlSrc)
+            .pipe(newer(htmlDest))
+            .pipe(plumber({errorHandler: onError}))
+            .pipe(gulp.dest(htmlDest))
+            .pipe(notify({message: `html copy task complete`})));
+
     });
+
+    return merge(jsBundleStreams);
 
 });
 
@@ -64,76 +122,11 @@ gulp.task('pack-libs', () => {
         .pipe(notify({message: `Libs copy unit-${i}/js complete`}));*/
     }
 });
+
+
 /* ----------------- */
-/* Pack JS
+/* Development
 /* ----------------- */
-gulp.task('pack-js', () => {
-
-        let copyCSS = packs.map(pack => {
-            let cssSrc = `build/css/**`,
-                cssDest = `packs/unit-${pack}/css`;
-            return gulp.src(cssSrc)
-                .pipe(newer(cssDest))
-                .pipe(plumber({errorHandler: onError}))
-                .pipe(gulp.dest(cssDest))
-                .pipe(notify({message: `js copy ${pack} task complete`}))
-        });
-
-        let copyJS = packs.map(pack => {
-            let jsSrc = `build/js/**`,
-                jsDest = `packs/unit-${pack}/js`;
-            return gulp.src(jsSrc)
-                .pipe(newer(jsDest))
-                .pipe(plumber({errorHandler: onError}))
-                .pipe(gulp.dest(jsDest))
-                .pipe(notify({message: `js copy ${pack} task complete`}))
-        });
-        let copyLibs = packs.map(pack => {
-            let libSrc = `build/libs/**`,
-                libDest = `packs/unit-${pack}/libs`;
-            return gulp.src(libSrc)
-                .pipe(newer(libDest))
-                .pipe(plumber({errorHandler: onError}))
-                .pipe(gulp.dest(libDest))
-                .pipe(notify({message: `libs copy ${pack} task complete`}))
-        });
-        let copyImgs = packs.map(pack => {
-            let imgSrc = `build/images/u${pack}/**`,
-                imgDest = `packs/unit-${pack}/images/u${pack}`;
-            return gulp.src(imgSrc)
-                .pipe(newer(imgDest))
-                .pipe(plumber({errorHandler: onError}))
-                .pipe(imagemin())
-                .pipe(gulp.dest(imgDest))
-                .pipe(notify({message: `imgs copy ${pack} task complete`}))
-        });
-        return merge(copyJS, copyLibs, copyImgs, copyCSS);
-
-        /*for (let key in packs) {
-            (function (key) {
-                /!*gulp.task(key, function() {
-                    return gulp.src(jsFiles[key])
-                        .pipe(jshint())
-                        .pipe(uglify())
-                        .pipe(concat(key + '.js'))  // <- HERE
-                        .pipe(gulp.dest('public/js'));
-                });*!/
-
-                gulp.src('build/js/!**')
-                    .pipe(plumber({
-                        errorHandler: onError
-                    }))
-                    .pipe(gulp.dest(`packs/unit-${key}/js`))
-                    .pipe(notify({message: `JS copy ${key} task complete`}));
-
-            })(key);
-        }*/
-
-
-    }
-);
-
-
 gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
     browserSync({
         'server': {
@@ -155,12 +148,13 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
 });
 
 
-// Copy dependencies to ./build/libs/
+/* ----------------- */
+/* Libs
+/* ----------------- */
 gulp.task('libs', function () {
     gulp.src(npmDist(), {base: './node_modules'})
         .pipe(gulp.dest('./build/libs'));
 });
-
 
 /* ----------------- */
 /* Fonts
@@ -175,7 +169,6 @@ gulp.task('fonts', () => {
         .pipe(notify({message: 'Images task complete'}));
 });
 
-
 /* ----------------- */
 /* Vendor JS
 /* ----------------- */
@@ -189,11 +182,9 @@ gulp.task('vendor', () => {
         .pipe(notify({message: 'Images task complete'}));
 });
 
-
 /* ----------------- */
 /* Scripts
 /* ----------------- */
-
 gulp.task('scripts', () => {
     return browserify({
         'entries': ['./src/js/app.js'],
@@ -234,7 +225,6 @@ var onError = function (err) {
 /* ----------------- */
 /* Images
 /* ----------------- */
-
 gulp.task('images', () => {
     var imgSrc = './src/images/**/*',
         imgDst = './build/images/';
@@ -252,7 +242,6 @@ gulp.task('images', () => {
 /* ----------------- */
 /* Styles
 /* ----------------- */
-
 gulp.task('styles', () => {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(plugins().sourcemaps.init())
@@ -268,7 +257,6 @@ gulp.task('styles', () => {
 /* ----------------- */
 /* HTML
 /* ----------------- */
-
 gulp.task('html', () => {
     return gulp.src('src/**/*.html')
         .pipe(replace(/\.\.\/node_modules(.*)\/(.*).js/g, './libs$1/$2.js'))
@@ -289,7 +277,6 @@ gulp.task('html', () => {
 /* ----------------- */
 /* Cssmin
 /* ----------------- */
-
 gulp.task('cssmin', () => {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(plugins().sass({
@@ -302,7 +289,6 @@ gulp.task('cssmin', () => {
 /* ----------------- */
 /* Jsmin
 /* ----------------- */
-
 gulp.task('jsmin', () => {
     var envs = plugins().env.set({
         'NODE_ENV': 'production'
@@ -326,10 +312,10 @@ gulp.task('jsmin', () => {
         .pipe(gulp.dest('./build/js/'));
 });
 
+
 /* ----------------- */
 /* Taks
 /* ----------------- */
-
 gulp.task('default', ['development']);
 gulp.task('deploy', ['html', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
-gulp.task('pack', ['unit-folders', 'pack-js']);
+gulp.task('pack', ['build-packs']);
