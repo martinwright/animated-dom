@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Personal development planning</h1>
+</header>
+
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+
+                <h3 class="sub-heading"
+                    data-animate="2">1 Personal development plans</h3>
+
+                <img src="./images/t2/preparing_personal_01.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">In essence, a PDP tracks past performance, analyses the current situation and performance, and sets out learning objectives. The PDP can also contain SWOT analyses, SMART objectives and other action plans about how to develop skills, knowledge, understanding and experience in the future.</p>
+
+                <p data-animate="4">A PDP can also be called an individual development plan and some organisations will have their own versions.</p>
+
+                <p data-animate="4">When preparing a PDP, we need to remember to have:</p>
+
+                <ul data-animate="5">
+                    <li><strong>clear SMART objectives</strong> – Specific, Measureable, Achievable, Realistic and Time-bound</li>
+                    <li><strong>resource requirements</strong> – eg learning activities, training materials or courses</li>
+                    <li><strong>timescales and finances</strong> – eg work and study deadlines or course fees</li>
+                    <li><strong>support mechanisms</strong> – eg line manager, course tutor, workplace mentor or coach.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
