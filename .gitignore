@@ -70,3 +70,5 @@ books/*/*
 /Test
 /bower_components
 /www/answers/Contents
+/build
+/packs
