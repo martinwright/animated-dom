@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Project lifecycle and roles</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">6 Contingency plans</h4>
+
+                <img src="./images/t13/key_stages_06.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Part of project management planning is to make <strong>contingency plans</strong> to cover unforeseen
+                    costs, last-minute problems and unforeseen events or issues that have an impact on the project. In
+                    our example, the organisers would have contingency plans for extreme weather around the time of the
+                    concert, for example: to provide shelter and water for crowds queuing for hours out in very hot sun;
+                    to make sure that cars all park on hard-standing areas or have access to metal trackway if extreme
+                    rain affects conditions.</p>
+
+                <p>On a smaller scale, if one of the objectives within the project is to do a presentation about
+                    progress, there needs to be a contingency plan in case the PowerPoint does not work – eg flip charts
+                    and photocopied notes; a laptop on stand-by.</p>
+
+                <p>Project managers need to have a contingency budget set aside to cover their contingency plans. This
+                    makes it easier to make quick decisions to get the project back on track if funds, and limits of
+                    authority to use them, have been agreed in advance.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

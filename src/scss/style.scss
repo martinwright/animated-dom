@@ -166,7 +166,7 @@ button {
 
 /*.wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: normal;
   margin-top: 4rem;
   margin-bottom: 3rem;
 }
@@ -321,8 +321,6 @@ figure.pentagon {
   right: 0;
 }
 
-
-
 .xxxcontainer--layout-1 {
   @extend .container;
 
@@ -355,6 +353,50 @@ div.table {
     &:nth-child(odd) {
       background-color: #fff;
     }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+    display: flex;
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 80%;
+  }
+  h4 {
+    transform: rotate(180deg); /* spin to orient as required */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 80%;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    margin: 0;
+    line-height: 1.1;
+
+    div & {
+      //background-color: red;
+    }
+  }
+
+}
+div.table--1fr-1fr-1fr-1fr-1fr {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 30px 1fr 1fr 1fr 1fr;
+
+  .cell {
+    &:nth-child(2n+2) {
+      background-color: #afeaf5;
+    }
+
 
     border-bottom: solid 1px #4c4c4c;
     padding: .5rem;

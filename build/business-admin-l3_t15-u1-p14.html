@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">IT packages and systems</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">4 Layout</h4>
+
+                <img src="./images/t15/creating_docs_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Layout refers to the arrangement of the content within a document; this can be text, charts and
+                    graphics. The layout of a document can determine which points are emphasised, and whether the
+                    document is aesthetically pleasing.</p>
+
+                <p>Documents should have a flow: an introduction where you inform the reader of the reason for the
+                    communication; content where you discuss the matter in hand; and a conclusion where you sum up the
+                    communication and any actions.
+                </p>
+
+                <p>You can format documents by using:</p>
+
+                <ul>
+                    <li>paragraphs
+                    </li>
+
+                    <li>bullet points
+                    </li>
+
+                    <li>font or sizes
+                    </li>
+
+                    <li>tools and functions within ICT packages
+                    </li>
+
+                    <li>margins and page breaks.
+                    </li>
+                </ul>
+
+                <p>Most organisations have templates which set out the layout of documents; this will give the documents
+                    a standard approach.</p>
+
+                <p>A blank copy of the document is saved for future use over and over again.</p>
+
+                <p>Organisations use templates because documents are produced according to the house style (the standard
+                    look of a document) and because it saves time.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

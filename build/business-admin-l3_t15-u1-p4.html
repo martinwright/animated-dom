@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">IT packages and systems</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Business documents</h3>
+
+                <h4 data-animate="2">1 Memorandums (memos)</h4>
+
+                <img src="./images/t15/positive_aspects_06.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>In business, a memo is typically used for internal communication, as opposed to letters which are
+                    typically for external communication.
+                </p>
+
+                <p>Some document software comes with templates which you can use to create memos or you may have a
+                    company or organisational style.</p>
+
+                <p>Memos are used to inform the reader about new information like a new company policy or price
+                    increases, or persuade the reader to take an action, such as attending a training session.
+                    Regardless of the specific goal, memos are most effective when they connect the purpose of the
+                    writer with the interests and needs of the reader.</p>
+
+                <p>When creating a memo:</p>
+
+                <ul>
+                    <li>choose who you send it to wisely – only send to those people who need the information it
+                        contains, not the whole office
+                    </li>
+
+                    <li>ensure that it does not contain any sensitive information – use face-to-face meetings or a phone
+                        call instead.
+                    </li>
+
+                </ul>
+
+                <p>Memos are most effectively used when sent to a small to moderate number of people to communicate
+                    company or job objectives.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
