@@ -91,6 +91,7 @@ gulp.task('build-packs', () => {
             .pipe(notify({message: `imgs copy ${pack} task complete`})));
 
         // Add HTML from build to to pack if newer
+        // TODO update build paths
         let htmlSrc = `build/${courseName}_${pack.topic}-${pack.unit}-*.html`,
             htmlDest = `${dir}`;
         jsBundleStreams.push(gulp.src(htmlSrc)
@@ -132,7 +133,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
         'server': {
             baseDir: "build/"
         },
-        startPath: "/unit-1.html",
+        startPath: "/t1-u1/business-admin-l3_t1-u1-p1.html",
         'snippetOptions': {
             'rule': {
                 'match': /<\/body>/i,
@@ -259,9 +260,13 @@ gulp.task('styles', () => {
 /* ----------------- */
 gulp.task('html', () => {
     return gulp.src('src/**/*.html')
-        .pipe(replace(/\.\.\/node_modules(.*)\/(.*).js/g, './libs$1/$2.js'))
-        .pipe(replace(/src="js\/app.js"/g, 'src="js\/bundle.js"'))
-        .pipe(replace(/href="\.\/scss\/(.*)\.scss"/g, 'href="./css/$1.css"'))
+        .pipe(replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, '../libs$1/$2.js'))
+        .pipe(replace(/src="\.\.\/js\/app.js"/g, 'src="../js\/bundle.js"'))
+        .pipe(replace(/href="\.\.\/scss\/(.*)\.scss"/g, 'href="../css/$1.css"'))
+
+
+
+
         /*.pipe(critical.stream({
             'base': 'build/',
             'inline': true,
