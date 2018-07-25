@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Compliance</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">7 Recruitment and selection</h4>
+
+                <img src="./images/t14/human_resource_procedures_01_b.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>The anti-discrimination measures under the Equality Act 2010 also apply to the recruitment and
+                    selection process. Job applicants have to be treated fairly, as well as employees and trainees. If
+                    an applicant believes that they have been discriminated against unfairly during the recruitment
+                    process, they can take the organisation to an employment tribunal.</p>
+
+                <p>Employers need to avoid discrimination during the recruitment and selection process by, for
+                    example:</p>
+
+                <ul>
+                    <li>advertising the job correctly
+                    </li>
+
+                    <li>making the interview process and location accessible
+                    </li>
+
+                    <li>avoiding certain questions when recruiting
+                    </li>
+
+                    <li>avoiding certain topics during the application process.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">Advertising the job correctly</h5>
+
+                <p>Employers must not state or imply that they will discriminate against anyone. Phrases such as ‘recent
+                    graduate’ or ‘highly experienced’ should be used only if they are actual requirements of the job.
+                    These phrases could discriminate against younger or older people who have not had the opportunity to
+                    get certain qualifications, so the criteria must be essential for the job. Indirect discrimination
+                    can occur by advertising the job only in men’s magazines, for instance.</p>
+
+                <h5 data-animate="2">Making the interview process and location accessible</h5>
+
+                <p>Employers need to make practicable adjustments to make sure that the widest number of people have
+                    access. For example, candidates in wheelchairs or with mobility problems might need to use ramps and
+                    lifts to reach the interview room and workplace.</p>
+
+                <h5 data-animate="2">Avoiding certain questions when recruiting</h5>
+
+                <p>Employers cannot ask applicants about protected characteristics, their health, their marital status,
+                    if they have children or if they plan to have children. Employers can only ask about these things
+                    if:</p>
+
+                <ul>
+                    <li>there are necessary requirements of the job that cannot be met by reasonable adjustments
+                    </li>
+
+                    <li>they are finding out if someone needs help to take part in a selection test or interview
+                    </li>
+
+                    <li>they are using ‘positive action’ to recruit people who are disabled or from another minority
+                        group.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">Avoiding certain topics during the application process</h5>
+
+                <p>Certain topics that may influence a decision unfairly and cause discrimination are avoided during the
+                    selection process. For example:</p>
+
+                <ul>
+                    <li>the candidate’s date of birth – this can be used for monitoring only and is not allowed on the
+                        main application form
+                    </li>
+
+                    <li>criminal convictions if they are spent – some employers are exempt from this rule, such as
+                        schools
+                    </li>
+
+                    <li>trade union membership.
+                    </li>
+                </ul>
+
+                <p>Employers can discriminate, but only if it is a requirement for the job. For example, people under 18
+                    cannot sell alcohol, so it would not be illegal to put a lower age limit on the job
+                    specification.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Delivering projects</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Work breakdown structures (WBS)</h4>
+
+                <img src="./images/t13/tools_used_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>A WBS is a useful project management tool that breaks down a project into smaller components. The
+                    tasks and responsibilities are broken down into manageable sections that align to ensure that
+                    overall objectives can be met.</p>
+
+                <p>A WBS is useful in the earlier stages of planning so that:</p>
+
+                <ul>
+                    <li>tasks can be broken down into small pieces
+                    </li>
+
+                    <li>an overall picture of how elements will work together can be seen at a glance
+                    </li>
+
+                    <li>different people can see how the tasks may overlap and work together.
+                    </li>
+                </ul>
+
+                <p>Here is a small sample of a simple WBS planner for our concert example. It could be developed to go
+                    into more detail about the actual days of the month, and names and contact details for all of the
+                    internal and external team members.</p>
+
+                <div class="table--1fr-1fr-1fr-1fr-1fr">
+                    <div class="cell"></div>
+                    <div class="cell"><h3>Tickets</h3></div>
+                    <div class="cell"><h3>Volunteers</h3></div>
+                    <div class="cell"><h3>Performers</h3></div>
+                    <div class="cell"><h3>Transport</h3></div>
+
+                    <div class="cell"><h4>April</h4></div>
+                    <div class="cell">Print tickets by 30 April</div>
+                    <div class="cell"></div>
+                    <div class="cell">Confirm bookings and contracts</div>
+                    <div class="cell"></div>
+
+                    <div class="cell"><h4>May</h4></div>
+                    <div class="cell">Launch sales 5 May</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">Research taxi and limo companies</div>
+
+                    <div class="cell"><h4>June</h4></div>
+                    <div class="cell"></div>
+                    <div class="cell">Publicise and start recruitment</div>
+                    <div class="cell">Make contact to stay in touch</div>
+                    <div class="cell">Reserve transport for performers, guest speakers</div>
+
+                    <div class="cell"><h4>July</h4></div>
+                    <div class="cell"></div>
+                    <div class="cell">Recruit and do phone interviews</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+
+                    <div class="cell"><h4>August</h4></div>
+                    <div class="cell"></div>
+                    <div class="cell">Recruit and do interviews. Provisional order of uniforms by 16 Aug</div>
+                    <div class="cell">Check rehearsal dates are OK</div>
+                    <div class="cell"></div>
+
+                    <div class="cell"><h4>September</h4></div>
+                    <div class="cell">Last boost for tickets</div>
+                    <div class="cell">In-house training. Final order for uniforms by 22 Sep</div>
+                    <div class="cell">Contact about special requests – food, drink etc. Book transport</div>
+                    <div class="cell">Confirm transport bookings OK</div>
+
+                    <div class="cell"><h4>October</h4></div>
+                    <div class="cell"></div>
+                    <div class="cell">Training at venue. Give out uniforms</div>
+                    <div class="cell">Venue rehearsals 20, 21, 22 Oct. Live concerts 22, 23 Oct</div>
+                    <div class="cell">Three limos, six taxis, one minibus needed 22, 23 Oct</div>
+                </div>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
