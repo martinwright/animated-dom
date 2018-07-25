@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="./libs/jquery/dist/jquery.min.js"></script>-->
+    <script src="./libs/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/bundle.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Professionalism</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+
+                <p data-animate="2">Make a great first impression, remember your STANCE. Smile, have a friendly Tone, your Appearance is important, as is using the customer’s Name. Always be Customer focused and maintain Eye contact so they are engaged and feel valued.</p>
+
+                <h3 class="sub-heading"
+                    data-animate="3">STANCE:</h3>
+
+                <ul data-animate="4">
+                    <li>Smile</li>
+                    <li>Tone</li>
+                    <li>Appearance</li>
+                    <li>Name</li>
+                    <li>Customer focused</li>
+                    <li>Eye contact.</li>
+                </ul>
+
+                <h3 class="sub-heading"
+                    data-animate="5">Dropping your emotional baggage</h3>
+
+                <p data-animate="6">You can choose who you want to be at work. Leave your baggage at the door and give yourself a fresh start every day. Don’t let your problems become your customers' problems or you’ll end up in a negative spiral. Think about enjoying the positivity of helping people.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -319,12 +319,16 @@ figure.pentagon {
 
   /*grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
-  grid-template-areas: "h h h h h h" "g g g g g g" "m m m m m m" "t t t t t t";*/
+  grid-template-areas: "h h h h h h
+                        g g g g g g
+                        m m m m m m
+                        t t t t t t";*/
 
   @include for-size(tablet-landscape-up) {
     line-height: 1.3;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-areas: "h h h h h g g g g g g g" "m m m m m t t t t t t t";
+    grid-template-areas: "h h h h h g g g g g g g"
+                          "m m m m m t t t t t t t";
   }
 
 }
@@ -376,6 +380,111 @@ div.table {
 
 }
 
+div.table--fr1-fr1 {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 1fr;
+  font-size: 90%;
+
+  .cell {
+    &:nth-child(even) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+    display: flex;
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+
+}
+
+div.table--fr1-fr1-fr1 {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 90%;
+
+  .cell {
+    &:nth-child(3n+3) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(3n-1) {
+      background-color: #ffffff;
+    }
+    &:nth-child(3n+1) {
+      background-color: #afeaf5;
+    }
+
+    &:nth-child(3n+5) {
+      justify-content: center;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+    display: flex;
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+
+}
+
+div.table--fr7-fr1-fr1-fr1-fr1-fr1 {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 7fr 1fr 1fr 1fr 1fr 1fr;
+  font-size: 90%;
+
+  .cell {
+    h3 {
+      display: flex;
+      align-self: center;
+      justify-content: center;
+      width: 100%;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    &:nth-child(even) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+    justify-content: center;
+    &:nth-child(6n+1) {
+      justify-content: left;
+
+      h3 {
+        align-self: left;
+        justify-content: left;
+      }
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+    display: flex;
+  }
+}
+
 
 .tablex {
   grid-area: t;
@@ -406,7 +515,6 @@ div.table {
       text-transform: uppercase;
       font-size: 80%;
     }
-
 
     &:nth-child(even) {
       background-color: #afeaf5;

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Professionalism</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">9 Organisational commitments to customers</h2>
+
+                <img src="./images/t1/values_service_culture_book_05.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">It should be self-evident that having strong organisational commitment to providing high-quality customer service is a key element of organisational success, but organisations have to consider how they will demonstrate that commitment. Demonstration relies on everyone in the organisation understanding and living the values of the organisation. Also, it needs to be clear to customers what they can expect in terms of customer service. To achieve this, many organisations have a customer service charter, to promote the customer service standards it applies. The following is an example of a customer charter.</p>
+
+                <h3 class="sub-heading"
+                    data-animate="5"><u>ABC customer charter</u></h3>
+
+                <p data-animate="6"><strong>Our commitment</strong></p>
+
+                <p data-animate="7">We commit to embrace this charter. However, if we should be deficient in any aspect, you are encouraged to contact us directly, so that the matter may be resolved.</p>
+
+                <p data-animate="8"><strong>Relationship</strong></p>
+
+                <p data-animate="9">We will seek your input to the running, development and growth of ABC.</p>
+
+                <p data-animate="10"><strong>Accessibility</strong></p>
+
+                <p data-animate="11">We guarantee to be available within normal business hours and respond to all email enquiries within two working days.</p>
+
+                <p data-animate="12"><strong>Privacy</strong></p>
+
+                <p data-animate="13">We guarantee confidentiality and privacy of any information we obtain from our customers and will not disclose that information to any third party for any purpose without prior consent.</p>
+
+                <p data-animate="14"><strong>Service guarantee</strong></p>
+
+                <p data-animate="15">Our goal is to provide a consistently superior customer experience. We provide a no quibble, money-back guarantee on all our services if we fall short of your expectations and are unable to resolve the matter to your satisfaction.</p>
+
+                <p data-animate="16"><strong>Responsiveness</strong></p>
+
+                <p data-animate="17">We will respond to all enquiries in plain English.</p>
+
+                <p data-animate="18"><strong>Complaints</strong></p>
+
+                <p data-animate="19">We see complaints as an opportunity to improve the service we offer. Consequently, all of our staff are empowered to resolve customer complaints.</p>
+
+                <p data-animate="20"><strong>How to contact ABC</strong></p>
+
+                <p data-animate="21">Email us at: customer services@ABC.co.uk</p>
+
+
+
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="./scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Professionalism</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">6 Using positive and professional language</h2>
+
+                <img src="./images/t1/professionalism_book1_07.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">If you are aiming to promote some of the products and services your organisation has to offer, it is vital that you make sure you keep your customers on side. If you can earn their trust in your skills and professional opinions, you can earn their loyalty and their money.</p>
+
+                <p data-animate="5">One of the quickest ways to lose a customer is to speak before thinking. Saying something that can be construed as offensive by the customer will put barriers between you. Remember that different customers may find different things offensive, some of which may surprise you. We all recognise that bad language and lewd remarks are likely to offend customers, but can you think of other phrases or actions that could cause offence?</p>
+
+                <p data-animate="6">Promoting your products and services starts as soon as you meet your customer. The way you greet a customer when you first meet them, or open a call, will go a long way in helping them decide whether to trust you and your organisation. Keep all communication positive and use professional language at all times.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
