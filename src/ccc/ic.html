@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Access Mathematics Test 1 Form A
+    </title>
+    <link rel="stylesheet" type="text/css" href="activity/build/activity.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/1718/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Hammersmith+One"/>
+    <script type="text/javascript" src="activity/build/activity.js" defer></script>
+    <script type="text/javascript" src="/api_handlers/rsa.min.js" defer></script>
+</head>
+<body>
+
+
+<ic-screens>
+    <footer>
+        <nav>
+            <ic-box>
+                <ic-button ic-button="prev" ic-prev="anchor">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 39.3 18.9" xml:space="preserve">
+						<path d="m0 9.4 18.1 9.5-3.7-8.1 24.9 2.9 0-8.5L14.5 8.1 18.1 0 0 9.4Z"/>
+					</svg>
+                    <span>
+						 Back
+					</span>
+                </ic-button>
+            </ic-box>
+            <ic-box></ic-box>
+            <ic-box>
+                <ic-button ic-button="next">
+					<span>
+						Next
+					</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 39.3 18.9" xml:space="preserve">
+						<path d="M39.3 9.4l-18.1 9.5 3.7-8.1L0 13.7V5.2l24.8 2.9L21.2 0 39.3 9.4z"/>
+					</svg>
+                </ic-button>
+            </ic-box>
+        </nav>
+    </footer>
+    <header>
+        <nav>
+            <ic-box>
+                %%name%%
+            </ic-box>
+            <ic-box>
+                <ic-button ic-button="right">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 20.8 20" xml:space="preserve">
+						<path d="M10 20L0 10 10 0V20zM20.8 20l-10-10 10-10V20z"/>
+					</svg>
+                </ic-button>
+                <ic-nav></ic-nav>
+                <ic-button ic-button="left">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 20.8 20" xml:space="preserve">
+						<path d="m10.8 20 10-10-10-10 0 20zM0 20 10 10 0 0 0 20Z"/>
+					</svg>
+                </ic-button>
+                <ic-box style="left:calc(50% + 8.3rem);">
+                    <ic-button ic-button="toggle">
+                        Review
+                        <ic-box ic-box="modal" style="background:rgba(255,255,255,0.7);">
+                            <ic-box ic-box="panel">
+                                <h1>
+                                    Review
+                                    <em>
+                                        &#160;
+                                    </em>
+                                </h1>
+                                <ic-box>
+                                    <h2>
+                                        <div style="text-align:left;padding-bottom:0.5em;">
+                                            Use the review panel to go back and review your answer to any question.
+                                        </div>
+                                        <div style="text-align:left;padding-bottom:0.5em;">
+                                            Questions you have answered already are shown in blue, and those you still
+                                            have to answer are shown in red.
+                                        </div>
+                                    </h2>
+                                    <ic-nav></ic-nav>
+                                </ic-box>
+                            </ic-box>
+                        </ic-box>
+                    </ic-button>
+                </ic-box>
+            </ic-box>
+            <ic-box>
+                <div>
+                    Time:
+                </div>
+                <ic-timer data-json="{&quot;minutes&quot;:45}" ic-timer="i:s">
+                    45:00
+                </ic-timer>
+            </ic-box>
+        </nav>
+    </header>
+    <ic-screen>
+        %%content%%
+    </ic-screen>
+</ic-screens>
+
+</body>
+</html>

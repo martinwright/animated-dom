@@ -49,28 +49,64 @@ class App {
         let defaultDuration = "200",
             defaultOffset = "-=50";
 
-        let anims = {
+        /*let animations = {
             'business-admin-l3_t1-u1-p5': {
-                1 : {
+                1: {
                     type: "right-slide"
                 },
-                2 : {
+                2: {
                     type: "right-slide"
                 },
-                3 : {
+                3: {
                     type: "right-slide"
                 },
-                4 : {
+                4: {
                     type: "right-slide"
                 }
             }
-        };
+        };*/
 
-        let url = window.location.pathname;
-        //let filename = url.substring(url.lastIndexOf('/')+1);
+        function getAmimationJson (loc) {
+            //url = url.pathname;
+            //let filename = url.substring(url.lastIndexOf('/')+1);
 
-        let filename = (url.split('\\').pop().split('/').pop().split('.'))[0];
-        console.log('filename: ', filename);
+            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
+            //let filename = (url.split('\\').pop().split('/').pop().split('.'))[0];
+            //console.log('url: ', url);
+            console.log('fileName: ', fileName);
+            console.log('foldername: ', foldername);
+            console.log('rest: ', rest);
+
+            let animFile = loc.origin+'/'+foldername+'/'+fileName.split('.')[0]+'.json';
+            console.log('animFile: ', animFile);
+
+
+            return fetch(animFile)
+                .then(response => {
+                    console.log('response: ', response);
+                    if (response.ok) {
+                        return response;
+                    } else {
+                        let errorMessage = `${response.status} (${response.statusText})`,
+                            error = new Error(errorMessage);
+                        throw(error);
+                    }
+                })
+                .then(response => response.json())
+                .then(body => {
+                    console.log(body);
+                })
+                .catch(error => console.error(`Error in fetch: ${error.message}`));
+
+
+        }
+
+
+        let animations = getAmimationJson(window.location);
+        console.log('animations: ', animations);
+        console.log('window.location: ', window.location);
+
+
 
 
 
@@ -81,13 +117,15 @@ class App {
 
         function getAnimProp(file, step, prop, defaultVal) {
             try {
-                return anims[file][step][prop];
+                return animations[file][step][prop];
             } catch (e) {
                 return defaultVal;
             }
         }
 
-        /*if (anims[filename]) {
+
+
+        if (animations[filename]) {
             const animElements = document.querySelectorAll("[data-animate]");
 
             Array.from(document.querySelectorAll("[data-animate]")).forEach(function (el) {
@@ -101,21 +139,18 @@ class App {
                     offset: el.dataset.offset || getAnimProp(filename, animStep, 'offset', defaultDuration)
                 });
             });
-        }*/
+        }
 
         const nodelist = document.querySelectorAll("[data-step]");
         const nodesArray = Array.prototype.slice.call(nodelist);
 
         //const nodesArray = [...Array.from(document.querySelectorAll("[data-step]"))];
 
-        function sorter(obj1, obj2) {
-            return obj1.dataset.step - obj2.dataset.step;
-        }
-
-        function renumber(obj, n) {
+        /*function renumber(obj, n) {
             console.log('renumber ', obj, n);
             obj.dataset.order = (n - parseInt(obj.dataset.step)).toString();
-        }
+        }*/
+
 
         let tCols = 4, tRows = 6;
         for (let i = 5; i >= 0; i--) {
@@ -136,15 +171,24 @@ class App {
             });
         }
 
+        function sorter(obj1, obj2) {
+            return obj1.dataset.step - obj2.dataset.step;
+        }
+
         let myArr = Array.from(nodesArray)
-            .sort(sorter)
-            .reverse();
+                .sort(sorter)
+                .reverse(),
+            animationStep = 0;
+
+
+
 
         Array.from(myArr)
             .forEach(function (el) {
-                let elTarget = `[data-step="${el.dataset.step}"]`;
-                let elOffset = el.dataset.offset;
-                let elDuration = el.dataset.duration;
+                let elTarget = `[data-step="${el.dataset.step}"]`,
+                    elOffset = el.dataset.offset,
+                    elDuration = el.dataset.duration;
+                animationStep++;
 
                 console.log('elDuration', elDuration);
 
@@ -272,14 +316,14 @@ class App {
             }, 10);
         };
 
-        myTimeline.complete = function() {
+        myTimeline.complete = function () {
             //let wrapper = document.getElementsByClassName("wrapper")[0];
             //wrapper.classList.remove('hidden');
 
             (document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
 
             [].slice.call(document.getElementsByClassName('cell'))
-                .forEach(function(elem) {
+                .forEach(function (elem) {
                     elem.classList.add('--bottom-border');
                 });
 

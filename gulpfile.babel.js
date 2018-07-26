@@ -146,7 +146,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
     gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
     gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch(['src/images/**/*', '!src/images/_supplied/*']   , ['images']);
-    gulp.watch('src/**/*.html', ['html'], browserSync.reload);
+    gulp.watch('src/**/*.html', ['hnc.reload);
 });
 
 
@@ -267,9 +267,6 @@ gulp.task('html', () => {
         .pipe(replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, '../libs$1/$2.js'))
         .pipe(replace(/src="\.\.\/js\/app.js"/g, 'src="../js\/bundle.js"'))
         .pipe(replace(/href="\.\.\/scss\/(.*)\.scss"/g, 'href="../css/$1.css"'))
-
-
-
 
         /*.pipe(critical.stream({
             'base': 'build/',
