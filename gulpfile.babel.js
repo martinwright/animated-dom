@@ -20,12 +20,13 @@ import fs from 'fs';
 
 const merge = require('merge-stream');
 const packConfig = require('./pack-config.json');
+const watch = require('gulp-watch');
+//gulp.watch = watch;
+//const gaze = require('gaze');
 
 /* ----------------- */
-/* Development
+/* Build Packs
 /* ----------------- */
-
-
 gulp.task('build-packs', () => {
 
     if (!fs.existsSync('packs'))
@@ -142,10 +143,10 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
         }
     });
 
-    gulp.watch('./src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
-    gulp.watch('./src/js/**/*.js', ['scripts']);
-    gulp.watch('./src/images/**/*', ['images']);
-    gulp.watch('./src/*.html', ['html'], browserSync.reload);
+    gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
+    gulp.watch('src/js/**/*.js', ['scripts']);
+    gulp.watch(['src/images/**/*', '!src/images/_supplied/*']   , ['images']);
+    gulp.watch('src/**/*.html', ['html'], browserSync.reload);
 });
 
 
@@ -176,6 +177,7 @@ gulp.task('fonts', () => {
 gulp.task('vendor', () => {
     // Copy vendor files
     gulp.src('src/vendor/**')
+        //.pipe(newer('build/vendor'))
         .pipe(plumber({
             errorHandler: onError
         }))
@@ -231,11 +233,12 @@ gulp.task('images', () => {
         imgDst = './build/images/';
 
     return gulp.src(imgSrc)
+        .pipe(newer(imgDst))
         .pipe(plumber({
             errorHandler: onError
         }))
-        .pipe(changed(imgDst))
-        .pipe(imagemin())
+        //.pipe(changed(imgDst))
+        //.pipe(imagemin())
         .pipe(gulp.dest(imgDst))
         .pipe(notify({message: 'Images task complete'}));
 });
@@ -260,6 +263,7 @@ gulp.task('styles', () => {
 /* ----------------- */
 gulp.task('html', () => {
     return gulp.src('src/**/*.html')
+        .pipe(newer('build'))
         .pipe(replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, '../libs$1/$2.js'))
         .pipe(replace(/src="\.\.\/js\/app.js"/g, 'src="../js\/bundle.js"'))
         .pipe(replace(/href="\.\.\/scss\/(.*)\.scss"/g, 'href="../css/$1.css"'))
