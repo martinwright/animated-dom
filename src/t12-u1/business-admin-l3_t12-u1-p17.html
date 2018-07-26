@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">13 Follow-up actions</h4>
+
+                <img src="../images/t12-u1/how_to_chair_meetings_01_a.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>After meetings, the chairperson’s managerial input continues. They need to:</p>
+
+                <ul>
+                    <li>communicate recorded actions
+                    </li>
+
+                    <li>take follow-up action, when required
+                    </li>
+
+                    <li>make sure other people complete follow-up actions.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">Communicating recorded actions</h5>
+
+                <p>The chairperson needs to make sure that information has been circulated after meetings. This is important for:</p>
+
+                <ul>
+                    <li><strong>people who attended the meeting</strong><br>eg so that they can go ahead and action the
+                        points that are their responsibility, as shown in the minutes
+                    </li>
+
+                    <li><strong>people who did not attend the meeting</strong><br>eg so that they can see what was
+                        agreed and what they have to follow up
+                    </li>
+
+                    <li><strong>compliance</strong><br>eg as part of a legal process where people need to be informed of
+                        decisions and agreed actions.
+                    </li>
+                </ul>
+
+                <p>Documents could include minutes and any other relevant key documents and can be sent in the
+                    paper-based or electronic format set out in the organisation’s procedures. If it is critical to know
+                    that people have received minutes and documents, there may be procedures where the recipient needs
+                    to acknowledge receipt.</p>
+
+                <h5 data-animate="2">Taking follow-up action</h5>
+
+                <p>As a leader, the chairperson needs to make sure that they follow up decisions and actions that affect
+                    them. For example, if the chairperson has agreed to research something and report their findings
+                    within a week of the meeting, they need to make sure that they do this on time, or report why they
+                    are late if there is a problem. They need to lead by example to maintain credibility and other
+                    people’s trust and confidence.</p>
+
+                <h5 data-animate="2">Making sure other people take follow-up action</h5>
+
+                <p>The chairperson needs to manage other people to make sure that they follow up on decisions and agreed
+                    actions. If they have delegated responsibility for follow-up actions, the chairperson needs to keep
+                    an eye on progress, and help to provide support and resources if there are problems.</p>
+
+                <p>The <strong>minutes</strong> are a useful guide as to who needs to take action, the details of what
+                    they should do and the timescale they need to follow. The chairperson, other managers, leaders or
+                    decision-makers can use them as a tool when planning and monitoring progress.</p>
+
+                <p>The <strong>agenda</strong> of the next meeting is another useful tool to encourage people to
+                    complete agreed actions. It usually includes a reference to the actions agreed in the previous
+                    meeting and this provides a focus to make sure that follow-up actions are not overlooked.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

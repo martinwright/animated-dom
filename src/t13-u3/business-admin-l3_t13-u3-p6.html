@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing project risks and issues</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">3 Managing issues</h4>
+
+                <img src="../images/t13-u3/problem_solving_01_c.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>When managing issues, the project manager needs to:</p>
+
+                <ul>
+                    <li><strong>understand the nature of the issue</strong><br>eg the reasons why recruitment of new
+                        team members is so difficult, maybe using a PESTLE analysis (to look at political, economic,
+                        social, technological, legal and environmental impacts)
+                    </li>
+
+                    <li><strong>evaluate the scope of the issue</strong><br>eg how big a problem this could be and how
+                        the recruitment problem could either ease or get worse
+                    </li>
+
+                    <li><strong>evaluate the impact on the project</strong><br>eg how the recruitment problems could
+                        cause extra work for current team members or complete failure of the whole project.
+                    </li>
+                </ul>
+
+                <p>Doing a SWOT analysis as soon as an issue has been identified could be an effective activity to focus
+                    attention and aid the decision-making process. By looking at the strengths, weaknesses,
+                    opportunities and threats to progress of each possible solution, the project manager can evaluate
+                    the issue and work out how to limit or eliminate the impact of the issue.</p>
+
+                <p>For example, a project manager still needs another 50 stewards to run their event. They normally have
+                    trained volunteer stewards. However, with only one month to go, they do not have enough people to
+                    steward the event, and there is a legal requirement to have sufficient stewards on duty whenever the
+                    public are in the venue. All stewards need to have a full day’s training if they do not hold a
+                    current Spectator Security qualification. The project manager does a SWOT analysis to help them
+                    identify the pros and cons of each option:</p>
+
+                <div class="table">
+                    <div class="cell"></div>
+                    <div class="cell"><h3>Option A – increase publicity to attract new applications from new volunteers
+                        – eg advertise, make public appeals, approach organisations that place volunteers</h3></div>
+                    <div class="cell"><h3>Option B – approach another organisation that has large numbers of trained
+                        volunteers who might help for this one event</h3></div>
+                    <div class="cell"><h3>Option C – employ an event company who use qualified, paid staff</h3></div>
+
+                    <div class="cell"><h4>Strengths</h4></div>
+                    <div class="cell">New team members add to the pool of talent for future events and projects<br>
+                        Control over type of person selected<br>
+                        Control over training and monitoring<br>
+                        Low cost
+                    </div>
+                    <div class="cell">Volunteers already used to working at large events<br>
+                        Good to have relationship between organisations that can help each other out from time to time
+                    </div>
+                    <div class="cell">Staff can be provided in time<br>
+                        Identifiable costs<br>
+                        The company’s service history should indicate reliability<br>
+                        Staff will be qualified and will know how to operate without further training<br>
+                        Less input required from the project team as the event company will manage the 50 staff and
+                        associated resource
+                    </div>
+
+                    <div class="cell"><h4>Weaknesses</h4></div>
+                    <div class="cell">Time taken to deal with advertising, applications, interviews and recruitment of
+                        new volunteers<br>
+                        No guarantee that enough people can be found, recruited and trained in time<br>
+                        Unknown numbers for uniforms and other resources until the last minute<br>
+                        Cost of advertising
+                    </div>
+                    <div class="cell">Volunteers might not be available or willing to work with a new project team<br>
+                        The other organisation might not want to lose its volunteers<br>
+                        Restricted choice in the actual individuals who join the team<br>
+                        Staff training time required
+                    </div>
+                    <div class="cell">Need to rely on the event company to choose suitable individuals<br>
+                        High costs<br>
+                        Volunteers might resent paid staff doing the same job as them
+                    </div>
+
+                    <div class="cell"><h4>Opportunities</h4></div>
+                    <div class="cell">Local radio is running a volunteer campaign next week<br>
+                        One week to advertise, then two weeks to interview and recruit<br>
+                        Training sessions for all volunteers booked in four weeks’ time
+                    </div>
+                    <div class="cell">Three or four well-known groups in the local area that could be approached<br>
+                        Three weeks to sort out before training is due
+                    </div>
+                    <div class="cell">Plenty of event companies and staff available if researched online and using trade
+                        networks<br>
+                        Could be arranged quickly
+                    </div>
+
+                    <div class="cell"><h4>Threats to success</h4></div>
+                    <div class="cell">Lack of time – leading to a high chance of failure, which would put the whole
+                        event at risk<br>
+                        Other events might be competing to recruit volunteers
+                    </div>
+                    <div class="cell">Lack of co-operation from others<br>
+                        Other events might be competing to recruit volunteers
+                    </div>
+                    <div class="cell">High costs might not be covered by contingency budget<br>
+                        Other events might be competing to recruit staff for the same day
+                    </div>
+                </div>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

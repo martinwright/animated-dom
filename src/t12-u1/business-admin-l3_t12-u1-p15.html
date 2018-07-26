@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">11 Controlling speakers when necessary</h4>
+
+                <img src="../images/t12-u1/facilitating_meeting_06.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>This can be the hardest task for the chairperson and they need to make sure that the meeting is
+                    balanced and that everyone gets a chance to contribute.</p>
+
+                <p>To keep the meeting in balance, the chairperson needs to be ready to take command and not be afraid
+                    to chair the meeting. The following table gives some examples of problems that may occur, along with
+                    some suggested solutions:</p>
+
+                <div class="table">
+                    <div class="cell"><h3>Problem:</h3></div>
+                    <div class="cell"><h3>Suggested solutions:</h3></div>
+
+                    <div class="cell">New or shy people do not contribute to the meeting</div>
+                    <div class="cell">Invite new people to introduce themselves<br>
+                        Ask questions – their silence may not mean that they agree with what others are saying
+                    </div>
+
+                    <div class="cell">People from minority groups or who have unpopular views are not heard</div>
+                    <div class="cell">Make sure that they are invited to air their views<br>
+                        Insist that others give them time to speak, even if they disagree<br>
+                        Ask if anyone who has not spoken yet wishes to comment
+                    </div>
+
+                    <div class="cell">People interrupt each other</div>
+                    <div class="cell">Be firm and consistent<br>
+                        Acknowledge the interruption but avoid being drawn in<br>
+                        Ask the person who is interrupting to wait until the first person has finished, then go back to
+                        them to air their points of view
+                    </div>
+
+                    <div class="cell">People talk amongst themselves</div>
+                    <div class="cell">Stop the chatter politely at first, then firmly – it is distracting and
+                        discourteous<br>
+                        Be firm about them waiting for their turn to speak<br>
+                        Emphasise the importance of listening to what the speaker has to say
+                    </div>
+
+                    <div class="cell">Speakers talk for too long or get sidetracked away from the topic</div>
+                    <div class="cell">Again, be firm and consistent<br>
+                        Thank them for their contributions and for raising interesting points, then explain you want to
+                        ask others to comment
+                    </div>
+
+                    <div class="cell">People criticise decisions or each other in a negative way</div>
+                    <div class="cell">Be firm about looking for solutions not problems<br>
+                        Ask for suggestions about how things could be improved<br>
+                        Ask the critic what they would do to resolve the issue
+                    </div>
+
+                    <div class="cell">People argue or make emotional outbursts</div>
+                    <div class="cell">Stop the discussion<br>
+                        Identify areas where there is agreement<br>
+                        Summarise the issues and suggest ways forward<br>
+                        Take the focus away from individuals and concentrate on the broader issues
+                    </div>
+                </div>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">4 Circulation</h4>
+
+                <img src="../images/t12-u1/how_to_chair_meetings_book_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Some key documents need to be made available before the meeting so that people can be fully prepared, for example:</p>
+
+                <ul>
+                    <li>the agenda
+                    </li>
+
+                    <li>briefing notes
+                    </li>
+
+                    <li>reports and materials for people who have been involved with their preparation – eg so that they
+                        can get to know their material before they present their part of the report during the meeting.
+                    </li>
+                </ul>
+
+                <p>Many key documents only need to be made available <strong>during</strong> the meeting to support the
+                    information being discussed. These could include, for example:</p>
+
+                <ul>
+                    <li>copies of the agenda for people who have not seen it
+                    </li>
+
+                    <li>reports
+                    </li>
+
+                    <li>handouts, workbooks and other training materials
+                    </li>
+
+                    <li>contracts
+                    </li>
+
+                    <li>samples of marketing materials.
+                    </li>
+                </ul>
+
+                <p>All of the key documents can also be circulated to appropriate people after the meeting. If people
+                    have not attended the meeting, they may need to be informed about all of the points, decisions and
+                    information that were discussed so that they can comment and stay up to date. If people did attend
+                    the meeting, they may need additional documents after the meeting that confirm what was agreed and
+                    what follow-up actions are needed. These could include, for example:</p>
+
+                <ul>
+                    <li>minutes – draft or agreed
+                    </li>
+
+                    <li>forms – that need to be completed
+                    </li>
+
+                    <li>further reports – to show progress and update follow-up actions.
+                    </li>
+                </ul>
+
+                <p>When circulating key documentation, it is important to make sure that it is appropriate to share it.
+                    For example, care needs to be taken to make sure that:</p>
+
+                <ul>
+                    <li>the recipient is authorised to receive it
+                    </li>
+
+                    <li>the information is relevant to them
+                    </li>
+
+                    <li>confidentiality is not breached
+                    </li>
+
+                    <li>the information is current and correct
+                    </li>
+
+                    <li>the documents are sent out at the right time
+                    </li>
+
+                    <li>the information is sent in a suitable format – eg secure email or by post.
+                    </li>
+                </ul>
+                
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
