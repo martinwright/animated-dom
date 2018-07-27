@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">8 Event organisation</h4>
+
+                <img src="../images/t12-u1/planning_event_08.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <h5 data-animate="2">Venue/location</h5>
+
+                <p>The venue might be better suited in-house depending on rooms available, the size and delegates
+                    invited. However, if a national event is being organised then location will be extremely important
+                    to ensure all can attend.</p>
+
+                <h5 data-animate="2">Security management</h5>
+
+                <p>Regardless of the size of the event or the amount of people in attendance, you must always provide
+                    security. Security covers a broad spectrum of tasks for example:</p>
+
+                <ul>
+                    <li>checking registered delegates into the venue
+                    </li>
+
+                    <li>checking staff and contractors into the venue
+                    </li>
+
+                    <li>managing parking areas
+                    </li>
+
+                    <li>managing the safe movement of people
+                    </li>
+
+                    <li>providing security measures to counter any potential threats to event security
+                    </li>
+
+                    <li>providing emergency response
+                    </li>
+
+                    <li>managing safe evacuation
+                    </li>
+
+                    <li>liaison with emergency services before, during and after the event.
+                    </li>
+                </ul>
+
+                <p>These duties are usually covered by the venue's permanent staff, however you may need to consult
+                    security professionals for further advice and guidance.</p>
+
+                <h5 data-animate="2">Publicity/advertising</h5>
+
+                <p>When advertising and publicising an event, it is important to think about the type of audience you
+                    want to hear about it and ultimately attend. The event needs to be advertised to ensure good
+                    attendance. This may be by a targeted mailshot, flyers, social media, leaflets and advertisements in
+                    relevant media.</p>
+
+                <h5 data-animate="2">Equipment and resources</h5>
+
+                <p>Ensuring equipment and resources are organised and available during the event is important. Resources
+                    and equipment can be projectors, computers, flip charts, audio-visual equipment, whiteboards,
+                    printers/copiers, desks, chairs, stands, decorations and stationery.</p>
+
+                <p>It may be necessary to hire equipment for the event, so this will need to be organised in advance.
+                    Cost and budget must be discussed and agreed beforehand to avoid overspending.</p>
+
+                <h5 data-animate="2">Documentation</h5>
+
+                <p>Training manuals, worksheets and reading material may be required for delegates to refer to during or
+                    after the event.</p>
+
+                <h5 data-animate="2">Subject expert</h5>
+
+                <p>These are usually required for a conference or seminar. It is important the expert/speaker is briefed
+                    beforehand and is clear what needs to be communicated.</p>
+
+                <h5 data-animate="2">Caterers</h5>
+
+                <p>Caterers might be required to provide refreshments for the delegates. This could be food, drinks or
+                    snacks. Outside caterers might be required or it may be something that can be arranged in-house. It
+                    is important to agree this and organise accordingly.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

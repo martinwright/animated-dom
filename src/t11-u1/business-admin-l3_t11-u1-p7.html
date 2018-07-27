@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Set and monitor budgets</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">4 The purpose of contingency plans</h4>
+
+                <img src="../images/t11-u1/setting_realistic_budgets_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>It is normal to have contingency plans to deal with unforeseen circumstances. Sometimes it is
+                    impossible to budget exactly and managers can only estimate what may be needed to complete a
+                    particular project or objective. When renovating a building, for instance, it is not possible to get
+                    accurate costs for remedial work until some of the demolition has been done to reveal the inner
+                    fabric of the building.</p>
+
+                <p>Workplace and industry experience and risk assessments can help managers to estimate:</p>
+
+                <ul>
+                    <li><strong>what may go wrong</strong><br>eg machinery breakdown or severe weather
+                    </li>
+
+                    <li><strong>unknown costs</strong><br>eg changes in world prices of raw materials
+                    </li>
+
+                    <li><strong>possible extra costs and other consequences</strong><br>eg increased costs of raw
+                        materials and delays in supplies and production
+                    </li>
+
+                    <li><strong>costs and delays when putting things right</strong><br>eg paying staff whilst waiting
+                        for supplies; employing extra staff to catch up and achieve targets
+                    </li>
+
+                    <li><strong>steps that can be taken to mitigate the risk</strong><br>eg having more than one
+                        supplier for key components
+                    </li>
+
+                    <li><strong>funds that need to be set aside</strong><br>eg a 20% contingency fund when building a
+                        new factory to cover unforeseeable and variable costs.
+                    </li>
+                </ul>
+
+                <p>By planning for contingencies, managers can:</p>
+
+                <ul>
+                    <li>incorporate the anticipated costs in their agreed budget</li>
+
+                    <li>reallocate funds if necessary</li>
+
+                    <li>have extra funds on standby in case they are needed</li>
+
+                    <li>avoid extra delays because the planning has already been done</li>
+
+                    <li>keep projects and progress of objectives on track.</li>
+
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

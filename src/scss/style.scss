@@ -189,6 +189,10 @@ button {
     padding-top: 1em;
   }
 
+  ol li + li {
+    padding-top: 1em;
+  }
+
   @include for-size(tablet-landscape-up) {
     padding: 1em;
   }

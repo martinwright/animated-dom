@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Set and monitor budgets</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">3 Internal and external factors that affect budgets and cause variance</h4>
+
+                <img src="../images/t11-u1/process_of_monitoring_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Many internal and external factors can affect budgets and cause variance. Managers need to be able to
+                    identify and respond to them to make sure that budgets and plans stay on track. Some issues will
+                    come under the manager’s area of authority. Others need to be escalated so that the issues can be
+                    addressed at an organisational level.</p>
+
+                <p>The following table gives examples of factors and suggestions about how they might be addressed:</p>
+
+                <div class="table">
+                    <div class="cell"><h3>Reasons for changing budgets and/or plans:</h3></div>
+                    <div class="cell"><h3>Examples:</h3></div>
+                    <div class="cell"><h3>Suggestions about how to address issues. Managers may need to:</h3></div>
+
+                    <div class="cell">Objectives, aims and priorities change</div>
+                    <div class="cell">A company decides to launch a new product<br>
+                        A charity decides to abandon a project to run an open day for the public<br>
+                        Business owners decide to move to larger premises<br>
+                        An organisation decides to postpone buying new cars for staff and spend the money on a new IT system instead
+                    </div>
+                    <div class="cell">Arrange discussions with decision-makers to establish revised objectives, aims and priorities<br>
+                        Amend original budgets and plans, or prepare new ones to cover up to date plans once they have been agreed
+                    </div>
+
+                    <div class="cell">Costs rise or fall</div>
+                    <div class="cell">A rise in interest rates affects the plans to borrow money for expansion<br>
+                        Weather problems and flooding damage crops and affect the cost of fruit and cereals
+                    </div>
+                    <div class="cell">Make sure that there are several suppliers for key services, materials and components so that:<br>
+                        <li>they work harder to be competitive</li>
+                        <li>the risk of failure is spread</li>
+                        <li>the manager can change suppliers.</li>
+                        Arrange to use the contingency budget to keep objectives on track
+                    </div>
+
+                    <div class="cell">Demand for products and services rise or fall</div>
+                    <div class="cell">A new tablet sells out after a successful marketing launch and the manufacturer
+                        needs to change its plans and budgets to increase production<br>
+                        The demand for antiques and second-hand furniture drops and businesses cannot charge what they
+                        expected when selling items
+                    </div>
+                    <div class="cell">Have contingency plans prepared for higher and lower volumes of output<br>
+                        Have suppliers in the supply chain ready to cope with changes<br>
+                        Address sales and marketing issues to boost awareness and trade<br>
+                        Revise pricing strategies
+                    </div>
+
+                    <div class="cell">Improvements in technology</div>
+                    <div class="cell">New IT systems reduce the need for stationery and paper storage<br>
+                        Videoconferencing technology improves and staff do not need to travel abroad for meetings so often<br>
+                        A new website and online purchasing system increase sales dramatically
+                    </div>
+                    <div class="cell">Revise operational procedures to:<br>
+                        <li>incorporate relevant technology and processes</li>
+                        <li>train staff in new methods</li>
+                        <li>monitor their effectiveness</li>
+                        <li>cope with changes in levels of production and sales.</li>
+                    </div>
+
+                    <div class="cell">Plant and machinery needs to be replaced sooner than expected</div>
+                    <div class="cell">An expensive machine is expected to last 10 years and the budget is there to
+                        replace it then. However, it breaks down and is obsolete after five years, so it needs to be
+                        replaced early
+                    </div>
+                    <div class="cell">Arrange discussions with decision-makers to gain agreement to:<br>
+                        <li>replace the machine</li>
+                        <li>access the budget for replacing capital items</li>
+                        <li>revise objectives to cope with the delay</li>
+                        <li>revise the budget and forecasts for when the new machinery is in use.</li>
+                    </div>
+
+                    <div class="cell">Unforeseen circumstances and unavoidable delays</div>
+                    <div class="cell">Severe and exceptional weather affects production<br>
+                        A cargo ship carrying supplies is lost at sea<br>
+                        There is a fire at a factory
+                    </div>
+                    <div class="cell">Inform relevant people<br>
+                        Discuss contingency plans with other decision-makers<br>
+                        Implement contingency plans and access contingency budget if required
+                    </div>
+
+                    <div class="cell">Estimations are found to be unrealistic</div>
+                    <div class="cell">Estimations about sales turn out to be higher or lower than expected<br>
+                        The actual running costs for new plant and machinery turn out to be much higher or lower than expected
+                    </div>
+                    <div class="cell">Monitor data very carefully to check actual figures against estimates and look for errors<br>
+                        Check the sources used when original estimates were made to test their validity<br>
+                        Prepare revised plans, estimates and budgets<br>
+                        Discuss contingency plans with other decision-makers<br>
+                        Implement contingency plans and access contingency budget if required
+                    </div>
+
+                    <div class="cell">Changes in legislation and regulations</div>
+                    <div class="cell">The Chancellor of the Exchequer announces a change in the rate of VAT in the
+                        budget<br>
+                        New regulations about waste management have a financial impact on a company<br>
+                        New regulations dictate that all staff must have or achieve recognised industry qualifications,
+                        and organisations need to invest in training
+                    </div>
+                    <div class="cell">Inform relevant people<br>
+                        Discuss contingency plans with other decision-makers<br>
+                        Implement contingency plans and access contingency budget if required
+                    </div>
+                </div>
+
+                <p>By monitoring input and output, a business can compare figures with the budgets and identify gaps
+                    where money is going out faster than it is coming in. This enables them to close gaps. For example,
+                    if a business sees in its budget that customers are paying for goods long after the business has
+                    already paid for them, it can change its credit policy and make sure that customers pay sooner and
+                    on time.</p>
+
+                <p>Similarly, if a business has money on deposit or invested in assets, it needs to know the cash flow
+                    requirements that are coming up so that it can move funds or sell assets at the right time, if
+                    necessary.</p>
+
+                <p>Managers need to monitor and review all aspects of operations and take quick action to address any
+                    issues, variances and changes in forecasts that may affect budgets and plans for their team or
+                    department. Early attention helps to keep objectives in line with the organisation’s goals and
+                    budgets and minimise the impacts of changes.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

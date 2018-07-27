@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Getting it right on the day</h4>
+
+                <img src="../images/t12-u1/organising_event_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Before any event it is important to ensure that all resources have been identified and are available.
+                    This could include:</p>
+
+                <ul>
+                    <li>break-out rooms
+                    </li>
+
+                    <li>refreshments
+                    </li>
+
+                    <li>lunch/dinner
+                    </li>
+
+                    <li>delegate packs
+                    </li>
+
+                    <li>health and safety
+                    </li>
+
+                    <li>audio/visual equipment
+                    </li>
+
+                    <li>stationery.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">Manage your time effectively</h5>
+
+                <p>On the event day there will be a lot happening quickly and it can be easy to lose track of your
+                    objectives. To prevent this:</p>
+
+                <ul>
+                    <li>create a checklist you can consult
+                    </li>
+
+                    <li>allow enough time
+                    </li>
+
+                    <li>have resources available the day before
+                    </li>
+
+                    <li>have plans in place for problems that could occur.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">Project professionalism</h5>
+
+                <p>It’s always important to represent your organisation in a positive manner. This is especially
+                    important during an event.</p>
+
+                <p>Some key things to remember:</p>
+
+                <ul>
+                    <li>appearance
+                    </li>
+
+                    <li>tone of voice
+                    </li>
+
+                    <li>choice of words
+                    </li>
+
+                    <li>posture.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">First impression – 7 seconds</h5>
+
+                <ul>
+                    <li>Everyone evaluates you every day.
+                    </li>
+
+                    <li>People look at your visual and behavioural appearance from head to toe.
+                    </li>
+
+                    <li>They even listen to your tone of voice.
+                    </li>
+
+                    <li>Demeanour, mannerisms, body language and even grooming are assessed.
+                    </li>
+
+                    <li>You make a lasting impression instantly.
+                    </li>
+
+                    <li>You may impress some and disenchant others.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
