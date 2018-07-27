@@ -93,7 +93,7 @@ gulp.task('build-packs', () => {
 
         // Add HTML from build to to pack if newer
         // TODO update build paths
-        let htmlSrc = `build/${courseName}_${pack.topic}-${pack.unit}-*.html`,
+        let htmlSrc = `build/${courseName}_${pack.topic}-${pack.unit}-*.{html, json}`,
             htmlDest = `${dir}`;
         jsBundleStreams.push(gulp.src(htmlSrc)
             .pipe(newer(htmlDest))
@@ -129,12 +129,12 @@ gulp.task('pack-libs', () => {
 /* ----------------- */
 /* Development
 /* ----------------- */
-gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
+gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json'], () => {
     browserSync({
         'server': {
             baseDir: "build/"
         },
-        startPath: "/t1-u1/business-admin-l3_t1-u1-p1.html",
+        startPath: "/t10-u1/business-admin-l3_t10-u1-p1.html",
         'snippetOptions': {
             'rule': {
                 'match': /<\/body>/i,
@@ -145,8 +145,8 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html'], () => {
 
     gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
     gulp.watch('src/js/**/*.js', ['scripts']);
-    gulp.watch(['src/images/**/*', '!src/images/_supplied/*']   , ['images']);
-    gulp.watch('src/**/*.html', ['hnc.reload);
+    gulp.watch(['src/images/**/*', '!src/images/_supplied/*'], ['images']);
+    gulp.watch('src/**/*.{html, json}', ['html'], browserSync.reload);
 });
 
 
@@ -177,7 +177,7 @@ gulp.task('fonts', () => {
 gulp.task('vendor', () => {
     // Copy vendor files
     gulp.src('src/vendor/**')
-        //.pipe(newer('build/vendor'))
+    //.pipe(newer('build/vendor'))
         .pipe(plumber({
             errorHandler: onError
         }))
@@ -257,12 +257,11 @@ gulp.task('styles', () => {
         .pipe(browserSync.stream());
 });
 
-
 /* ----------------- */
 /* HTML
 /* ----------------- */
 gulp.task('html', () => {
-    return gulp.src('src/**/*.html')
+    return gulp.src('src/**/*.{html, json}')
         .pipe(newer('build'))
         .pipe(replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, '../libs$1/$2.js'))
         .pipe(replace(/src="\.\.\/js\/app.js"/g, 'src="../js\/bundle.js"'))
@@ -275,6 +274,15 @@ gulp.task('html', () => {
             'minify': true,
             'css': ['./build/css/style.css']
         }))*/
+        .pipe(gulp.dest('build'))
+        .pipe(browserSync.stream());
+});
+/* ----------------- */
+/* JSON
+/* ----------------- */
+gulp.task('json', () => {
+    return gulp.src('src/**/*.json')
+        .pipe(newer('build'))
         .pipe(gulp.dest('build'))
         .pipe(browserSync.stream());
 });
@@ -323,5 +331,5 @@ gulp.task('jsmin', () => {
 /* Taks
 /* ----------------- */
 gulp.task('default', ['development']);
-gulp.task('deploy', ['html', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
+gulp.task('deploy', ['html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
 gulp.task('pack', ['build-packs']);
