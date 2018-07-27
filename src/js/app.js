@@ -20,9 +20,150 @@ class App {
 
     };
 
+
     startUp() {
 
-        console.log('ddd', this);
+        let wrapper = document.getElementsByClassName("js-container")[0];
+        console.log('wrapper: ', wrapper);
+        wrapper.classList.add('hidden');
+
+
+        let animations,
+            myTimeline;
+
+        let defaultDuration = "200",
+            defaultOffset = "-=50";
+
+
+        const nodelist = document.querySelectorAll("[data-animate]");
+        const nodesArray = Array.prototype.slice.call(nodelist);
+
+
+        function handleErrors(response) {
+            console.log(`handleErrors: ${response.ok}`);
+            if (!response.ok) {
+                throw Error(response.statusText + 'V');
+            }
+            return response;
+        }
+
+        function getJsonFileName(loc) {
+            //url = url.pathname;
+            //let filename = url.substring(url.lastIndexOf('/')+1);
+
+            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
+            //let filename = (url.split('\\').pop().split('/').pop().split('.'))[0];
+            //console.log('url: ', url);
+            console.log('fileName: ', fileName);
+            console.log('foldername: ', foldername);
+            console.log('rest: ', rest);
+
+            return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
+
+        }
+
+        function setAminProbs(response) {
+            animations = response.json();
+        }
+
+
+        fetch(getJsonFileName(window.location))
+            .then(handleErrors)
+            .then(response => response.json())
+            .then(j => buildAnimationSteps(j))
+            .catch(error => {
+                console.error(`Error in xxx fetch: ${error.message}`);
+                buildAnimationSteps({});
+            });
+
+        function getElementsWithAmimate() {
+            return Array.from(document.querySelectorAll("[data-animate]"))
+        }
+
+        function getAnimProp(step, prop, defaultVal) {
+            console.log('getAnimProp: ', step);
+
+            return defaultVal;
+
+            try {
+                /*let ret = animations.steps;
+                console.log('ret: ', ret);
+                if (ret) ret = ret[step];
+                if (ret) ret = ret[prop];*/
+
+                return animations.steps[step][prop];
+            } catch (e) {
+                return defaultVal;
+            }
+        }
+
+        function sorter(obj1, obj2) {
+            return obj1.dataset.animate - obj2.dataset.animate;
+        }
+
+        function buildAnimationSteps(json) {
+            animations = json;
+            console.log('buildAnimationSteps animations: ', animations);
+
+            myTimeline = anime.timeline({
+                direction: 'reverse',
+                autoplay: false
+            });
+
+
+            let myArr = Array.from(nodesArray)
+                    .sort(sorter)
+                    .reverse(),
+                animationStep = 0;
+
+
+            //const animElements = document.querySelectorAll("[data-animate]");
+
+            console.log('myArr: ', myArr);
+
+            myArr.forEach(function (el) {
+                let animStep = el.dataset.animate;
+                console.log('animStep: ', animStep);
+                myTimeline.add({
+                    targets: el,
+                    opacity: '0',
+                    translateX: '100',
+                    easing: 'easeInQuad',
+                    //duration: el.dataset.duration || getAnimProp(animStep, 'duration', defaultDuration),
+                    duration: defaultDuration,
+                    //offset: el.dataset.offset || getAnimProp(animStep, 'offset', defaultDuration)
+                    offset: defaultOffset
+                });
+            });
+
+            myTimeline.play();
+
+
+            myTimeline.begin = function () {
+                console.log('#################### myTimeline ');
+
+                let wait = setTimeout(function () {
+                    let wrapper = document.getElementsByClassName("js-container")[0];
+                    wrapper && wrapper.classList.remove('hidden');
+                }, 10);
+            };
+
+            myTimeline.complete = function () {
+                //let wrapper = document.getElementsByClassName("wrapper")[0];
+                //wrapper.classList.remove('hidden');
+
+                //(document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
+
+                [].slice.call(document.getElementsByClassName('cell'))
+                    .forEach(function (elem) {
+                        elem.classList.add('--bottom-border');
+                    });
+
+            };
+
+        }
+
+
         /*document.querySelector('.nav-bar .js-play').onclick = (e) => {
             myTimeline.play()
         };
@@ -46,103 +187,6 @@ class App {
         //data-duration="200"
         //data-offset="-=50"
 
-        let defaultDuration = "200",
-            defaultOffset = "-=50";
-
-        /*let animations = {
-            'business-admin-l3_t1-u1-p5': {
-                1: {
-                    type: "right-slide"
-                },
-                2: {
-                    type: "right-slide"
-                },
-                3: {
-                    type: "right-slide"
-                },
-                4: {
-                    type: "right-slide"
-                }
-            }
-        };*/
-
-        function getAmimationJson (loc) {
-            //url = url.pathname;
-            //let filename = url.substring(url.lastIndexOf('/')+1);
-
-            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-            //let filename = (url.split('\\').pop().split('/').pop().split('.'))[0];
-            //console.log('url: ', url);
-            console.log('fileName: ', fileName);
-            console.log('foldername: ', foldername);
-            console.log('rest: ', rest);
-
-            let animFile = loc.origin+'/'+foldername+'/'+fileName.split('.')[0]+'.json';
-            console.log('animFile: ', animFile);
-
-
-            return fetch(animFile)
-                .then(response => {
-                    console.log('response: ', response);
-                    if (response.ok) {
-                        return response;
-                    } else {
-                        let errorMessage = `${response.status} (${response.statusText})`,
-                            error = new Error(errorMessage);
-                        throw(error);
-                    }
-                })
-                .then(response => response.json())
-                .then(body => {
-                    console.log(body);
-                })
-                .catch(error => console.error(`Error in fetch: ${error.message}`));
-
-
-        }
-
-
-        let animations = getAmimationJson(window.location);
-        console.log('animations: ', animations);
-        console.log('window.location: ', window.location);
-
-
-
-
-
-        let myTimeline = anime.timeline({
-            direction: 'reverse',
-            autoplay: false
-        });
-
-        function getAnimProp(file, step, prop, defaultVal) {
-            try {
-                return animations[file][step][prop];
-            } catch (e) {
-                return defaultVal;
-            }
-        }
-
-
-
-        if (animations[filename]) {
-            const animElements = document.querySelectorAll("[data-animate]");
-
-            Array.from(document.querySelectorAll("[data-animate]")).forEach(function (el) {
-                let animStep = el.dataset.animate;
-                myTimeline.add({
-                    targets: el,
-                    opacity: '0',
-                    translateX: '100',
-                    easing: 'easeInQuad',
-                    duration: el.dataset.duration || getAnimProp(filename, animStep, 'duration', defaultDuration),
-                    offset: el.dataset.offset || getAnimProp(filename, animStep, 'offset', defaultDuration)
-                });
-            });
-        }
-
-        const nodelist = document.querySelectorAll("[data-step]");
-        const nodesArray = Array.prototype.slice.call(nodelist);
 
         //const nodesArray = [...Array.from(document.querySelectorAll("[data-step]"))];
 
@@ -152,38 +196,29 @@ class App {
         }*/
 
 
-        let tCols = 4, tRows = 6;
-        for (let i = 5; i >= 0; i--) {
-            console.log('nth ', (i * 4) + 1, (i * 4) + 4);
+        // TODO table animation
+        /* let tCols = 4, tRows = 6;
+         for (let i = 5; i >= 0; i--) {
+             console.log('nth ', (i * 4) + 1, (i * 4) + 4);
 
-            let start = (i * 4) + 1, end = (i * 4) + 4,
-                offset = (end === 24 && start === 21) ? '0' : '-=25';
+             let start = (i * 4) + 1, end = (i * 4) + 4,
+                 offset = (end === 24 && start === 21) ? '0' : '-=25';
 
-            Array.from(document.querySelectorAll(`.cell:nth-child(n+${start}):nth-child(-n+${end})`)).forEach(function (el) {
-                myTimeline.add({
-                    targets: el,
-                    opacity: '0',
-                    translateX: '100',
-                    easing: 'easeInQuad',
-                    duration: 50,
-                    offset: offset
-                });
-            });
-        }
-
-        function sorter(obj1, obj2) {
-            return obj1.dataset.step - obj2.dataset.step;
-        }
-
-        let myArr = Array.from(nodesArray)
-                .sort(sorter)
-                .reverse(),
-            animationStep = 0;
+             Array.from(document.querySelectorAll(`.cell:nth-child(n+${start}):nth-child(-n+${end})`)).forEach(function (el) {
+                 myTimeline.add({
+                     targets: el,
+                     opacity: '0',
+                     translateX: '100',
+                     easing: 'easeInQuad',
+                     duration: 50,
+                     offset: offset
+                 });
+             });
+         }*/
 
 
-
-
-        Array.from(myArr)
+        // TODO various anim types
+        /*Array.from(myArr)
             .forEach(function (el) {
                 let elTarget = `[data-step="${el.dataset.step}"]`,
                     elOffset = el.dataset.offset,
@@ -236,11 +271,11 @@ class App {
                             offset: elOffset,
                             scale: 4,
                             translateX: '350'
-                            /*rotate: {
+                            /!*rotate: {
                                 value: 25,
                                 duration: 2000,
                                 easing: 'easeInOutSine'
-                            }*/
+                            }*!/
                             //direction: 'reverse'
                         });
                         break;
@@ -255,11 +290,11 @@ class App {
                             offset: Number(elOffset)
                             //scale: 4
                             //translateX: '-350'
-                            /*rotate: {
+                            /!*rotate: {
                                 value: 25,
                                 duration: 2000,
                                 easing: 'easeInOutSine'
-                            }*/
+                            }*!/
                             //direction: 'reverse'
                         });
                         break;
@@ -274,11 +309,11 @@ class App {
                             offset: elOffset,
                             scale: 4,
                             translateY: '-1350'
-                            /*rotate: {
+                            /!*rotate: {
                                 value: 25,
                                 duration: 2000,
                                 easing: 'easeInOutSine'
-                            }*/
+                            }*!/
                             //direction: 'reverse'
                         });
                         break;
@@ -295,43 +330,17 @@ class App {
                             //scale: 4,
                             translateY: 1200,
                             translateX: 1200
-                            /*rotate: {
+                            /!*rotate: {
                                 value: 45,
                                 duration: 800,
                                 easing: 'easeInOutSine'
-                            },*/
+                            },*!/
                             //direction: 'reverse'
                         });
                         break;
                 }
-            });
+            });*/
 
-
-        myTimeline.begin = function () {
-            console.log('#################### myTimeline ');
-
-            let wait = setTimeout(function () {
-                let wrapper = document.getElementsByClassName("wrapper")[0];
-                wrapper.classList.remove('hidden');
-            }, 10);
-        };
-
-        myTimeline.complete = function () {
-            //let wrapper = document.getElementsByClassName("wrapper")[0];
-            //wrapper.classList.remove('hidden');
-
-            (document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
-
-            [].slice.call(document.getElementsByClassName('cell'))
-                .forEach(function (elem) {
-                    elem.classList.add('--bottom-border');
-                });
-
-        };
-
-        myTimeline.play();
-
-        //console.log('myTimeline ', myTimeline);
 
     }
 }
