@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Communicating effectively</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">2 Telephone conversations</h3>
+
+                <img src="./images/t3-u1/verbal_communication_02.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Telephone conversations can cover many of the topics that can be discussed face-to-face.</p>
+
+                <p data-animate="4">However, in the workplace, telephone conversations can be much quicker and more efficient, especially when staff have additional information instantly available.</p>
+
+                <p data-animate="4">Telephone conversations are useful when two-way communication is needed – eg to get an answer or instruction from someone.</p>
+
+                <p data-animate="4">Typical tasks that can be performed using telephone conversations include, for example:</p>
+
+                <ul data-animate="5">
+                    <li>selling products and services – eg cold calls to sell legal or insurance services</li>
+                    <li>advising customers about problems – eg bank staff calling about irregular activities on customers’ bank accounts</li>
+                    <li>dealing with customer complaints and comments</li>
+                    <li>ordering supplies and arranging delivery times</li>
+                    <li>dealing with supply problems – eg chasing a late delivery</li>
+                    <li>sharing information – eg informing colleagues about meetings, changes or updates</li>
+                    <li>initial interviews – eg talking to potential job applicants in the early stages of recruitment.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

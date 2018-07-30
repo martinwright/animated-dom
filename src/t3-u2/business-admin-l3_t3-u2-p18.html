@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Interpersonal skills</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">4 Five stages of active listening</h3>
+
+                <img src="./images/t3-u2/interpersonal_skills_book2_03.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Listening involves many complex processes and skills and therefore it is useful to divide these down into stages or steps. Five stages can be identified: receiving, understanding, remembering, evaluating and responding.</p>
+
+                <p data-animate="4"><strong>Receiving</strong> – listen not only to what is said (verbally and non-verbally) but also to what is omitted. You receive, for example, your boss’s summary of your accomplishments as well as the omission of your shortcomings or, perhaps, vice versa. Effective reception, then, consists of receiving what is said, as well as what is not said.</p>
+
+                <p data-animate="4"><strong>Understanding</strong> – process what you are hearing and extract the meaning from the message.</p>
+
+                <p data-animate="4"><strong>Remembering</strong> – receiving and understanding messages will not help you if you are unable to remember the content. In order for you to remember the content this information needs to be passed from your short-term memory (the memory you use to remember a phone number long enough to write it down) into long-term memory (or relatively permanent memory).</p>
+
+                <p data-animate="4"><strong>Evaluating</strong> – not all messages are equal – some are untrue, some are truths; some are significant, some are trivial; some are constructive, some are destructive.</p>
+
+                <p data-animate="4"><strong>Responding</strong> – after you evaluate the message, you’re likely to respond in some way and your response should demonstrate that you have been through the stages of active listening above.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

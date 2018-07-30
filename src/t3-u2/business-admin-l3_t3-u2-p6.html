@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Interpersonal skills</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">3 Body language</h3>
+
+                <img src="./images/t3-u2/interpersonal_skills_book1_03.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Body language includes the way in which you stand, the gestures you make and your facial expressions. They are all forms of non-verbal communication and convey messages to the recipients. Your body language can indicate to the recipient that you are angry, pleased or frustrated and may affect how they respond. Equally you may pick up the same signals from other people and need to choose how to respond appropriately.</p>
+
+                <p data-animate="4">Be aware of your body language and don’t become one of the five monsters of customer service. Be available and open, don’t put barriers of any kind between you and visitors. Have a genuine smile, be natural and stay alert.</p>
+
+                <p data-animate="4">Body language:</p>
+
+                <ul data-animate="5">
+                    <li>can be negative or positive</li>
+                    <li>can affect the behaviour of others</li>
+                    <li>should not be considered in isolation but should be considered along with the words being used</li>
+                    <li>of both the speaker and listener will affect the outcome.</li>
+                </ul>
+
+                <p data-animate="4">Your body language should always be positive and welcoming towards customers as it is as important in face-to-face communications as the words that you use. If you convey respect and interest in the communication then your customer will be more likely to respond positively to you.</p>
+
+                <p data-animate="4">Despite the words you are saying, your body language and tone of voice can convey a different message and betray exactly what you are actually thinking.</p>
+
+                <p data-animate="4">The following all convey a message:</p>
+
+                <ul data-animate="5">
+                    <li>the way we stand – posture</li>
+                    <li>gestures we make</li>
+                    <li>facial expressions:</li>
+                    <ul>
+                        <li>a smile is welcoming</li>
+                        <li>a frown is not, but can indicate thought</li>
+                        <li>raised eyebrows can indicate surprise or disbelief</li>
+                        <li>pursed lips – show disapproval.</li>
+                    </ul>
+                </ul>
+
+                <p data-animate="4">Be aware of your own body language to ensure you do not betray feelings of boredom or irritation. Ask colleagues for feedback on your body language – you may find you have habits you were not even aware of! If the opportunity arises, observe video footage of yourself.  </p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

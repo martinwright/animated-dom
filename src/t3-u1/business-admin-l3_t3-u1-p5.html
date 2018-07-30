@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Communicating effectively</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">2 Formal and informal communication</h3>
+
+                <img src="./images/t3-u1/effective_feedback_07.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Some workplace communication requires a <strong>formal</strong> approach, usually when information is important, sensitive or confidential – eg financial reports about the organisation or its customers; staff appraisal interviews; legal letters; formal letters to customers or colleagues; evidence to support a complaint or investigation.</p>
+
+                <p data-animate="4">Some workplace communication requires an <strong>informal</strong> approach, usually when information is not confidential and when it can be shared with people that we know – eg a quick question for a colleague or regular customer; sharing information and instructions; during a handover between shifts; announcements that can be made openly; reminders for colleagues or customers.</p>
+
+                <p data-animate="4">When choosing the most appropriate form of communication, we need to consider:</p>
+
+                <ul data-animate="5">
+                    <li>the type of information being sent</li>
+                    <li>the people who are going to read or hear it</li>
+                    <li>the security and confidentiality of the information</li>
+                    <li>how it will be circulated and shared.</li>
+                </ul>
+
+                <p data-animate="4">Good communication skills are essential to make sure that:</p>
+
+                <ul data-animate="5">
+                    <li>errors and misunderstandings are kept to a minimum</li>
+                    <li>the right level of detail can be provided</li>
+                    <li>the organisation’s positive and professional image is maintained</li>
+                    <li>the communication method follows good business practice and is in line with the organisation’s policies and procedures</li>
+                    <li>confidentiality is protected, when appropriate.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

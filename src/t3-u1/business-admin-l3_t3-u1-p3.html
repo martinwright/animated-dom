@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Communicating effectively</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">Different forms of communication</h2>
+
+                <img src="./images/t3-u1/effective_teamwork_01_c.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Communication is needed for every function of management and there are many situations where communicating with other people is important in the workplace. These can include, for example:</p>
+
+                <ul data-animate="5">
+                    <li><strong>documenting actions from meetings and discussions</strong> – eg agreeing and allocating actions; documenting progress of tasks</li>
+                    <li><strong>motivating and leading the team</strong> – eg having positive discussions about objectives; listening to feedback from the team and agreeing the way forward; organising team-building activities</li>
+                    <li><strong>sharing accurate information</strong> – eg gathering accurate data from different people and departments; producing accurate leaflets, documents and websites for customers and others</li>
+                    <li><strong>delegating tasks and implementing plans</strong> – eg passing responsibility to team members and moving a project forward</li>
+                    <li><strong>providing training and materials</strong> – eg running training sessions; developing clear training materials and guides</li>
+                    <li><strong>creating and delivering reports</strong> – eg progress reviews sent by email; developing reports or presentations</li>
+                    <li><strong>dealing with customers, visitors and the general public</strong> – eg answering questions and giving out information via email; dealing with written complaints</li>
+                    <li><strong>giving and receiving feedback</strong> – eg giving praise and support in a documented staff appraisal interview</li>
+                    <li><strong>solving problems</strong> – eg developing business plans or reports; negotiating for more time or resources</li>
+                    <li><strong>liaising with managers and directors</strong> – eg reporting administration issues; revising organisational objectives; documenting problems and making decisions about changes and progress.</li>
+                </ul>
+
+                <p data-animate="4">An organisation is a complex entity, with many stakeholders, each having an interest in how it is run. Effective communication is vital to make sure that information is shared correctly and that working relationships are positive and well-supported. All stakeholders need to feel that their contributions and opinions matter, and good communication enables information and views to be documented, reported, presented, audited and shared.</p>
+
+                <p data-animate="4">Select the book below to learn more.</p>
+
+                <p data-animate="4"><strong>Written communication skills</strong></p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

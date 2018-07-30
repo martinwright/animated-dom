@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Communicating effectively</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">10 Types of questions</h3>
+
+                <img src="./images/t3-u1/effective_feedback_08.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Questioning focuses the attention on the other person and selecting the right questioning technique for the situation can help us to collect the right information. We can ask, for example:</p>
+
+                <ul data-animate="5">
+                    <li>closed</li>
+                    <li>open</li>
+                    <li>probing</li>
+                    <li>leading and</li>
+                    <li>rhetorical questions.</li>
+                </ul>
+
+                <p data-animate="4">It is important to use the right type of question for the individual and the situation to be able to obtain useful and relevant information. The following table suggests strengths and weaknesses for these different types of questions:</p>
+
+                <div class="table--1fr-2fr-2fr-2fr">
+                    <div class="cell"><h3>Question type</h3></div>
+                    <div class="cell"><h3>Description and examples</h3></div>
+                    <div class="cell"><h3>Strengths</h3></div>
+                    <div class="cell"><h3>Weaknesses</h3></div>
+
+                    <div class="cell"><h4>Closed</h4></div>
+                    <div class="cell">Answered with a 'yes' or 'no' – eg Do you work in the customer service department?</div>
+                    <div class="cell">Useful when no further detail is required</div>
+                    <div class="cell"><p>Answers do not give many clues or depth</p>
+                        <p>The other person is not encouraged to give more detail or express an opinion</p></div>
+
+                    <div class="cell"><h4>Open</h4></div>
+                    <div class="cell">They cannot be answered with a 'yes' or 'no' – eg Tell me about your recent experience in customer service</div>
+                    <div class="cell">Useful when we want the other person to reflect and come up with their own ideas, opinions and suggestions</div>
+                    <div class="cell">Answers can be long and may not be focused</div>
+
+                    <div class="cell"><h4>Probing</h4></div>
+                    <div class="cell">Secondary questions that take the enquiry further – eg Following on from that point, can you explain why the customer reacted that way?</div>
+                    <div class="cell"><p>Useful to find out more detail and explore in depth</p>
+                        <p>Useful in investigations</p></div>
+                    <div class="cell">Can be intimidating and uncomfortable for the other person, especially if they cannot answer</div>
+
+                    <div class="cell"><h4>Leading</h4></div>
+                    <div class="cell"><p>A question that prompts and suggests the desired answer – eg So, you’re saying that you did remember to lock the door when you left?</p>
+                        <p>And weren’t you going to tell us about next week’s meeting?</p></div>
+                    <div class="cell"><p>Useful when we want to guide people to reflect on a particular problem or aspect</p>
+                        <p>Useful when reminding someone else to say something, maybe in a meeting or presentation</p></div>
+                    <div class="cell">The questioner may be reinforcing their own opinion, and may not get an accurate response or agreement</div>
+
+                    <div class="cell"><h4>Rhetorical</h4></div>
+                    <div class="cell">When no actual answer is needed – eg You’re happy to go ahead with this, aren’t you?</div>
+                    <div class="cell">Useful to help the other person to reflect and maybe commit to a course of action</div>
+                    <div class="cell">The other person can feel pressurised</div>
+
+                </div>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

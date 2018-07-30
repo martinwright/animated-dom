@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Communicating effectively</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">3 Structured formal meetings</h3>
+
+                <img src="./images/t3-u1/verbal_communication_03.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Structured formal meetings can be for small or large numbers of people, generally following an established pattern where participants discuss the points listed on an agreed
+                    <strong>agenda</strong>, with someone taking and circulating the <strong>minutes</strong> (careful notes about the decisions and points made).</p>
+
+                <p data-animate="4">Examples of when structured formal meetings are used include, for example:</p>
+
+                <ul data-animate="5">
+                    <li>a small annual general meeting (AGM) for a family company with four directors</li>
+                    <li>a large AGM with thousands of shareholders of a public limited company (PLC)</li>
+                    <li>delivering formal reports to key stakeholders – eg giving a quarterly report to trustees of a charity</li>
+                    <li>formal disciplinary procedures – eg delivering a final written warning to an employee</li>
+                    <li>when accurate records of decisions are needed for legal and compliance reasons – eg if there is a health and safety investigation after an accident; if there is a financial investigation by auditors or a government department</li>
+                    <li>when members need to vote on an issue – eg shareholders of a small property company voting to increase funds to cover maintenance of shared areas.</li>
+                </ul>
+
+                <p data-animate="4">Structured meetings show that the organisation is taking matters seriously and treating people and subjects with respect. The notes taken during these meetings can be used to show compliance with rules, regulations and legislation.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

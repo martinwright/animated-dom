@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Interpersonal skills</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">4 During call tasks</h3>
+
+                <div class="table--fr1-fr1-noflex">
+
+                    <div class="cell"><h3 style="justify-content: flex-start">Transferring to another department</h3></div>
+                    <div class="cell"><p>When you can’t deal with the request you may need to transfer to others:</p>
+                        <ul>
+                            <li>Ask permission.</li>
+                            <li>Give the caller the name of the person you are transferring the call to.</li>
+                            <li>Explain why.</li>
+                            <li>Give the phone number.</li>
+                            <li>Transfer the call.</li>
+                        </ul>
+                    </div>
+
+                    <div class="cell"><h3 style="justify-content: flex-start">Taking a message</h3></div>
+                    <div class="cell"><p>Get the correct and complete information:</p>
+                        <ul>
+                            <li>Write down information including the date and time.</li>
+                            <li>Ask the caller to spell names accurately – people will be impressed you want to get the details correct.</li>
+                            <li>What does the caller want? A return call? The caller will call back?</li>
+                            <li>When is a good time to call?</li>
+                            <li>Ask if you can help.</li>
+                        </ul>
+                        <p>By ensuring that you have the complete information about the purpose of the call, you can pass on an accurate message, reducing the need for return calls to ask for additional information.</p></div>
+
+                    <div class="cell"><h3 style="justify-content: flex-start">Putting customer on hold</h3></div>
+                    <div class="cell"><p>Keep the caller up to date:</p>
+                        <ul>
+                            <li>explain why</li>
+                            <li>ask permission</li>
+                            <li>put caller on hold</li>
+                            <li>thank the caller for holding.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
