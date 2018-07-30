@@ -107,8 +107,6 @@ h1.main-heading {
   }
 }
 
-
-
 //-------------//
 //// NAV-BAR ////
 //-------------//
@@ -173,91 +171,10 @@ button {
 
 .hidden {
   //display: none;
-  visibility: hidden;
+  //visibility: hidden;
 }
 
 
-
-.container {
-  padding: 0.5rem;
-  //max-width: 1024px;
-  overflow: hidden;
-
-  ul li + li {
-    padding-top: 1em;
-  }
-
-  margin-top: 4rem;
-  margin-bottom: 3rem;
-
-  @include for-size(tablet-landscape-up) {
-    padding: 1em;
-  }
-}
-
-.container--layout-1 {
-  @extend .container;
-}
-
-.container__background {
-  position: absolute;
-  //display: flex;
-  //justify-content: center;
-  //text-align: center;
-  width: 100%;
-  opacity: 0.8;
-  padding: 0;
-  margin: 0;
-  //z-index: -1;
-  @include for-size(tablet-landscape-up) {
-    //width: 85%;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-.container--layout-2 {
-  @extend .container;
-
-  display: grid;
-  grid-gap: .5em;
-
-  /*grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto;
-  grid-template-areas: "h h h h h h" "g g g g g g" "m m m m m m" "t t t t t t";*/
-
-  @include for-size(tablet-landscape-up) {
-    line-height: 1.3;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-areas: "h h h h h g g g g g g g" "m m m m m t t t t t t t";
-  }
-}
-
-
-//--------------------------//
-////// ARTICLE or Slide //////
-//// One or more section  ////
-//--------------------------//
-.article {
-  position: relative;
-}
-
-.article--50-50 {
-  @extend .article;
-  @include for-size(tablet-landscape-up) {
-    line-height: 1.3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-main.container__main {
-  grid-area: m;
-  position: relative;
-
-
-}
 
 .container {
   padding: 0.5rem;
@@ -288,6 +205,69 @@ main.container__main {
 .container--layout-1 {
   @extend .container;
 }
+
+.container--layout-2 {
+  @extend .container;
+
+  display: grid;
+  grid-gap: .5em;
+
+  /*grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "h h h h h h" "g g g g g g" "m m m m m m" "t t t t t t";*/
+
+  @include for-size(tablet-landscape-up) {
+    line-height: 1.3;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: "h h h h h g g g g g g g" "m m m m m t t t t t t t";
+  }
+}
+
+.container__background {
+  position: absolute;
+  //display: flex;
+  //justify-content: center;
+  //text-align: center;
+  width: 100%;
+  opacity: 0.8;
+  padding: 0;
+  margin: 0;
+  //z-index: -1;
+  @include for-size(tablet-landscape-up) {
+    //width: 85%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+//--------------------------//
+////// ARTICLE or Slide //////
+//// One or more section  ////
+//--------------------------//
+.article {
+  position: relative;
+}
+
+.article--50-50 {
+  @extend .article;
+  @include for-size(tablet-landscape-up) {
+    line-height: 1.3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+main.container__main {
+  grid-area: m;
+  position: relative;
+
+
+}
+
+
 
 //--------------------------//
 ////////// SECTION ///////////
