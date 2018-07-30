@@ -285,6 +285,12 @@ section>h4 {
   color: #028b50;
 }
 
+section>h5 {
+font-size: 1em;
+  margin-top: 2em;
+  margin-bottom: 0.1em;
+}
+
 
 //-------------//
 ///// SHAPES ////
@@ -425,6 +431,47 @@ div.table--1fr-1fr-1fr-1fr-1fr {
 
 
     border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+    display: flex;
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 80%;
+  }
+  h4 {
+    transform: rotate(180deg); /* spin to orient as required */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 80%;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    margin: 0;
+    line-height: 1.1;
+
+    div & {
+      //background-color: red;
+    }
+  }
+}
+
+
+div.table--1fr-1fr-1fr-1fr-1fr-1fr-1fr {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+
+  .cell {
+    border-bottom: solid 1px #4c4c4c;
+    border-right: solid 1px #4c4c4c;
     padding: .5rem;
     display: flex;
   }
