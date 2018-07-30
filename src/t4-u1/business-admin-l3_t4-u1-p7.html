@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Personal organisation</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">3 The importance of planning ahead</h3>
+
+                <img src="../images/t4-u1/different_approaches_01_d.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">A key management function is to be able to plan. Plans often need to be adjusted as a result of unexpected changes, however strong planning provides everybody with a detailed understanding of what needs to be done, by whom and by when. This also applies to planning our workload.</p>
+
+                <p data-animate="4">Therefore planning ahead helps to:</p>
+
+                <ul data-animate="5">
+                    <li><strong>Set direction</strong> – starting in a clear and well-defined direction means that when changes do occur they are managed to maintain the progress to the agreed goal.</li>
+                    <li><strong>Allocate resources</strong> – means that people, time and budgets can be allocated to support necessary work and avoid any shortfalls.</li>
+                    <li><strong>Manage risks</strong> – careful planning will highlight any potential risks to work in the future allowing for contingency planning.</li>
+                    <li><strong>Create certainty</strong> – planning ahead will create a sense of certainty about what is to be done in order to achieve goals and objectives.</li>
+                    <li><strong>Improve decision making</strong> – knowing the direction aimed for provides a clear context to any decisions made in the future.</li>
+                    <li><strong>Promote efficient working</strong> – will highlight potential areas of waste and can therefore promote a more efficient approach to work that focuses on the key tasks.</li>
+                    <li><strong>Ensure tasks are prioritised</strong> – tasks can be evaluated against the direction that has been set and then properly prioritised based on their level of importance.</li>
+                    <li><strong>Avoid diary and scheduling conflicts</strong> – taking into account activities already in the diary means that new plans can be made to avoid conflicts.</li>
+                    <li><strong>Support the delivery of projects</strong> – often ‘one-off’ projects have to be integrated into normal operations – planning ahead will ensure that where projects have to be accommodated, this can be done without upsetting normal operations.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

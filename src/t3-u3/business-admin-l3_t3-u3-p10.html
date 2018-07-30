@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Digital and social media</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">6 Negative aspects of social media</h3>
+
+                <img src="./images/t3-u3/negative_aspects_01.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">As with any popular medium, negative aspects can arise from its use. These can be categorised under the following headings:</p>
+
+                <ul data-animate="5">
+                    <li><strong>Behavioural problems</strong> – eg cyberbullying and lost work time.</li>
+                    <li><strong>Privacy issues</strong> – eg social media posts can be used in criminal cases or divorce hearings.</li>
+                    <li><strong>Defamation</strong> – damage to personal or organisational reputations through careless posting of information or comments.</li>
+                    <li><strong>Criminal use</strong> – eg hacking and phishing for personal details, robbery due to posting that you will be on holiday and copyright infringement due to sharing unauthorised content.</li>
+                    <li><strong>Spread of misinformation</strong> – eg in 2015, in a bid to be the first with the news, a BBC employee mistakenly reported the death of the Queen on Twitter, causing a stir and resulting in disciplinary proceedings against her.</li>
+                    <li><strong>Inappropriate exposure</strong> – of children to inappropriate content, grooming and sexting.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
