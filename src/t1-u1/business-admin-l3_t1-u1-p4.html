@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Professionalism</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">1 First impressions</h2>
+
+                <p data-animate="3">It’s always important to represent your organisation in a positive manner.</p>
+
+                <p data-animate="4">What would your impression be of the individuals below?</p>
+
+                <img src="../images/t1/first_impressions.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="5"/>
+
+                <p data-animate="6">Some key things to remember:</p>
+
+                <ul data-animate="7">
+                    <li>appearance</li>
+                    <li>tone of voice</li>
+                    <li>choice of words</li>
+                    <li>posture.</li>
+                </ul>
+
+                <h2 class="sub-heading"
+                    data-animate="8">First impression – 7 SECONDS!</h2>
+
+                <p data-animate="9">You are evaluated by everyone every day – apparently your first impression is made in only seven seconds.</p>
+
+
+                <ul data-animate="10">
+                    <li>People look at your visual and behavioural appearance from head to toe.</li>
+                    <li>They even listen to your tone of voice.</li>
+                    <li>Demeanour, mannerisms, body language and even grooming are assessed.</li>
+                    <li>You make a lasting impression instantly.</li>
+                    <li>You may impress some and disenchant others.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

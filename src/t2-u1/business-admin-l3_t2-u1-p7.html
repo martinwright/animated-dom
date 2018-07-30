@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Personal development planning</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+
+                <h2 class="sub-heading"
+                    data-animate="2">Key stages in development planning</h2>
+
+                <h3 class="sub-heading"
+                    data-animate="2">1 Analyse current skills, knowledge and experience</h3>
+
+                <img src="../images/t2/key_stages_01.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">To identify your professional development needs you need to carry out a learning needs analysis. This can be done by preparing, for example, a
+                    <strong>skills audit</strong>.</p>
+
+                <p data-animate="4">Performing a skills audit is a simple process to identify strengths and weaknesses. A list is made of the skills that are relevant to your role, and your ability is assessed. Some organisations add an extra column to show the actions to be taken.</p>
+
+                <p data-animate="4">Business administrators need a wide range of skills and knowledge to be able to perform functions effectively. Although performing a skills audit is a relatively simple process, it can cover many aspects of a role and needs to be organised in a logical manner, to make it useful.</p>
+
+                <p data-animate="4">As there can be so many skills and factors to evaluate, it can help to have a graded scale to rate current ability – eg 1 = excellent, 5 = poor. The rating can be from your self-evaluation or be done with someone else, such as your line manager.</p>
+
+                <p data-animate="4">When deciding which skills to audit, the details can be taken from a variety of sources – eg national occupational standards; essential standards; professional bodies’ standards; qualification specifications from awarding bodies; job descriptions.</p>
+
+                <p data-animate="4">Here are a couple of samples of skills audits:</p>
+
+                <div class="table--fr1-fr1-fr1">
+                    <div class="cell"><h3>Skills required</h3></div>
+                    <div class="cell"><h3>Current ability rating (scale of 1–5)</h3></div>
+                    <div class="cell"><h3>Action to be taken</h3></div>
+
+                    <div class="cell">Computing skills</div>
+                    <div class="cell">4</div>
+                    <div class="cell">To further learn and undertake short courses (if possible) to enhance computing skills</div>
+
+                    <div class="cell">Leadership skills</div>
+                    <div class="cell">4</div>
+                    <div class="cell">To get more involved in communities/societies</div>
+
+                    <div class="cell">Numeracy skills</div>
+                    <div class="cell">4</div>
+                    <div class="cell">To discuss with lecturers and fellow students on ways to improve</div>
+
+                    <div class="cell">Revision and exam techniques</div>
+                    <div class="cell">3</div>
+                    <div class="cell">To learn from lecturers and fellow students about revision techniques and how to answer exam questions as the method here is slightly different compared to Malaysia</div>
+
+                    <div class="cell">Time-management and organisation skills</div>
+                    <div class="cell">2</div>
+                    <div class="cell">To jot down all activities that need to be done accordingly in a diary</div>
+
+                    <div class="cell">Oral presentation skills</div>
+                    <div class="cell">4</div>
+                    <div class="cell">Learn to fully utilise and use other presentation aids that are available besides PowerPoint</div>
+
+                    <div class="cell">Critical analysis and logical argument skills</div>
+                    <div class="cell">3</div>
+                    <div class="cell">To get more involved in group discussions</div>
+
+                    <div class="cell">Selecting and prioritising information when reading</div>
+                    <div class="cell">3</div>
+                    <div class="cell">Listen to lectures and identify which are the important points</div>
+
+                    <div class="cell">Referencing skills</div>
+                    <div class="cell">3</div>
+                    <div class="cell">To write more essays and get used to the Harvard referencing style</div>
+
+                    <div class="cell">Summarising skills</div>
+                    <div class="cell">4</div>
+                    <div class="cell">Need to fully understand the topic</div>
+
+                    <div class="cell">Developing appropriate written style</div>
+                    <div class="cell">3</div>
+                    <div class="cell">Read more articles and journals to get used to the writing style so that it can be implemented</div>
+
+                    <div class="cell">Search skills (library and e-resources)</div>
+                    <div class="cell">3</div>
+                    <div class="cell">Fully utilise the library's ‘resources and support’ section in SUSSED</div>
+
+                    <div class="cell">Utilising and comprehension</div>
+                    <div class="cell">5</div>
+                    <div class="cell">Listen more to the way people converse with each other and try and pick up whatever necessary</div>
+
+                    <div class="cell">Proofreading and editing</div>
+                    <div class="cell">3</div>
+                    <div class="cell">To take another look at the work</div>
+                </div>
+
+                <div class="table--fr7-fr1-fr1-fr1-fr1-fr1" style="margin-top:2em">
+                    <div class="cell"><h3>Personal audit questionnaire</h3></div>
+                    <div class="cell"><h3>1</h3></div>
+                    <div class="cell"><h3>2</h3></div>
+                    <div class="cell"><h3>3</h3></div>
+                    <div class="cell"><h3>4</h3></div>
+                    <div class="cell"><h3>5</h3></div>
+
+                    <div class="cell">1) I lack confidence in expressing my needs</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">2) I mange time effectively</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">3) I am not confident to lead</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+
+                    <div class="cell">4) I cope with stress well</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">5) I manage a number of tasks well</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">6) I do not have confidence to give presentations</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">7) I am patient when imparting skills and knowledge to others</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">8) I do not have confidence to influence others</div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+
+                    <div class="cell">9) I motivate people to perform</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">10) I do not direct people to do tasks</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">X</div>
+                    <div class="cell"></div>
+                </div>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

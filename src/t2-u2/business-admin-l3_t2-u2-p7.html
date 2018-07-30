@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Coaching and mentoring</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">2 Additional benefits of coaching and mentoring</h3>
+
+                <img src="./images/t2-u2/coaching_mentoring_book_02.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Managerial isolation – occurs when people in management positions seem to lose access to open conversation when issues become problematic.</p>
+
+                <p data-animate="4">Additional benefits include:</p>
+
+                <ul data-animate="5">
+                    <li>strengthening of performance</li>
+                    <li>increased self-awareness and trust</li>
+                    <li>identification and application of strengths</li>
+                    <li>increasing the effectiveness of relationships with clients and colleagues</li>
+                    <li>organisation of responsibilities</li>
+                    <li>more effective prioritisation</li>
+                    <li>having a ‘safe environment’ to offload</li>
+                    <li>achieving balance between work and personal life</li>
+                    <li>overcoming barriers to progress</li>
+                    <li>increasing accountability for implementing changes</li>
+                    <li>increasing the likelihood and pace of reaching desired goals</li>
+                    <li>increased sense of loyalty and commitment</li>
+                    <li>to attract new employees</li>
+                    <li>improved retention of employees</li>
+                    <li>a proactive option to improve performance before incurring the costs associated with managing poor performance and poor performers</li>
+                    <li>issues can be addressed in a non-threatening way</li>
+                    <li>improved decision making</li>
+                    <li>discovering hidden potential and achieving it quickly</li>
+                    <li>providing stimulation for employees</li>
+                    <li>gaining fresh and broader perspectives</li>
+                    <li>increasing the range of options in finding solutions, leading to better decision making</li>
+                    <li>improved efficiency</li>
+                    <li>increased profitability.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

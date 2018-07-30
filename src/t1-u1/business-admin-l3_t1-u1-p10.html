@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Professionalism</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">7 Standards of presentation</h2>
+
+                <img src="../images/t1/professionalism_02.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">In any organisation there will be standards of dress for staff. Organisations may issue uniforms that must be worn or expect staff to dress in a certain way.</p>
+
+                <p data-animate="5">Uniforms are important and are provided for several reasons:</p>
+
+                <ul data-animate="6">
+                    <li>to promote a professional image of both staff and the organisation</li>
+                    <li>to ensure consistency in staff dress</li>
+                    <li>to let the customer know who the employee is, who they are working for and who to approach.</li>
+                </ul>
+
+                <p data-animate="7">Even if a uniform is not offered, organisations will expect staff to wear a certain standard of dress, eg a style that reflects the image of the organisation.</p>
+
+                <p data-animate="8">Personal presentation is important, as a tidy, well-presented employee is likely to be confident and proud of their work.</p>
+
+                <p data-animate="9">You will also be representing your employer and so will be presenting a professional image. You may also be one of the first people the customer sees and so offer the first impression of the organisation, which must of course be a positive one.</p>
+
+                <p data-animate="10">Presentation also covers a tidy work area.</p>
+
+                <div class="table--fr1-fr1">
+                    <div class="cell"><h3>Do</h3></div>
+                    <div class="cell"><h3>Don't</h3></div>
+
+                    <div class="cell">Neatly trimmed, clean nails</div>
+                    <div class="cell">Novelty tie</div>
+
+                    <div class="cell">Dark socks</div>
+                    <div class="cell">Mobile phone on</div>
+
+                    <div class="cell">Limited aftershave</div>
+                    <div class="cell">Sportswear</div>
+
+                    <div class="cell">Little or no jewellery</div>
+                    <div class="cell">Visible tattoos</div>
+
+                    <div class="cell">Discreet belt</div>
+                    <div class="cell">Novelty socks</div>
+
+                    <div class="cell">Conservative tie</div>
+                    <div class="cell">Chewing gum</div>
+
+                    <div class="cell">Clean, smart, professional shoes</div>
+                    <div class="cell">Baseball cap</div>
+
+                    <div class="cell">White or co-ordinating pale coloured long-sleeve shirt</div>
+                    <div class="cell">Personal stereo on</div>
+
+                    <div class="cell">Light natural-looking make-up</div>
+                    <div class="cell">Dirty shoes</div>
+
+                    <div class="cell">Light natural-looking make-up</div>
+                    <div class="cell">Visible body piercing</div>
+
+                    <div class="cell">Matched light hosiery</div>
+                    <div class="cell">Jeans</div>
+
+                    <div class="cell">Manicured nails</div>
+                    <div class="cell">Excessive jewellery</div>
+
+                    <div class="cell">Solid colour, conservative skirt or trouser suit</div>
+                    <div class="cell">Excessive make-up</div>
+
+                    <div class="cell">Co-ordinating blouse or skirt</div>
+                    <div class="cell">Visible underwear</div>
+
+                    <div class="cell">Neat professional hairstyle</div>
+                    <div class="cell">Hipster trousers</div>
+
+                    <div class="cell">Conservative low-heeled shoes</div>
+                    <div class="cell">Low-cut tops</div>
+
+                    <div class="cell">Portfolio or briefcase</div>
+                    <div class="cell">Sandals or dirty shoes</div>
+
+                    <div class="cell">Limited perfume</div>
+                    <div class="cell"></div>
+
+                    <div class="cell">Simple jewellery</div>
+                    <div class="cell"></div>
+
+                </div>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

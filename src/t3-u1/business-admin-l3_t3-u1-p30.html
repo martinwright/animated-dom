@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Communicating effectively</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">11 Strengths and weaknesses of forms of verbal communication</h3>
+
+                <img src="./images/t3-u1/effective_feedback_06.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">As we have seen, different forms of verbal communication have different strengths and weaknesses, and we need to consider the contents of our message and our audience.</p>
+
+                <p data-animate="4">Effective verbal communication relies on good speaking skills and good listening skills. The speaker has a responsibility to deliver messages that are clear, straightforward, appropriate and easy to understand.</p>
+
+                <p data-animate="4">The listener has the responsibility to concentrate and ask questions if they do not understand.</p>
+
+                <p data-animate="4">This table has some notes about some of the strengths and weaknesses of verbal forms of communication:</p>
+
+                <div class="table--fr1-fr1-fr1-noflex">
+                    <div class="cell"><h3>Form:</h3></div>
+                    <div class="cell"><h3>Strengths:</h3></div>
+                    <div class="cell"><h3>Weaknesses:</h3></div>
+
+                    <div class="cell"><h4>Face-to-face conversations with colleagues, customers, public</h4></div>
+                    <div class="cell"><p>Instant response</p>
+                        <p>Formal or informal</p>
+                        <p>Can be confidential if in private</p>
+                        <p>Can give good impression of self and organisation</p>
+                        <p>Focus on the information tends to be good</p>
+                        <p>People feel valued and respected when their views are taken seriously</p></div>
+                    <div class="cell"><p>Not always possible to be in private</p>
+                        <p>Timing can be tricky to arrange for formal meetings</p>
+                        <p>Can be time-consuming</p>
+                        <p>Limit to the number of people who can join in</p></div>
+
+                    <div class="cell"><h4>Telephone conversations</h4></div>
+                    <div class="cell"><p>Can discuss, make decisions and arrangements in ‘real time’</p>
+                        <p>People can be accessible – especially using mobiles</p>
+                        <p>Texts can be left for someone to read when they are ready – eg after a meeting or shift</p></div>
+                    <div class="cell"><p>Not always possible to get through to speak to the person needed</p>
+                        <p>Leaving messages is not always effective</p>
+                        <p>Texts do not always go through as expected, and might not be read quickly</p></div>
+
+                    <div class="cell"><h4>Structured formal meetings</h4></div>
+                    <div class="cell"><p>Predictable structure with agenda and minutes</p>
+                        <p>Formal records kept and circulated</p>
+                        <p>Useful for legal and compliance reasons</p></div>
+                    <div class="cell"><p>Format can seem quite laboured and ‘stuffy’, using complicated language and procedures</p>
+                        <p>People will not always understand what is happening if the language and format are too difficult</p></div>
+
+                    <div class="cell"><h4>Training sessions and lectures</h4></div>
+                    <div class="cell"><p>Sessions can be lively and engaging for learners and tutors</p>
+                        <p>Instant response to queries and feedback</p>
+                        <p>Can be adapted to any subject, any learner and any situation</p>
+                        <p>Demonstrations help people to learn physical skills</p>
+                        <p>Mentoring and shadowing are personal and show current skills</p></div>
+                    <div class="cell"><p>Some people will not understand if the language or delivery are not clear and easy to follow</p>
+                        <p>People learn at different paces – some will find sessions too quick, others too slow</p>
+                        <p>Limits to the numbers that can be trained in each session</p>
+                        <p>Training DVDs and videos can leave learners uninterested and unable to engage</p></div>
+
+                    <div class="cell"><h4>Using the Internet</h4></div>
+                    <div class="cell"><p>Relatively inexpensive to run once set up</p>
+                        <p>Can have international access</p>
+                        <p>Instant, real-time communication</p>
+                        <p>Staff can have their own mobile devices – eg phones or tablets</p></div>
+                    <div class="cell"><p>Staff can feel as though they are never off duty</p>
+                        <p>Some areas around the country do not have good mobile coverage</p>
+                        <p>Signals can be disrupted or disconnected at times</p></div>
+
+                    <div class="cell"><h4>Announcements</h4></div>
+                    <div class="cell"><p>Good for delivering a clear message</p>
+                        <p>Reduced chance of interruptions</p>
+                        <p>The speaker usually has control</p></div>
+                    <div class="cell">A one-way process – there usually needs to be an opportunity for people to ask questions or give feedback</div>
+
+                    <div class="cell"><h4>Presentations</h4></div>
+                    <div class="cell"><p>Can be lively and engaging</p>
+                        <p>Formal or informal</p>
+                        <p>Can use pictures and other graphics to deliver messages</p>
+                        <p>Can be adapted to any topic, audience or situation</p>
+                        <p>Can be delivered with or without electronic support</p></div>
+                    <div class="cell"><p>Can be time-consuming to prepare, deliver and attend</p>
+                        <p>Not always relevant to people invited to attend</p>
+                        <p>Pace and level of information can be hard to judge – flexible approach needed</p></div>
+
+                </div>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

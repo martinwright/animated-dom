@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Interpersonal skills</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">Introduction</h2>
+
+                <img src="./images/t3-u2/effective_teamwork_01_a.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">Traditionally, we think of customers as people who buy products or services from a shop or business. However, within business administration customers are rarely people who are purchasing – instead they are more usually accessing the services available to them (external customers) or could be from another team or department within your organisation (internal customer). These are the customers you will most likely deal with on a day-to-day basis.</p>
+
+                <p data-animate="4">Understanding the difference between an external and an internal customer can be challenging at first. Customers are more than just those that use your organisation – they are also your work colleagues, who deserve equal politeness and a high level of customer service.</p>
+
+                <p data-animate="4">Effective interpersonal and influencing skills are important in providing customer service to help you obtain and provide information clearly. Delivering excellent customer service is vital to the continued success of your organisation, and you will be involved in this aspect of the organisation's role whatever your particular role and responsibilities are.</p>
+
+                <p data-animate="4">In this section you will learn how the following can affect whether you meet the needs and expectations of your internal and external customers:</p>
+
+                <ul data-animate="5">
+                    <li>tone of voice</li>
+                    <li>body language</li>
+                    <li>active listening skills</li>
+                    <li>questioning skills.</li>
+                </ul>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

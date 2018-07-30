@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Coaching and mentoring</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h2 class="sub-heading"
+                    data-animate="2">Mentoring</h2>
+
+                <img src="./images/t2-u2/coaching_mentoring_01_a.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">The term mentoring comes from the Greek myth where Odysseus entrusts the education of his son to his friend Mentor. </p>
+
+                <p data-animate="4">In the workplace, mentoring describes the situation where more experienced colleagues support the development of junior or inexperienced staff to improve their knowledge and understanding of the work or workplace.</p>
+
+                <p data-animate="4">The characteristics of mentoring include:</p>
+
+                <ul data-animate="5">
+                    <li>It is essentially a supportive form of development.</li>
+                    <li>It focuses on helping an individual manage their career and improve their skills.</li>
+                    <li>Personal issues can be discussed more productively unlike in coaching where the emphasis is usually on performance at work.</li>
+                    <li>Mentoring activities have both organisational and individual goals.</li>
+                </ul>
+
+                <p data-animate="4">Mentoring is applicable in several different contexts including:</p>
+
+                <ul data-animate="5">
+                    <li>situational mentoring: help just when you need it</li>
+                    <li>informal mentoring: nurtured over time</li>
+                    <li>formal mentoring: with a defined beginning and end.</li>
+                </ul>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
