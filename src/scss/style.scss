@@ -128,9 +128,11 @@ nav.nav-bar {
 .nav-bar__container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 100%;
   padding: 0 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+
   //height: 2em;
 }
 button {
@@ -160,21 +162,17 @@ button {
   color: #451b04;
 }
 
-
-
-/*.wrapper {
+.wrapper {
   display: flex;
   justify-content: normal;
   margin-top: 4rem;
   margin-bottom: 3rem;
-}*/
+}
 
 .hidden {
   //display: none;
   //visibility: hidden;
 }
-
-
 
 .container {
   padding: 0.5rem;
