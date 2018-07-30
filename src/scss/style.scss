@@ -219,6 +219,18 @@ main.container__main {
     padding-top: 1em;
   }
 
+  ol li + li {
+    padding-top: 1em;
+  }
+
+  ol ul {
+    padding-top: 0.8em;
+  }
+
+  ul ul {
+    padding-top: 1em;
+  }
+
   @include for-size(tablet-landscape-up) {
     padding: 1em;
   }
@@ -380,6 +392,61 @@ div.table {
 
 }
 
+div.table--1fr-2fr-2fr-2fr {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+
+  .cell {
+    &:nth-child(even) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+
+    p {
+      margin:0 0 0.8em 0;
+
+      &:last-child {
+        margin:0;
+      }
+
+    }
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 80%;
+  }
+  h4 {
+    transform: rotate(180deg); /* spin to orient as required */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 80%;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    margin: 0;
+    line-height: 1.1;
+
+    div & {
+      //background-color: red;
+    }
+  }
+
+}
+
 div.table--fr1-fr1 {
   display: grid;
   grid-gap: 0;
@@ -391,6 +458,42 @@ div.table--fr1-fr1 {
       background-color: #afeaf5;
     }
     &:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+    display: flex;
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .span-item1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    color: #0000fe;
+  }
+
+}
+
+div.table--fr1-fr5-fr1-fr5 {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 5fr 1fr 5fr;
+  font-size: 90%;
+
+  .cell {
+    &:nth-child(odd) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(even) {
       background-color: #fff;
     }
 
@@ -533,6 +636,42 @@ div.table--fr1-fr1-span {
 
 }
 
+div.table--fr1 {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr;
+  font-size: 90%;
+
+  .cell {
+    &:nth-child(odd) {
+      background-color: #afeaf5;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+
+    p {
+      margin:0 0 0.8em 0;
+
+      &:last-child {
+        margin:0;
+      }
+
+    }
+
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+
+}
+
 div.table--fr1-fr1-fr1 {
   display: grid;
   grid-gap: 0;
@@ -557,6 +696,104 @@ div.table--fr1-fr1-fr1 {
     border-bottom: solid 1px #4c4c4c;
     padding: .5rem;
     display: flex;
+  }
+
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+
+}
+
+div.table--fr1-fr1-fr1-noflex {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 90%;
+
+  .cell {
+    &:nth-child(3n+3) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(3n-1) {
+      background-color: #ffffff;
+    }
+    &:nth-child(3n+1) {
+      background-color: #afeaf5;
+    }
+
+    &:nth-child(3n+5) {
+      justify-content: center;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+
+    p {
+      margin:0 0 0.8em 0;
+
+      &:last-child {
+        margin:0;
+      }
+
+    }
+  }
+
+  h3, h4 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+  h4 {
+    justify-content: flex-start;
+  }
+
+  ul {
+    margin:0;
+    padding-left: 1em;
+  }
+
+}
+
+div.table--fr2-fr4-fr6 {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 90%;
+
+  .cell {
+    &:nth-child(3n+3) {
+      background-color: #afeaf5;
+    }
+    &:nth-child(3n-1) {
+      background-color: #ffffff;
+    }
+    &:nth-child(3n+1) {
+      background-color: #afeaf5;
+    }
+
+    &:nth-child(3n+5) {
+      justify-content: center;
+    }
+
+    border-bottom: solid 1px #4c4c4c;
+    padding: .5rem;
+
+    p {
+      margin:0 0 0.8em 0;
+
+      &:last-child {
+        margin:0;
+      }
+
+    }
   }
 
   h3 {
