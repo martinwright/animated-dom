@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Business process improvements</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Pareto principle</h4>
+
+                <img src="../images/t7-u2/time_management_book_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>The Pareto principle, also known as the 80-20 rule, is a method that can be used to assess efforts
+                    and activities to see which are the most productive. This can be applied to time management and many
+                    other aspects of business – eg planning, decision making, leadership or project management.</p>
+
+                <p>General examples of the Pareto principle include:</p>
+
+                <ul>
+                    <li>80% of output is produced from 20% of input
+                    </li>
+
+                    <li>80% of results come from 20% of effort
+                    </li>
+
+                    <li>80% of profit comes from 20% of the product range.
+                    </li>
+                </ul>
+
+                <p>By documenting processes and procedures in an activity log, we should be able to identify the most
+                    productive 20% of effort that produces 80% of our output. By standing back and analysing this, we
+                    can plan how to improve our general output and efficiency.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Business process improvements</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Business development tools</h3>
+
+                <h4 data-animate="2">1 Business development tools</h4>
+
+                <img src="../images/t7-u2/process_improvement_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>To undertake successful business growth and development, an organisation will need to understand its
+                    market or industry position. Therefore when developing business and organisations, it is necessary
+                    to analyse and assess the internal and external factors that have an impact on the organisation in
+                    its current position. This information provides a baseline on which the decision-makers can base
+                    their plans and measure the organisation’s progress and success. The organisation’s internal factors
+                    can include:</p>
+
+                <ul>
+                    <li><strong>physical resources</strong><br>eg materials, equipment, machinery or premises
+                    </li>
+
+                    <li><strong>human resources</strong><br>eg team members, team leaders, supervisors, managers and
+                        directors; employees, contractors, agency workers or volunteers
+                    </li>
+
+                    <li><strong>time</strong><br>eg working hours, opening hours, delivery times or production deadlines
+                    </li>
+
+                    <li><strong>stakeholders</strong><br>eg shareholders or investors.
+                    </li>
+                </ul>
+
+                <p>The organisation’s external factors can include:</p>
+
+                <ul>
+                    <li><strong>external customers</strong><br>eg people who use or buy the products or services
+                    </li>
+
+                    <li><strong>suppliers</strong><br>eg offering different products or delivery options
+                    </li>
+
+                    <li><strong>world prices</strong><br>eg in oil, metal or minerals
+                    </li>
+
+                    <li><strong>external stakeholders</strong><br>eg government agencies or local councils
+                    </li>
+
+                    <li><strong>competitors</strong><br>eg offering different technology, working practices, customer
+                        service or special offers.
+                    </li>
+
+                    <li><strong>legislation and regulations</strong><br>eg about waste management or landfill tax
+                    </li>
+
+                    <li><strong>natural occurrences</strong><br>eg floods or high winds that affect supplies and
+                        deliveries
+                    </li>
+
+                    <li><strong>economic, political or social issues</strong><br>eg inflation and personal spending
+                        power, military action abroad, taxation and fiscal policies.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

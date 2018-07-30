@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing resources</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Timescales</h4>
+
+                <img src="../images/t7-u1/about_teamwork_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>When implementing team and organisational plans, managers need to establish timescales for achieving
+                    objectives. They need to establish, for example:</p>
+
+                <ul>
+                    <li><strong>the deadlines for the team objectives</strong><br>aligned with the organisational
+                        targets
+                    </li>
+
+                    <li><strong>critical review points</strong><br>eg at the beginning and end of each stage; when one
+                        part of a project cannot start until a previous task has been finished
+                    </li>
+
+                    <li><strong>lead times</strong><br>eg the time taken to arrange resupply of materials; the notice
+                        needed to find, recruit and train more staff
+                    </li>
+
+                    <li><strong>the time taken for each small task as part of the overall activity</strong><br>eg how
+                        long each dish takes to prepare in a restaurant kitchen
+                    </li>
+
+                    <li><strong>availability of staff</strong><br>eg work schedules allocating enough time for new
+                        tasks; holidays and other commitments; time spent on other tasks; necessary training time
+                    </li>
+
+                    <li><strong>any restrictions on physical resources</strong><br>eg rental periods for specialist
+                        equipment; time limits on the use of buildings; noise or emissions limits
+                    </li>
+
+                    <li><strong>their own time commitment to each objective or task</strong><br>allowing time for each
+                        priority, activity, task and objective in the manager’s own work schedule
+                    </li>
+
+                    <li><strong>the amount of flexibility in timings</strong><br>so that managers can reprioritise and
+                        change targets when necessary
+                    </li>
+
+                    <li><strong>the time available for unforeseen problems and delays</strong><br>eg time allowed in
+                        contingency planning for activities that overrun.
+                    </li>
+                </ul>
+
+                <p>Timings need to be structured enough to enable accurate and realistic planning, and flexible enough
+                    to cope with problems and unforeseen circumstances.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

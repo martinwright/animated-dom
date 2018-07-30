@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Business process improvements</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">7 Root cause analysis (RCA)</h4>
+
+                <img src="../images/t7-u2/business_development_book1_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>This is a technique that finds possible solutions by identifying the root causes of problems. It is
+                    also referred to as <strong>cause and effect analysis</strong> and makes use of <strong>fishbone
+                        diagrams</strong>, <strong>herringbone diagrams</strong> and <strong>Ishikawa diagrams</strong>.
+                </p>
+
+                <p>The technique can be used to:</p>
+
+                <ul>
+                    <li>discover the root cause of problems, especially for complicated problems
+                    </li>
+
+                    <li>reveal ‘bottlenecks’ in a process that causes delays
+                    </li>
+
+                    <li>identify where and why a process does not work
+                    </li>
+
+                    <li>improve quality control.
+                    </li>
+                </ul>
+
+                <p>There are four steps to using this technique:</p>
+
+                <ul>
+                    <li><strong>Step 1</strong><br>identify the problem – eg what the problem is, who is involved, where
+                        and when it occurs.
+                    </li>
+
+                    <li><strong>Step 2</strong><br>work out the major factors involved – eg systems or methods,
+                        equipment/machinery, materials, management issues, people or environment.
+                    </li>
+
+                    <li><strong>Step 3</strong><br>identify possible causes of the problem – eg brainstorm the different
+                        factors in step 2 and add them to the diagram.
+                    </li>
+
+                    <li><strong>Step 4</strong><br>analyse the diagram – eg look at all the possible causes and identify
+                        problem areas that have a knock-on effect on other issues – work to identify the <strong>root
+                            causes</strong>.
+                    </li>
+                </ul>
+
+                <p>An example fishbone diagram:</p>
+
+                <img src="../images/t7-u2/fishbone_diagram_PIVOT.png"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>In this example, we can see that:</p>
+
+                <ul>
+                    <li>traffic problems caused delays
+                    </li>
+
+                    <li>volunteers worked from notes and maps given out at their 9am briefing
+                    </li>
+
+                    <li>the manager was informed about the change of venue at 10am via email.
+                    </li>
+                </ul>
+
+                <p>As in our example above, the ‘bones’ can be labelled with any factor relevant to the problem. However
+                    the typical factors used when working through a fishbone diagram would be:</p>
+
+                <ul>
+                    <li><strong>Materials</strong><br>is the problem caused by any of the materials used, eg defective,
+                        delivered late, wrong type?
+                    </li>
+
+                    <li><strong>Machinery</strong><br>is the problem caused by machinery issues, eg
+                        unreliable/broken/out of date?
+                    </li>
+
+                    <li><strong>Methods</strong><br>is the problem caused by working methods, eg out of date processes?
+                    </li>
+
+                    <li><strong>Management issues</strong><br>is the problem caused by, eg budget restrictions,
+                        headcount limits?
+                    </li>
+
+                    <li><strong>People</strong><br>is the problem being caused by staff, eg those new to the role, or
+                        who need more training or support?
+                    </li>
+
+                    <li><strong>Environment</strong><br>is the problem being caused by the physical environment, eg too
+                        hot or cold, heating/lighting, space or location?
+                    </li>
+                </ul>
+
+                <p>Once the problem has been clearly defined and the nature, scope and impact is understood, we can then
+                    work through these factors to identify the root cause, or in more complex problems, causes.</p>
+
+                <p>There can also be links between the different factors and causes. For example, there may be a process
+                    that is out of date and is contributing to the problem. Another cause might be that people are not
+                    working effectively because they are following an out of date process. This may mean a solution that
+                    both updates the process and trains the relevant people to use the new process.</p>
+
+                <p>Where there are a number of issues, it may be because there is more than one definable problem. For
+                    example, customers might be calling to complain about a defective product, however the customer
+                    relationship management (CRM) system keeps crashing which is resulting in further complaints.
+                    Following an investigation it may be found that there is a specific problem with a product which is
+                    causing the customer complaints in the first place. However, it may also be that there is a problem
+                    with the CRM system. In this case there are two definable problems – firstly with the defective
+                    product and secondly with the CRM system.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
