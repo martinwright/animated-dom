@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Change in the workplace</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Clear and supportive leadership</h4>
+
+                <img src="../images/t9-u1/techniques_to_support_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Good leadership is about influencing people. Leaders are innovative and they inspire and motivate
+                    others to give their help and support to accomplish a common task, or develop new ideas. They focus
+                    on people and set new directions for a group to follow.</p>
+
+                <p>For example, the manager needs to:</p>
+                <ul>
+                    <li>discuss concerns and plans openly
+                    </li>
+
+                    <li>listen to people’s comments and feedback
+                    </li>
+
+                    <li>show good leadership skills – eg to inspire trust and commitment from the team; to ‘sell’ the
+                        new ideas to the team and the rest of the organisation
+                    </li>
+
+                    <li>encourage team members to use their own leadership skills – eg letting them lead the group to
+                        probe deeply into ideas; delegating part of the development of new ideas or a mini project
+                    </li>
+
+                    <li>offer mentoring, coaching or counselling – eg when people are having particular difficulties.
+                    </li>
+                </ul>
+
+                <p>Managers also need to facilitate and organise adequate resources to support team members and others, including:</p>
+
+                <ul>
+                    <li>human resources – eg recruiting new staff; retraining existing staff; changing shift patterns;
+                        arranging for agency staff to cover absences and short-term staff shortages
+                    </li>
+
+                    <li>physical resources – eg setting up and monitoring the supply chain of materials; arranging
+                        premises; reorganising current workplace accommodation; implementing quality controls;
+                        developing health and safety risk assessments for new procedures
+                    </li>
+
+                    <li>finance – eg setting and monitoring budgets; reviewing costs.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

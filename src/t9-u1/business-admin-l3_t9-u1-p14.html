@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Change in the workplace</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Using processes to generate ideas and suggestions</h4>
+
+                <img src="../images/t9-u1/techniques_to_support_05.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Within the organisational structure, and to support the leadership skills of the manager, there need
+                    to be processes to reward and recognise ideas and suggestions from the team. Team members and others
+                    are more likely to participate and share their ideas if:</p>
+
+                <ul>
+                    <li>they feel that they are being taken seriously
+                    </li>
+
+                    <li>credit is given to the appropriate individuals and teams
+                    </li>
+
+                    <li>ideas are praised, even if they are not fully used
+                    </li>
+
+                    <li>they are encouraged to think of even more ideas, and to keep an eye out for other opportunities
+                        for development and improvement.
+                    </li>
+                </ul>
+
+                <p>People need to feel confident that their ideas will be valued. They need to feel secure and know that
+                    their careers are not at risk if they voice concerns or come up with new and innovative ideas.</p>
+
+                <p>Achieving an open and safe environment could include, for example:</p>
+
+                <ul>
+                    <li>a structure to channel ideas – eg workable ideas that come from mind-map exercises, spidergrams,
+                        lists and brainstorming at team meetings, that the manager then takes to senior management
+                    </li>
+
+                    <li>suggestion boxes and incentive schemes – as an alternative route to the decision-makers
+                    </li>
+
+                    <li>organisational support of open discussions – eg to challenge assumptions, break old thought
+                        patterns and consider new ideas
+                    </li>
+
+                    <li>procedures and policies to review problems from other perspectives – eg customer surveys, secret
+                        shoppers, employee appraisals, social media and customer forums
+                    </li>
+
+                    <li>organisational support of innovation – to encourage people to create a positive atmosphere and
+                        think of new ideas
+                    </li>
+
+                    <li>allowing time for the research and development of ideas.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

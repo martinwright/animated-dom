@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Change in the workplace</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Beckhard and Harris’ formula for change</h4>
+
+                <img src="../images/t9-u1/planning_techniques_05.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Another model for change management is Beckhard and Harris’ formula for change. Based on theories
+                    developed by David Gleicher, the formula was refined by Kathleen Dannemiller. The model describes
+                    the conditions that are necessary for change to occur and is based on a formula:</p>
+
+                <p><strong>D x V x F > R</strong></p>
+
+                <p><strong>D</strong> – dissatisfaction with the status quo.</p>
+
+                <p><strong>V</strong> – vision of a positive future state.</p>
+
+                <p><strong>F</strong> – first steps to achieve the vision.</p>
+
+                <p><strong>R</strong> – resistance to change.</p>
+
+                <p><strong>D</strong>, <strong>V</strong> and <strong>F</strong> need to be bigger than the resistance to
+                change (<strong>R</strong>) for change to occur.</p>
+
+                <p>This relatively simple formula helps managers to support teams through change by focusing on what is
+                    needed to overcome resistance to change. They can encourage the team to:</p>
+
+                <ul>
+                    <li>appreciate dissatisfaction with the organisation’s present ways of operating
+                    </li>
+
+                    <li>build on a positive vision for the future
+                    </li>
+
+                    <li>take the first steps to improve and change.
+                    </li>
+                </ul>
+
+                <p>Once these have been consolidated, team members should feel more supported and confident about moving
+                    forward and will reduce their resistance to change.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
