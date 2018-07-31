@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Teams or groups?</h4>
+
+                <img src="../images/t5-u1/team_characteristics_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>It is important to understand how <strong>teams differ from groups</strong> in the workplace:</p>
+
+                <ul>
+                    <li>A group is a collection of individuals who co-ordinate their individual efforts.
+                    </li>
+
+                    <li>A team is a group of people who have a common team purpose and challenging goals. Team members
+                        are mutually committed to the goals and to each other.
+                    </li>
+                </ul>
+
+                <p>The difference between a group and a team can be illustrated by looking at the examples of a high
+                    street bank cashier and a surgeon. Both employees have a clear focus on what is required of them but
+                    there are several important differences in the way that they work.</p>
+
+                <p>The cashier that serves you when you are paying in money is one of a number of cashiers. The role of
+                    each cashier is to provide customers with a number of services. Each cashier, however, works
+                    independently. The cashiers in a bank could be described as a work <strong>group.</strong></p>
+
+                <p>However, a surgeon works as part of a team in the operating theatre. The surgeon, the anaesthetist,
+                    the nurse and the junior doctor all have distinct roles. These roles are complementary and
+                    interdependant. The surgical procedure could not be undertaken effectively without each member of
+                    the <strong>team</strong> co-operating fully.</p>
+
+                <p>Organisations use both groups and teams depending on the work to be undertaken.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

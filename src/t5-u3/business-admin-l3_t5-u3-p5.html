@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing challenging conversations</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Managing challenging conversations</h3>
+
+                <h4 data-animate="2">1 Preparing for challenging conversations</h4>
+
+                <img src="../images/t5-u3/managing_challenging_conversations_book_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>When preparing for communication in the workplace, however challenging the conversation might be, it
+                    is important to remember to follow the organisation’s policies and procedures, as well as the
+                    requirements of different regulations and legislation, such as:</p>
+
+                <ul>
+                    <li><strong>the Equality Act 2010</strong><br>to avoid discrimination based on any of the protected
+                        characteristics
+                    </li>
+
+                    <li><strong>the Data Protection Act 1998</strong><br>to maintain confidentiality</li>
+
+                    <li><strong>consumer-related legislation</strong><br>to protect the customers’ rights</li>
+
+                    <li><strong>the Health and Safety at Work Act 1974</strong><br>to minimise the risk of harm to staff
+                        members, customers and others.
+                    </li>
+                </ul>
+
+                <p>There are several things that we can do to prepare for challenging conversations that can help to
+                    reduce tension, minimise the risk of harm and increase the chances of a successful outcome. For
+                    example, we can prepare by:</p>
+
+                <ul>
+                    <li><strong>having clear objectives</strong></li>
+
+                    <li><strong>considering the available facts and options in advance</strong><br>including what could
+                        happen during and after the conversation
+                    </li>
+
+                    <li><strong>planning the environment and approach</strong><br>as far as possible.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

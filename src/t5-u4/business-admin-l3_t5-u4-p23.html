@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Customer and stakeholder relationship management</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Create a partnership strategy</h4>
+
+                <img src="../images/t5-u4/approaches_customer_book4_05.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Of course there will potentially be a lot of detail to discuss as the work between the partners
+                    unfolds. However as part of the initial discussions and groundwork, it is worth getting some
+                    headline points down that:</p>
+
+                <ul>
+                    <li>describe what the partnership is for
+                    </li>
+
+                    <li>outline how the parties will work together
+                    </li>
+
+                    <li>lay out the shared values between the partnering organisations
+                    </li>
+
+                    <li>establish the benefits of the partnership for the partners
+                    </li>
+
+                    <li>provide guidance on how the partners will work together.
+                    </li>
+                </ul>
+
+                <p>This does not have to be a long document and could be more of a summary of key points that all the
+                    partners agree on, providing guidance on the relationship and how it will be conducted.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

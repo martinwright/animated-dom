@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">12 Set clear goals, objectives and levels of responsibility</h4>
+
+                <img src="../images/t5-u1/effective_delegation_book3_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Before delegating and assigning tasks to the person or team taking them on, there needs to be clarity
+                    as to the specific nature of the work, boundaries, reporting and measures of success. This is where
+                    an explanation of the task is required – set and agree goals, objectives, and levels of
+                    responsibility and reporting.</p>
+
+                <h5 data-animate="2">Explaining the task</h5>
+
+                <p>The level of explanation required will depend on the experience and skill level of the person or team
+                    the task is being delegated to. Hersey and Blanchard’s model shows there will be people who will
+                    need a lot of explanation about tasks (D1) and those who, once told what the task is, can just get
+                    on with it (D4) and variations in between (D2 and D3).</p>
+
+                <p>Explaining what needs to be done can be a barrier to effective delegation due to the time this can
+                    take. Poor or incomplete explanations will create problems further upstream, whereas if someone who
+                    already knows what to do receives too much explanation it may erode trust.</p>
+
+                <p>Hersey and Blanchard’s model provides us with guidance in this area in terms of matching the needs of
+                    the individual in relation to the task with the amount of control to be retained by the
+                    manager. </p>
+
+                <h5 data-animate="2">Setting and agreeing goals and objectives</h5>
+
+                <p>This step is to ensure all parties to the delegation understand what is expected and how the
+                    objectives and goals will be measured. SMART provides us with a useful framework for this. In this
+                    context we can use SMART as follows:</p>
+
+                <ul>
+                    <li><strong>Specific</strong><br>ensure that the details of the task are understood, what it aims to
+                        do, clarify what the key actions are and review any deadlines and milestones already
+                        established.
+                    </li>
+
+                    <li><strong>Measurable</strong><br>by being specific about the task, the ways it will be measured
+                        will become evident.
+                    </li>
+
+                    <li><strong>Agreed</strong><br>both the manager and the delegatee agree on the task, its content and
+                        what is to be done.
+                    </li>
+
+                    <li><strong>Realistic</strong><br>this is a useful checkpoint to ensure that all parties believe the
+                        person or team being delegated to have the control and influence needed to get the work done, as
+                        well as the required skills and competencies.
+                    </li>
+
+                    <li><strong>Time-bound</strong><br>this includes the specific dates for milestones and deadlines
+                        agreed for completion of the task.
+                    </li>
+                </ul>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

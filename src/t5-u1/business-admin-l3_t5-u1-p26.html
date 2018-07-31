@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">11 Competency and skills matrix</h4>
+
+                <img src="../images/t5-u1/effective_delegation_book3_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>We may already keep an ongoing competency and skills matrix for our team or we may create one
+                    specifically for the task. This will need to match the requirements with the skills, competencies
+                    and expertise areas within the team. A skills matrix might look like this:</p>
+
+                <div class="table">
+                    <div class="cell"><h3>Name</h3></div>
+                    <div class="cell"><h3>Project management</h3></div>
+                    <div class="cell"><h3>Presentations</h3></div>
+                    <div class="cell"><h3>Running meetings</h3></div>
+                    <div class="cell"><h3>Budgets</h3></div>
+                    <div class="cell"><h3>Report writing</h3></div>
+                    <div class="cell"><h3>Health and safety</h3></div>
+
+                    <div class="cell">Tyler</div>
+                    <div class="cell">✓</div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+
+                    <div class="cell">Sarah</div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+
+                    <div class="cell">Paul</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+
+                    <div class="cell">Monika</div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+                    <div class="cell">✓</div>
+
+                    <div class="cell">Faisal</div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell"></div>
+                    <div class="cell">✓</div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+
+
+                <p>If a task for delegation requires presenting and report writing, for example, it is simple to
+                    identify where the strengths in the team lie. However, it may also be an opportunity for another
+                    member of the team to develop their presentation skills. Whilst they may not have a lot of
+                    experience in this area they may relish the opportunity to develop their expertise.</p>
+
+                <p><strong>Outcomes from appraisals</strong> – annual appraisals, if used effectively, offer a great
+                    opportunity to identify areas where team members may want to take on more responsibility or new
+                    tasks. The nature of appraisals can uncover a team member’s willingness to develop, to take on new
+                    projects.</p>
+
+                <p><strong>One to ones and job chats</strong> – although less formal than appraisals, these are still an
+                    opportunity for a manager and team member to discuss new tasks and potential delegation
+                    opportunities.</p>
+
+                <p><strong>Actions from personal development plans</strong> – these may identify new skills or areas of
+                    learning that a team member has undertaken. They may be keen to have the opportunity to put these
+                    new skills into practice.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

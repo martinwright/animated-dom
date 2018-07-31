@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Working as a team</h3>
+
+                <h4 data-animate="2">1 Teamwork</h4>
+
+                <img src="../images/t5-u1/about_teamwork_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Teamwork provides organisations with the ability to complete tasks and projects quicker and more efficiently than with individuals working alone. Co-operation on various tasks reduces workloads for all employees by enabling them to share responsibilities or ideas. Teamwork also reduces the work pressure on every worker, which allows him/her to be thorough in the completion of the assigned roles. In sharing ideas or responsibilities, every employee should have a role that suits their specialisation.</p>
+
+                <p>A team is at their most effective when:</p>
+
+                <ul>
+                    <li>everyone understands the common goals that they are trying to achieve and appreciates that the
+                        team's aims are more important than the individual's
+                    </li>
+
+                    <li>everyone has a role in the team and each member understands their role and the skills of others
+                    </li>
+
+                    <li>everyone is relaxed in the company of the team members and offers support when it is needed
+                    </li>
+
+                    <li>there is trust, respect and open communication
+                    </li>
+
+                    <li>everyone shares responsibility for the work.
+                    </li>
+                </ul>
+
+                <p>All teams must work to achieve the organisation's objectives, so every member of staff needs to:</p>
+
+                <ul>
+                    <li>be aware of the organisation's objectives
+                    </li>
+
+                    <li>understand how the work of the team helps to achieve them
+                    </li>
+
+                    <li>understand how their own role helps to achieve them.
+                    </li>
+                </ul>
+
+                <p>Every team will have its own targets and objectives that feed into the overall organisation.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
