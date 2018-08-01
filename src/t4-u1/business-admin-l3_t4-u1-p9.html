@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Personal organisation</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">6 Working to organisational and team priorities</h3>
+
+                <img src="../images/t4-u1/planning_monitoring_work_book_04.jpg"
+                     alt=""
+                     style="width:80%;"
+                     data-animate="3"/>
+
+                <p data-animate="4">If you are a team leader, you will be responsible for setting team priorities and for working in accordance with the priorities defined by the organisation. Prioritising is a skill that helps define what we should be or need to be focusing on. Moreover, concentrating on the priorities will help ensure that you are working as effectively as possible. Senior managers who will expect your team’s activities to accord with their priorities, set the organisational level priorities.</p>
+
+                <p data-animate="4">Day-to-day priorities are often set by team leaders and usually relate directly to decisions around what needs to be done (objectives or targets), by whom and with what resources, when the work is to be completed by, in what order it is to be completed and any cost or time implications.</p>
+
+                <p data-animate="4">As new deadlines, goals and tasks come up, team leaders need to re-assess the team’s priorities. Setting goals is not enough as there will regularly be tasks that require immediate attention. Results will be hard to achieve if the team lacks direction on what they should focus on. In deciding what individual team members’ priorities should be, strengths and interests should also be taken into account.</p>
+
+                <p data-animate="4">Whilst it is not always easy or possible to task employees with work that really interests them, it is certainly likely that they will do their best work if they are working on tasks that stimulate and interest them.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

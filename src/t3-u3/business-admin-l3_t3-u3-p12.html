@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="1">Digital and social media</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-1" class="article--fr1-fr1">
+
+            <section>
+                <h3 class="sub-heading"
+                    data-animate="2">1 Types of organisations using social media</h3>
+
+                <p data-animate="4">This video looks at how businesses can use social media:</p>
+
+                <p data-animate="4"><a href="https://youtu.be/rKtijMCqmvM">https://youtu.be/rKtijMCqmvM</a></p>
+
+                <p data-animate="4">Social media is used for different purposes by different types of organisations. Many organisations use social media as a marketing tool:</p>
+
+                <ul data-animate="5">
+                    <li>to increase website traffic</li>
+                    <li>to build conversations with existing and new customers</li>
+                    <li>to raise brand awareness</li>
+                    <li>to create a brand identity and positive brand association</li>
+                    <li>to improve communication and interaction with key audiences.</li>
+                </ul>
+
+                <p data-animate="4">But social media is not just about marketing. The majority of consumers now go to social media for customer service and they expect fast response times and 24/7 support.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
