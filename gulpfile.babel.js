@@ -21,8 +21,126 @@ import fs from 'fs';
 const merge = require('merge-stream');
 const packConfig = require('./pack-config.json');
 const watch = require('gulp-watch');
+const concat = require('gulp-concat');
+const dom = require("gulp-jsdom");
+const cheerio = require('gulp-cheerio');
+const htmlPartial = require('gulp-html-partial')
+
 //gulp.watch = watch;
 //const gaze = require('gaze');
+
+
+
+gulp.task('dev', ['copy-index', 'build-html-combined', 'partials'], () => {
+    browserSync({
+        'server': {
+            baseDir: "build/"
+        },
+        startPath: "/t10-u1/business-admin-l3_t10-u1-p1.html",
+        'snippetOptions': {
+            'rule': {
+                'match': /<\/body>/i,
+                'fn': (snippet) => snippet
+            }
+        }
+    });
+
+    gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
+    gulp.watch('src/js/**/*.js', ['scripts']);
+    gulp.watch(['src/images/**/*', '!src/images/_supplied/*'], ['images']);
+    gulp.watch('src/**/*.{html, json}', ['html'], browserSync.reload);
+});
+
+
+
+
+/* ----------------- */
+/* Combine HTMLs
+/* ----------------- */
+gulp.task('build-html-combined', () => {
+
+    let jsBundleStreams = [],
+        courseName = packConfig.course;
+    packConfig.packs.map(pack => {
+        let dir = 'build/' + pack.topic + '-' + pack.unit;
+
+        return gulp.src(dir+'/*.html')
+
+            .pipe(cheerio(function ($, file) {
+                // Each file will be run through cheerio and each corresponding `$` will be passed here.
+                // `file` is the gulp file object
+                // Make all h1 tags uppercase
+                $('script').replaceWith('');
+                $('head').replaceWith('');
+                $('.header').replaceWith('');
+                $('.nav-bar').replaceWith('');
+                $.html();
+            }))
+
+            //.pipe(concat('index.html'))
+
+            /*.pipe(dom(function(document){
+                let wrapper =  document.getElementsByClassName("wrapper");
+                console.log('build-html-combined :', wrapper);
+                return wrapper;
+            }))*/
+            //.pipe(replace(/<!DOCTYPE html>/g, ''))
+            .pipe(concat('combined.html'))
+            .pipe(gulp.dest(dir));
+    });
+
+    return merge(jsBundleStreams);
+
+});
+
+/* ----------------- */
+/* Copy Index partial
+/* ----------------- */
+gulp.task('copy-index', () => {
+
+    packConfig.packs.map(pack => {
+        let dir = 'build/' + pack.topic + '-' + pack.unit;
+
+        return gulp.src('src/partials/index.html')
+            .pipe(newer(dir))
+            .pipe(gulp.dest(dir));
+    });
+});
+
+/* ----------------- */
+/* Copy Index partial
+/* ----------------- */
+gulp.task('partials', () => {
+
+    let jsBundleStreams = []
+
+    packConfig.packs.map(pack => {
+        let dir = 'build/' + pack.topic + '-' + pack.unit;
+
+
+        jsBundleStreams.push(gulp.src(dir+'/index.html')
+            .pipe(htmlPartial({
+                basePath: dir+'/'
+            }))
+            .pipe(plumber({errorHandler: onError}))
+            .pipe(gulp.dest('build'))
+            .pipe(notify({message: `js copy task complete`})));
+
+        return merge(jsBundleStreams);
+        /*gulp.src([dir+'/index.html'])
+            .pipe(htmlPartial({
+                basePath: dir+'/'
+            }))
+            .pipe(gulp.dest('build'));*/
+
+    });
+});
+
+
+
+
+
+
 
 /* ----------------- */
 /* Build Packs
