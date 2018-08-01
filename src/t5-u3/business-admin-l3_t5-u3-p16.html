@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing challenging conversations</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 The value of constructive feedback</h4>
+
+                <img src="../images/t5-u3/effective_feedback_12.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>For feedback to be useful, it needs to be <strong>constructive, not
+                    destructive</strong>. If there are problems and weaknesses that need to be addressed, people need to
+                    be advised of these tactfully and shown how to improve.</p>
+
+                <p>People can see feedback as criticism and may react negatively. They can become defensive, make
+                    excuses, choose not to hear or take the feedback seriously. Destructive or negative feedback that is
+                    handled poorly can leave people feeling bad, hopeless and worthless. They can feel they are left
+                    without any useful information or ideas on which they can build.</p>
+
+                <p>However, people often respond positively to constructive feedback because it concentrates on, for
+                    example:</p>
+
+                <ul>
+                    <li><strong>the individual’s needs and abilities</strong><br>increasing self-awareness and offering
+                        them what they need to develop in the workplace
+                    </li>
+
+                    <li><strong>positive messages</strong><br>providing useful information about performance and how to
+                        develop
+                    </li>
+
+                    <li><strong>being supportive</strong><br>offering encouragement and developing working relationships
+                        and trust
+                    </li>
+
+                    <li><strong>behaviours and actions rather than the person</strong><br>making the issues less
+                        personal
+                    </li>
+
+                    <li><strong>helping people to feel valued, respected and engaged in the workplace processes</strong><br>to
+                        aid team-building and motivation.
+                    </li>
+                </ul>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

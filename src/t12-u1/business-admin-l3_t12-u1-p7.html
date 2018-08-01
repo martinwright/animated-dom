@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">3 Other key documentation</h4>
+
+                <img src="../images/t12-u1/how_to_chair_meetings_book_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Other key documentation needed will depend on the purpose of the meeting, who is attending and the
+                    format that is most suitable for sharing information.</p>
+
+                <p>The following table shows examples of documents, types of meetings where they might be used and when
+                    they might be circulated:</p>
+
+                <div class="table">
+                    <div class="cell">Documents:</div>
+                    <div class="cell"><h3>Examples of their purpose:</h3></div>
+                    <div class="cell"><h3>Type of meeting where they might be useful:</h3></div>
+
+                    <div class="cell"><h4>Agenda</h4></div>
+                    <div class="cell">To list the points to be covered during the meeting</div>
+                    <div class="cell">Any meeting, especially formal meetings or if several people are expected to attend</div>
+
+                    <div class="cell"><h4>Minutes</h4></div>
+                    <div class="cell">Detailed notes that need to be agreed at formal meetings</div>
+                    <div class="cell">Meetings between directors, trustees or shareholders, or when there is a statutory
+                        or regulatory requirement to log and approve the minutes
+                    </div>
+
+                    <div class="cell"><h4>Briefing notes or handouts</h4></div>
+                    <div class="cell">Detailed information that people need to read before or after the meeting – eg
+                        about new products and services
+                    </div>
+                    <div class="cell">Any meeting, especially management, sales or training meetings</div>
+
+                    <div class="cell"><h4>Reports – including graphics, pictures, graphs and tables</h4></div>
+                    <div class="cell">Formal or informal reports about any business function – eg sales figures;
+                        production data sheets; organisational operations; market research analysis; feedback
+                        questionnaires and data
+                    </div>
+                    <div class="cell">Any meeting, especially management, videoconferences, sales, team and directors’
+                        meetings
+                    </div>
+
+                    <div class="cell"><h4>Workbooks</h4></div>
+                    <div class="cell">Training materials – eg to give to learners to use during training meetings; as
+                        samples to discuss when planning and organising training with other team leaders or managers
+                    </div>
+                    <div class="cell">Team, training and management meetings</div>
+
+                    <div class="cell"><h4>Forms</h4></div>
+                    <div class="cell">To collect information in a structured manner – eg order forms or application
+                        forms
+                    </div>
+                    <div class="cell">Meetings with customer or suppliers; team meetings for HR or training purposes
+                    </div>
+
+                    <div class="cell"><h4>Contracts or agreements</h4></div>
+                    <div class="cell">Legally binding documents between parties</div>
+                    <div class="cell">Meetings with customers, suppliers or members of staff</div>
+
+                    <div class="cell"><h4>Instructions</h4></div>
+                    <div class="cell">To include within operational procedures and training manuals</div>
+                    <div class="cell">Team or training meetings</div>
+
+                    <div class="cell"><h4>Brochures and other marketing materials</h4></div>
+                    <div class="cell">To provide detailed information about the organisation’s products and services</div>
+                    <div class="cell">Meetings with customers or suppliers</div>
+                </div>
+                
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

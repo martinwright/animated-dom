@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Problem-solving techniques</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h2 data-animate="2">When to escalate problems</h2>
+
+                <img src="../images/t6-u1/managing_challenging_conversations_01_b.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Working within the limits of authority is important, and this applies to managing challenging
+                    conversations as well. We all need to know when to escalate a problem to someone else. The limits of
+                    authority, and how to escalate a problem that is outside those limits, will be set out in, for
+                    example:</p>
+
+                <ul>
+                    <li>the employment contract
+                    </li>
+
+                    <li>the job description
+                    </li>
+
+                    <li>organisational policies, procedures or standards
+                    </li>
+
+                    <li>training materials.
+                    </li>
+                </ul>
+
+                <p>The organisation’s procedures will show when you need to escalate a problem. For example:</p>
+
+                <ul>
+                    <li>when a decision is needed that is outside your limits of authority
+                    </li>
+
+                    <li>when a customer or another stakeholder requests something that is outside the limits of your responsibility
+                    </li>
+
+                    <li>when dealing with complaints or problems that are outside the limits of authority
+                    </li>
+
+                    <li>when you do not have enough knowledge, experience or skill to be able to deal with something on your own
+                    </li>
+
+                    <li>when there is not enough time to deal with something properly
+                    </li>
+
+                    <li>when there is a threat to health and safety – eg if someone becomes aggressive, very upset or
+                        unwell during a challenging conversation.
+                    </li>
+                </ul>
+
+                <p>The job titles can vary, but employment contracts, job descriptions and training materials should
+                    show the chain of command, or management structure, of the organisation. For example:</p>
+
+                <ul>
+                    <li>team members will usually escalate problems to their team leader, or supervisor
+                    </li>
+
+                    <li>team leaders and supervisors might refer a problem to their shift manager or a specialist from
+                        another department – eg quality control team leader for help with product testing
+                    </li>
+
+                    <li>managers will escalate to more senior managers or subject specialists.
+                    </li>
+                </ul>
+
+                <p>Working within the limits of authority and escalating problems when appropriate protects:</p>
+
+                <ul>
+                    <li>the people involved with the conversation – by making sure that they act legally and are fully
+                        supported in their decisions and promises if they have worked in line with the organisational
+                        procedures; by making sure that their legal rights have been observed and respected
+                    </li>
+
+                    <li>the organisation – helping it to maintain a good reputation for being fair and consistent.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

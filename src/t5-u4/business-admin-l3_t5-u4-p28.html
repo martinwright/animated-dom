@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Customer and stakeholder relationship management</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">1 Stakeholder analysis</h4>
+
+                <img src="../images/t5-u4/organisational_culture_book_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>A stakeholder analysis is a useful tool as it helps us to see the people who will affect and
+                    influence a project, and those who will be influenced by it. The analysis helps managers to tailor
+                    their approach to get the most out of each relationship.</p>
+
+                <p>The first step is to work out who stakeholders are, usually during a brainstorming or mind-mapping
+                    session. They can be, for example:</p>
+
+                <ul>
+                    <li>line managers</li>
+
+                    <li>team members</li>
+
+                    <li>colleagues in other departments and teams</li>
+
+                    <li>customers and potential customers</li>
+
+                    <li>shareholders and owners of the organisation</li>
+
+                    <li>suppliers and manufacturers</li>
+
+                    <li>media contacts</li>
+
+                    <li>government departments and agencies</li>
+
+                    <li>lenders and other financial consultants</li>
+
+                    <li>analysts and other outside professionals</li>
+
+                    <li>the general public and local community</li>
+
+                    <li>family and friends.</li>
+                </ul>
+
+                <p>The second step is to prioritise the stakeholders and work out who has the most influence over a
+                    particular project or objective. This enables us to target our attention and tailor our approach.
+                    For example, if we need to find and develop our customer base, the main stakeholders who can
+                    influence the outcome may include established customers, potential customers, media contacts and our
+                    colleagues in the sales and marketing department.</p>
+
+                <p>The third step is to get to know the relevant stakeholders, so that we know exactly how to target our
+                    approach. For example, we need to find out about their motivation, plans, values, contacts and
+                    objectives. This step also helps us to identify the stakeholders who may have a negative effect on
+                    us or our project – eg those who have a conflict of interest or want to undermine others.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

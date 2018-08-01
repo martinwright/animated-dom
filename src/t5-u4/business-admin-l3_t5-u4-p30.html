@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Customer and stakeholder relationship management</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">3 Negotiating with and influencing stakeholders</h4>
+
+                <img src="../images/t5-u4/about_teamwork_03.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>The skills used when negotiating with and influencing stakeholders are often used when solving
+                    problems and managing conflict. They include, for example:</p>
+
+                <ul>
+                    <li><strong>win-win or collaborating</strong><br>confronting and solving a problem by working with the other parties
+                    </li>
+
+                    <li><strong>forcing or competing</strong><br>the individual firmly pursues their own concerns
+                    </li>
+
+                    <li><strong>smoothing or accommodating</strong><br>the individual soothes others and accommodates their views
+                    </li>
+
+                    <li><strong>compromising</strong><br>looking for a mutually acceptable solution that satisfies all parties
+                    </li>
+
+                    <li><strong>withdrawing or avoiding</strong><br>ignoring or stepping away from the conflict.
+                    </li>
+                </ul>
+
+                <p>We need to know the stakeholders well when selecting the most appropriate techniques, and use good
+                    communication skills and emotional intelligence to support and develop the relationships.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

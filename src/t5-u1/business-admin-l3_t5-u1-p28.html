@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">14 Provide appropriate levels of support including reviews</h4>
+
+                <img src="../images/t5-u1/effective_delegation_book3_06.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>For this aspect of the delegation process we can turn to Hersey and Blanchard and their leadership styles for some insight.</p>
+
+                <p><strong>Full delegation</strong> – where a person or team is fully competent (has all the required
+                    knowledge and skill) and committed (they are confident and motivated to do it) this is an
+                    opportunity to fully delegate a task. In this situation, where very little or no explanation is
+                    required by the manager, the responsibility for the task is fully handed over.</p>
+
+                <p><strong>Directing</strong> – at the other end of the spectrum, where tasks are being directed very
+                    closely, this is less about delegating and more about helping people to learn new tasks they
+                    currently cannot do. The levels of directing, telling, explaining, showing, instruction and training
+                    will be high initially to help the person or team learn. Although not strictly delegation at this
+                    point, it is the starting point of delegation to the team member or team.</p>
+
+                <p><strong>Coaching and supporting</strong> – the person or team may have some, or even quite high
+                    levels of competence, but is struggling with commitment, motivation and confidence. The level of
+                    support required would be high in order to help the person or team to overcome this. Initially,
+                    where tasks are discovered to be harder than the delegatee first thought, they will need both
+                    support and some direction. Where the person can do the work, but lacks the confidence to accept
+                    full delegation, the manager would offer support but less direction.</p>
+
+                <p><strong>Monitoring and review</strong> – whether delegating a task completely or partially, there
+                    still needs to be an agreement on how the task will be monitored or reviewed. This might involve:
+                </p>
+
+                <ul>
+                    <li>regular meetings/one to ones</li>
+
+                    <li>written reporting on progress</li>
+
+                    <li>updated project management plans and tracking</li>
+
+                    <li>obtaining feedback from stakeholders.</li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

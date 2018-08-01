@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">3 Tannenbaum and Schmidt</h4>
+
+                <img src="../images/t5-u1/your_organisation_book_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>There are a number of different approaches to delegation and we will explore some of them.</p>
+
+                <p>Tannenbaum and Schmidt’s Continuum of Leadership Behaviour is often referred to as ‘Tells, Sells, Consults and Joins’.</p>
+
+                <p>The continuum provides a wide spectrum of manager behaviours. These start from telling team members
+                    what to do following a decision made by the manager all the way through to allowing team members
+                    full freedom to make decisions.</p>
+
+                <p>The four main leadership and delegation styles covered by the theory are:</p>
+
+                <ul>
+                    <li><strong>Tells</strong><br>the manager identifies a problem, makes decisions unilaterally without
+                        consulting anyone, and without giving much thought to their team members.
+                    </li>
+
+                    <li><strong>Sells</strong><br>the manager maintains control but spends time persuading the team
+                        about the benefits of their decisions.
+                    </li>
+
+                    <li><strong>Consults</strong><br>the manager identifies the problem but does not make the final
+                        decision until the team members have suggested solutions.
+                    </li>
+
+                    <li><strong>Joins</strong><br>the manager defines the limits of the possible decisions that can be
+                        made by the team, then makes the final decisions along with the team members.
+                    </li>
+                </ul>
+
+                <img src="../images/t5-u1/Leading_People_Tannenbaum_and_Schmidt.png"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Successful delegation relies on the manager selecting the approach that is best for the situation. Managers will analyse their team members and the tasks, and want to match their delegation approach to the situation.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

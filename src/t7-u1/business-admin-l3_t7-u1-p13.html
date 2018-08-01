@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing resources</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Types of stock control system</h4>
+
+                <img src="../images/t7-u1/business_development_book1_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>A stock control system should be in place to monitor levels of stock held and ensure there are always
+                    sufficient supplies for effective working.</p>
+
+                <p>A common stock control system is the <strong>fixed order system</strong>, whereby a minimum and
+                    maximum level is set for each item, according to its use, to avoid running out and to avoid
+                    overstocking and thereby tying up finances and risking wastage through spoilage. The re-order point
+                    is reached when stocks fall to the quantity required for normal use during the lead time to
+                    delivery, plus a reserve amount to cater for any unexpected requirements or emergencies such as a
+                    delayed delivery.</p>
+
+                <p>Other systems are:</p>
+
+                <ul>
+                    <li>the <strong>periodic review</strong>, in which all stocks are reviewed and re-ordered periodically
+                    </li>
+
+                    <li>the <strong>just-in-time </strong>system, which allows only enough stock for the next operation
+                        or project.
+                    </li>
+                </ul>
+
+                <p>Provided that the system used is rigorously updated, analysis of the records should also give a good
+                    indication of levels of usage.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Customer and stakeholder relationship management</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h2 data-animate="2">Introduction</h2>
+
+                <img src="../images/t5-u4/approaches_customer_01_a.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>In this section, we are going to look at approaches to customer, partner and stakeholder relationship management. We will consider:</p>
+
+                <ul>
+                    <li>underpinning skills required for business relationships</li>
+
+                    <li>the importance of customer, partner and stakeholder relationships</li>
+
+                    <li>stakeholder mapping</li>
+
+                    <li>building effective business relationships</li>
+
+                    <li>approaches to effective networking</li>
+
+                    <li>creating an environment of trust and respect</li>
+
+                    <li>influence and persuasion.</li>
+                </ul>
+
+                <p>Organisations and individuals have business relationships with many different people and agencies.
+                    They can be customers, partners or other stakeholders.</p>
+
+                <p>Traditionally we think of <strong>customers</strong> as people who buy products or services from a
+                    shop or business. However, customers can be <strong>internal</strong> (other teams and departments
+                    within the organisation) or <strong>external</strong> (individuals or organisations outside the
+                    organisation).</p>
+
+                <p>The term <strong>partner</strong> in the context of being a business partner usually refers to a
+                    professional relationship between two or more organisations whereby each party brings something to
+                    the partnership. This relationship is often long term and the partnering organisations will share
+                    both the rewards and the risks between or among them.</p>
+
+                <p>The term <strong>stakeholders</strong> refers to anyone who has an interest or concern in the
+                    organisation and its activities. They can include employees, suppliers, shareholders, government
+                    agencies, contractors, local residents and customers. Stakeholders are affected by decisions made by
+                    the organisation, so it is important to have good business relationships with them.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

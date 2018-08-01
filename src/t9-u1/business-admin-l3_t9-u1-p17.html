@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Change in the workplace</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Kotter’s 8-stage change model</h4>
+
+                <img src="../images/t9-u1/planning_techniques_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Developed in 1996, the stages of Kotter’s change model are:</p>
+
+                <ol>
+                    <li>Establish a sense of urgency – eg use open and honest dialogue to show what is happening and why change is needed.
+                    </li>
+
+                    <li>Create a guiding coalition – eg convince people that change is necessary; bring together a
+                        strong coalition or team of leaders from different departments to guide the team.
+                    </li>
+
+                    <li>Develop a shared vision – eg link the different ideas and solutions to establish a shared view;
+                        create a strategy.
+                    </li>
+
+                    <li>Communicate the vision – eg communicate the message and vision frequently and efficiently;
+                        address concerns openly; apply the vision to all aspects of the organisation; lead by example.
+                    </li>
+
+                    <li>Empower people to act on the vision – eg remove obstacles that may stop progress; review
+                        structures for change and remove barriers; identify people who are resisting the change and help
+                        them through the process.
+                    </li>
+
+                    <li>Create short-term wins to motivate with success – eg set smaller objectives that can be
+                        achieved, praised and rewarded.
+                    </li>
+
+                    <li>Consolidate and build on the change – eg avoid declaring victory too early; analyse each ‘win’
+                        for success and areas for improvement; set goals to continue the momentum.
+                    </li>
+
+                    <li>Institutionalise the change – eg make the changes part of the core of the organisation; talk
+                        about progress; include changes within training and recruitment practices.
+                    </li>
+                </ol>
+
+                <p>This model breaks down the stages of change into smaller parts, and these can be useful when a
+                    manager is supporting their team. For example, managers can support their team members through a
+                    period of change by:</p>
+
+                <ul>
+                    <li>being honest and open about the reasons for the change
+                    </li>
+
+                    <li>guiding the team and developing a shared strategy
+                    </li>
+
+                    <li>communicating the message and removing obstacles that may stop progress
+                    </li>
+
+                    <li>setting smaller objectives and building on success
+                    </li>
+
+                    <li>making the changes part of everyday life at work.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

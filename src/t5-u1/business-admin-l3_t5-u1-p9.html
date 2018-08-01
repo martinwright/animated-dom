@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">6 Benefits for the organisation</h4>
+
+                <img src="../images/t5-u1/about_teamwork_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>The benefits of effective team working can be considerable for an organisation, for example:</p>
+
+                <ul>
+                    <li><strong>successful achievement of organisational objectives</strong><br>eg to meet or exceed
+                        sales or production targets
+                    </li>
+
+                    <li><strong>access to a wide range of talents and strengths within the workforce</strong><br>eg pooling
+                        different talents that work together well to achieve major goals
+                    </li>
+
+                    <li><strong>good internal communications</strong><br>eg where team members and different teams
+                        communicate well with each other to improve operational productivity
+                    </li>
+
+                    <li><strong>increased efficiency and less duplication of work</strong><br>eg where teams understand
+                        each other’s tasks and needs, then work together to streamline their operations
+                    </li>
+
+                    <li><strong>a more flexible workforce</strong><br>eg where team members can cover for each other and
+                        perform a variety of tasks to maintain consistency and continuity
+                    </li>
+
+                    <li><strong>better relationships with customers</strong><br>eg from offering consistently
+                        high-quality customer service
+                    </li>
+
+                    <li><strong>better relationships with others connected to the organisation</strong><br>eg from
+                        having a reputation for being a reliable, consistent and smooth-running operation.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

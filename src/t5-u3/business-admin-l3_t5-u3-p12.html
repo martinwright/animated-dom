@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing challenging conversations</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Communication styles</h4>
+
+                <img src="../images/t5-u3/communication_methods_styles_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>A manager who is dealing with a complaining customer needs to diffuse the situation, make the
+                    conversation less challenging and maximise the chances of a successful outcome. They may concentrate
+                    on:</p>
+
+                <ul>
+                    <li>having an open and non-confrontational posture
+                    </li>
+
+                    <li>being polite, courteous, patient, apologetic and confident – to inspire trust
+                    </li>
+
+                    <li>listening more than they speak – using active listening skills
+                    </li>
+
+                    <li>using a calm, polite, respectful but confident tone of voice
+                    </li>
+
+                    <li>using open, closed and rhetorical questions – maybe with probing questions if more detail is required.
+                    </li>
+                </ul>
+
+                <p>On the other hand, a manager who is giving a second verbal warning to a team member may choose to use
+                    a more assertive approach. They still need to be polite, but they may also concentrate on:</p>
+
+                <ul>
+                    <li>using dominant body language – such as strong eye contact
+                    </li>
+
+                    <li>good speaking skills with a strong tone of voice
+                    </li>
+
+                    <li>being firm and assertive
+                    </li>
+
+                    <li>expressing their disappointment – that the first verbal warning did not seem to work
+                    </li>
+
+                    <li>a range of question types – including leading and probing questions.
+                    </li>
+                </ul>
+
+                <p>Communication methods and styles need to be calm, fair and professional so that, for example:</p>
+
+                <ul>
+                    <li>everyone concerned can work together afterwards
+                    </li>
+
+                    <li>the challenging conversation is less likely to lead on to further complaints or accusations of harassment and bullying
+                    </li>
+
+                    <li>the good reputation of the individuals and the organisation are maintained.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

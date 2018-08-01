@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Set and monitor budgets</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Using information to set budgets</h4>
+
+                <img src="../images/t11-u1/setting_realistic_budgets_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>When developing a budget, it is often necessary to use estimations. This is because a budget is a
+                    <strong>calculated guess or estimate</strong> and needs to have all of the expected figures in place. If something is
+                    missing, it can put the whole budget out of balance and make it unrealistic and unreliable.</p>
+
+                <p>Some of the estimated figures in a budget will be based on historical data – eg accounts from
+                    previous years; a previous, similar project; research of competitors’ figures; projects run by a
+                    previous employer.</p>
+
+                <p>Some of the estimated figures will be based on current research and data – eg a range of prices found
+                    on the Internet; similar current projects; competitors’ current charges; fixed costs that have
+                    already been calculated; current sales and expenses.</p>
+
+                <p>The remaining figures need to be based on educated and informed estimations, based on good knowledge
+                    of the industry and marketplace, current trends, likely inflation, worldwide and domestic political
+                    events, and any other relevant factors. Examples of estimations could include:</p>
+
+                <ul>
+                    <li>estimated revenue streams based on anticipated sales of a new product – to help calculate a
+                        budget for new raw materials to make the next batch of the product
+                    </li>
+
+                    <li>an estimate of the number of people likely to buy tickets for an event – to help calculate
+                        possible revenue from the project
+                    </li>
+
+                    <li>the estimated exchange rate between sterling and dollars in a year’s time – to help calculate
+                        the value of future exports to the USA
+                    </li>
+
+                    <li>the estimated number of patients likely to use NHS accident and emergency services over the
+                        winter – to help calculate the cost of agency staff who might need to be employed short term
+                    </li>
+
+                    <li>estimated birth rates in ten years’ time – to help to create a long-term budget for primary and
+                        secondary schools
+                    </li>
+
+                    <li>estimates of the amount of stationery that is likely to be used by a department – to assist when
+                        preparing the departmental budget for next year.
+                    </li>
+                </ul>
+
+                <p>These estimations enable people to make reasonably well-informed, calculated guesses, estimates and
+                    decisions about future activities.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

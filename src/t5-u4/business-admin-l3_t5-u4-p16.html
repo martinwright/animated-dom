@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Customer and stakeholder relationship management</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Making the customers’ views count</h4>
+
+                <img src="../images/t5-u4/building_managing_06.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Every customer likes to feel valued and we all like our opinions to matter. We want our complaints to
+                    be taken seriously, and our feedback to be respected and put to good use. When building and
+                    maintaining customer relationships, our approach can be to, for example:</p>
+
+                <ul>
+                    <li><strong>engage in conversation</strong><br>eg whilst serving someone face to face, online or on the telephone
+                    </li>
+
+                    <li><strong>use active listening and questioning skills</strong><br>eg when dealing with feedback from a customer
+                    </li>
+
+                    <li><strong>reassure customers</strong><br>eg if they are making a complaint to show that their views are being taken seriously
+                    </li>
+
+                    <li><strong>ask for feedback and react to it in a genuine way</strong><br>eg showing empathy and taking notes
+                    </li>
+
+                    <li><strong>follow up as promised</strong><br>eg when sourcing products for an established customer or returning a phone call promptly.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Change in the workplace</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">1 Positive impacts for individuals and teams</h4>
+
+                <img src="../images/t9-u1/verbal_communication_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Effects of innovation and change can be positive or negative for team members.</p>
+
+                <p><strong>Positive</strong> impacts for individuals and teams can include, for example:</p>
+
+                <ul>
+                    <li>improved career development opportunities and better job satisfaction
+                    </li>
+
+                    <li>better working practices and better job security
+                    </li>
+
+                    <li>reduced stress
+                    </li>
+
+                    <li>better teamwork.
+                    </li>
+                </ul>
+
+                <h5 data-animate="2">Improved career development opportunities and job satisfaction</h5>
+
+                <p>Change can present opportunities for team members to develop their careers and improve their job
+                    satisfaction – eg chances to take courses in new skills that are needed; from redesigned job
+                    descriptions, tasks and roles. The impact on the team generally can be better morale and higher
+                    levels of achievement.</p>
+
+                <h5 data-animate="2">Better working practices and better job security</h5>
+
+                <p>When the organisation improves and updates its working practices, it generally becomes more
+                    efficient, competitive and profitable. Team members work to more modern standards that have been
+                    redesigned as part of the change process, leading to better efficiency and improved job
+                    security.</p>
+
+                <h5 data-animate="2">Reduced stress and conflict</h5>
+
+                <p>Within the organisation or team, there can be a conflict of interest between different parts of the
+                    workforce who want different things. Also, there can be stress when working practices and resources
+                    need updating – eg when out of date machinery keeps breaking down or causes issues with quality;
+                    when procedures and policies are no longer efficient or fit for purpose. Changes in the team’s
+                    activities and working practices can upset people in the short term, however, stress levels and
+                    conflicts of interest tend to reduce once everything has been explained and updated, and things have
+                    settled down.</p>
+
+                <h5 data-animate="2">Better teamwork</h5>
+
+                <p>Better teamwork is often a result of a group of people coming through a successful period of change
+                    together. The re-evaluation and reorganisation of team members’ tasks and resources can bring the
+                    team together, with a new appreciation of what each person’s contribution is. There is also a sense
+                    of shared pride from being a member of a successful and forward-thinking team or organisation.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

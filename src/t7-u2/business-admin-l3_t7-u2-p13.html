@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Business process improvements</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">9 Just in time (JIT)</h4>
+
+                <img src="../images/t7-u2/business_development_book1_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p><strong>Just in time (JIT)</strong> – simply means supplying what you need only at the time you need
+                    it and not before. Therefore materials and inventories are only used and manufactured as a result of
+                    customer demand – this is also referred to as ‘pull’. Further, in response to this demand, materials
+                    and inventories are only supplied at the point in time and in the quantity they are needed in the
+                    process.</p>
+
+                <p>A manufacturing example would be the delivery of the doors of a car that is being built on a
+                    production line. The doors for the vehicle are supplied to the line only when the car reaches that
+                    part of the process and not before. This requires careful scheduling of manufacture and automation
+                    but means the line keeps moving without delays.</p>
+
+                <p>This also means that inventory and materials will be supplied in sufficient batches for the process.
+                    Therefore the speed at which components are made is carefully managed so that only the required
+                    amount is supplied. </p>
+
+                <p>In order to integrate JIT principles:</p>
+
+                <ul>
+                    <li><strong>Create standardised approaches to work</strong><br> eliminating any variations of
+                        processes and procedures will reduce the chance of defects arising because all workers are doing
+                        a piece of work in the same way.
+                    </li>
+
+                    <li><strong>Use customer demand or ‘pull’ to schedule work</strong><br>avoid work that does not add
+                        value to the direct needs of the customer.
+                    </li>
+                </ul>
+
+                <p><strong>Zero defects</strong> – this aspect of lean can empower employees to stop production in the
+                    event of any defect being detected. Any sub-standard material, process or product is deemed
+                    unacceptable.</p>
+
+                <p>This means getting the work right first time – every time. Errors and defects will, of course, occur,
+                    however creating a culture that continuously strives to reduce and eliminate defects increases
+                    quality throughout.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

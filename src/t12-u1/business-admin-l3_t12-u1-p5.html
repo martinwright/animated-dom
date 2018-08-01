@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organising meetings and events</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">1 Key documentation</h4>
+
+                <img src="../images/t12-u1/how_to_chair_meetings_book_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>When organising a meeting, the person leading it will often generate and circulate <strong>an
+                    agenda</strong> in advance. This is a list of points that they are expecting to cover, in order,
+                    within the time allocated to the meeting.</p>
+
+                <p>The agenda is based on the organisational objectives that the people attending need to discuss, for
+                    example:</p>
+
+                <ul>
+                    <li>data to measure and evaluate progress so far in achieving objectives
+                    </li>
+
+                    <li>issues and problems
+                    </li>
+
+                    <li>possible solutions
+                    </li>
+
+                    <li>forecasts, plans and targets about how to achieve the next set of objectives.
+                    </li>
+                </ul>
+
+                <p>For example, a quarterly meeting between department managers and team leaders to review activities
+                    could result in these items being on the agenda:</p>
+
+                <ol>
+                    <li>Welcome and introduction – from the senior manager holding the meeting.
+                    </li>
+
+                    <li>Minutes from the last meeting – to be agreed and signed off as being accurate.
+                    </li>
+
+                    <li>Apologies – from people who cannot attend the meeting.
+                    </li>
+
+                    <li>Production output for the last two quarters – to compare and analyse.
+                    </li>
+
+                    <li>Problems arising – eg delays, staffing issues or problems with suppliers.
+                    </li>
+
+                    <li>Forecasts and targets for the next quarter.
+                    </li>
+
+                    <li>Anticipated resources needed and potential problems.
+                    </li>
+
+                    <li>Review draft targets for the following year.
+                    </li>
+
+                    <li>Recruitment plans for the following year.
+                    </li>
+
+                    <li>Training courses planned for the following year.
+                    </li>
+
+                    <li>Any other business (AOB) – for people to add things that need to be discussed.
+                    </li>
+                </ol>
+
+                <p>It can be useful to put the expected time next to each item, so that people can see how long has been
+                    allocated. Also, it is helpful to show who will be leading each item. This helps to focus attention
+                    and identify speakers that may not be known to all of the attendees. For example, items one, two,
+                    three and 11 would be led by the chairperson, but items seven and eight about forecasts and targets
+                    would be led by the sales director.</p>
+
+                <p>It is important to have a meeting agenda that addresses the objectives of the organisation so that, for example:</p>
+
+                <ul>
+                    <li><strong>the meeting is focused, structured and has direction</strong><br>to keep things moving
+                        as people can see how much business needs to be covered, and in what order; to avoid people
+                        spending valuable time talking about issues that are nothing to do with the objectives; to keep
+                        the meeting on time
+                    </li>
+
+                    <li><strong>people can see what needs to be prepared before the meeting</strong><br>eg reports and
+                        figures that are going to be discussed
+                    </li>
+
+                    <li><strong>participants can anticipate questions they may want to ask</strong><br>eg by having
+                        advance warning that they will discuss specific problems with other managers.
+                    </li>
+                </ul>
+
+                <p>Having an agenda shows that the meeting is serious and will be run well. Everyone’s time is precious
+                    and it is important to use the time wisely and efficiently, making the most of the opportunity to
+                    share information, review objectives and agree the ways forward.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Effective teamwork</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">8 Team role theory – Belbin’s theory</h4>
+
+                <img src="../images/t5-u1/time_management_01_b.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Belbin suggests that, by understanding your role within a particular team, you can develop your
+                    strengths and manage your weaknesses as a team member, and so improve how you contribute to the
+                    team. This should create more balance in a team. Read through the team roles below and consider
+                    which one you feel you are.</p>
+
+                <h5 data-animate="2">Belbin’s nine types of team roles and how they contribute to performance:</h5>
+
+
+                <p><strong>Shaper</strong> – they challenge, are dynamic and overcome obstacles. They can be prone to
+                    offend and can be easily provoked.
+                </p>
+
+                <p><strong>Implementer</strong> – disciplined, reliable, conservative, turns ideas into practical
+                    actions. They can be inflexible and slow to respond to change.
+                </p>
+
+                <p><strong>Completer finisher</strong> – delivers on time, conscientious, checks for errors and pays
+                    attention to detail. They can worry unduly and be reluctant to delegate.
+                </p>
+
+                <p><strong>Co-ordinator</strong> – mature, confident, clarifies goals and delegates well. They can be
+                    seen as manipulative and offload tasks they don’t like.
+                </p>
+
+                <p><strong>Team-worker</strong> – co-operative, mild, perceptive and diplomatic, listens and keeps the
+                    peace. They can be indecisive in a crisis.
+                </p>
+
+                <p><strong>Resource investigator</strong> – extrovert, enthusiastic, good communicator, explores
+                    opportunities and shares information. They can be over optimistic and lose interest quickly.
+                </p>
+
+                <p><strong>Plant</strong> – creative, imaginative, solves difficult problems. They can be prone to
+                    ignoring details and are too preoccupied to communicate well.
+                </p>
+
+                <p><strong>Monitor evaluator</strong> – strategic, sees all opinions and is accurate. They tend to lack
+                    drive or the ability to inspire.
+                </p>
+
+                <p><strong>Specialist</strong> – single-minded, self-starter, dedicated and brings knowledge. They are
+                    prone to only working within narrow parameters and dwell on technicalities.
+                </p>
+
+
+                <p>Belbin’s theory is a tool for leaders to help them recognise the diversity in their teams.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

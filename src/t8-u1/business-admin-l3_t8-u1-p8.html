@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Decision-making techniques</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">4 Paired comparison analysis</h4>
+
+                <img src="../images/t8-u1/different_problem_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>This type of analysis is useful when you need to work out relevant factors when choices are quite
+                    different from each other – rather like the classic case of comparing apples and oranges.</p>
+
+                <p>We will do an example based on someone having to choose which type of charity to support – an animal
+                    charity, a bequest for a university, a children’s charity or disaster relief.</p>
+
+                <p>There are six stages:</p>
+
+                <p><strong>Stage 1</strong> – make a list of things that need to be compared and assign each
+                    option a letter – eg A for animals, B for bequest, C for children and D for disaster.</p>
+
+                <p><strong>Stage 2</strong> – put the letters in a grid and block out squares where data would be duplicated.</p>
+
+                <div class="table">
+                    <div class="cell"></div>
+                    <div class="cell"><h3>A – Animal charity</h3></div>
+                    <div class="cell"><h3>B – Bequest for university</h3></div>
+                    <div class="cell"><h3>C – Children’s charity</h3></div>
+                    <div class="cell"><h3>D – Disaster relief</h3></div>
+
+                    <div class="cell"><h3>A – Animal charity</h3></div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">A1</div>
+                    <div class="cell">C2</div>
+                    <div class="cell">D2</div>
+
+                    <div class="cell"><h3>B – Bequest for university</h3></div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">C2</div>
+                    <div class="cell">D2</div>
+
+                    <div class="cell"><h3>C – Children’s charity</h3></div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">C1</div>
+
+                    <div class="cell"><h3>D – Disaster relief</h3></div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">XXXXXXXXXX</div>
+                    <div class="cell">XXXXXXXXXX</div>
+                </div>
+
+                <p><strong>Stage 3</strong> – within each cell, compare the options and decided which is most important
+                    – eg A is more important than B in the above grid.</p>
+
+                <p><strong>Stage 4</strong> – give the letter a rating to show how important the choice is – eg from 0
+                    for no importance to 3 for extremely important – A has been given rating 1 in the above grid.</p>
+
+                <p><strong>Stage 5</strong> – consolidate results by adding up the values for each of the options –
+                    maybe converting them to percentage values. In the example:</p>
+
+
+                <ul>
+                    <li>A = 1 (10%)
+                    </li>
+
+                    <li>B = 0
+                    </li>
+
+                    <li>C = 5 (50%)
+                    </li>
+
+                    <li>D = 4 (40%).
+                    </li>
+                </ul>
+
+                <p><strong>Stage 6</strong> – use common sense and manually adjust as necessary.</p>
+
+                <p>In the example after comparing the results, the person decides to make their main donation to the
+                    children’s charity, with some going to disaster relief.</p>
+
+                </div>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

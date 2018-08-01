@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Managing challenging conversations</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">4 How to give negative feedback</h4>
+
+                <img src="../images/t5-u3/constructive_feedback_04.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Negative feedback does not need to be avoided, it just needs to be handled well. If a manager only
+                    gives positive feedback, people will distrust their judgement after a while, as nobody is perfect
+                    and there must be some things that need correction and development.</p>
+
+                <p>When giving negative feedback, it is useful to use a sandwich technique. For example:</p>
+
+                <ul>
+                    <li>give some <strong>positive</strong> comments about something that has gone well
+                    </li>
+
+                    <li>deliver the <strong>negative</strong> feedback tactfully, maybe following the CORBS model
+                    </li>
+
+                    <li>finish with some <strong>positive</strong> feedback and comments, maybe about the future.
+                    </li>
+
+                </ul>
+
+                <p>This enables the recipient to be given the negative comments and end the conversation with an
+                    uplifting, positive comment that makes them feel valued and committed to the team.</p>
+
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

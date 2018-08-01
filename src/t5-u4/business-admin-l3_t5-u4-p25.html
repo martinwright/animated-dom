@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Customer and stakeholder relationship management</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">8 Partnership agreements and contracts</h4>
+
+                <img src="../images/t5-u4/approaches_customer_book4_08.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>During initial negotiations and establishing of a partnership it is key that the legal aspects of the
+                    relationship are set out. This will result in a partnership arrangement agreement that will
+                    include:</p>
+
+                <ul>
+                    <li>the entities party to the partnership agreement</li>
+
+                    <li>the terms of engagement</li>
+
+                    <li>length of the agreement</li>
+
+                    <li>roles and responsibilities under the agreement</li>
+
+                    <li>financial details and arrangements</li>
+
+                    <li>managing confidential information</li>
+
+                    <li>insurance and liabilities</li>
+
+                    <li>how disputes will be resolved</li>
+
+                    <li>changing and terminating the agreement.</li>
+
+                </ul>
+
+                <p>It is vital to a successful partnering arrangement that in the early days the organisations involved
+                    talk openly and honestly about entering the agreement to ensure it has a strong foundation from the
+                    outset.</p>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
