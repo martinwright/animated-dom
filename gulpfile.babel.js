@@ -24,7 +24,9 @@ const watch = require('gulp-watch');
 const concat = require('gulp-concat');
 const dom = require("gulp-jsdom");
 const cheerio = require('gulp-cheerio');
-const htmlPartial = require('gulp-html-partial')
+const htmlPartial = require('gulp-html-partial');
+const fileinclude = require('gulp-file-include');
+const htmltidy = require('gulp-htmltidy');
 
 //gulp.watch = watch;
 //const gaze = require('gaze');
@@ -74,7 +76,17 @@ gulp.task('build-html-combined', () => {
                 $('head').replaceWith('');
                 $('.header').replaceWith('');
                 $('.nav-bar').replaceWith('');
+                unWrap($('.wrapper'));
+                unWrap($('body'));
+                unWrap($('html'));
                 $.html();
+
+                function unWrap(selector) {
+                    $(selector).each(function() {
+                        var $this = $(this);
+                        $(this).after($this.contents()).remove();
+                    });
+                }
             }))
 
             //.pipe(concat('index.html'))
@@ -84,7 +96,7 @@ gulp.task('build-html-combined', () => {
                 console.log('build-html-combined :', wrapper);
                 return wrapper;
             }))*/
-            //.pipe(replace(/<!DOCTYPE html>/g, ''))
+            .pipe(replace(/<!DOCTYPE html>/g, ''))
             .pipe(concat('combined.html'))
             .pipe(gulp.dest(dir));
     });
@@ -112,21 +124,33 @@ gulp.task('copy-index', () => {
 /* ----------------- */
 gulp.task('partials', () => {
 
-    let jsBundleStreams = []
+    //let jsBundleStreams = []
 
     packConfig.packs.map(pack => {
         let dir = 'build/' + pack.topic + '-' + pack.unit;
 
+        console.log('dir ', dir);
 
-        jsBundleStreams.push(gulp.src(dir+'/index.html')
+        gulp.src([dir+'/index.html'])
+            .pipe(fileinclude({
+                prefix: '@@',
+                basepath: '@file'
+            }))
+            .pipe(htmltidy({doctype: 'html5',
+                hideComments: true,
+                indent: true}))
+            .pipe(gulp.dest(dir));
+
+
+
+        /*return gulp.src(dir+'/index.html')
             .pipe(htmlPartial({
                 basePath: dir+'/'
             }))
-            .pipe(plumber({errorHandler: onError}))
-            .pipe(gulp.dest('build'))
-            .pipe(notify({message: `js copy task complete`})));
+            .pipe(gulp.dest(dir))*/
 
-        return merge(jsBundleStreams);
+
+        //return merge(jsBundleStreams);
         /*gulp.src([dir+'/index.html'])
             .pipe(htmlPartial({
                 basePath: dir+'/'
