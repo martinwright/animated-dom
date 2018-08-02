@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organisational culture and strategy</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">5 Person culture</h4>
+
+                <img src="../images/t10-u3/organisational_culture_book_05.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>This is an unusual culture where the main focus is on the individual, represented by a loose cluster
+                    of stars. If there is a structure at all, it is focused on the individuals within it. The primary
+                    focus is on individuals, who tend to be experts or specialists, who can make demands and insist on
+                    doing things their way.</p>
+
+                <p>Organisations with this culture:</p>
+
+                <ul>
+                    <li>do not have management hierarchies – as everything has to be decided by mutual consent
+                    </li>
+
+                    <li>base power on experts and specialists.
+                    </li>
+                </ul>
+
+                <p>People working in a person culture include, for example: freelance specialists who work alone or on
+                    contract with an organisation; hospital consultants; successful entertainers in theatre, television
+                    or film; writers, artists or other creative professionals. These people can be difficult to manage
+                    as they can usually find work elsewhere and may not acknowledge anyone as being in a position of
+                    power that is greater than their own.</p>
+
+                <p>These styles are not fixed and most organisations will have a mixture of these cultures that reflects
+                    their operational needs and circumstances. There can even be different cultures within the same
+                    organisation – eg between different departments, offices or functional areas. For example, an agency
+                    that deals with sports and entertainment celebrities could have:</p>
+
+                <ul>
+                    <li>a person culture – when dealing with the clients who are freelance specialists in their field
+                    </li>
+
+                    <li>a task culture – for its own employees, especially when organising events, sponsors, deals,
+                        marketing or networking opportunities for clients
+                    </li>
+
+                    <li>a role structure – in the accounts department who deal with all financial and administrative
+                        back-up.
+                    </li>
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
