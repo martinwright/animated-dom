@@ -1,5 +1,5 @@
 import "babel-polyfill";
-import {$on} from './util';
+import {$on, qs} from './util';
 import DocReady from './windowLoaded';
 
 DocReady(() => {
@@ -23,9 +23,61 @@ class App {
 
     startUp() {
 
-        let wrapper = document.getElementsByClassName("js-container")[0];
-        console.log('wrapper: ', wrapper);
-        wrapper.classList.add('hidden');
+
+        if (!location.hash) {
+            location.hash = '#1';
+            qs('.nav-bar .js-back').setAttribute("disabled", "");
+        }
+        loadPage();
+
+        function setNavState() {
+            if (!location.hash || location.hash == '#1') {
+                document.querySelector('.nav-bar .js-back').setAttribute("disabled", "");
+            } else {
+                document.querySelector('.nav-bar .js-back').removeAttribute("disabled");
+            }
+        }
+
+        function getNextPageNumber(num = 0) {
+            let currentHash = location.hash || '#1';
+            return (+currentHash.replace('#', '')) + num;
+        }
+
+        function loadPage() {
+            //location.reload();
+
+            //let page = qs(`#page-${getNextPageNumber()}`);
+            let allPages = document.querySelectorAll('.container--layout-1');
+
+            allPages.forEach(function(userItem) {
+                userItem.classList.add('hidden');
+            });
+
+            let page = document.querySelector('#page-'+getNextPageNumber());
+            page.classList.remove('hidden');
+
+
+            //console.log('page: ', page);
+
+            document.querySelector('.wrapper').classList.remove('hidden');
+
+            setNavState();
+        }
+
+        document.querySelector('.nav-bar .js-back').onclick = (e) => {
+            location.hash = getNextPageNumber(-1);
+            loadPage();
+        };
+
+        document.querySelector('.nav-bar .js-next').onclick = (e) => {
+            location.hash = getNextPageNumber(+1);
+            loadPage();
+        };
+
+
+
+        //return;
+        ///////////// Start Animation ////////////
 
 
         let animations,
@@ -35,7 +87,7 @@ class App {
             defaultOffset = "-=50";
 
 
-        const nodelist = document.querySelectorAll("[data-animate]");
+        const nodelist = document.querySelectorAll('#page-'+getNextPageNumber() + ' [data-animate]');
         const nodesArray = Array.prototype.slice.call(nodelist);
 
 
@@ -48,17 +100,13 @@ class App {
         }
 
         function getJsonFileName(loc) {
-            //url = url.pathname;
-            //let filename = url.substring(url.lastIndexOf('/')+1);
-
             let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-            //let filename = (url.split('\\').pop().split('/').pop().split('.'))[0];
-            //console.log('url: ', url);
-            console.log('fileName: ', fileName);
-            console.log('foldername: ', foldername);
-            console.log('rest: ', rest);
+            //console.log('fileName: ', fileName);
+            //console.log('foldername: ', foldername);
+            //console.log('rest: ', rest);
+            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
 
-            return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
+            return loc.origin + '/' + foldername + '/animate.json';
 
         }
 
@@ -72,7 +120,7 @@ class App {
             .then(response => response.json())
             .then(j => buildAnimationSteps(j))
             .catch(error => {
-                console.error(`Error in xxx fetch: ${error.message}`);
+                console.error(`Error in fetch: ${error.message}`);
                 buildAnimationSteps({});
             });
 
@@ -124,17 +172,23 @@ class App {
             myArr.forEach(function (el) {
                 let animStep = el.dataset.animate;
                 console.log('animStep: ', animStep);
+
+                let offset = el.dataset.offset || getAnimProp(animStep, 'offset', defaultOffset),
+                    duration = el.dataset.duration || getAnimProp(animStep, 'duration', defaultDuration);
+                //console.log('offset: ', offset);
+
                 myTimeline.add({
                     targets: el,
                     opacity: '0',
                     translateX: '100',
                     easing: 'easeInQuad',
-                    //duration: el.dataset.duration || getAnimProp(animStep, 'duration', defaultDuration),
-                    duration: defaultDuration,
-                    //offset: el.dataset.offset || getAnimProp(animStep, 'offset', defaultDuration)
-                    offset: defaultOffset
+                    duration: duration,
+                    offset: offset
                 });
             });
+
+
+            console.log('myTimeline: ', myTimeline);
 
             myTimeline.play();
 

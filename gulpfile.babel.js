@@ -138,10 +138,11 @@ gulp.task('build-html-combined-prom', function (done) {
                     $('head').replaceWith('');
                     $('.header').replaceWith('');
                     $('.nav-bar').replaceWith('');
+                    $('.-hidden').removeClass('-hidden')
                     unWrap($('.wrapper'));
                     unWrap($('body'));
                     unWrap($('html'));
-                    $('.container--layout-1').attr('id', pageNumber).html();
+                    $('.container--layout-1').attr('id', 'page-'+pageNumber).addClass('hidden');
                     $('article').attr('id', 'article-'+pageNumber).html();
                     $.html();
 
@@ -320,7 +321,7 @@ gulp.task('partials-prom', function (done) {
                 .pipe(htmltidy({
                     doctype: 'html5',
                     hideComments: true,
-                    wrap: 100,
+                    wrap: 120,
                     indentSpaces: 4,
                     indent: true
                 }))
@@ -623,7 +624,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
         'server': {
             baseDir: "build/"
         },
-        startPath: "/t10-u1/business-admin-l3_t10-u1-p1.html",
+        startPath: "/t10-u1/index.html",
         'snippetOptions': {
             'rule': {
                 'match': /<\/body>/i,
