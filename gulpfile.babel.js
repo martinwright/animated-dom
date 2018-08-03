@@ -37,25 +37,7 @@ var runSequence = require('run-sequence');
 //const gaze = require('gaze');
 
 
-gulp.task('dev', ['scripts', 'styles', 'images', 'html', 'json', 'copy-index', 'build-html-combined', 'partials'], () => {
-    browserSync({
-        'server': {
-            baseDir: "build/"
-        },
-        startPath: "/t10-u1/business-admin-l3_t10-u1-p1.html",
-        'snippetOptions': {
-            'rule': {
-                'match': /<\/body>/i,
-                'fn': (snippet) => snippet
-            }
-        }
-    });
 
-    gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
-    gulp.watch('src/js/**/*.js', ['scripts']);
-    gulp.watch(['src/images/**/*', '!src/images/_supplied/*'], ['images']);
-    gulp.watch('src/**/*.{html, json}', ['html'], browserSync.reload);
-});
 
 
 /* ----------------- */
@@ -102,7 +84,7 @@ gulp.task('build-html-combined', function (done) {
                         }))
 
                         .pipe(replace(/<!DOCTYPE html>/g, ''))
-                        .pipe(print(filepath => `build-html-combined: ${filepath}`))
+                        //.pipe(print(filepath => `build-html-combined: ${filepath}`))
                         .pipe(concat('combined.html'))
                         .pipe(gulp.dest(dir + '/'))
                         .on("end", callback);
@@ -132,16 +114,26 @@ gulp.task('build-html-combined-prom', function (done) {
             gulp.src(dir + '/' + courseName + '*.html')
 
                 .pipe(tap(function(file) {
+                    //console.log('###### file.path ', file.path);
                     let [filename, folder, ...rest] = file.path.split('/').reverse();
                     //let regex = /-p(.*).html$/g;
                     //var arr = regex.exec(filename);
-                    pageNumber = filename.match(/-p(.*).html$/g)[0]
+                    //pageNumber = filename.match(/-p(.*).html$/g)[0]
+
+
+                    //let myString = "something format_abc";
+                    let myRegexp = /(^.*)-p(.*?)(.html)/g;
+                    let match = myRegexp.exec(filename);
+                    //console.log('build-html-combined match '+filename + ' : ' + match[2]);
+                    pageNumber = match[2] || '0'; // abc
+
+
                 }))
                 .pipe(cheerio(function ($, file) {
                     // Each file will be run through cheerio and each corresponding `$` will be passed here.
                     // `file` is the gulp file object
                     // Make all h1 tags uppercase
-                    console.log('pageNumber ', pageNumber);
+                    //console.log('pageNumber ', pageNumber);
                     $('script').replaceWith('');
                     $('head').replaceWith('');
                     $('.header').replaceWith('');
@@ -149,7 +141,8 @@ gulp.task('build-html-combined-prom', function (done) {
                     unWrap($('.wrapper'));
                     unWrap($('body'));
                     unWrap($('html'));
-                    $('article').attr('id', 'favorite').html();
+                    $('.container--layout-1').attr('id', pageNumber).html();
+                    $('article').attr('id', 'article-'+pageNumber).html();
                     $.html();
 
                     function unWrap(selector) {
@@ -161,7 +154,7 @@ gulp.task('build-html-combined-prom', function (done) {
                 }))
 
                 .pipe(replace(/<!DOCTYPE html>/g, ''))
-                .pipe(print(filepath => `build-html-combined: ${filepath}`))
+                //.pipe(print(filepath => `build-html-combined: ${filepath}`))
                 .pipe(concat('combined.html'))
                 .pipe(gulp.dest(dir + '/'))
         );
@@ -186,7 +179,7 @@ gulp.task('delete-index', function (done) {
 
                 return function (callback) {
                     gulp.src(indexFile)
-                        .pipe(print(filepath => `delete-index: ${filepath}`))
+                        //.pipe(print(filepath => `delete-index: ${filepath}`))
                         .pipe(vinylPaths(del))
                         .on("end", callback);
                 }
@@ -206,7 +199,7 @@ gulp.task('delete-index-prom', function (done) {
 
         jsBundleStreams.push(
             gulp.src(indexFile)
-                .pipe(print(filepath => `delete-index: ${filepath}`))
+                //.pipe(print(filepath => `delete-index: ${filepath}`))
                 .pipe(vinylPaths(del))
         );
     });
@@ -234,7 +227,7 @@ gulp.task('copy-index', function (done) {
                         .pipe(plumber({
                             errorHandler: onError
                         }))
-                        .pipe(print(filepath => `copy-index: ${dir}`))
+                        //.pipe(print(filepath => `copy-index: ${dir}`))
                         .pipe(gulp.dest(dir))
                         .on("end", callback);
                 }
@@ -256,7 +249,7 @@ gulp.task('copy-index-prom', function (done) {
                 .pipe(plumber({
                     errorHandler: onError
                 }))
-                .pipe(print(filepath => `copy-index: ${filepath}`))
+                //.pipe(print(filepath => `copy-index: ${filepath}`))
                 .pipe(gulp.dest(dir))
         );
     });
@@ -264,13 +257,11 @@ gulp.task('copy-index-prom', function (done) {
     return merge(jsBundleStreams);
 });
 
-
 /* ----------------- */
-/* Copy Index partial
+/* Insert partials
 /* ----------------- */
 gulp.task('partials', function (done) {
 
-    let jsBundleStreams = []
     let tasks = [];
 
     packConfig.packs.map(pack => {
@@ -300,35 +291,6 @@ gulp.task('partials', function (done) {
         );
     });
     async.parallel(tasks, done);
-
-
-
-    /*packConfig.packs.map(pack => {
-        let dir = 'build/' + pack.topic + '-' + pack.unit;
-
-        //console.log('partials ', dir);
-
-        jsBundleStreams.push(
-            gulp.src([dir + '/index.html'])
-                .pipe(fileinclude({
-                    prefix: '@@',
-                    basepath: '@file'
-                }))
-                .pipe(htmltidy({
-                    doctype: 'html5',
-                    hideComments: true,
-                    wrap: 100,
-                    indentSpaces: 4,
-                    indent: true
-                }))
-                .pipe(print(filepath => `partials: ${filepath}`))
-                .pipe(gulp.dest(dir))
-        );
-
-
-    });
-
-    return merge(jsBundleStreams);*/
 });
 gulp.task('partials-prom', function (done) {
 
@@ -343,6 +305,18 @@ gulp.task('partials-prom', function (done) {
                     prefix: '@@',
                     basepath: '@file'
                 }))
+                .pipe(cheerio(function ($, file) {
+
+                    sort($('.wrapper'));
+
+                    function sort(main) {
+                        [].map.call( main.children, Object ).sort( function ( a, b ) {
+                            return +a.id.match( /\d+/ ) - +b.id.match( /\d+/ );
+                        }).forEach( function ( elem ) {
+                            main.appendChild( elem );
+                        });
+                    }
+                }))
                 .pipe(htmltidy({
                     doctype: 'html5',
                     hideComments: true,
@@ -350,13 +324,14 @@ gulp.task('partials-prom', function (done) {
                     indentSpaces: 4,
                     indent: true
                 }))
-                .pipe(print(filepath => `partials: ${filepath}`))
+                //.pipe(print(filepath => `partials: ${filepath}`))
                 .pipe(gulp.dest(dir))
         );
     });
 
     return merge(jsBundleStreams);
 });
+
 
 /* ----------------- */
 /* Build Packs
@@ -460,28 +435,6 @@ gulp.task('pack-libs', () => {
 });
 
 
-/* ----------------- */
-/* Development
-/* ----------------- */
-gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json'], () => {
-    browserSync({
-        'server': {
-            baseDir: "build/"
-        },
-        startPath: "/t10-u1/business-admin-l3_t10-u1-p1.html",
-        'snippetOptions': {
-            'rule': {
-                'match': /<\/body>/i,
-                'fn': (snippet) => snippet
-            }
-        }
-    });
-
-    gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
-    gulp.watch('src/js/**/*.js', ['scripts']);
-    gulp.watch(['src/images/**/*', '!src/images/_supplied/*'], ['images']);
-    gulp.watch('src/**/*.{html, json}', ['html'], browserSync.reload);
-});
 
 
 /* ----------------- */
@@ -660,17 +613,38 @@ gulp.task('jsmin', () => {
         .pipe(gulp.dest('./build/js/'));
 });
 
-gulp.task('build', function(callback) {
-    runSequence('delete-index-prom', 'copy-index-prom', 'build-html-combined-prom', 'partials-prom', callback);
-});
-
 
 /* ----------------- */
 /* Taks
 /* ----------------- */
+
+gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combine'], () => {
+    browserSync({
+        'server': {
+            baseDir: "build/"
+        },
+        startPath: "/t10-u1/business-admin-l3_t10-u1-p1.html",
+        'snippetOptions': {
+            'rule': {
+                'match': /<\/body>/i,
+                'fn': (snippet) => snippet
+            }
+        }
+    });
+
+    gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
+    gulp.watch('src/js/**/*.js', ['scripts']);
+    gulp.watch(['src/images/**/*', '!src/images/_supplied/*'], ['images']);
+    gulp.watch('src/**/*.html', ['combine', browserSync.reload]);
+    gulp.watch('src/**/*.json', ['json', browserSync.reload]);
+});
+
+
+gulp.task('combine', function(callback) {
+    runSequence('html', 'delete-index-prom', 'copy-index-prom', 'build-html-combined-prom', 'partials-prom', callback);
+});
+
 gulp.task('default', ['development']);
 gulp.task('deploy', ['html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
 gulp.task('pack', ['build-packs']);
-gulp.task('combine', ['delete-index', 'copy-index', 'build-html-combined', 'partials']);
-
 //gulp.task('combine', ['delete-index', 'copy-index', 'build-html-combined', 'partials']);
