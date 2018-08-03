@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Understand the market</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h2 data-animate="2">Globalisation</h2>
+
+                <img src="../images/t10-u4/environmental_awareness_book_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p data-animate="4">'Globalisation is a process of interaction and integration among the people,
+                    companies, and governments of different nations, a process driven by international trade and
+                    investment and aided by information technology. This process has effects on the environment, on
+                    culture, on political systems, on economic development and prosperity, and on human physical
+                    well-being in societies around the world.' <a href="http://www.globalization101.org/">www.globalization101.org</a>
+                </p>
+
+                <p>Watch this video on globalisation:</p>
+
+                <p data-animate="4"><a href="https://www.youtube.com/watch?v=LtmvksvSvtc">https://www.youtube.com/watch?v=LtmvksvSvtc</a>
+
+                <h5 data-animate="2">Factors that aid globalisation:</h5>
+
+                <ul>
+                    <li>trade
+                    </li>
+
+                    <li>General Agreement on Tariffs and Trade (GATT – 1947 onwards)
+                    </li>
+
+                    <li>free movement of people – basic pillar of the creation of the EU
+                    </li>
+
+                    <li>1992 Maastricht Treaty – abolition of internal borders and movement of people and goods
+                    </li>
+
+                    <li>transport and IT developments are a major influence
+                    </li>
+
+                    <li>inward/outward direct investment
+                    </li>
+
+                    <li>emergence of foreign exchange markets/dealing in shares
+                    </li>
+
+                    <li>spread of knowledge
+                    </li>
+
+                    <li>movement of people – migration and immigration
+                    </li>
+
+                    <li>technology
+                    </li>
+
+                    <li>goods and services, such as imports and exports
+                    </li>
+
+                    <li>capital.
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organisational culture and strategy</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h3 data-animate="2">Organisational culture</h3>
+
+                <h4 data-animate="2">1 Different organisational cultures</h4>
+
+                <img src="../images/t10-u3/organisational_culture_book_01.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Organisational culture is based on people’s assumptions, values and beliefs about how they should
+                    behave and interact at work, how decisions are made and how work activities should be performed. In
+                    the manufacturing company with a good attitude to health and safety, their culture could be based
+                    on, for example:</p>
+
+                <ul>
+                    <li data-animate="9"><strong>assumptions</strong><br>that all employees will follow its well-planned
+                        policies and procedures; that suppliers provide goods and services that are fit for purpose
+                    </li>
+
+                    <li data-animate="9"><strong>values</strong><br>that the safety of staff, customers and other
+                        visitors to the workplace is always top priority
+                    </li>
+
+                    <li data-animate="9"><strong>beliefs</strong><br>that risks need to be eliminated, or reduced to an
+                        absolute minimum; that training and awareness need to be kept up to date.
+                    </li>
+
+                </ul>
+
+                <p>One model of organisational culture was made popular by Charles Handy (1999), and it followed on from
+                    work done by Harrison (1972). The model is a useful framework for considering different
+                    organisational cultures that Handy refers to as:</p>
+
+                <ul>
+                    <li>power</li>
+
+                    <li>role</li>
+
+                    <li>task</li>
+
+                    <li>person.</li>
+                </ul>
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>

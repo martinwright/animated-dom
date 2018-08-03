@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
+
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
+</head>
+<body>
+<script src="../js/app.js"></script>
+
+
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading"
+        style="grid-area: t"
+        data-animate="2">Organisational culture and strategy</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+    <div class="container--layout-1 -hidden">
+
+        <article id="page-2" class="article">
+
+            <section>
+
+                <h4 data-animate="2">2 Power culture</h4>
+
+                <img src="../images/t10-u3/organisational_culture_book_02.jpg"
+                     alt=""
+                     style="width:100%;"
+                     data-animate="6"/>
+
+                <p>Handy uses a spider in the centre of a web to illustrate this culture, with ever-widening circles of
+                    contacts and influence. The closer we are to the spider, the more power and influence we have.</p>
+
+                <p>Organisations with this culture:</p>
+
+                <ul>
+                    <li>can respond quickly to events – due to the autocratic nature of decision-making and
+                        problem-solving processes
+                    </li>
+
+                    <li>have control of resources as their power base – the people in the middle make all the decisions
+                        about how resources are allocated
+                    </li>
+
+                    <li>are very dependent on key people in or near the centre of the web</li>
+
+                    <li>attract people who are power-orientated</li>
+
+                    <li>rely heavily on individuals rather than democratic committees</li>
+
+                    <li>find it difficult to link too many activities and retain control – due to the rigid and
+                        autocratic management structure
+                    </li>
+
+                    <li>can encourage intense commitment to corporate goals – by being so focused on the goals set by
+                        the senior person
+                    </li>
+
+                    <li>can have a high turnover of staff who fail or opt out of a competitive, inflexible atmosphere.
+                    </li>
+                </ul>
+            </section>
+
+        </article>
+
+
+    </div>
+
+</div>
+</body>
+</html>
