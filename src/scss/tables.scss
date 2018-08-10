@@ -1,6 +1,7 @@
 /* VARIABLES */
 
 $table-line: solid 1px #33cbe6;
+$table-line-thick: solid 3px #33cbe6;
 $table-fill-col: #afeaf5;
 $table-fill-col2: #e8f9fc;
 $table-font-size: 90%;
@@ -945,6 +946,19 @@ div.table--t2-u1-8a, div.table--t3-u3-6 {
 
 }
 
+div.table--t3-u3-6 { /* ADAPTED FROM TABLE ABOVE*/
+  .cell {
+    p {
+      margin:0 0 0.8em 0;
+
+      &:last-child {
+        margin:0;
+      }
+
+    }
+  }
+}
+
 div.table--t2-u1-8b {
   display: grid;
   grid-gap: 0;
@@ -1245,6 +1259,17 @@ div.table--t13-u2-11 { /* ADAPTED FROM TABLE ABOVE*/
   }
 }
 
+div.table--t8-u1-8, { /* ADAPTED FROM TABLE ABOVE*/
+  h3 {
+    display: flex;
+    align-self: center;
+    justify-content: left;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
 
 div.table--t2-u1-21 {
   display: grid;
@@ -1323,7 +1348,7 @@ div.table--t13-u2-17 {
     }
   }
 
-  h3 {
+  h3, h4 {
     display: flex;
     align-self: center;
     justify-content: left;
@@ -1654,7 +1679,7 @@ div.table--t3-u3-6 { /* ADAPTED FROM TABLE ABOVE*/
 div.table--t4-u1-5a {
   display: grid;
   grid-gap: 0;
-  grid-template-columns: 50px 1fr 80px 1fr 80px 80px 1fr;
+  grid-template-columns: 50px 1fr 100px 1fr 100px 100px 1fr;
   font-size: $table-font-size;
 
   .cell {
@@ -1833,6 +1858,10 @@ div.table--t10-u3-12 {
   .cell {
     border-left: $table-line;
 
+    &:nth-child(1) {
+      border-left: none;
+    }
+
     &:nth-child(-n+3) {
       background-color: $table-fill-col;
       border-bottom: $table-line;
@@ -1896,7 +1925,7 @@ div.table--t10-u3-12 {
   .span-item-line {
     grid-column-start: 1;
     grid-column-end: 4;
-    border-top: $table-line;
+    border-top: $table-line-thick;
     padding:0;
   }
 
