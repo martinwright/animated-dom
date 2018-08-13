@@ -160,7 +160,7 @@ button {
   @extend .container;
   flex-grow: 1;
   flex-basis: 0;
-  //border: red solid 1px;
+  border: red solid 1px;
 }
 .showOverFlow {
   overflow: visible;
@@ -309,6 +309,14 @@ figure.shape-20 {
   position: absolute;
   //margin-left: -10%;
   width: 20%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-25 {
+  position: absolute;
+  width: 25%;
   img {
     width: 100%;
   }
@@ -540,6 +548,31 @@ figure.pentagon {
                           "m m m m m t t t t t t t";
   }
 
+}
+
+
+//------------------------//
+///// TEXT WIDTHS /////
+//-----------------------//
+.p-60 {
+  @include for-size(tablet-landscape-up) {
+    width: 60%;
+  }
+}
+
+
+//------------------------//
+///// IMAGE WIDTHS /////
+//-----------------------//
+
+figure.img-70 {
+  position: absolute;
+  @include for-size(tablet-landscape-up) {
+    width: 70%;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 
