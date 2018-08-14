@@ -22,13 +22,15 @@ class App {
     };
 
     doResize() {
+
+        console.log('****** doResize');
         //let app = this;
         //this.doFunc();
         var w = window.innerWidth;
        console.log('doResize:'+w);
         let currentHash = location.hash || '#1';
         let currentPageNum = (currentHash.replace('#', ''));
-        console.log('currentPageNum:'+currentPageNum);
+        console.log('***PETE : currentPageNum:'+currentPageNum);
         let page = document.querySelector('#page-'+currentPageNum);
         //
         let pageToHide;
@@ -39,7 +41,7 @@ class App {
         if(isLeft>=0){
             console.log('left found');
             var nextPageNum = Number(currentPageNum)+1;
-            //console.log('nextPageNum:'+nextPageNum);
+            console.log('***PETE : nextPageNum:'+nextPageNum);
             pageToHide = document.querySelector('#page-'+nextPageNum);
             //pageToHide = pageR;
             //console.log('pageToHide:'+pageToHide.outerHTML);
@@ -147,6 +149,7 @@ class App {
                 userItem.classList.add('hidden');
             });
             let currentPageNum = getNextPageNumber();
+            console.log('***PETE : currentPageNum:'+currentPageNum);
             let page = document.querySelector('#page-'+currentPageNum);
             page.classList.remove('hidden');
 
@@ -160,8 +163,11 @@ class App {
             if(leftElement){
                 console.log('left found');
                 //console.log('leftElement:'+leftElement.outerHTML);
-                let pageR = document.querySelector('#page-'+(currentPageNum+1));
+                let nextPageNum = (currentPageNum+1);
+                let pageR = document.querySelector('#page-'+nextPageNum);
                 pageR.classList.remove('hidden');
+
+                console.log('***PETE : nextPageNum:'+(currentPageNum+1));
 
                 //let myGridClass = leftElement.getAttribute("grid");
                 //console.log('myGridClass: ', myGridClass);

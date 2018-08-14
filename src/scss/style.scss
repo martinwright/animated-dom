@@ -154,6 +154,12 @@ button {
   @include for-size(tablet-landscape-up) {
     /*padding: 1em;*/
   }
+
+  @include for-size(phone-only) {
+    ul {
+      padding-left: 1.5em;
+    };
+  }
 }
 
 .container--layout-1 {
@@ -161,6 +167,7 @@ button {
   flex-grow: 1;
   flex-basis: 0;
   border: red solid 1px;
+  overflow:hidden;
 }
 .showOverFlow {
   overflow: visible;
@@ -241,7 +248,7 @@ section {
   flex-grow: 1;
   flex-basis: 0;
   padding: 1em;
-  border: yellow solid 1px;
+  /*border: yellow solid 1px;*/
 }
 
 section>h2.sub-heading {
@@ -262,10 +269,15 @@ section>h2.sub-heading--right {
     margin: 0.2em 0;
   }
 }
+section>h2 {
+  margin-top: 0.8rem;
+}
 section>h3 {
   color: cornflowerblue;
 }
 section>h4 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
   color: #028b50;
 }
 
@@ -299,6 +311,14 @@ figure.shape-10 {
   position: absolute;
   //margin-left: -10%;
   width: 10%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-15 {
+  position: absolute;
+  width: 15%;
   img {
     width: 100%;
   }
@@ -389,6 +409,38 @@ figure.shape-100 {
 figure.shape-110 {
   position: absolute;
   width: 110%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-115 {
+  position: absolute;
+  width: 115%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-120 {
+  position: absolute;
+  width: 120%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-125 {
+  position: absolute;
+  width: 125%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-130 {
+  position: absolute;
+  width: 130%;
   img {
     width: 100%;
   }
@@ -557,6 +609,11 @@ figure.pentagon {
 .p-60 {
   @include for-size(tablet-landscape-up) {
     width: 60%;
+  }
+}
+.p-80 {
+  @include for-size(tablet-landscape-up) {
+    width: 80%;
   }
 }
 
