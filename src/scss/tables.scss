@@ -1592,7 +1592,7 @@ div.table--t3-u2-29 {
   grid-gap: 0;
   grid-template-columns: 1fr 5fr 1fr 5fr;
   font-size: $table-font-size;
-  width:60%;
+  background-color: white;
 
   .cell {
     &:nth-child(-n+4) {
