@@ -23,7 +23,7 @@ class App {
 
     doResize() {
 
-        console.log('****** doResize');
+        //console.log('****** doResize');
         //let app = this;
         //this.doFunc();
         var w = window.innerWidth;
@@ -149,7 +149,7 @@ class App {
                 userItem.classList.add('hidden');
             });
             let currentPageNum = getNextPageNumber();
-            console.log('***PETE : currentPageNum:'+currentPageNum);
+            //console.log('***PETE : currentPageNum:'+currentPageNum);
             let page = document.querySelector('#page-'+currentPageNum);
             page.classList.remove('hidden');
 

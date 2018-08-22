@@ -50,12 +50,6 @@ gulp.task('build-html-combined', function (done) {
     packConfig.packs.map(pack => {
         let dir = 'build/' + pack.topic + '-' + pack.unit;
 
-        //console.log('build-html-combined ', dir);
-
-        let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-        "DATE:20091201T220000\r\nSUMMARY:Dad's birthday".match(/^SUMMARY\:(.*)$/gm)
-
-
         tasks.push(function () {
                 //let tmp = config[i];
                 return function (callback) {
@@ -474,6 +468,82 @@ gulp.task('vendor', () => {
 });
 
 /* ----------------- */
+/* QUIZ assets
+/* ----------------- */
+gulp.task('xquiz', () => {
+    // Copy quiz files
+    gulp.src('src/quiz/**')
+    //.pipe(newer('build/quiz'))
+        .pipe(plumber({
+            errorHandler: onError
+        }))
+        .pipe(gulp.dest('build/quiz'))
+        .pipe(notify({message: 'quiz task complete'}));
+});
+
+
+
+
+gulp.task('quiz', function(done) {
+    glob('./app/main-**.js', function(err, files) {
+        if (err) {
+            done(err);
+            return;
+        }
+
+        var tasks = files.map(function(entry) {
+            return browserify({ entries: [entry] })
+                .bundle()
+                .pipe(source(entry))
+                .pipe(rename({
+                    extname: '.bundle.js'
+                }))
+                .pipe(gulp.dest('./dist'));
+        });
+        // Only call done when merged stream has ended
+        es.merge(tasks).on('end', done);
+    })
+});
+
+
+
+/* ----------------- */
+/* Quiz Scripts
+/* ----------------- */
+gulp.task('xxxquiz', () => {
+    return browserify({
+        'entries': ['./src/quiz/js/quiz.js'],
+        'debug': true,
+        'transform': [
+            babelify.configure({
+                'presets': ['env', 'react']
+            })
+        ]
+    })
+        .bundle()
+        .on('error', function () {
+            var args = Array.prototype.slice.call(arguments);
+
+            plugins().notify.onError({
+                'title': 'Compile Error',
+                'message': '<%= error.message %>'
+            }).apply(this, args);
+
+            this.emit('end');
+        })
+        .pipe(source('quiz.js'))
+        .pipe(buffer())
+        .pipe(plugins().sourcemaps.init({'loadMaps': true}))
+        .pipe(plugins().sourcemaps.write('.'))
+        .pipe(gulp.dest('./build/quiz/js/'))
+        .pipe(browserSync.stream());
+
+});
+
+
+
+
+/* ----------------- */
 /* Scripts
 /* ----------------- */
 gulp.task('scripts', () => {
@@ -635,6 +705,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
 
     gulp.watch('src/scss/**/*.scss', ['styles']).on('change', browserSync.reload);
     gulp.watch('src/js/**/*.js', ['scripts']);
+    gulp.watch('src/quiz/**/*.js', ['quiz', browserSync.reload]);
     gulp.watch(['src/images/**/*', '!src/images/_supplied/*'], ['images']);
     gulp.watch('src/**/*.html', ['combine', browserSync.reload]);
     gulp.watch('src/**/*.json', ['json', browserSync.reload]);
@@ -646,6 +717,6 @@ gulp.task('combine', function(callback) {
 });
 
 gulp.task('default', ['development']);
-gulp.task('deploy', ['html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
+gulp.task('deploy', ['html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'quiz', 'fonts']);
 gulp.task('pack', ['build-packs']);
 //gulp.task('combine', ['delete-index', 'copy-index', 'build-html-combined', 'partials']);
