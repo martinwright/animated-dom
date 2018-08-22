@@ -64,7 +64,6 @@ nav.nav-bar {
   z-index: 1;
   bottom: 0;
   height: 3rem;
-  //visibility: hidden;
 
   padding: 0 1rem;
 
@@ -79,8 +78,6 @@ nav.nav-bar {
   padding: 0 0.5rem;
   width: 100%;
   justify-content: space-between;
-
-  //height: 2em;
 }
 button {
   background-color: white;
@@ -116,24 +113,23 @@ button {
   justify-content: normal;
   margin-top: 4rem;
   margin-bottom: 3rem;
-  //padding-left: 1em;
-  //padding-right: 1em;
 }
 
 .hidden {
   display: none;
   visibility: hidden;
-  //opacity: .3;
 }
 
 
 
 .container {
-  //padding: 1rem;
-  //max-width: 1024px;
   overflow: hidden;
+<<<<<<< Updated upstream
   //margin-top: 4rem;
   //margin-bottom: 3rem;
+=======
+  height:100%;
+>>>>>>> Stashed changes
 
   ul li + li {
     padding-top: 1em;
@@ -192,14 +188,10 @@ button {
 
 .container__background {
   position: absolute;
-  //display: flex;
-  //justify-content: center;
-  //text-align: center;
   width: 100%;
   opacity: 0.8;
   padding: 0;
   margin: 0;
-  //z-index: -1;
   @include for-size(tablet-landscape-up) {
     //width: 85%;
   }
@@ -285,9 +277,7 @@ figure{
 }
 
 figure.shape-5 {
-
   position: absolute;
-  //margin-left: -10%;
   width: 5%;
   img {
     width: 100%;
@@ -295,9 +285,7 @@ figure.shape-5 {
 }
 
 figure.shape-10 {
-
   position: absolute;
-  //margin-left: -10%;
   width: 10%;
   img {
     width: 100%;
@@ -305,9 +293,7 @@ figure.shape-10 {
 }
 
 figure.shape-20 {
-
   position: absolute;
-  //margin-left: -10%;
   width: 20%;
   img {
     width: 100%;
@@ -474,9 +460,7 @@ figure.pentagon {
 
 .col-50{
   @include for-size(tablet-landscape-up) {
-    //width: 50%;
     flex: 0 0 50%;
-    //background-color: yellow;
   }
 }
 
@@ -506,9 +490,7 @@ figure.pentagon {
 
 .col-100{
   @include for-size(tablet-landscape-up) {
-    //width: 50%;
     flex: 0 0 100%;
-    //background-color: yellow;
   }
 }
 
