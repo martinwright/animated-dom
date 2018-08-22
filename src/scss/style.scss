@@ -3,6 +3,7 @@
 @import 'mixins';
 @import 'tables';
 
+
 body {
   -webkit-text-size-adjust: none;
   font-family: 'Avenir', sans-serif;
@@ -134,6 +135,7 @@ button {
   overflow: hidden;
   //margin-top: 4rem;
   //margin-bottom: 3rem;
+  height:100%;
 
   ul li + li {
     padding-top: 1em;
@@ -154,13 +156,19 @@ button {
   @include for-size(tablet-landscape-up) {
     /*padding: 1em;*/
   }
+
+  @include for-size(phone-only) {
+    ul {
+      padding-left: 1.5em;
+    };
+  }
 }
 
 .container--layout-1 {
   @extend .container;
   flex-grow: 1;
   flex-basis: 0;
-  //border: red solid 1px;
+  /*border: red solid 1px;*/
 }
 .showOverFlow {
   overflow: visible;
@@ -241,10 +249,11 @@ section {
   flex-grow: 1;
   flex-basis: 0;
   padding: 1em;
-  border: yellow solid 1px;
+  overflow: visible;
+  /*border: yellow solid 1px;*/
 }
 
-section>h2.sub-heading {
+h2.sub-heading {
   grid-area: g;
   display: flex;
   align-items: center;
@@ -254,7 +263,7 @@ section>h2.sub-heading {
     margin: 0.2em 0;
   }
 }
-section>h2.sub-heading--right {
+h2.sub-heading--right {
   @extend h2.sub-heading;
   justify-content: flex-end;
   margin: 0.3em 0;
@@ -262,17 +271,29 @@ section>h2.sub-heading--right {
     margin: 0.2em 0;
   }
 }
-section>h3 {
-  color: cornflowerblue;
-}
-section>h4 {
-  color: #028b50;
+
+h2 {
+  margin-top: 0.8rem;
 }
 
-section>h5 {
+h3 {
+  /*color: cornflowerblue;*/
+}
+
+h4 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  /*color: #028b50;*/
+}
+
+h5 {
 font-size: 1em;
   margin-top: 2em;
   margin-bottom: 0.1em;
+}
+
+.text-underline {
+  text-decoration: underline;
 }
 
 
@@ -304,11 +325,27 @@ figure.shape-10 {
   }
 }
 
+figure.shape-15 {
+  position: absolute;
+  width: 15%;
+  img {
+    width: 100%;
+  }
+}
+
 figure.shape-20 {
 
   position: absolute;
   //margin-left: -10%;
   width: 20%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-25 {
+  position: absolute;
+  width: 25%;
   img {
     width: 100%;
   }
@@ -378,9 +415,49 @@ figure.shape-100 {
   }
 }
 
+figure.shape-105 {
+  position: absolute;
+  width: 105%;
+  img {
+    width: 100%;
+  }
+}
+
 figure.shape-110 {
   position: absolute;
   width: 110%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-115 {
+  position: absolute;
+  width: 115%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-120 {
+  position: absolute;
+  width: 120%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-125 {
+  position: absolute;
+  width: 125%;
+  img {
+    width: 100%;
+  }
+}
+
+figure.shape-130 {
+  position: absolute;
+  width: 130%;
   img {
     width: 100%;
   }
@@ -540,6 +617,36 @@ figure.pentagon {
                           "m m m m m t t t t t t t";
   }
 
+}
+
+
+//------------------------//
+///// TEXT WIDTHS /////
+//-----------------------//
+.p-60 {
+  @include for-size(tablet-landscape-up) {
+    width: 60%;
+  }
+}
+.p-80 {
+  @include for-size(tablet-landscape-up) {
+    width: 80%;
+  }
+}
+
+
+//------------------------//
+///// IMAGE WIDTHS /////
+//-----------------------//
+
+figure.img-70 {
+  position: absolute;
+  @include for-size(tablet-landscape-up) {
+    width: 70%;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 
