@@ -1,4 +1,4 @@
-import "babel-polyfill";
+//import "babel-polyfill";
 import {$on, qs} from './util';
 import DocReady from './windowLoaded';
 
@@ -27,194 +27,116 @@ class App {
         //let app = this;
         //this.doFunc();
         var w = window.innerWidth;
-       console.log('doResize:'+w);
+        console.log('doResize:' + w);
         let currentHash = location.hash || '#1';
         let currentPageNum = (currentHash.replace('#', ''));
-        console.log('***PETE : currentPageNum:'+currentPageNum);
-        let page = document.querySelector('#page-'+currentPageNum);
+        console.log('***PETE : currentPageNum:' + currentPageNum);
+        let page = document.querySelector('#page-' + currentPageNum);
         //
         let pageToHide;
         //let leftElementParent = page.parentNode;
         //console.log('page:'+page.outerHTML);
         let isLeft = page.className.split(' ').indexOf('left');
         //console.log('leftElement:'+leftElement);
-        if(isLeft>=0){
+        if (isLeft >= 0) {
             console.log('left found');
-            var nextPageNum = Number(currentPageNum)+1;
-            console.log('***PETE : nextPageNum:'+nextPageNum);
-            pageToHide = document.querySelector('#page-'+nextPageNum);
+            var nextPageNum = Number(currentPageNum) + 1;
+            console.log('***PETE : nextPageNum:' + nextPageNum);
+            pageToHide = document.querySelector('#page-' + nextPageNum);
             //pageToHide = pageR;
             //console.log('pageToHide:'+pageToHide.outerHTML);
         }
         let isRight = page.className.split(' ').indexOf('right');
-        if(isRight>=0){
+        if (isRight >= 0) {
             console.log('right found');
-            var prevPageNum = Number(currentPageNum)-1;
+            var prevPageNum = Number(currentPageNum) - 1;
             //console.log('nextPageNum:'+nextPageNum);
-            pageToHide = document.querySelector('#page-'+prevPageNum);
+            pageToHide = document.querySelector('#page-' + prevPageNum);
             //pageToHide = pageR;
             //console.log('pageToHide:'+pageToHide.outerHTML);
         }
-        if (w<900) { //SAME AS tablet-landscape-up
-            if(pageToHide){
+        if (w < 900) { //SAME AS tablet-landscape-up
+            if (pageToHide) {
                 pageToHide.classList.add('hidden');
             }
 
             //console.log('currentPageNum:'+currentPageNum);
-        }else{
-            if(pageToHide){
+        } else {
+            if (pageToHide) {
                 pageToHide.classList.remove('hidden');
             }
         }
     }
 
-    doFunc() {
-        alert('doFunc');
+    loadPage() {
+        console.log('****** loadPage');
+
+        qs('.wrapper').className = 'wrapper hidden';
+
+        const allPages = document.querySelectorAll('.container--layout-1');
+        let currentPageNum = this.getNextPageNumber();
+
+        [...allPages].forEach(el => {
+            el.classList.add('hidden');
+        });
+
+        const currentNode = qs('#page-' + currentPageNum),
+            isLeft = currentNode.classList.contains('left'),
+            isRight = currentNode.classList.contains('right');
+
+        currentNode.classList.remove('hidden');
+
+        if (isLeft) {
+            console.log('left found');
+            qs('#page-' + currentPageNum++).classList.remove('hidden');
+        }
+        if (isRight) {
+            console.log('right found');
+            qs('#page-' + currentPageNum--).classList.remove('hidden');
+        }
+
+        this.doResize();
+
+        qs('.wrapper').classList.remove('hidden');
+
+        //setNavState();
     }
 
-    hasSomeParentTheClass(element, classname) {
-        //
-        // If we are here we didn't find the searched class in any parents node
-        //
-        if (!element.parentNode) return false;
-        //
-        // If the current node has the class return true, otherwise we will search
-        // it in the parent node
-        //
-        if (element.className.split(' ').indexOf(classname)>=0) return element;
-        return this.hasSomeParentTheClass(element.parentNode, classname);
+    getNextPageNumber(num = 0) {
+        let currentHash = location.hash || '#1';
+        return (+currentHash.replace('#', '')) + num;
     }
 
+    setNavigationStates() {
+        console.log('****** setNavigationStates');
+        location.hash = location.hash || '#1';
 
-    startUp() {
-
-        console.log('****** startUp');
-        let app = this;
-
-        //this.doHashChange();
-
-        //app.doFunc();
-
-         let wrapper = document.querySelector('.wrapper');
-        // let wrapperClassListDefault = wrapper.classList;
-
-
-        if (!location.hash) {
-            location.hash = '#1';
-            qs('.nav-bar .js-back').setAttribute("disabled", "");
-        }
-        loadPage();
-
-
-        function setNavState() {
-            if (!location.hash || location.hash == '#1') {
-                document.querySelector('.nav-bar .js-back').setAttribute("disabled", "");
-            } else {
-                document.querySelector('.nav-bar .js-back').removeAttribute("disabled");
-            }
-        }
-
-        function getNextPageNumber(num = 0) {
-            let currentHash = location.hash || '#1';
-            return (+currentHash.replace('#', '')) + num;
-        }
-
-        // function hasSomeParentTheClass(element, classname) {
-        //     //
-        //     // If we are here we didn't find the searched class in any parents node
-        //     //
-        //     if (!element.parentNode) return false;
-        //     //
-        //     // If the current node has the class return true, otherwise we will search
-        //     // it in the parent node
-        //     //
-        //     if (element.className.split(' ').indexOf(classname)>=0) return element;
-        //     return hasSomeParentTheClass(element.parentNode, classname);
-        // }
-
-        function loadPage() {
-            console.log('****** loadPage');
-            //app.doFunc();
-            //location.reload();
-
-            //let page = qs(`#page-${getNextPageNumber()}`);
-            //let wrapper = document.querySelector('.wrapper');
-            wrapper.className = 'wrapper hidden';
-            //wrapper.className = wrapperClassListDefault.toString(); // SET WRAPPER CLASS TO DEFAULT
-
-            //console.log('wrapperClassListDefault:'+wrapperClassListDefault);
-            let allPages = document.querySelectorAll('.container--layout-1');
-
-            allPages.forEach(function(userItem) {
-                userItem.classList.add('hidden');
-            });
-            let currentPageNum = getNextPageNumber();
-            //console.log('***PETE : currentPageNum:'+currentPageNum);
-            let page = document.querySelector('#page-'+currentPageNum);
-            page.classList.remove('hidden');
-
-            //console.log('checkParentClass:'+hasSomeParentTheClass(page, 'left'));
-            //var w = window.innerWidth;
-            // if (w<900){ //SAME AS tablet-landscape-up
-            //     console.log('doResize:'+w);
-            // }
-            let leftElement = app.hasSomeParentTheClass(page, 'left');
-
-            if(leftElement){
-                console.log('left found');
-                //console.log('leftElement:'+leftElement.outerHTML);
-                let nextPageNum = (currentPageNum+1);
-                let pageR = document.querySelector('#page-'+nextPageNum);
-                pageR.classList.remove('hidden');
-
-                console.log('***PETE : nextPageNum:'+(currentPageNum+1));
-
-                //let myGridClass = leftElement.getAttribute("grid");
-                //console.log('myGridClass: ', myGridClass);
-
-                //wrapper.classList.add(myGridClass);
-            }
-
-            let rightElement = app.hasSomeParentTheClass(page, 'right');
-
-            if(rightElement){
-                console.log('right found');
-                let pageL = document.querySelector('#page-'+(currentPageNum-1));
-                pageL.classList.remove('hidden');
-
-                //let leftContainer = hasSomeParentTheClass(page, 'right');
-                //console.log('pageL:'+pageL.outerHTML);
-                //let myGridClass = pageL.getAttribute("grid");
-                //console.log('myGridClass: ', myGridClass);
-
-                //wrapper.classList.add(myGridClass);
-            }
-
-
-            //console.log('page: ', page);
-
-            app.doResize();
-
-            wrapper.classList.remove('hidden');
-
-            setNavState();
+        if (!location.hash || location.hash == '#1') {
+            document.querySelector('.nav-bar .js-back').setAttribute("disabled", "");
+        } else {
+            document.querySelector('.nav-bar .js-back').removeAttribute("disabled");
         }
 
         document.querySelector('.nav-bar .js-back').onclick = (e) => {
-            location.hash = getNextPageNumber(-1);
+            location.hash = this.getNextPageNumber(-1);
             //loadPage();
         };
 
         document.querySelector('.nav-bar .js-next').onclick = (e) => {
-            location.hash = getNextPageNumber(+1);
+            location.hash = this.getNextPageNumber(+1);
             //loadPage();
         };
+    }
 
+    startUp() {
+        this.loadPage();
+        this.setNavigationStates();
+        this.setAnimations();
+    }
 
-
-        //return;
+    setAnimations() {
+        console.log('****** setAnimations');
         ///////////// Start Animation ////////////
-
 
         let animations,
             myTimeline;
@@ -223,7 +145,7 @@ class App {
             defaultOffset = "-=50";
 
 
-        const nodelist = document.querySelectorAll('#page-'+getNextPageNumber() + ' [data-animate]');
+        const nodelist = document.querySelectorAll('#page-' + this.getNextPageNumber() + ' [data-animate]');
         const nodesArray = Array.prototype.slice.call(nodelist);
 
 
@@ -246,6 +168,11 @@ class App {
 
         }
 
+        function readResponseAsJSON(response) {
+            console.log('APP: readResponseAsJSON: ', response);
+            return response.json();
+        }
+
         function setAminProbs(response) {
             animations = response.json();
         }
@@ -253,7 +180,7 @@ class App {
 
         fetch(getJsonFileName(window.location))
             .then(handleErrors)
-            .then(response => response.json())
+            .then(readResponseAsJSON)
             .then(j => buildAnimationSteps(j))
             .catch(error => {
                 console.error(`Error in fetch: ${error.message}`);

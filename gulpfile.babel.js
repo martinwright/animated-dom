@@ -608,13 +608,29 @@ gulp.task('styles', () => {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(plugins().sass().on('error', plugins().sass.logError))
+        .pipe(concat('styles.css')) // this is what was missing
         .pipe(autoprefixer())
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest('./build/css/'))
         .pipe(notify({message: 'styles task complete'}))
         .pipe(browserSync.stream());
 });
-
+/* ----------------- */
+/* FOLDERS
+/* ----------------- */
+gulp.task('folders', () => {
+    return gulp.src('src/**/**')
+        .pipe(newer('build'))
+        /*.pipe(critical.stream({
+            'base': 'build/',
+            'inline': true,
+            'extract': true,
+            'minify': true,
+            'css': ['./build/css/style.css']
+        }))*/
+        .pipe(gulp.dest('build'))
+        .pipe(browserSync.stream());
+});
 /* ----------------- */
 /* HTML
 /* ----------------- */
@@ -694,6 +710,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
         'server': {
             baseDir: "build/"
         },
+        port :3030,
         startPath: "/t10-u1/index.html",
         'snippetOptions': {
             'rule': {
@@ -717,6 +734,6 @@ gulp.task('combine', function(callback) {
 });
 
 gulp.task('default', ['development']);
-gulp.task('deploy', ['html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'quiz', 'fonts']);
+gulp.task('deploy', ['folders', 'html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
 gulp.task('pack', ['build-packs']);
 //gulp.task('combine', ['delete-index', 'copy-index', 'build-html-combined', 'partials']);
