@@ -37,9 +37,6 @@ var runSequence = require('run-sequence');
 //const gaze = require('gaze');
 
 
-
-
-
 /* ----------------- */
 /* Combine HTMLs
 /* ----------------- */
@@ -107,7 +104,7 @@ gulp.task('build-html-combined-prom', function (done) {
         jsBundleStreams.push(
             gulp.src(dir + '/' + courseName + '*.html')
 
-                .pipe(tap(function(file) {
+                .pipe(tap(function (file) {
                     //console.log('###### file.path ', file.path);
                     let [filename, folder, ...rest] = file.path.split('/').reverse();
                     //let regex = /-p(.*).html$/g;
@@ -174,7 +171,7 @@ gulp.task('delete-index', function (done) {
 
                 return function (callback) {
                     gulp.src(indexFile)
-                        //.pipe(print(filepath => `delete-index: ${filepath}`))
+                    //.pipe(print(filepath => `delete-index: ${filepath}`))
                         .pipe(vinylPaths(del))
                         .on("end", callback);
                 }
@@ -194,15 +191,13 @@ gulp.task('delete-index-prom', function (done) {
 
         jsBundleStreams.push(
             gulp.src(indexFile)
-                //.pipe(print(filepath => `delete-index: ${filepath}`))
+            //.pipe(print(filepath => `delete-index: ${filepath}`))
                 .pipe(vinylPaths(del))
         );
     });
 
     return merge(jsBundleStreams);
 });
-
-
 
 
 /* ----------------- */
@@ -303,13 +298,18 @@ gulp.task('partials-prom', function (done) {
                 .pipe(cheerio(function ($, file) {
 
                     sort($('.wrapper'));
+                    $.html();
 
                     function sort(main) {
-                        [].map.call( main.children, Object ).sort( function ( a, b ) {
-                            return +a.id.match( /\d+/ ) - +b.id.match( /\d+/ );
-                        }).forEach( function ( elem ) {
-                            main.appendChild( elem );
-                        });
+
+                        let [...list] = main.children();
+                        list.sort((a, b) => {
+                            let aP = +$(a).attr('id').replace('page-', '');
+                            let bP = +$(b).attr('id').replace('page-', '');
+                            return aP > bP ? 1 : -1;
+                        })
+                            .map(node => $(main).append(node));
+
                     }
                 }))
                 .pipe(htmltidy({
@@ -430,8 +430,6 @@ gulp.task('pack-libs', () => {
 });
 
 
-
-
 /* ----------------- */
 /* Libs
 /* ----------------- */
@@ -482,17 +480,15 @@ gulp.task('xquiz', () => {
 });
 
 
-
-
-gulp.task('quiz', function(done) {
-    glob('./app/main-**.js', function(err, files) {
+gulp.task('quiz', function (done) {
+    glob('./app/main-**.js', function (err, files) {
         if (err) {
             done(err);
             return;
         }
 
-        var tasks = files.map(function(entry) {
-            return browserify({ entries: [entry] })
+        var tasks = files.map(function (entry) {
+            return browserify({entries: [entry]})
                 .bundle()
                 .pipe(source(entry))
                 .pipe(rename({
@@ -504,7 +500,6 @@ gulp.task('quiz', function(done) {
         es.merge(tasks).on('end', done);
     })
 });
-
 
 
 /* ----------------- */
@@ -539,8 +534,6 @@ gulp.task('xxxquiz', () => {
         .pipe(browserSync.stream());
 
 });
-
-
 
 
 /* ----------------- */
@@ -710,7 +703,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
         'server': {
             baseDir: "build/"
         },
-        port :3030,
+        port: 3030,
         startPath: "/t10-u1/index.html",
         'snippetOptions': {
             'rule': {
@@ -729,7 +722,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
 });
 
 
-gulp.task('combine', function(callback) {
+gulp.task('combine', function (callback) {
     runSequence('html', 'delete-index-prom', 'copy-index-prom', 'build-html-combined-prom', 'partials-prom', callback);
 });
 
