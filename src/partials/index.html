@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
@@ -8,38 +9,38 @@
     <script type='application/javascript' src='../vendor/fastclick.js'></script>
     <link rel="stylesheet" href="../vendor/normalize.css" />
     <script type="text/javascript" src="../vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendor/anime/anime.min.js"></script>
 
     <!-- Quiz styles -->
     <link rel="stylesheet" href="../libs/iquiz/css/iquiz.css">
     <link rel="stylesheet" href="../css/styles.css">
 
 </head>
+
 <body>
-<script src="../js/bundle.js"></script>
-<!--<script src="../libs/iquiz/js/iquiz.js"></script>-->
+    <script src="../js/bundle.js"></script>
+    <!--<script src="../libs/iquiz/js/iquiz.js"></script>-->
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="1">Professionalism</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="1">Professionalism</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
 
         @@include('./combined.html')
@@ -47,6 +48,7 @@
         <!--<partial src="combined.html" title="Some title"></partial>-->
 
 
-</div>
+    </div>
 </body>
+
 </html>
