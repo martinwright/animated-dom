@@ -1,24 +1,25 @@
 //import "babel-polyfill";
-import {$on, qs} from './util';
+import { $on, qs } from './util';
 import DocReady from './windowLoaded';
 
 DocReady(() => {
     console.log("DocReady");
 
     const app = new App();
-    const setView = () => {
-        app.startUp();
-    };
+    const setView = () => app.startUp();
+    const updateView = () => app.updateView();
 
     $on(window, 'load', setView);
-    $on(window, 'hashchange', setView);
-    $on(window, 'resize', app.doResize);
+    $on(window, 'hashchange', updateView);
+    //$on(window, 'resize', app.doResize);
 
 });
 
 class App {
     constructor() {
-
+        this.textElementTimeline;
+        this.shapeElementTimeline;
+        this.animations;
     };
 
     doResize() {
@@ -27,10 +28,10 @@ class App {
         //let app = this;
         //this.doFunc();
         var w = window.innerWidth;
-        console.log('doResize:' + w);
+        //console.log('doResize:' + w);
         let currentHash = location.hash || '#1';
         let currentPageNum = (currentHash.replace('#', ''));
-        console.log('***PETE : currentPageNum:' + currentPageNum);
+        //console.log('***PETE : currentPageNum:' + currentPageNum);
         let page = document.querySelector('#page-' + currentPageNum);
         //
         let pageToHide;
@@ -39,16 +40,16 @@ class App {
         let isLeft = page.className.split(' ').indexOf('left');
         //console.log('leftElement:'+leftElement);
         if (isLeft >= 0) {
-            console.log('left found');
+            //console.log('left found');
             var nextPageNum = Number(currentPageNum) + 1;
-            console.log('***PETE : nextPageNum:' + nextPageNum);
+            //console.log('***PETE : nextPageNum:' + nextPageNum);
             pageToHide = document.querySelector('#page-' + nextPageNum);
             //pageToHide = pageR;
             //console.log('pageToHide:'+pageToHide.outerHTML);
         }
         let isRight = page.className.split(' ').indexOf('right');
         if (isRight >= 0) {
-            console.log('right found');
+            //console.log('right found');
             var prevPageNum = Number(currentPageNum) - 1;
             //console.log('nextPageNum:'+nextPageNum);
             pageToHide = document.querySelector('#page-' + prevPageNum);
@@ -68,45 +69,37 @@ class App {
         }
     }
 
-    loadPage() {
+
+
+    hidePages() {
         console.log('****** loadPage');
-
-        qs('.wrapper').className = 'wrapper hidden';
-
+        // Set wrapper and pages to hidden    
         const allPages = document.querySelectorAll('.container--layout-1');
-        let currentPageNum = this.getNextPageNumber();
-
+        qs('.wrapper').className = 'wrapper hidden';
         [...allPages].forEach(el => {
             el.classList.add('hidden');
         });
+    }
 
-        const currentNode = qs('#page-' + currentPageNum),
-            isLeft = currentNode.classList.contains('left'),
-            isRight = currentNode.classList.contains('right');
+    displayPage() {
+        let currentPageNum = this.getNextPageNumber();
+        const currentPageNode = qs('#page-' + currentPageNum),
+            isLeft = currentPageNode.classList.contains('left'),
+            isRight = currentPageNode.classList.contains('right');
 
-        currentNode.classList.remove('hidden');
+        // Show current page and other lft or right page
+        currentPageNode.classList.remove('hidden');
+        if (isLeft) qs('#page-' + currentPageNum++).classList.remove('hidden');
+        if (isRight) qs('#page-' + currentPageNum--).classList.remove('hidden');
 
-        if (isLeft) {
-            console.log('left found');
-            qs('#page-' + currentPageNum++).classList.remove('hidden');
-        }
-        if (isRight) {
-            console.log('right found');
-            qs('#page-' + currentPageNum--).classList.remove('hidden');
-        }
-
-        this.doResize();
-
+        // show wrapper
         qs('.wrapper').classList.remove('hidden');
-
-        //setNavState();
     }
 
     getNextPageNumber(num = 0) {
         let currentHash = location.hash || '#1';
         return (+currentHash.replace('#', '')) + num;
     }
-
     setNavigationStates() {
         console.log('****** setNavigationStates');
         location.hash = location.hash || '#1';
@@ -129,13 +122,60 @@ class App {
     }
 
     startUp() {
-        this.loadPage();
-        this.setNavigationStates();
-        this.setAnimations();
+
+        function getJsonFileName(loc) {
+            console.log('APP: getJsonFileName: ');
+            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
+            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
+            return loc.origin + '/' + foldername + '/animate.json';
+        }
+        function validateResponse(response) {
+            console.log('APP: validateResponse: ', response);
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        }
+        function readResponseAsJSON(response) {
+            console.log('APP: readResponseAsJSON: ', response);
+            return response;
+        }
+        function logResult(result) {
+            console.log('APP: logResult: ', result);
+            return result;
+        }
+        function logError(error) {
+            console.log('Looks like there was a problem: \n', error);
+        }
+
+        console.log('****** loadAnimationSeq start');
+
+        this.hidePages();
+
+        return fetch(getJsonFileName(window.location))
+            .then(validateResponse)
+            .then(readResponseAsJSON)
+            .then(logResult)
+            .then(this.continueStartUp)
+            .catch(err => {
+                logError(err);
+                this.continueStartUp({});
+            });
+
     }
 
-    setAnimations() {
-        console.log('****** setAnimations');
+    continueStartUp(json) {
+        this.animations = json;
+        this.createAnimationTimelines();
+        this.textElementTimeline.play();
+        this.displayPage();
+    }
+    updateView() {
+        //this.hidePages();
+    }
+
+    createAnimationTimelines() {
+        console.log('****** setAnimations start');
         ///////////// Start Animation ////////////
 
         let animations,
@@ -144,56 +184,76 @@ class App {
         let defaultDuration = "200",
             defaultOffset = "-=50";
 
-
         const nodelist = document.querySelectorAll('#page-' + this.getNextPageNumber() + ' [data-animate]');
         const nodesArray = Array.prototype.slice.call(nodelist);
+        const textElements = nodesArray.filter(node => /P|H1|H2|H3|H4|H5/.test(node.nodeName))
+            .sort(sorter)
+            .reverse()
 
+        const shapeElements = nodesArray.filter(node => /FIGURE/.test(node.nodeName))
+            .sort(sorter)
+            .reverse()
 
-        function handleErrors(response) {
-            console.log(`handleErrors: ${response.ok}`);
-            if (!response.ok) {
-                throw Error(response.statusText + 'V');
-            }
-            return response;
-        }
+        console.log('****** textElements ', textElements);
+        console.log('****** shapeElements ', shapeElements);
 
-        function getJsonFileName(loc) {
-            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-            //console.log('fileName: ', fileName);
-            //console.log('foldername: ', foldername);
-            //console.log('rest: ', rest);
-            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-
-            return loc.origin + '/' + foldername + '/animate.json';
-
-        }
-
-        function readResponseAsJSON(response) {
-            console.log('APP: readResponseAsJSON: ', response);
-            return response.json();
-        }
-
-        function setAminProbs(response) {
-            animations = response.json();
-        }
-
-
-        fetch(getJsonFileName(window.location))
-            .then(handleErrors)
-            .then(readResponseAsJSON)
-            .then(j => buildAnimationSteps(j))
-            .catch(error => {
-                console.error(`Error in fetch: ${error.message}`);
-                buildAnimationSteps({});
+        if (textElements.length) {
+            this.textElementTimeline = anime.timeline({
+                direction: 'reverse',
+                autoplay: false
             });
 
-        function getElementsWithAmimate() {
-            return Array.from(document.querySelectorAll("[data-animate]"))
+            textElements.forEach((el, index) => {
+                let animStep = el.dataset.animate;
+                console.log('animStep: ', animStep);
+                console.log('index: ', index);
+                let offset = el.dataset.offset || getAnimProp(animStep, 'offset', defaultOffset),
+                    duration = el.dataset.duration || getAnimProp(animStep, 'duration', defaultDuration);
+
+                if (index === 0) offset = '0';
+                //console.log('duration: ', duration);
+                //console.log('el: ', el);
+                this.textElementTimeline.add({
+                    targets: el,
+                    opacity: 0,
+                    translateX: '100',
+                    easing: 'easeInQuad',
+                    duration: duration,
+                    offset: offset
+                });
+            });
+
+            console.log('this.textElementTimeline: ', this.textElementTimeline);
+
+
+            this.textElementTimeline.begin = function () {
+                console.log('#################### myTimeline begin ');
+
+                let wait = setTimeout(function () {
+                    let wrapper = document.getElementsByClassName("js-container")[0];
+                    wrapper && wrapper.classList.remove('hidden');
+                }, 10);
+            };
+
+            this.textElementTimeline.complete = function () {
+                //let wrapper = document.getElementsByClassName("wrapper")[0];
+                //wrapper.classList.remove('hidden');
+
+                //(document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
+
+                [].slice.call(document.getElementsByClassName('cell'))
+                    .forEach(function (elem) {
+                        elem.classList.add('--bottom-border');
+                    });
+
+            };
+
+
+
         }
 
         function getAnimProp(step, prop, defaultVal) {
             console.log('getAnimProp: ', step);
-
             return defaultVal;
 
             try {
@@ -208,9 +268,9 @@ class App {
             }
         }
 
-        function sorter(obj1, obj2) {
-            return obj1.dataset.animate - obj2.dataset.animate;
-        }
+
+
+        return;
 
         function buildAnimationSteps(json) {
             animations = json;
@@ -223,8 +283,8 @@ class App {
 
 
             let myArr = Array.from(nodesArray)
-                    .sort(sorter)
-                    .reverse(),
+                .sort(sorter)
+                .reverse(),
                 animationStep = 0;
 
 
@@ -279,6 +339,61 @@ class App {
             };
 
         }
+
+
+        /* function getJsonFileName(loc) {
+            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
+            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
+            return loc.origin + '/' + foldername + '/animate.json';
+        }
+        function validateResponse(response) {
+            console.log('APP: validateResponse: ', response);
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        }
+        function readResponseAsJSON(response) {
+            console.log('APP: readResponseAsJSON: ', response);
+            return response.json();
+        }
+        function logResult(result) {
+            console.log('APP: logResult: ', result);
+            return result;
+        }
+        function logError(error) {
+            console.log('Looks like there was a problem: \n', error);
+        } */
+
+
+        function setAminProbs(response) {
+            animations = response.json();
+        }
+
+
+        /* fetch(getJsonFileName(window.location))
+            .then(validateResponse)
+            .then(readResponseAsJSON)
+            .then(logResult)
+            .then(res => buildAnimationSteps(res))
+            .catch(error => {
+                logError(err);
+                buildAnimationSteps({});
+            }); */
+
+        function getElementsWithAmimate() {
+            return Array.from(document.querySelectorAll("[data-animate]"))
+        }
+
+
+
+        function sorter(obj1, obj2) {
+            return obj1.dataset.animate - obj2.dataset.animate;
+        }
+
+    }
+}
+
 
 
         /*document.querySelector('.nav-bar .js-play').onclick = (e) => {
@@ -457,8 +572,3 @@ class App {
                         break;
                 }
             });*/
-
-
-    }
-}
-
