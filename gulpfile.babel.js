@@ -35,7 +35,7 @@ const tap = require('gulp-tap');
 var runSequence = require('run-sequence');
 //gulp.watch = watch;
 //const gaze = require('gaze');
-
+const glob = require('glob');
 
 /* ----------------- */
 /* Combine HTMLs
@@ -48,39 +48,39 @@ gulp.task('build-html-combined', function (done) {
         let dir = 'build/' + pack.topic + '-' + pack.unit;
 
         tasks.push(function () {
-                //let tmp = config[i];
-                return function (callback) {
+            //let tmp = config[i];
+            return function (callback) {
 
-                    gulp.src(dir + '/' + courseName + '*.html')
+                gulp.src(dir + '/' + courseName + '*.html')
 
-                        .pipe(cheerio(function ($, file) {
-                            // Each file will be run through cheerio and each corresponding `$` will be passed here.
-                            // `file` is the gulp file object
-                            // Make all h1 tags uppercase
-                            $('script').replaceWith('');
-                            $('head').replaceWith('');
-                            $('.header').replaceWith('');
-                            $('.nav-bar').replaceWith('');
-                            unWrap($('.wrapper'));
-                            unWrap($('body'));
-                            unWrap($('html'));
-                            $.html();
+                    .pipe(cheerio(function ($, file) {
+                        // Each file will be run through cheerio and each corresponding `$` will be passed here.
+                        // `file` is the gulp file object
+                        // Make all h1 tags uppercase
+                        $('script').replaceWith('');
+                        $('head').replaceWith('');
+                        $('.header').replaceWith('');
+                        $('.nav-bar').replaceWith('');
+                        unWrap($('.wrapper'));
+                        unWrap($('body'));
+                        unWrap($('html'));
+                        $.html();
 
-                            function unWrap(selector) {
-                                $(selector).each(function () {
-                                    var $this = $(this);
-                                    $(this).after($this.contents()).remove();
-                                });
-                            }
-                        }))
+                        function unWrap(selector) {
+                            $(selector).each(function () {
+                                var $this = $(this);
+                                $(this).after($this.contents()).remove();
+                            });
+                        }
+                    }))
 
-                        .pipe(replace(/<!DOCTYPE html>/g, ''))
-                        //.pipe(print(filepath => `build-html-combined: ${filepath}`))
-                        .pipe(concat('combined.html'))
-                        .pipe(gulp.dest(dir + '/'))
-                        .on("end", callback);
-                }
-            }()
+                    .pipe(replace(/<!DOCTYPE html>/g, ''))
+                    //.pipe(print(filepath => `build-html-combined: ${filepath}`))
+                    .pipe(concat('combined.html'))
+                    .pipe(gulp.dest(dir + '/'))
+                    .on("end", callback);
+            }
+        }()
         );
 
     });
@@ -133,8 +133,8 @@ gulp.task('build-html-combined-prom', function (done) {
                     unWrap($('.wrapper'));
                     unWrap($('body'));
                     unWrap($('html'));
-                    $('.container--layout-1').attr('id', 'page-'+pageNumber).addClass('hidden');
-                    $('article').attr('id', 'article-'+pageNumber).html();
+                    $('.container--layout-1').attr('id', 'page-' + pageNumber).addClass('hidden');
+                    $('article').attr('id', 'article-' + pageNumber).html();
                     $.html();
 
                     function unWrap(selector) {
@@ -167,15 +167,15 @@ gulp.task('delete-index', function (done) {
 
         let indexFile = 'build/' + pack.topic + '-' + pack.unit + '/index.html';
         tasks.push(function () {
-                //let tmp = config[i];
+            //let tmp = config[i];
 
-                return function (callback) {
-                    gulp.src(indexFile)
+            return function (callback) {
+                gulp.src(indexFile)
                     //.pipe(print(filepath => `delete-index: ${filepath}`))
-                        .pipe(vinylPaths(del))
-                        .on("end", callback);
-                }
-            }()
+                    .pipe(vinylPaths(del))
+                    .on("end", callback);
+            }
+        }()
         );
     });
     async.parallel(tasks, done);
@@ -191,7 +191,7 @@ gulp.task('delete-index-prom', function (done) {
 
         jsBundleStreams.push(
             gulp.src(indexFile)
-            //.pipe(print(filepath => `delete-index: ${filepath}`))
+                //.pipe(print(filepath => `delete-index: ${filepath}`))
                 .pipe(vinylPaths(del))
         );
     });
@@ -211,17 +211,17 @@ gulp.task('copy-index', function (done) {
         let dir = 'build/' + pack.topic + '-' + pack.unit;
 
         tasks.push(function () {
-                return function (callback) {
-                    gulp.src('src/partials/index.html')
+            return function (callback) {
+                gulp.src('src/partials/index.html')
                     //.pipe(newer(dir))
-                        .pipe(plumber({
-                            errorHandler: onError
-                        }))
-                        //.pipe(print(filepath => `copy-index: ${dir}`))
-                        .pipe(gulp.dest(dir))
-                        .on("end", callback);
-                }
-            }()
+                    .pipe(plumber({
+                        errorHandler: onError
+                    }))
+                    //.pipe(print(filepath => `copy-index: ${dir}`))
+                    .pipe(gulp.dest(dir))
+                    .on("end", callback);
+            }
+        }()
         );
     });
     async.parallel(tasks, done);
@@ -235,7 +235,7 @@ gulp.task('copy-index-prom', function (done) {
 
         jsBundleStreams.push(
             gulp.src('src/partials/index.html')
-            //.pipe(newer(dir))
+                //.pipe(newer(dir))
                 .pipe(plumber({
                     errorHandler: onError
                 }))
@@ -258,26 +258,26 @@ gulp.task('partials', function (done) {
         let dir = 'build/' + pack.topic + '-' + pack.unit;
 
         tasks.push(function () {
-                //let tmp = config[i];
+            //let tmp = config[i];
 
-                return function (callback) {
-                    gulp.src([dir + '/index.html'])
-                        .pipe(fileinclude({
-                            prefix: '@@',
-                            basepath: '@file'
-                        }))
-                        .pipe(htmltidy({
-                            doctype: 'html5',
-                            hideComments: true,
-                            wrap: 100,
-                            indentSpaces: 4,
-                            indent: true
-                        }))
-                        .pipe(print(filepath => `partials: ${filepath}`))
-                        .pipe(gulp.dest(dir))
-                        .on("end", callback);
-                }
-            }()
+            return function (callback) {
+                gulp.src([dir + '/index.html'])
+                    .pipe(fileinclude({
+                        prefix: '@@',
+                        basepath: '@file'
+                    }))
+                    .pipe(htmltidy({
+                        doctype: 'html5',
+                        hideComments: true,
+                        wrap: 100,
+                        indentSpaces: 4,
+                        indent: true
+                    }))
+                    .pipe(print(filepath => `partials: ${filepath}`))
+                    .pipe(gulp.dest(dir))
+                    .on("end", callback);
+            }
+        }()
         );
     });
     async.parallel(tasks, done);
@@ -363,37 +363,37 @@ gulp.task('build-packs', () => {
             cssDest = `${dir}/css`;
         jsBundleStreams.push(gulp.src(cssSrc)
             .pipe(newer(cssDest))
-            .pipe(plumber({errorHandler: onError}))
+            .pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(cssDest))
-            .pipe(notify({message: `js copy task complete`})));
+            .pipe(notify({ message: `js copy task complete` })));
 
         // Add JS from build to to pack if newer
         let jsSrc = `build/js/**`,
             jsDest = `${dir}/js`;
         jsBundleStreams.push(gulp.src(jsSrc)
             .pipe(newer(jsDest))
-            .pipe(plumber({errorHandler: onError}))
+            .pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(jsDest))
-            .pipe(notify({message: `js copy ${pack} task complete`})));
+            .pipe(notify({ message: `js copy ${pack} task complete` })));
 
         // Add Libs from build to to pack if newer
         let libSrc = `build/libs/**`,
             libDest = `${dir}/libs`;
         jsBundleStreams.push(gulp.src(libSrc)
             .pipe(newer(libDest))
-            .pipe(plumber({errorHandler: onError}))
+            .pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(libDest))
-            .pipe(notify({message: `libs copy ${pack} task complete`})));
+            .pipe(notify({ message: `libs copy ${pack} task complete` })));
 
         // Add Images from build to to pack if newer
         let imgSrc = `build/images/${pack.topic}-${pack.unit}/**`,
             imgDest = `${dir}/images/${pack.topic}-${pack.unit}`;
         jsBundleStreams.push(gulp.src(imgSrc)
             .pipe(newer(imgDest))
-            .pipe(plumber({errorHandler: onError}))
+            .pipe(plumber({ errorHandler: onError }))
             .pipe(imagemin())
             .pipe(gulp.dest(imgDest))
-            .pipe(notify({message: `imgs copy ${pack} task complete`})));
+            .pipe(notify({ message: `imgs copy ${pack} task complete` })));
 
         // Add HTML from build to to pack if newer
         // TODO update build paths
@@ -401,9 +401,9 @@ gulp.task('build-packs', () => {
             htmlDest = `${dir}`;
         jsBundleStreams.push(gulp.src(htmlSrc)
             .pipe(newer(htmlDest))
-            .pipe(plumber({errorHandler: onError}))
+            .pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(htmlDest))
-            .pipe(notify({message: `html copy task complete`})));
+            .pipe(notify({ message: `html copy task complete` })));
 
     });
 
@@ -422,7 +422,7 @@ gulp.task('pack-libs', () => {
                 errorHandler: onError
             }))
             .pipe(gulp.dest(`packs/unit-${i}/libs`))
-            .pipe(notify({message: `Libs copy unit-${i}/libs complete`}))
+            .pipe(notify({ message: `Libs copy unit-${i}/libs complete` }))
         /*.pipe(gulp.src('build/js/!**'))
         .pipe(gulp.dest(`packs/unit-${i}/js`))
         .pipe(notify({message: `Libs copy unit-${i}/js complete`}));*/
@@ -434,7 +434,7 @@ gulp.task('pack-libs', () => {
 /* Libs
 /* ----------------- */
 gulp.task('libs', function () {
-    gulp.src(npmDist(), {base: './node_modules'})
+    gulp.src(npmDist(), { base: './node_modules' })
         .pipe(gulp.dest('./build/libs'));
 });
 
@@ -448,7 +448,7 @@ gulp.task('fonts', () => {
             errorHandler: onError
         }))
         .pipe(gulp.dest('build/css/fonts'))
-        .pipe(notify({message: 'Images task complete'}));
+        .pipe(notify({ message: 'Images task complete' }));
 });
 
 /* ----------------- */
@@ -457,12 +457,12 @@ gulp.task('fonts', () => {
 gulp.task('vendor', () => {
     // Copy vendor files
     gulp.src('src/vendor/**')
-    //.pipe(newer('build/vendor'))
+        //.pipe(newer('build/vendor'))
         .pipe(plumber({
             errorHandler: onError
         }))
         .pipe(gulp.dest('build/vendor'))
-        .pipe(notify({message: 'Images task complete'}));
+        .pipe(notify({ message: 'Images task complete' }));
 });
 
 /* ----------------- */
@@ -471,12 +471,12 @@ gulp.task('vendor', () => {
 gulp.task('xquiz', () => {
     // Copy quiz files
     gulp.src('src/quiz/**')
-    //.pipe(newer('build/quiz'))
+        //.pipe(newer('build/quiz'))
         .pipe(plumber({
             errorHandler: onError
         }))
         .pipe(gulp.dest('build/quiz'))
-        .pipe(notify({message: 'quiz task complete'}));
+        .pipe(notify({ message: 'quiz task complete' }));
 });
 
 
@@ -488,7 +488,7 @@ gulp.task('quiz', function (done) {
         }
 
         var tasks = files.map(function (entry) {
-            return browserify({entries: [entry]})
+            return browserify({ entries: [entry] })
                 .bundle()
                 .pipe(source(entry))
                 .pipe(rename({
@@ -528,7 +528,7 @@ gulp.task('xxxquiz', () => {
         })
         .pipe(source('quiz.js'))
         .pipe(buffer())
-        .pipe(plugins().sourcemaps.init({'loadMaps': true}))
+        .pipe(plugins().sourcemaps.init({ 'loadMaps': true }))
         .pipe(plugins().sourcemaps.write('.'))
         .pipe(gulp.dest('./build/quiz/js/'))
         .pipe(browserSync.stream());
@@ -562,7 +562,7 @@ gulp.task('scripts', () => {
         })
         .pipe(source('bundle.js'))
         .pipe(buffer())
-        .pipe(plugins().sourcemaps.init({'loadMaps': true}))
+        .pipe(plugins().sourcemaps.init({ 'loadMaps': true }))
         .pipe(plugins().sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js/'))
         .pipe(browserSync.stream());
@@ -591,7 +591,7 @@ gulp.task('images', () => {
         //.pipe(changed(imgDst))
         //.pipe(imagemin())
         .pipe(gulp.dest(imgDst))
-        .pipe(notify({message: 'Images task complete'}));
+        .pipe(notify({ message: 'Images task complete' }));
 });
 
 /* ----------------- */
@@ -605,7 +605,7 @@ gulp.task('styles', () => {
         .pipe(autoprefixer())
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest('./build/css/'))
-        .pipe(notify({message: 'styles task complete'}))
+        .pipe(notify({ message: 'styles task complete' }))
         .pipe(browserSync.stream());
 });
 /* ----------------- */
@@ -628,7 +628,12 @@ gulp.task('folders', () => {
 /* HTML
 /* ----------------- */
 gulp.task('html', () => {
-    return gulp.src('src/**/*.{html, json}')
+
+    const search = './src/**/*admin-l3*.html';
+    const files = glob.sync(search);
+    console.log('>>> HTML Page Count', files.length);
+
+    return gulp.src('./src/**/*.{html, json}')
         .pipe(newer('build'))
         .pipe(replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, '../libs$1/$2.js'))
         .pipe(replace(/src="\.\.\/js\/app.js"/g, 'src="../js\/bundle.js"'))
