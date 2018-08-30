@@ -1,6 +1,7 @@
 //import "babel-polyfill";
 import { $on, qs } from './util';
 import DocReady from './windowLoaded';
+import Timeline from './timeline';
 
 DocReady(() => {
     console.log("DocReady");
@@ -19,7 +20,7 @@ class App {
     constructor() {
         this.textElementTimeline;
         this.shapeElementTimeline;
-        this.animations;
+        this.animationJson;
     };
 
     doResize() {
@@ -69,10 +70,7 @@ class App {
         }
     }
 
-
-
     hidePages() {
-        console.log('****** loadPage');
         // Set wrapper and pages to hidden    
         const allPages = document.querySelectorAll('.container--layout-1');
         qs('.wrapper').className = 'wrapper hidden';
@@ -87,10 +85,10 @@ class App {
             isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
-        // Show current page and other lft or right page
+        // Show current page and left or right page
         currentPageNode.classList.remove('hidden');
-        if (isLeft) qs('#page-' + currentPageNum++).classList.remove('hidden');
-        if (isRight) qs('#page-' + currentPageNum--).classList.remove('hidden');
+        if (isLeft) qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
+        if (isRight) qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
 
         // show wrapper
         qs('.wrapper').classList.remove('hidden');
@@ -114,7 +112,6 @@ class App {
             location.hash = this.getNextPageNumber(-1);
             //loadPage();
         };
-
         document.querySelector('.nav-bar .js-next').onclick = (e) => {
             location.hash = this.getNextPageNumber(+1);
             //loadPage();
@@ -147,7 +144,9 @@ class App {
         function logError(error) {
             console.log('Looks like there was a problem: \n', error);
         }
-
+        function setAminProbs(response) {
+            this.animations = response;
+        }
         console.log('****** loadAnimationSeq start');
 
         this.hidePages();
@@ -156,31 +155,33 @@ class App {
             .then(validateResponse)
             .then(readResponseAsJSON)
             .then(logResult)
+            .then(setAminProbs)
             .then(this.continueStartUp)
             .catch(err => {
                 logError(err);
                 this.continueStartUp({});
             });
-
     }
 
     continueStartUp(json) {
-        this.animations = json;
+        this.animationJson = json;
         this.createAnimationTimelines();
-        this.textElementTimeline.play();
         this.displayPage();
+        this.playTimelines();
+        this.setNavigationStates();
     }
     updateView() {
-        //this.hidePages();
+        this.hidePages();
+        this.displayPage();
+        this.setNavigationStates();
+    }
+
+    playTimelines() {
+        if (this.textElementTimeline) this.textElementTimeline.startAmnimation();
+        if (this.shapeElementTimeline) this.shapeElementTimeline.startAmnimation();
     }
 
     createAnimationTimelines() {
-        console.log('****** setAnimations start');
-        ///////////// Start Animation ////////////
-
-        let animations,
-            myTimeline;
-
         let defaultDuration = "200",
             defaultOffset = "-=50";
 
@@ -194,203 +195,21 @@ class App {
             .sort(sorter)
             .reverse()
 
-        console.log('****** textElements ', textElements);
-        console.log('****** shapeElements ', shapeElements);
+        //console.log('****** textElements ', textElements);
+        //console.log('****** shapeElements ', shapeElements);
 
         if (textElements.length) {
-            this.textElementTimeline = anime.timeline({
-                direction: 'reverse',
-                autoplay: false
-            });
-
-            textElements.forEach((el, index) => {
-                let animStep = el.dataset.animate;
-                console.log('animStep: ', animStep);
-                console.log('index: ', index);
-                let offset = el.dataset.offset || getAnimProp(animStep, 'offset', defaultOffset),
-                    duration = el.dataset.duration || getAnimProp(animStep, 'duration', defaultDuration);
-
-                if (index === 0) offset = '0';
-                //console.log('duration: ', duration);
-                //console.log('el: ', el);
-                this.textElementTimeline.add({
-                    targets: el,
-                    opacity: 0,
-                    translateX: '100',
-                    easing: 'easeInQuad',
-                    duration: duration,
-                    offset: offset
-                });
-            });
-
-            console.log('this.textElementTimeline: ', this.textElementTimeline);
-
-
-            this.textElementTimeline.begin = function () {
-                console.log('#################### myTimeline begin ');
-
-                let wait = setTimeout(function () {
-                    let wrapper = document.getElementsByClassName("js-container")[0];
-                    wrapper && wrapper.classList.remove('hidden');
-                }, 10);
-            };
-
-            this.textElementTimeline.complete = function () {
-                //let wrapper = document.getElementsByClassName("wrapper")[0];
-                //wrapper.classList.remove('hidden');
-
-                //(document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
-
-                [].slice.call(document.getElementsByClassName('cell'))
-                    .forEach(function (elem) {
-                        elem.classList.add('--bottom-border');
-                    });
-
-            };
-
-
-
+            this.textElementTimeline = new Timeline(textElements, this.animationJson);
+            this.textElementTimeline.setup();
         }
-
-        function getAnimProp(step, prop, defaultVal) {
-            console.log('getAnimProp: ', step);
-            return defaultVal;
-
-            try {
-                /*let ret = animations.steps;
-                console.log('ret: ', ret);
-                if (ret) ret = ret[step];
-                if (ret) ret = ret[prop];*/
-
-                return animations.steps[step][prop];
-            } catch (e) {
-                return defaultVal;
-            }
+        if (shapeElements.length) {
+            this.shapeElementTimeline = new Timeline(shapeElements, this.animationJson);
+            this.shapeElementTimeline.setup();
         }
-
-
-
-        return;
-
-        function buildAnimationSteps(json) {
-            animations = json;
-            console.log('buildAnimationSteps animations: ', animations);
-
-            myTimeline = anime.timeline({
-                direction: 'reverse',
-                autoplay: false
-            });
-
-
-            let myArr = Array.from(nodesArray)
-                .sort(sorter)
-                .reverse(),
-                animationStep = 0;
-
-
-            //const animElements = document.querySelectorAll("[data-animate]");
-
-            console.log('myArr: ', myArr);
-
-            myArr.forEach(function (el) {
-                let animStep = el.dataset.animate;
-                console.log('animStep: ', animStep);
-
-                let offset = el.dataset.offset || getAnimProp(animStep, 'offset', defaultOffset),
-                    duration = el.dataset.duration || getAnimProp(animStep, 'duration', defaultDuration);
-                //console.log('offset: ', offset);
-
-                myTimeline.add({
-                    targets: el,
-                    opacity: '0',
-                    translateX: '100',
-                    easing: 'easeInQuad',
-                    duration: duration,
-                    offset: offset
-                });
-            });
-
-
-            console.log('myTimeline: ', myTimeline);
-
-            myTimeline.play();
-
-
-            myTimeline.begin = function () {
-                console.log('#################### myTimeline ');
-
-                let wait = setTimeout(function () {
-                    let wrapper = document.getElementsByClassName("js-container")[0];
-                    wrapper && wrapper.classList.remove('hidden');
-                }, 10);
-            };
-
-            myTimeline.complete = function () {
-                //let wrapper = document.getElementsByClassName("wrapper")[0];
-                //wrapper.classList.remove('hidden');
-
-                //(document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
-
-                [].slice.call(document.getElementsByClassName('cell'))
-                    .forEach(function (elem) {
-                        elem.classList.add('--bottom-border');
-                    });
-
-            };
-
-        }
-
-
-        /* function getJsonFileName(loc) {
-            let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-            return loc.origin + '/' + foldername + '/animate.json';
-        }
-        function validateResponse(response) {
-            console.log('APP: validateResponse: ', response);
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response;
-        }
-        function readResponseAsJSON(response) {
-            console.log('APP: readResponseAsJSON: ', response);
-            return response.json();
-        }
-        function logResult(result) {
-            console.log('APP: logResult: ', result);
-            return result;
-        }
-        function logError(error) {
-            console.log('Looks like there was a problem: \n', error);
-        } */
-
-
-        function setAminProbs(response) {
-            animations = response.json();
-        }
-
-
-        /* fetch(getJsonFileName(window.location))
-            .then(validateResponse)
-            .then(readResponseAsJSON)
-            .then(logResult)
-            .then(res => buildAnimationSteps(res))
-            .catch(error => {
-                logError(err);
-                buildAnimationSteps({});
-            }); */
-
-        function getElementsWithAmimate() {
-            return Array.from(document.querySelectorAll("[data-animate]"))
-        }
-
-
 
         function sorter(obj1, obj2) {
             return obj1.dataset.animate - obj2.dataset.animate;
         }
-
     }
 }
 
