@@ -9,24 +9,68 @@
 
     <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
+
+    <!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>-->
+
     <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
           rel="stylesheet">-->
+
+
 
 </head>
 <body>
 <script src="../js/bundle.js"></script>
 
 <nav class="nav-bar">
+    <!--<ul class="tags">-->
+        <!--<li><a href="#">PREVIOUS</a></li>-->
+
+    <!--</ul>-->
+
     <div class="nav-bar__container">
         <div class="nav-bar__paging">
-            <button class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+
+            <!--<button class="button&#45;&#45;navigation js-back">Previous</button>-->
+            <!--<button class="button&#45;&#45;navigation js-next">Next</button>-->
+            <div class="button--navigation previous">
+                <div class="buttonText">PREVIOUS</div>
+                <div class="buttonCirc"><img src="../images/_nav/icons/arrow-left-solid.svg"></div>
+            </div>
+            <div class="button--navigation next">
+                <div class="buttonText">NEXT</div>
+                <div class="buttonCirc"><img src="../images/_nav/icons/arrow-right-solid.svg"></div>
+            </div>
+
+
         </div>
         <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
+            <!--<div class="nav&#45;&#45;toggle">-->
+                <!--<span class="title">ANIMATION</span>-->
+                <!--<label class="switch">-->
+                    <!--<input type="checkbox" checked>-->
+                    <!--<div class="kSlider"><span class="kSlidertext On">ON</span><span class="kSlidertext Off">OFF</span><span class="kSliderC"></span></div>-->
+                <!--</label>-->
+            <!--</div>-->
+            <!--<button class="button&#45;&#45;control js-play">Play</button>-->
+            <!--<button class="button&#45;&#45;control js-pause">Pause</button>-->
+            <!--<button class="button&#45;&#45;control js-restart">Restart</button>-->
+
+
+
+            <!--<div class="toggle-group">-->
+                <!--<label for="on-off-switch">-->
+                    <!--Animation-->
+                <!--</label>-->
+                <!--<input type="checkbox" name="on-off-switch" id="on-off-switch" checked="" tabindex="1">-->
+
+                <!--<div class="onoffswitch pull-right" aria-hidden="true">-->
+                    <!--<div class="onoffswitch-label">-->
+                        <!--<div class="onoffswitch-inner"></div>-->
+                        <!--<div class="onoffswitch-switch"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
     </div>
 </nav>
 

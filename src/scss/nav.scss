@@ -1,0 +1,179 @@
+.button--navigation {
+  /*backface-visibility: hidden;*/
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: #e74;
+  border-radius: 50px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 8px 0px 8px 0px;
+  color: #fff;
+  height: 14px;
+  width: 130px;
+  margin-right: 0px;
+  transition: 0.2s;
+
+  .buttonText {
+    color: white;
+    font-size: 12px;
+    font-family: Helvetica Neue;
+    font-weight: 900;
+    font-style: normal;
+    text-align: center;
+    margin: 0px 0px 0px 30px
+  }
+
+  .buttonCirc {
+    width: 36px;
+    height: 36px;
+    color: #e21;
+    //font-size: 16px;
+    background: #fff;
+    border-radius: 100px;
+    border: 4px solid #e74;
+    //border-width: 4px 4px 4px 4px;
+    //padding: 9px 12px 11px 12px;
+    //margin: 6px 0px 0px 0px;
+    position: absolute;
+    top: -6px;
+    transition: 0.2s;
+    /*left: -10px;*/
+    /*bottom: -10px*/
+    text-align: center;
+    img{
+      height: 14px;
+      margin: 10px 0 0 0;
+      opacity: .65;
+      //content: url('icons/end-solid.svg');
+    }
+  }
+}
+
+.button--navigation.disabled {
+  background: lightgrey;
+  cursor: default;
+  .buttonCirc {
+    border: 4px solid lightgrey;
+  }
+}
+
+//.iconP{
+//  content:url("http://imgur.com/SZ8Cm.jpg");
+//}
+
+.button--navigation.next {
+  .buttonText {
+    margin: 0px 30px 0px 0px
+  }
+  .buttonCirc {
+    right: 0px;
+  }
+}
+//.button.next > i {
+//  /*left: 110px;*/
+//  right: 0px;
+//}
+.button--navigation:not(.disabled):hover {
+  background: blue;
+  .buttonCirc {
+    border: 4px solid blue;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .button--navigation {
+    width: 40px;
+    margin-right: 16px;
+  }
+  .button--navigation > .buttonText {
+    visibility: hidden;
+    //color: black;
+  }
+}
+
+
+
+
+
+
+
+
+/* TOGGLE switch - the box around the slider */
+
+.nav--toggle{
+  display: inline-block;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 900;
+  font-style: normal;
+  .title{
+    position: relative;
+    top: -12px;
+    padding-right: 2px;
+    //margin-top: -15px;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 62px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  display:none;
+}
+
+/* The slider */
+.kSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 34px;
+  background-color: rgba(0,0,0,.3);
+  -webkit-transition: .4s;
+  transition: .4s;
+  .kSlidertext{
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    font-family: Helvetica Neue;
+    font-weight: 900;
+    font-style: normal;
+    text-align: center;
+    //margin: 10px 0px 0px 10px
+    top:9px;
+  }
+  .kSlidertext.On{
+    left: 8px;
+  }
+  .kSlidertext.Off{
+    left: 33px;
+  }
+}
+
+.kSliderC {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .kSlider {
+  background-color: #2196F3;
+  .kSliderC {
+    transform: translateX(28px);
+  }
+}
