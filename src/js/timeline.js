@@ -6,7 +6,7 @@ export default class Timeline {
     };
 
     getAnimProp(step, prop, defaultVal) {
-        console.log('getAnimProp: ', step);
+        //console.log('getAnimProp: ', step);
         return defaultVal;
 
         try {
@@ -22,7 +22,7 @@ export default class Timeline {
     }
 
     startAmnimation() {
-        console.log('????????? setAnimations start');
+        //console.log('????????? setAnimations start');
         this.timeline.play();
         this.elementsList.forEach((el, index) => {
             el.classList.remove('hidden');
@@ -30,7 +30,7 @@ export default class Timeline {
     }
 
     setup() {
-        console.log('????????? setAnimations setup');
+        //console.log('????????? setAnimations setup');
         let defaultDuration = "200",
             defaultOffset = "-=50";
 
@@ -44,14 +44,14 @@ export default class Timeline {
         this.elementsList.forEach((el, index) => {
             el.classList.add('hidden');
             let animStep = el.dataset.animate;
-            console.log('animStep: ', animStep);
-            console.log('index: ', index);
+            //console.log('animStep: ', animStep);
+            //console.log('index: ', index);
             let offset = el.dataset.offset || this.getAnimProp(animStep, 'offset', defaultOffset),
                 duration = el.dataset.duration || this.getAnimProp(animStep, 'duration', defaultDuration);
 
             if (index === 0) offset = '0';
-            console.log('duration: ', duration);
-            console.log('el: ', el);
+            //console.log('duration: ', duration);
+            //console.log('el: ', el);
             this.timeline.add({
                 targets: el,
                 opacity: 0,
@@ -63,13 +63,13 @@ export default class Timeline {
         });
 
 
-        console.log('this.timeline: ', this.timeline);
+        //console.log('this.timeline: ', this.timeline);
 
         this.timeline.play();
         this.timeline.pause();
 
         this.timeline.begin = function () {
-            console.log('#################### myTimeline begin ');
+            //console.log('#################### myTimeline begin ');
 
             let wait = setTimeout(function () {
                 let wrapper = document.getElementsByClassName("js-container")[0];

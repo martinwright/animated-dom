@@ -4,150 +4,62 @@ import DocReady from './windowLoaded';
 import Timeline from './timeline';
 
 DocReady(() => {
-    console.log("DocReady");
-
+    //console.log("DocReady");
     const app = new App();
-    const setView = () => app.startUp();
-    const updateView = () => app.updateView();
-
-    $on(window, 'load', setView);
-    $on(window, 'hashchange', updateView);
-    //$on(window, 'resize', app.doResize);
-
+    const loadHandler = () => app.setView();
+    const debounce = (fn, time) => {
+        //console.log('debounce');
+        let timeout;
+        return function () {
+            const functionCall = () => fn.apply(this, arguments);
+            clearTimeout(timeout);
+            timeout = setTimeout(functionCall, time);
+        }
+    }
+    $on(window, 'load', loadHandler);
+    $on(window, 'hashchange', app.hashChangedHandler.bind(app));
+    $on(window, 'resize', debounce((e) => {
+        console.log(e);
+        app.resizeHandler();
+    }, 250));
 });
-
 class App {
     constructor() {
         this.textElementTimeline;
         this.shapeElementTimeline;
         this.animationJson;
+        this.throttled = false;
     };
 
-    doResize() {
-
-        //console.log('****** doResize');
-        //let app = this;
-        //this.doFunc();
-        var w = window.innerWidth;
-        //console.log('doResize:' + w);
-        let currentHash = location.hash || '#1';
-        let currentPageNum = (currentHash.replace('#', ''));
-        //console.log('***PETE : currentPageNum:' + currentPageNum);
-        let page = document.querySelector('#page-' + currentPageNum);
-        //
-        let pageToHide;
-        //let leftElementParent = page.parentNode;
-        //console.log('page:'+page.outerHTML);
-        let isLeft = page.className.split(' ').indexOf('left');
-        //console.log('leftElement:'+leftElement);
-        if (isLeft >= 0) {
-            //console.log('left found');
-            var nextPageNum = Number(currentPageNum) + 1;
-            //console.log('***PETE : nextPageNum:' + nextPageNum);
-            pageToHide = document.querySelector('#page-' + nextPageNum);
-            //pageToHide = pageR;
-            //console.log('pageToHide:'+pageToHide.outerHTML);
-        }
-        let isRight = page.className.split(' ').indexOf('right');
-        if (isRight >= 0) {
-            //console.log('right found');
-            var prevPageNum = Number(currentPageNum) - 1;
-            //console.log('nextPageNum:'+nextPageNum);
-            pageToHide = document.querySelector('#page-' + prevPageNum);
-            //pageToHide = pageR;
-            //console.log('pageToHide:'+pageToHide.outerHTML);
-        }
-        if (w < 900) { //SAME AS tablet-landscape-up
-            if (pageToHide) {
-                pageToHide.classList.add('hidden');
-            }
-
-            //console.log('currentPageNum:'+currentPageNum);
-        } else {
-            if (pageToHide) {
-                pageToHide.classList.remove('hidden');
-            }
-        }
-    }
-
-    hidePages() {
-        // Set wrapper and pages to hidden    
-        const allPages = document.querySelectorAll('.container--layout-1');
-        qs('.wrapper').className = 'wrapper hidden';
-        [...allPages].forEach(el => {
-            el.classList.add('hidden');
-        });
-    }
-
-    displayPage() {
-        let currentPageNum = this.getNextPageNumber();
-        const currentPageNode = qs('#page-' + currentPageNum),
-            isLeft = currentPageNode.classList.contains('left'),
-            isRight = currentPageNode.classList.contains('right');
-
-        // Show current page and left or right page
-        currentPageNode.classList.remove('hidden');
-        if (isLeft) qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
-        if (isRight) qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
-
-        // show wrapper
-        qs('.wrapper').classList.remove('hidden');
-    }
-
-    getNextPageNumber(num = 0) {
-        let currentHash = location.hash || '#1';
-        return (+currentHash.replace('#', '')) + num;
-    }
-    setNavigationStates() {
-        console.log('****** setNavigationStates');
-        location.hash = location.hash || '#1';
-
-        if (!location.hash || location.hash == '#1') {
-            document.querySelector('.nav-bar .js-back').setAttribute("disabled", "");
-        } else {
-            document.querySelector('.nav-bar .js-back').removeAttribute("disabled");
-        }
-
-        document.querySelector('.nav-bar .js-back').onclick = (e) => {
-            location.hash = this.getNextPageNumber(-1);
-            //loadPage();
-        };
-        document.querySelector('.nav-bar .js-next').onclick = (e) => {
-            location.hash = this.getNextPageNumber(+1);
-            //loadPage();
-        };
-    }
-
-    startUp() {
-
+    setView() {
         function getJsonFileName(loc) {
-            console.log('APP: getJsonFileName: ');
+            //console.log('APP: getJsonFileName: ');
             let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
             //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
             return loc.origin + '/' + foldername + '/animate.json';
         }
         function validateResponse(response) {
-            console.log('APP: validateResponse: ', response);
+            //console.log('APP: validateResponse: ', response);
             if (!response.ok) {
                 throw Error(response.statusText);
             }
             return response;
         }
         function readResponseAsJSON(response) {
-            console.log('APP: readResponseAsJSON: ', response);
+            //console.log('APP: readResponseAsJSON: ', response);
             return response;
         }
         function logResult(result) {
-            console.log('APP: logResult: ', result);
+            //console.log('APP: logResult: ', result);
             return result;
         }
         function logError(error) {
-            console.log('Looks like there was a problem: \n', error);
+            //console.log('Looks like there was a problem: \n', error);
         }
         function setAminProbs(response) {
             this.animations = response;
         }
-        console.log('****** loadAnimationSeq start');
+        //console.log('****** loadAnimationSeq start');
 
         this.hidePages();
 
@@ -164,16 +76,170 @@ class App {
     }
 
     continueStartUp(json) {
+        console.log('****** continueStartUp ');
         this.animationJson = json;
+
+        this.displayPage();
         this.createAnimationTimelines();
-        this.displayPage();
         this.playTimelines();
-        this.setNavigationStates();
+        this.setNavigationEvents();
+        this.resetNavigationStates();
     }
-    updateView() {
+
+    hashChangedHandler() {
+        console.log('****** updateView ');
         this.hidePages();
+
         this.displayPage();
-        this.setNavigationStates();
+        this.createAnimationTimelines();
+        this.playTimelines();
+        this.resetNavigationStates();
+    }
+    resizeHandler() {
+        console.log('****** resizeHandler ');
+        this.doResize();
+    }
+
+
+    doResize() {
+
+        console.log('****** doResize');
+
+        let thisPage = qs('#page-' + this.getPageNumber()),
+            nextPage = qs('#page-' + this.getPageNumber(1)),
+            prevPage = qs('#page-' + this.getPageNumber(-1)),
+            isLeft = thisPage.classList.contains('left'),
+            isRight = thisPage.classList.contains('right'),
+            pageToHide;
+
+        if (isLeft) pageToHide = nextPage;
+        if (isRight) pageToHide = prevPage;
+
+        if (window.innerWidth < 900) { //SAME AS tablet-landscape-up
+            if (pageToHide) pageToHide.classList.add('hidden');
+        } else {
+            if (pageToHide) pageToHide.classList.remove('hidden');
+        }
+
+        this.resetNavigationStates();
+    }
+
+    hidePages() {
+        // Set wrapper and pages to hidden    
+        const allPages = document.querySelectorAll('.container--layout-1');
+        qs('.wrapper').className = 'wrapper hidden';
+        [...allPages].forEach(el => {
+            el.classList.add('hidden');
+        });
+    }
+
+    displayPage() {
+        let currentPageNum = this.getPageNumber();
+        const currentPageNode = qs('#page-' + currentPageNum),
+            isLeft = currentPageNode.classList.contains('left'),
+            isRight = currentPageNode.classList.contains('right');
+
+        // Show current page and left or right page
+        currentPageNode.classList.remove('hidden');
+        if (isLeft) qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
+        if (isRight) qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
+
+        // show wrapper
+        qs('.wrapper').classList.remove('hidden');
+    }
+
+    getPageNumber(num = 0) {
+        let currentHash = location.hash || '#1';
+        return (+currentHash.replace('#', '')) + num;
+    }
+    setNavigationEvents() {
+        //console.log('****** setNavigationStates');
+        location.hash = location.hash || '#1';
+
+        document.querySelector('.nav-bar .js-back').onclick = (e) => this.previousClick();
+        document.querySelector('.nav-bar .js-next').onclick = (e) => this.nextClick();
+    }
+    resetNavigationStates() {
+
+        let thisPage = qs('#page-' + this.getPageNumber()),
+            nextPage = qs('#page-' + this.getPageNumber(1)),
+            prevPage = qs('#page-' + this.getPageNumber(-1));
+
+        if (prevPage) {
+            if (prevPage.classList.contains('left')) {
+                if (prevPage.classList.contains('hidden')) {
+                    disablePrevious();
+                } else {
+                    prevPage = qs('#page-' + this.getPageNumber(-2));
+                    if (prevPage) {
+                        enablePrevioust();
+                    } else {
+                        disablePrevious();
+                    }
+                }
+            } else {
+                enablePrevioust();
+            }
+        } else {
+            disablePrevious();
+        }
+
+
+        if (nextPage) {
+            if (nextPage.classList.contains('right')) {
+                if (nextPage.classList.contains('hidden')) {
+                    enableNext();
+                } else {
+                    // Already visible
+                    nextPage = qs('#page-' + this.getPageNumber(2));
+                    if (nextPage) {
+                        enableNext();
+                    } else {
+                        disableNext();
+                    }
+                }
+            } else {
+                enableNext();
+            }
+        } else {
+            disableNext();
+        }
+
+        function disablePrevious() {
+            document.querySelector('.nav-bar .js-back').setAttribute("disabled", "");
+        }
+        function enablePrevioust() {
+            document.querySelector('.nav-bar .js-back').removeAttribute("disabled");
+        }
+        function disableNext() {
+            document.querySelector('.nav-bar .js-next').setAttribute("disabled", "");
+        }
+        function enableNext() {
+            document.querySelector('.nav-bar .js-next').removeAttribute("disabled");
+        }
+
+    }
+    nextClick() {
+        if (qs('#page-' + this.getPageNumber()).classList.contains('left')
+            && qs('#page-' + this.getPageNumber(1))
+            && !qs('#page-' + this.getPageNumber(1)).classList.contains('hidden')) {
+            this.navigateToPage(this.getPageNumber(2));
+        } else {
+            this.navigateToPage(this.getPageNumber(1));
+        }
+    }
+    previousClick() {
+        if (qs('#page-' + this.getPageNumber()).classList.contains('right')
+            && qs('#page-' + this.getPageNumber(-1))
+            && !qs('#page-' + this.getPageNumber(-1)).classList.contains('hidden')) {
+            this.navigateToPage(this.getPageNumber(-2));
+        } else {
+            this.navigateToPage(this.getPageNumber(-1));
+        }
+    }
+    navigateToPage(p) {
+        location.hash = '#' + p;
+        this.resetNavigationStates();
     }
 
     playTimelines() {
@@ -182,11 +248,41 @@ class App {
     }
 
     createAnimationTimelines() {
-        let defaultDuration = "200",
-            defaultOffset = "-=50";
+        console.log('****** createAnimationTimelines ')
+        const defaultDuration = "200",
+            defaultOffset = "-=50",
+            currentPageNum = this.getPageNumber(),
+            currentPageNode = qs('#page-' + currentPageNum),
+            prevPageNode = qs('#page-' + (currentPageNum - 1)),
+            nextPageNode = qs('#page-' + (currentPageNum + 1)),
+            isLeft = currentPageNode.classList.contains('left'),
+            isRight = currentPageNode.classList.contains('right');
 
-        const nodelist = document.querySelectorAll('#page-' + this.getNextPageNumber() + ' [data-animate]');
-        const nodesArray = Array.prototype.slice.call(nodelist);
+        const thisNodelist = document.querySelectorAll('#page-' + currentPageNum + ' [data-animate]'),
+            lefttNodelist = document.querySelectorAll('#page-' + (currentPageNum - 1) + ' [data-animate]'),
+            rightNodelist = document.querySelectorAll('#page-' + (currentPageNum + 1) + ' [data-animate]');
+        let completeNodeList;
+
+        console.log('****** thisNodelist ', typeof thisNodelist)
+
+        console.log('****** isLeft ', isLeft)
+        if (isLeft) {
+            console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
+            console.log('****** nextPageNode ', nextPageNode)
+
+            if (nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
+                completeNodeList = [...thisNodelist, ...rightNodelist]
+            }
+        }
+
+
+        //var nodesArray = [].slice.call(document.querySelectorAll("div"));
+
+
+        console.log('****** completeNodeList ', completeNodeList)
+        console.log('****** completeNodeList ', typeof completeNodeList)
+
+        const nodesArray = Array.prototype.slice.call(thisNodelist);
         const textElements = nodesArray.filter(node => /P|H1|H2|H3|H4|H5/.test(node.nodeName))
             .sort(sorter)
             .reverse()
