@@ -24,9 +24,7 @@ export default class Timeline {
     startAmnimation() {
         //console.log('????????? setAnimations start');
         this.timeline.play();
-        this.elementsList.forEach((el, index) => {
-            el.classList.remove('hidden');
-        });
+        this.timeline.reverse();
     }
 
     setup() {
@@ -37,7 +35,7 @@ export default class Timeline {
         if (!this.elementsList.length) return;
 
         this.timeline = anime.timeline({
-            direction: 'reverse',
+            //direction: 'reverse',
             autoplay: false
         });
 
@@ -58,26 +56,24 @@ export default class Timeline {
                 translateX: '100',
                 easing: 'easeInQuad',
                 duration: duration,
+                direction: 'reverse',
                 offset: offset
             });
         });
 
+        this.timeline.begin = () => {
+            console.log('#################### myTimeline begin ');
 
-        //console.log('this.timeline: ', this.timeline);
-
-        this.timeline.play();
-        this.timeline.pause();
-
-        this.timeline.begin = function () {
-            //console.log('#################### myTimeline begin ');
-
-            let wait = setTimeout(function () {
-                let wrapper = document.getElementsByClassName("js-container")[0];
-                wrapper && wrapper.classList.remove('hidden');
+            let wait = setTimeout(() => {
+                this.elementsList.forEach((el, index) => {
+                    el.classList.remove('hidden');
+                });
             }, 10);
         };
 
+
         this.timeline.complete = function () {
+            // TODO 
             //let wrapper = document.getElementsByClassName("wrapper")[0];
             //wrapper.classList.remove('hidden');
 
@@ -87,10 +83,7 @@ export default class Timeline {
                 .forEach(function (elem) {
                     elem.classList.add('--bottom-border');
                 });
-
         };
-
-
 
     };
 }

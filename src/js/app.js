@@ -100,7 +100,6 @@ class App {
         this.doResize();
     }
 
-
     doResize() {
 
         console.log('****** doResize');
@@ -258,54 +257,74 @@ class App {
             isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
-        const thisNodelist = document.querySelectorAll('#page-' + currentPageNum + ' [data-animate]'),
-            lefttNodelist = document.querySelectorAll('#page-' + (currentPageNum - 1) + ' [data-animate]'),
-            rightNodelist = document.querySelectorAll('#page-' + (currentPageNum + 1) + ' [data-animate]');
-        let completeNodeList;
+        const [...currentPageNodelist] = document.querySelectorAll('#page-' + currentPageNum + ' [data-animate]'),
+            [...lefttNodelist] = document.querySelectorAll('#page-' + (currentPageNum - 1) + ' [data-animate]'),
+            [...rightNodelist] = document.querySelectorAll('#page-' + (currentPageNum + 1) + ' [data-animate]');
+        let completeTextNodeList,
+            completeShapeNodeList;
 
-        console.log('****** thisNodelist ', typeof thisNodelist)
-
+        console.log('****** thisNodelist ', currentPageNodelist)
+        console.log('****** lefttNodelist ', lefttNodelist)
+        console.log('****** rightNodelist ', rightNodelist)
         console.log('****** isLeft ', isLeft)
-        if (isLeft) {
+        console.log('****** isLeft ', isRight)
+
+        if (isLeft && nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
+            // Combine next page nodes
             console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
             console.log('****** nextPageNode ', nextPageNode)
 
-            if (nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
-                completeNodeList = [...thisNodelist, ...rightNodelist]
-            }
+            const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist),
+                currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist),
+                nextPageTextNodelistSorted = getTextNodes(rightNodelist),
+                nextPageShapeNodelistSorted = getShapeNodes(rightNodelist);
+
+            completeTextNodeList = [...nextPageTextNodelistSorted, ...currentPageTextNodelistSorted];
+            completeShapeNodeList = [...nextPageShapeNodelistSorted, ...currentPageShapeNodelistSorted];
+
+        } else if (isRight && prevPageNode && prevPageNode.classList.contains('left') && !prevPageNode.classList.contains('hidden')) {
+            // Combine previous page nodes
+            const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist),
+                currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist),
+                previousPageTextNodelistSorted = getTextNodes(lefttNodelist),
+                previousPageShapeNodelistSorted = getShapeNodes(lefttNodelist);
+
+            completeTextNodeList = [...currentPageTextNodelistSorted, ...previousPageTextNodelistSorted];
+            completeShapeNodeList = [...currentPageShapeNodelistSorted, ...previousPageShapeNodelistSorted];
+
+        } else {
+            // This page nodes only
+            completeTextNodeList = getTextNodes(currentPageNodelist);
+            completeShapeNodeList = getShapeNodes(currentPageNodelist);
         }
 
-
-        //var nodesArray = [].slice.call(document.querySelectorAll("div"));
-
-
-        console.log('****** completeNodeList ', completeNodeList)
-        console.log('****** completeNodeList ', typeof completeNodeList)
-
-        const nodesArray = Array.prototype.slice.call(thisNodelist);
-        const textElements = nodesArray.filter(node => /P|H1|H2|H3|H4|H5/.test(node.nodeName))
-            .sort(sorter)
-            .reverse()
-
-        const shapeElements = nodesArray.filter(node => /FIGURE/.test(node.nodeName))
-            .sort(sorter)
-            .reverse()
-
-        //console.log('****** textElements ', textElements);
-        //console.log('****** shapeElements ', shapeElements);
-
-        if (textElements.length) {
-            this.textElementTimeline = new Timeline(textElements, this.animationJson);
-            this.textElementTimeline.setup();
+        function getTextNodes(nodes) {
+            return nodes.filter(node => /P|H1|H2|H3|H4|H5/.test(node.nodeName))
+                .sort(sorter)
+                .reverse()
         }
-        if (shapeElements.length) {
-            this.shapeElementTimeline = new Timeline(shapeElements, this.animationJson);
-            this.shapeElementTimeline.setup();
+        function getShapeNodes(nodes) {
+            return nodes.filter(node => /FIGURE/.test(node.nodeName))
+                .sort(sorter)
+                .reverse()
         }
-
         function sorter(obj1, obj2) {
             return obj1.dataset.animate - obj2.dataset.animate;
         }
+        console.log('****** completeTextNodeList ', completeTextNodeList)
+        console.log('****** completeShapeNodeList ', completeShapeNodeList)
+
+        if (completeTextNodeList.length) {
+            this.textElementTimeline = new Timeline(completeTextNodeList, this.animationJson);
+            this.textElementTimeline.setup();
+        }
+        if (completeShapeNodeList.length) {
+            this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
+            this.shapeElementTimeline.setup();
+        }
+
+        return;
+
     }
 }
 
