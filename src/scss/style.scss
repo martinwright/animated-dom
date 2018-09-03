@@ -34,17 +34,33 @@ body {
 //-------------//
 //// HEADER /////
 //-------------//
+
+header.headerIntro {
+text-align: right;
+  padding: 10px 15px 0 0;
+  z-index: 1;
+}
+
 header.header {
   display: flex;
   align-items: center;
   position: fixed;
-  height: 3rem;
+  height: 10px;
   left: 0;
   top: 0;
   right: 0;
-  padding: 0.5rem;
-  background-color: #fbe7eb;
+  padding: 10px;
+  background-color: #f1f1f1;
   z-index: 1;
+}
+
+.banner-heading{
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 200;
+  span{
+    font-weight: 600;
+  }
 }
 h1.main-heading {
   grid-area: h;
@@ -274,7 +290,7 @@ h1.main-heading {
 
 nav.nav-bar {
   position: fixed;
-  background-color: #e2e2e2;
+  background-color: #f1f1f1;
   width: calc(100% - 2rem);
   z-index: 1;
   bottom: 0;
@@ -329,7 +345,7 @@ button {
 .wrapper {
   display: flex;
   justify-content: normal;
-  margin-top: 4rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
   //padding-left: 1em;
   //padding-right: 1em;
@@ -462,10 +478,24 @@ button {
 section {
   flex-grow: 1;
   flex-basis: 0;
-  padding: 1em;
+  padding: 20px;
   overflow: visible;
-  /*border: yellow solid 1px;*/
+border: yellow solid 1px;
 }
+
+section.mobileHelper--1{
+     @media (max-width: 900px) {
+       padding-left:60%;
+       margin-top:-20%;
+     }
+}
+
+section.mobileHelper--2{
+  @media (max-width: 900px) {
+    padding-right:50%;
+  }
+}
+
 
 h2.sub-heading {
   grid-area: g;
