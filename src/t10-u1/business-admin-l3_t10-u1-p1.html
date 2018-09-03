@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,42 +14,32 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Organisations and sectors</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Organisations and sectors</h1>
+    </header>
 
 
-<div class="container--layout-1 -hidden">
+    <div class="container--layout-1 -hidden">
 
-    <style>
-        /*@media (max-width: 900px) {*/
-            /*.mobileHelper--1{*/
-                /*padding-left:60%;*/
-                /*margin-top:-20%;*/
-            /*}*/
-        /*}*/
-
-    </style>
 
     <article id="page-1" class="article">
 
@@ -57,22 +48,20 @@
             <h2 class="sub-heading"
                 data-animate="2">Introduction</h2>
 
-            <p data-animate="3">Your organisation will form part of one of three sectors: the public
-                sector, the private sector or the third sector. There are major differences between these three
-                sectors, mainly in their purpose, the way they are run and financed, as well as what they do with
-                any
-                profits.</p>
-            <p data-animate="4">To understand how your organisation's policies and procedures affect your
-                role, it is important to recognise the differences between the three sectors. Talk to your employer
-                and colleagues
-                about your organisation – they will have an insight into the way its aims relate to its
-                sector.</p>
+                <p data-animate="2">Your organisation will form part of one of three sectors: the public sector, the private
+                    sector or the third sector. There are major differences between these three sectors, mainly in their
+                    purpose, the way they are run and financed, as well as what they do with any profits.
+                </p>
+                <p data-animate="3">To understand how your organisation's policies and procedures affect your role, it is
+                    important to recognise the differences between the three sectors. Talk to your employer and colleagues
+                    about your organisation – they will have an insight into the way its aims relate to its sector.
+                </p>
 
-            <figure class="shape-20" style="position: relative; top: 5%; left: 10%">
-                <img src="../images/_shapes/dia-p3.svg">
-            </figure>
+                <figure data-animate="4" class="shape-20" style="position: relative; top: 5%; left: 10%">
+                    <img src="../images/_shapes/dia-p3.svg">
+                </figure>
 
-        </section>
+            </section>
 
         <section class="mobileHelper--1">
             <!--<div class="shape-50" style="opacity: .4;position: relative;width: 50%">-->
@@ -86,16 +75,16 @@
                     </figure>
                 </figure>
 
+            
+            </section>
 
 
-        </section>
+
+        </article>
 
 
-
-    </article>
-
-
-</div>
+    </div>
 
 </body>
+
 </html>
