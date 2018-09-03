@@ -1,3 +1,38 @@
+.buttonText {
+  color: white;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+  margin: 0px 0px 0px 30px
+}
+
+.buttonCirc {
+  width: 36px;
+  height: 36px;
+  color: #e21;
+  //font-size: 16px;
+  background: #fff;
+  border-radius: 100px;
+  border: 4px solid #e74;
+  //border-width: 4px 4px 4px 4px;
+  //padding: 9px 12px 11px 12px;
+  //margin: 6px 0px 0px 0px;
+  position: absolute;
+  top: -6px;
+  transition: 0.2s;
+  /*left: -10px;*/
+  /*bottom: -10px*/
+  text-align: center;
+  img{
+    height: 14px;
+    margin: 10px 0 0 0;
+    opacity: .65;
+    //content: url('icons/end-solid.svg');
+  }
+}
+
 .button--navigation {
   /*backface-visibility: hidden;*/
   position: relative;
@@ -15,40 +50,9 @@
   margin-right: 0px;
   transition: 0.2s;
 
-  .buttonText {
-    color: white;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 900;
-    font-style: normal;
-    text-align: center;
-    margin: 0px 0px 0px 30px
-  }
+  
 
-  .buttonCirc {
-    width: 36px;
-    height: 36px;
-    color: #e21;
-    //font-size: 16px;
-    background: #fff;
-    border-radius: 100px;
-    border: 4px solid #e74;
-    //border-width: 4px 4px 4px 4px;
-    //padding: 9px 12px 11px 12px;
-    //margin: 6px 0px 0px 0px;
-    position: absolute;
-    top: -6px;
-    transition: 0.2s;
-    /*left: -10px;*/
-    /*bottom: -10px*/
-    text-align: center;
-    img{
-      height: 14px;
-      margin: 10px 0 0 0;
-      opacity: .65;
-      //content: url('icons/end-solid.svg');
-    }
-  }
+  
 }
 
 .button--navigation.disabled {
