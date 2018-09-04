@@ -1,3 +1,107 @@
+@import 'mixins';
+.nav-bar__button:focus {
+  outline: none;
+}
+.nav-bar__button {
+  position: relative;
+  color: white;
+  background: #e74;
+  border-radius: 50px;
+  height: 2rem;
+  width: 33px;
+  border-color: #e74;
+  cursor: pointer;
+  transition: 0.2s;
+  @include for-size(tablet-portrait-up) {
+    width: 130px;
+  }
+}
+
+.nav-bar__button:not(:disabled):hover {
+  background: blue;
+  border-color: blue;
+}
+.nav-bar__button:disabled {
+  background: lightgray;
+  border-color: lightgray;
+  cursor: default;
+}
+
+%nav-bar__button-text {
+  color: white;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 900;
+  font-style: normal;
+  visibility: hidden;
+  @include for-size(tablet-portrait-up) {
+    visibility: visible;
+  }
+}
+.nav-bar__button-text--left {
+  @extend %nav-bar__button-text;
+  margin: 0px 70px 0px 0px;
+}
+.nav-bar__button-text--right {
+  @extend %nav-bar__button-text;
+  margin: 0px 0px 0px 40px;
+}
+
+%nav-bar__button-circle {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 100px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: inherit;
+  position: absolute;
+  top: -6px;
+  text-align: center;
+  img {
+    height: 20px;
+    margin: 7px 0 0 0;
+    opacity: .65;
+  }
+}
+
+.nav-bar__button-circle--left {
+  @extend %nav-bar__button-circle;
+  left: -10px;
+}
+.nav-bar__button-circle--right {
+  @extend %nav-bar__button-circle;
+  right: -10px;
+}
+
+/* @include for-size(tablet-portrait-up) {
+ 
+ 
+}
+ */
+
+
+/* .nav-bar__button img{
+  height: 2rem;
+} */
+
+.button--navigation {
+  /*backface-visibility: hidden;*/
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: #e74;
+  border-radius: 50px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 8px 0px 8px 0px;
+  color: #fff;
+  height: 14px;
+  width: 130px;
+  margin-right: 0px;
+  transition: 0.2s;
+}
 .buttonText {
   color: white;
   font-size: 12px;
@@ -33,27 +137,7 @@
   }
 }
 
-.button--navigation {
-  /*backface-visibility: hidden;*/
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  white-space: nowrap;
-  background: #e74;
-  border-radius: 50px;
-  border: 0px solid #444;
-  border-width: 0px 0px 0px 0px;
-  padding: 8px 0px 8px 0px;
-  color: #fff;
-  height: 14px;
-  width: 130px;
-  margin-right: 0px;
-  transition: 0.2s;
 
-  
-
-  
-}
 
 .button--navigation.disabled {
   background: lightgrey;
@@ -86,16 +170,7 @@
   }
 }
 
-@media screen and (orientation:portrait) {
-  .button--navigation {
-    width: 40px;
-    margin-right: 16px;
-  }
-  .button--navigation > .buttonText {
-    visibility: hidden;
-    //color: black;
-  }
-}
+
 
 
 
