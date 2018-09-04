@@ -19,7 +19,6 @@ DocReady(() => {
     $on(window, 'load', loadHandler);
     $on(window, 'hashchange', app.hashChangedHandler.bind(app));
     $on(window, 'resize', debounce((e) => {
-        console.log(e);
         app.resizeHandler();
     }, 250));
 });
@@ -64,6 +63,7 @@ class App {
 
         this.hidePages();
 
+        console.log('****** fetch ');
         return fetch(getJsonFileName(window.location))
             .then(validateResponse)
             .then(readResponseAsJSON)
@@ -79,24 +79,22 @@ class App {
     continueStartUp(json) {
         console.log('****** continueStartUp ');
         this.animationJson = json;
-
         this.displayPage();
         this.doResize();
-        if (this.showAnimations) this.createAnimationTimelines();
-        if (this.showAnimations) this.playTimelines();
         this.setNavigationEvents();
         this.resetNavigationStates();
+        if (this.showAnimations) this.createAnimationTimelines();
+        if (this.showAnimations) this.playTimelines();
     }
 
     hashChangedHandler() {
         console.log('****** updateView ');
         this.hidePages();
-
         this.displayPage();
         this.doResize();
+        this.resetNavigationStates();
         if (this.showAnimations) this.createAnimationTimelines();
         if (this.showAnimations) this.playTimelines();
-        this.resetNavigationStates();
     }
     resizeHandler() {
         console.log('****** resizeHandler ');
@@ -104,9 +102,7 @@ class App {
     }
 
     doResize() {
-
         console.log('****** doResize');
-
         let thisPage = qs('#page-' + this.getPageNumber()),
             nextPage = qs('#page-' + this.getPageNumber(1)),
             prevPage = qs('#page-' + this.getPageNumber(-1)),
@@ -122,7 +118,6 @@ class App {
         } else {
             if (pageToHide) pageToHide.classList.remove('hidden');
         }
-
         this.resetNavigationStates();
     }
 
@@ -135,17 +130,28 @@ class App {
         });
     }
 
+    addPageNumber(el, num) {
+        el.insertAdjacentHTML('beforeend', `<div class="page-number">${num}</div>`);
+    }
+
     displayPage() {
         let currentPageNum = this.getPageNumber();
         const currentPageNode = qs('#page-' + currentPageNum),
             isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
+        this.addPageNumber(currentPageNode, currentPageNum);
+
         // Show current page and left or right page
         currentPageNode.classList.remove('hidden');
-        if (isLeft) qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
-        if (isRight) qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
-
+        if (isLeft) {
+            qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
+            this.addPageNumber(qs(`#page-${currentPageNum + 1}`), currentPageNum + 1);
+        }
+        if (isRight) {
+            qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
+            this.addPageNumber(qs(`#page-${currentPageNum + 1}`), currentPageNum - 1);
+        }
         // show wrapper
         qs('.wrapper').classList.remove('hidden');
     }
@@ -157,14 +163,12 @@ class App {
     setNavigationEvents() {
         //console.log('****** setNavigationStates');
         location.hash = location.hash || '#1';
-
         qs('.nav-bar .js-back').onclick = (e) => this.previousClick();
         qs('.nav-bar .js-next').onclick = (e) => this.nextClick();
         qs('.nav-bar .js-animation input').checked = this.showAnimations;
         qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
     }
     resetNavigationStates() {
-
         let thisPage = qs('#page-' + this.getPageNumber()),
             nextPage = qs('#page-' + this.getPageNumber(1)),
             prevPage = qs('#page-' + this.getPageNumber(-1));
@@ -172,7 +176,7 @@ class App {
         if (prevPage) {
             if (prevPage.classList.contains('left')) {
                 if (prevPage.classList.contains('hidden')) {
-                    disablePrevious();
+                    enablePrevioust();
                 } else {
                     prevPage = qs('#page-' + this.getPageNumber(-2));
                     if (prevPage) {
@@ -187,7 +191,6 @@ class App {
         } else {
             disablePrevious();
         }
-
 
         if (nextPage) {
             if (nextPage.classList.contains('right')) {
@@ -210,22 +213,20 @@ class App {
         }
 
         function disablePrevious() {
-            document.querySelector('.nav-bar .js-back').setAttribute("disabled", "");
+            qs('.nav-bar .js-back').setAttribute("disabled", "");
         }
         function enablePrevioust() {
-            document.querySelector('.nav-bar .js-back').removeAttribute("disabled");
+            qs('.nav-bar .js-back').removeAttribute("disabled");
         }
         function disableNext() {
-            document.querySelector('.nav-bar .js-next').setAttribute("disabled", "");
+            qs('.nav-bar .js-next').setAttribute("disabled", "");
         }
         function enableNext() {
-            document.querySelector('.nav-bar .js-next').removeAttribute("disabled");
+            qs('.nav-bar .js-next').removeAttribute("disabled");
         }
-
     }
     toggleAnimation(e) {
-        console.log('****** toggleAnimation ', e.target.checked);
-
+        //console.log('****** toggleAnimation ', e.target.checked);
         this.showAnimations = e.target.checked;
     }
     nextClick() {
@@ -257,7 +258,7 @@ class App {
     }
 
     createAnimationTimelines() {
-        console.log('****** createAnimationTimelines ')
+        //console.log('****** createAnimationTimelines ')
         const defaultDuration = "200",
             defaultOffset = "-=50",
             currentPageNum = this.getPageNumber(),
@@ -274,15 +275,15 @@ class App {
             completeShapeNodeList;
 
         console.log('****** thisNodelist ', currentPageNodelist)
-        console.log('****** lefttNodelist ', lefttNodelist)
-        console.log('****** rightNodelist ', rightNodelist)
-        console.log('****** isLeft ', isLeft)
-        console.log('****** isLeft ', isRight)
+        //console.log('****** lefttNodelist ', lefttNodelist)
+        //console.log('****** rightNodelist ', rightNodelist)
+        //console.log('****** isLeft ', isLeft)
+        //console.log('****** isLeft ', isRight)
 
         if (isLeft && nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
             // Combine next page nodes
-            console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
-            console.log('****** nextPageNode ', nextPageNode)
+            //console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
+            //console.log('****** nextPageNode ', nextPageNode)
 
             const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist),
                 currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist),
