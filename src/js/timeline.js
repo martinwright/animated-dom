@@ -1,22 +1,28 @@
 export default class Timeline {
     constructor(el, anim) {
+        console.log('????????? anim', anim);
         this.elementsList = el;
         this.animationJson = anim;
         this.timeline;
     };
 
-    getAnimProp(step, prop, defaultVal) {
+    getAnimProp(page, step, prop, defaultVal) {
+        console.log('>>>>>>>>> page', page);
+        console.log('>>>>>>>>> step', step);
+        console.log('>>>>>>>>> prop', prop);
         //console.log('getAnimProp: ', step);
-        return defaultVal;
+        //return defaultVal;
 
         try {
-            /*let ret = animations.steps;
-            console.log('ret: ', ret);
-            if (ret) ret = ret[step];
-            if (ret) ret = ret[prop];*/
+            console.log('this.animationJson.screens[page]: ', this.animationJson.screens[page].steps[String(step)][prop]);
+            let returnValue = this.animationJson.screens[page].steps[String(step)][prop];
 
-            return animations.steps[step][prop];
+            //if (ret) ret = ret[step];
+            //if (ret) ret = ret[prop];
+            //return defaultVal;
+            return returnValue;
         } catch (e) {
+            console.log('catch: ', e);
             return defaultVal;
         }
     }
@@ -30,7 +36,8 @@ export default class Timeline {
     setup() {
         //console.log('????????? setAnimations setup');
         let defaultDuration = "200",
-            defaultOffset = "-=50";
+            defaultOffset = "-=50",
+            defaultType = "slide-left";
 
         if (!this.elementsList.length) return;
 
@@ -41,24 +48,53 @@ export default class Timeline {
 
         this.elementsList.forEach((el, index) => {
             el.classList.add('hidden');
-            let animStep = el.dataset.animate;
-            //console.log('animStep: ', animStep);
-            //console.log('index: ', index);
-            let offset = el.dataset.offset || this.getAnimProp(animStep, 'offset', defaultOffset),
-                duration = el.dataset.duration || this.getAnimProp(animStep, 'duration', defaultDuration);
+            let animStep = el.dataset.animate,
+                animPage = el.pageNumber;
+
+            console.log('animStep: ', animStep);
+            console.log('animPage: ', animPage);
+            let offset = el.dataset.offset || this.getAnimProp(animPage, animStep, 'offset', defaultOffset),
+                duration = el.dataset.duration || this.getAnimProp(animPage, animStep, 'duration', defaultDuration),
+                type = el.dataset.type || this.getAnimProp(animPage, animStep, 'type', defaultType);
 
             if (index === 0) offset = '0';
             //console.log('duration: ', duration);
-            //console.log('el: ', el);
-            this.timeline.add({
-                targets: el,
-                opacity: 0,
-                translateX: '100',
-                easing: 'easeInQuad',
-                duration: duration,
-                direction: 'reverse',
-                offset: offset
-            });
+            console.log('el: ', el);
+
+            switch (type) {
+                case 'slide-left':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: 0,
+                        translateX: '100',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        direction: 'reverse',
+                        offset: offset
+                    });
+                    break;
+                case 'left-roll':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+                        //translateX: '20em',
+                        rotate: '2turn',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        direction: 'reverse',
+                        offset: offset,
+                        scale: 4,
+                        translateX: '350'
+                        /* rotate: {
+                            value: 25,
+                            duration: 2000,
+                            easing: 'easeInOutSine'
+                        } */
+                    });
+                    break;
+            }
+
+
         });
 
         this.timeline.begin = () => {

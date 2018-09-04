@@ -39,24 +39,26 @@ class App {
             return loc.origin + '/' + foldername + '/animate.json';
         }
         function validateResponse(response) {
-            //console.log('APP: validateResponse: ', response);
+            console.log('APP: validateResponse: ', response);
             if (!response.ok) {
                 throw Error(response.statusText);
             }
             return response;
         }
         function readResponseAsJSON(response) {
-            //console.log('APP: readResponseAsJSON: ', response);
-            return response;
+            console.log('APP: readResponseAsJSON: ', response);
+            return response.json();
         }
         function logResult(result) {
-            //console.log('APP: logResult: ', result);
+            console.log('APP: logResult: ', result);
             return result;
         }
         function logError(error) {
-            //console.log('Looks like there was a problem: \n', error);
+            console.log('Looks like there was a problem: \n', error);
         }
-        function setAminProbs(response) {
+        function setAminProps(response) {
+            console.log('****** setAminProps response', response);
+            console.log('****** setAminProps response', this);
             this.animations = response;
         }
         //console.log('****** loadAnimationSeq start');
@@ -68,8 +70,8 @@ class App {
             .then(validateResponse)
             .then(readResponseAsJSON)
             .then(logResult)
-            .then(setAminProbs)
-            .then(this.continueStartUp)
+            //.then(setAminProps)
+            .then(res => this.continueStartUp(res))
             .catch(err => {
                 logError(err);
                 this.continueStartUp({});
@@ -77,7 +79,7 @@ class App {
     }
 
     continueStartUp(json) {
-        console.log('****** continueStartUp ');
+        console.log('****** continueStartUp ', json);
         this.animationJson = json;
         this.displayPage();
         this.doResize();
@@ -285,45 +287,67 @@ class App {
             //console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
             //console.log('****** nextPageNode ', nextPageNode)
 
-            const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist),
-                currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist),
-                nextPageTextNodelistSorted = getTextNodes(rightNodelist),
-                nextPageShapeNodelistSorted = getShapeNodes(rightNodelist);
+            const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist, currentPageNum),
+                currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist, currentPageNum),
+                nextPageTextNodelistSorted = getTextNodes(rightNodelist, currentPageNum + 1),
+                nextPageShapeNodelistSorted = getShapeNodes(rightNodelist, currentPageNum + 1);
+
 
             completeTextNodeList = [...nextPageTextNodelistSorted, ...currentPageTextNodelistSorted];
             completeShapeNodeList = [...nextPageShapeNodelistSorted, ...currentPageShapeNodelistSorted];
 
         } else if (isRight && prevPageNode && prevPageNode.classList.contains('left') && !prevPageNode.classList.contains('hidden')) {
             // Combine previous page nodes
-            const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist),
-                currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist),
-                previousPageTextNodelistSorted = getTextNodes(lefttNodelist),
-                previousPageShapeNodelistSorted = getShapeNodes(lefttNodelist);
+            const currentPageTextNodelistSorted = getTextNodes(currentPageNodelist, currentPageNum),
+                currentPageShapeNodelistSorted = getShapeNodes(currentPageNodelist, currentPageNum),
+                previousPageTextNodelistSorted = getTextNodes(lefttNodelist, currentPageNum - 1),
+                previousPageShapeNodelistSorted = getShapeNodes(lefttNodelist, currentPageNum - 1);
+
 
             completeTextNodeList = [...currentPageTextNodelistSorted, ...previousPageTextNodelistSorted];
             completeShapeNodeList = [...currentPageShapeNodelistSorted, ...previousPageShapeNodelistSorted];
 
         } else {
             // This page nodes only
-            completeTextNodeList = getTextNodes(currentPageNodelist);
-            completeShapeNodeList = getShapeNodes(currentPageNodelist);
+            completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
+            completeShapeNodeList = getShapeNodes(currentPageNodelist, currentPageNum);
+
+            /* const currentPageTextNodes = completeTextNodeList.map(el => {
+                el.pageNumber = currentPageNum;
+                return el;
+            })
+            const currentPageShapeNodes = completeShapeNodeList.map(el => {
+                el.pageNumber = currentPageNum;
+                return el;
+            }) */
+            console.log('****** currentPageTextNodes', completeTextNodeList);
+            console.log('****** currentPageShapeNodes', completeShapeNodeList);
         }
 
-        function getTextNodes(nodes) {
+        function getTextNodes(nodes, page) {
             return nodes.filter(node => /P|H1|H2|H3|H4|H5/.test(node.nodeName))
                 .sort(sorter)
                 .reverse()
+                .map(node => {
+                    node.pageNumber = page;
+                    return node;
+                })
         }
-        function getShapeNodes(nodes) {
+        function getShapeNodes(nodes, page) {
             return nodes.filter(node => /FIGURE/.test(node.nodeName))
                 .sort(sorter)
                 .reverse()
+                .map(node => {
+                    node.pageNumber = page;
+                    return node;
+                })
         }
         function sorter(obj1, obj2) {
             return obj1.dataset.animate - obj2.dataset.animate;
         }
         console.log('****** completeTextNodeList ', completeTextNodeList)
         console.log('****** completeShapeNodeList ', completeShapeNodeList)
+        console.log('****** setAminProps response', this.animations);
 
         if (completeTextNodeList.length) {
             this.textElementTimeline = new Timeline(completeTextNodeList, this.animationJson);

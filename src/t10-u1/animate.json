@@ -11,8 +11,8 @@
         "3": {
           "type": "right-slide"
         },
-        "4": {
-          "type": "right-slide"
+        "6": {
+          "type": "left-roll"
         }
       }
     },
