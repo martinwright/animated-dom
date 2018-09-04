@@ -29,6 +29,7 @@ class App {
         this.shapeElementTimeline;
         this.animationJson;
         this.throttled = false;
+        this.showAnimations = true;
     };
 
     setView() {
@@ -81,8 +82,8 @@ class App {
 
         this.displayPage();
         this.doResize();
-        this.createAnimationTimelines();
-        this.playTimelines();
+        if (this.showAnimations) this.createAnimationTimelines();
+        if (this.showAnimations) this.playTimelines();
         this.setNavigationEvents();
         this.resetNavigationStates();
     }
@@ -93,8 +94,8 @@ class App {
 
         this.displayPage();
         this.doResize();
-        this.createAnimationTimelines();
-        this.playTimelines();
+        if (this.showAnimations) this.createAnimationTimelines();
+        if (this.showAnimations) this.playTimelines();
         this.resetNavigationStates();
     }
     resizeHandler() {
@@ -157,8 +158,10 @@ class App {
         //console.log('****** setNavigationStates');
         location.hash = location.hash || '#1';
 
-        document.querySelector('.nav-bar .js-back').onclick = (e) => this.previousClick();
-        document.querySelector('.nav-bar .js-next').onclick = (e) => this.nextClick();
+        qs('.nav-bar .js-back').onclick = (e) => this.previousClick();
+        qs('.nav-bar .js-next').onclick = (e) => this.nextClick();
+        qs('.nav-bar .js-animation input').checked = this.showAnimations;
+        qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
     }
     resetNavigationStates() {
 
@@ -219,6 +222,11 @@ class App {
             document.querySelector('.nav-bar .js-next').removeAttribute("disabled");
         }
 
+    }
+    toggleAnimation(e) {
+        console.log('****** toggleAnimation ', e.target.checked);
+
+        this.showAnimations = e.target.checked;
     }
     nextClick() {
         if (qs('#page-' + this.getPageNumber()).classList.contains('left')
