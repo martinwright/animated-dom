@@ -80,6 +80,7 @@ class App {
         this.animationJson = json;
 
         this.displayPage();
+        this.doResize();
         this.createAnimationTimelines();
         this.playTimelines();
         this.setNavigationEvents();
@@ -91,6 +92,7 @@ class App {
         this.hidePages();
 
         this.displayPage();
+        this.doResize();
         this.createAnimationTimelines();
         this.playTimelines();
         this.resetNavigationStates();

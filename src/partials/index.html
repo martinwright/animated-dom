@@ -6,7 +6,7 @@
     <title>Animated DOM</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <script type='application/javascript' src='../vendor/fastclick.js'></script>
+    <!-- <script type='application/javascript' src='../vendor/fastclick.js'></script> -->
     <link rel="stylesheet" href="../vendor/normalize.css" />
     <script type="text/javascript" src="../vendor/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../vendor/anime/anime.min.js"></script>
@@ -31,38 +31,78 @@
                 <!-- <button class="button--navigation js-back">Previous</button>
                 <button class="button--navigation js-next">Next</button> -->
 
-                <button class="button--navigation previous js-back">
-                    <div class="buttonText">PREVIOUS</div>
-                    <div class="buttonCirc"><img src="../images/_nav/icons/arrow-left-solid.svg" /></div>
+                <button class="nav-bar__button js-back">
+                    <span class="nav-bar__button-circle--left">
+                        <img src="../images/_nav/icons/arrow-left-solid.svg" />
+                    </span>
+                    <span class="nav-bar__button-text--right">PREVIOUS</span>
                 </button>
-                <button class="button--navigation next js-next">
-                    <div class="buttonText">NEXT</div>
-                    <div class="buttonCirc"><img src="../images/_nav/icons/arrow-right-solid.svg" /></div>
+
+                <button class="nav-bar__button js-next">
+                    <span class="nav-bar__button-text--left">NEXT</span>
+                    <span class="nav-bar__button-circle--right">
+                        <img src="../images/_nav/icons/arrow-right-solid.svg" />
+                    </span>
+
+                </button>
+
+                <!-- <button class="nav-bar__button js-back">
+                    PREVIOUS
+                </button>
+
+                <button class="nav-bar__button js-next">
+                    <span>NEXT</span>
+                    <img src="../images/_nav/icons/arrow-right-solid.svg" />
+                </button> -->
             </div>
+
+
+            <div class="nav--toggle">
+                <span class="title">ANIMATION</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="kSlider">
+                        <span class="kSlidertext On">ON</span>
+                        <span class="kSlidertext Off">OFF</span>
+                        <span class="kSliderC">&nbsp;</span>
+                    </span>
+                </label>
+            </div>
+
+
+            <!-- <div class="toggle-group">
+                <input type="checkbox" name="on-off-switch" id="on-off-switch" checked="" tabindex="1">
+                <label for="on-off-switch">
+                    <span class="aural">Show:</span> Show Accessible Toggle Switch
+                </label>
+                <div class="onoffswitch pull-right" aria-hidden="true">
+                    <div class="onoffswitch-label">
+                        <div class="onoffswitch-inner"></div>
+                        <div class="onoffswitch-switch"></div>
+                    </div>
+                </div>
+            </div> -->
+
 
 
         </div>
         <div class="nav-bar__controls">
-            <!--<div class="nav&#45;&#45;toggle">-->
-            <!--<span class="title">ANIMATION</span>-->
-            <!--<label class="switch">-->
-            <!--<input type="checkbox" checked>-->
-            <!--<div class="kSlider"><span class="kSlidertext On">ON</span><span class="kSlidertext Off">OFF</span><span class="kSliderC"></span></div>-->
-            <!--</label>-->
-            <!--</div>-->
-            <!--<button class="button&#45;&#45;control js-play">Play</button>-->
-            <!--<button class="button&#45;&#45;control js-pause">Pause</button>-->
-            <!--<button class="button&#45;&#45;control js-restart">Restart</button>-->
 
 
 
+
+
+            <!--  -->
+
+            <!-- <button class="button&#45;&#45;control js-play">Play</button>
+            <button class="button&#45;&#45;control js-pause">Pause</button>
+            <button class="button&#45;&#45;control js-restart">Restart</button> -->
 
         </div>
     </nav>
 
     <header class="header">
         <h1 class="banner-heading" style="grid-area: t" data-animate="1">Level 3 Business Administrator | <span>Professionalism</span></h1>
-
         <!--<div class="intro-heading">-->
         <!--<img height="100px" src="../images/_nav/C&G_Logo_Group.jpg" />-->
         <!--</div>-->
