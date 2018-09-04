@@ -503,6 +503,7 @@ h2.sub-heading {
   align-items: center;
   justify-content: flex-start;
   margin: 0.3em 0;
+  font-weight: 500;
   @include for-size(phone-only) {
     margin: 0.2em 0;
   }
@@ -521,13 +522,18 @@ h2 {
 }
 
 h3 {
-  /*color: cornflowerblue;*/
+  //color: cornflowerblue;
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0;
 }
 
 h4 {
   margin-top: 0.8rem;
   margin-bottom: 0.5rem;
   /*color: #028b50;*/
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 h5 {
