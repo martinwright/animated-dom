@@ -325,7 +325,7 @@ class App {
         }
 
         function getTextNodes(nodes, page) {
-            return nodes.filter(node => /P|H1|H2|H3|H4|H5/.test(node.nodeName))
+            return nodes.filter(node => /P|H1|H2|H3|H4|H5|LI/.test(node.nodeName))
                 .sort(sorter)
                 .reverse()
                 .map(node => {
@@ -357,7 +357,7 @@ class App {
             this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
             this.shapeElementTimeline.setup();
         }
-        console.log('****** shapeElementTimeline', this.shapeElementTimeline);
+        console.log('****** textElementTimeline', this.textElementTimeline);
 
         return;
 
