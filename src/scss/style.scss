@@ -29,6 +29,11 @@ body {
     font-size: 18px;
     padding: 0;
   }
+
+  @include for-size(big-desktop-up) {
+    font-size: 22px;
+    padding: 0;
+  }
 }
 
 //-------------//
@@ -131,8 +136,8 @@ nav.nav-bar {
 .wrapper {
   display: flex;
   justify-content: normal;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin: 1rem auto 3rem auto;
+  max-width: 1800px;
   //padding-left: 1em;
   //padding-right: 1em;
 }
