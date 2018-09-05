@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,73 +14,72 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="1">Professionalism</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="1">Professionalism</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-1" class="article">
+            <article id="page-1" class="article">
 
-            <section>
+                <section>
 
-                <h2 class="sub-heading"
-                    data-animate="2">Introduction</h2>
+                    <h2 class="sub-heading" data-animate="1">Introduction</h2>
 
-                <p data-animate="4">Personal and professional presentation is important when working as a business
-                    administrator. Understanding how to make a good first impression and the expected standards of dress
-                    and behaviour in your organisation ensure that you are respected professionally. Demonstrating a
-                    positive and welcoming attitude reflects well on you and your organisation.</p>
+                    <p data-animate="2">Personal and professional presentation is important when working as a business administrator.
+                        Understanding how to make a good first impression and the expected standards of dress and behaviour
+                        in your organisation ensure that you are respected professionally. Demonstrating a positive and welcoming
+                        attitude reflects well on you and your organisation.</p>
 
-                <figure class="shape-20" data-animate="9" style="position:relative; opacity:.7; left:15%; top: 0;">
-                    <img src="../images/_shapes/pen-s9.svg" />
-                </figure>
-
-            </section>
-
-            <section>
-
-                <figure class="shape-110" data-animate="2" style="position: relative; left: -1em; top:-1em; z-index: -1">
-
-                    <img src="../images/t1-u1/_m_personal_responsibility_intermediate_01_a.jpg" />
-
-                    <figure class="shape-50" data-animate="9" style="position: relative; opacity:.7; right:15%; margin-top: -45%;">
-                        <img src="../images/_shapes/dec-s15.svg" />
+                    <figure class="shape-20" data-animate="5" style="position:relative; opacity:.7; left:15%; top: 0;">
+                        <img src="../images/_shapes/pen-s9.svg" />
                     </figure>
 
-                </figure>
+                </section>
 
-            </section>
+                <section>
 
-        </article>
+                    <figure class="shape-110" data-animate="3" style="position: relative; left: -1em; top:-1em; z-index: -1">
 
+                        <img src="../images/t1-u1/_m_personal_responsibility_intermediate_01_a.jpg" />
+
+                        <figure class="shape-50" data-animate="4" style="position: relative; opacity:.7; right:15%; margin-top: -45%;">
+                            <img src="../images/_shapes/dec-s15.svg" />
+                        </figure>
+
+                    </figure>
+
+                </section>
+
+            </article>
+
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

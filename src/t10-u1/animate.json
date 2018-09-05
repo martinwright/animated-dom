@@ -2,17 +2,8 @@
   "screens": {
     "1": {
       "steps": {
-        "1": {
-          "type": "right-slide"
-        },
-        "2": {
-          "type": "right-slide"
-        },
-        "3": {
-          "type": "right-slide"
-        },
         "4": {
-          "type": "right-slide"
+          "type": "roll-from-right"
         }
       }
     },
