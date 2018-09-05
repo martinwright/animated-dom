@@ -5,7 +5,7 @@
   $phone-upper-boundary: 600px;
   $tablet-portrait-upper-boundary: 900px;
   $tablet-landscape-upper-boundary: 1200px;
-  $desktop-upper-boundary: 1800px;
+  $desktop-upper-boundary: 1600px;
 
   @if $range == phone-only {
     @media (max-width: #{$phone-upper-boundary - 1}) {
