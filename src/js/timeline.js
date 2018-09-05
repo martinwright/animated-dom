@@ -1,3 +1,5 @@
+import { qs } from './util';
+
 export default class Timeline {
     constructor(el, anim) {
         //console.log('????????? anim', anim);
@@ -37,8 +39,9 @@ export default class Timeline {
     setup() {
         //console.log('????????? setAnimations setup');
         let defaultDuration = "200",
-            defaultOffset = "0",
-            defaultType = "slide-left";
+            defaultType = "slide-left",
+            defaultOffset = 50;
+
 
         if (!this.elementsList.length) return;
 
@@ -52,15 +55,44 @@ export default class Timeline {
             let animStep = el.dataset.animate,
                 animPage = el.pageNumber;
 
+            defaultType = "slide-left";
+            if (/FIGURE/.test(el.nodeName)) {
+                //console.log('*********** el: ', qs('img', el).src);
+                let img = qs('img', el);
+                if (img && img.src) {
+                    let [fileName, ...rest] = img.src.split('/').reverse();
+                    if (fileName && /^cir-.*\.svg$/.test(fileName)) {
+                        console.log('*********** CIRCLE: ');
+                        defaultType = "zoom-out";
+                    }
+                    if (fileName && /^(dia|dec|hex|pen|squ)-.*\.svg$/.test(fileName)) {
+                        console.log('*********** DIAMOND: ');
+                        defaultType = "roll-from-right";
+                    }
+                    if (fileName && /^.*\.(jpg|png)$/.test(fileName)) {
+                        console.log('*********** JPG: ');
+                        defaultType = "zoom-in";
+                    }
+                }
+
+            }
+
+
+
+            //document.querySelectorAll('#myDiv img')[0].src
+
+
             //console.log('animStep: ', animStep);
             //console.log('animPage: ', animPage);
+            defaultOffset = defaultOffset + 50;
             let offset = el.dataset.offset || this.getAnimProp(animPage, animStep, 'offset', defaultOffset),
                 duration = el.dataset.duration || this.getAnimProp(animPage, animStep, 'duration', defaultDuration),
                 type = el.dataset.type || this.getAnimProp(animPage, animStep, 'type', defaultType);
 
+
             //if (index === 0) offset = '0';
             //console.log('duration: ', duration);
-            //console.log('el: ', el);
+            console.log('el: ', el);
 
             switch (type) {
                 case 'zoom-in':

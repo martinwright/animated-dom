@@ -3,7 +3,7 @@
     "1": {
       "steps": {
         "4": {
-          "type": "roll-from-right"
+          "type": "slide-left"
         }
       }
     },
