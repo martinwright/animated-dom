@@ -1,20 +1,20 @@
 export default class Timeline {
     constructor(el, anim) {
-        console.log('????????? anim', anim);
+        //console.log('????????? anim', anim);
         this.elementsList = el;
         this.animationJson = anim;
         this.timeline;
     };
 
     getAnimProp(page, step, prop, defaultVal) {
-        console.log('>>>>>>>>> page', page);
-        console.log('>>>>>>>>> step', step);
-        console.log('>>>>>>>>> prop', prop);
+        //console.log('>>>>>>>>> page', page);
+        //console.log('>>>>>>>>> step', step);
+        //console.log('>>>>>>>>> prop', prop);
         //console.log('getAnimProp: ', step);
         //return defaultVal;
 
         try {
-            console.log('this.animationJson.screens[page]: ', this.animationJson.screens[page].steps[String(step)][prop]);
+            //console.log('this.animationJson.screens[page]: ', this.animationJson.screens[page].steps[String(step)][prop]);
             let returnValue = this.animationJson.screens[page].steps[String(step)][prop];
 
             //if (ret) ret = ret[step];
@@ -22,21 +22,22 @@ export default class Timeline {
             //return defaultVal;
             return returnValue;
         } catch (e) {
-            console.log('catch: ', e);
+            //console.log('catch: ', e);
             return defaultVal;
         }
     }
 
     startAmnimation() {
         //console.log('????????? setAnimations start');
-        this.timeline.play();
+        //this.timeline.play();
         this.timeline.reverse();
+        this.timeline.play();
     }
 
     setup() {
         //console.log('????????? setAnimations setup');
         let defaultDuration = "200",
-            defaultOffset = "-=50",
+            defaultOffset = "0",
             defaultType = "slide-left";
 
         if (!this.elementsList.length) return;
@@ -51,17 +52,71 @@ export default class Timeline {
             let animStep = el.dataset.animate,
                 animPage = el.pageNumber;
 
-            console.log('animStep: ', animStep);
-            console.log('animPage: ', animPage);
+            //console.log('animStep: ', animStep);
+            //console.log('animPage: ', animPage);
             let offset = el.dataset.offset || this.getAnimProp(animPage, animStep, 'offset', defaultOffset),
                 duration = el.dataset.duration || this.getAnimProp(animPage, animStep, 'duration', defaultDuration),
                 type = el.dataset.type || this.getAnimProp(animPage, animStep, 'type', defaultType);
 
-            if (index === 0) offset = '0';
+            //if (index === 0) offset = '0';
             //console.log('duration: ', duration);
-            console.log('el: ', el);
+            //console.log('el: ', el);
 
             switch (type) {
+                case 'zoom-in':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        offset: offset,
+                        scale: .5,
+                        //transformOrigin: "50% 50%"
+                    });
+                    break;
+                case 'zoom-out':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        offset: offset,
+                        scale: 2,
+                        //transformOrigin: "50% 50%"
+                    });
+                    break;
+                case 'roll-from-right':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+                        translateX: '400',
+                        //translateX: '20em',
+                        rotate: '1turn',
+                        easing: 'easeInQuad',
+                        //direction: 'reverse',
+                        duration: duration,
+                        offset: offset,
+
+                        //scale: 4,
+                        //transformOrigin: "50% 50%"
+                    });
+                    break;
+                case 'roll-from-left':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+                        translateX: '-400',
+                        //translateX: '20em',
+                        rotate: '1turn',
+                        easing: 'easeInQuad',
+                        //direction: 'reverse',
+                        duration: duration,
+                        offset: offset,
+
+                        //scale: 4,
+                        //transformOrigin: "50% 50%"
+                    });
+                    break;
                 case 'slide-left':
                     this.timeline.add({
                         targets: el,
@@ -69,7 +124,7 @@ export default class Timeline {
                         translateX: '100',
                         easing: 'easeInQuad',
                         duration: duration,
-                        direction: 'reverse',
+                        //direction: 'reverse',
                         offset: offset
                     });
                     break;
@@ -81,7 +136,7 @@ export default class Timeline {
                         rotate: '2turn',
                         easing: 'easeInQuad',
                         duration: duration,
-                        direction: 'reverse',
+                        //direction: 'reverse',
                         offset: offset,
                         scale: 4,
                         translateX: '350'

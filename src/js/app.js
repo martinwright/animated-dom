@@ -320,8 +320,8 @@ class App {
                 el.pageNumber = currentPageNum;
                 return el;
             }) */
-            console.log('****** currentPageTextNodes', completeTextNodeList);
-            console.log('****** currentPageShapeNodes', completeShapeNodeList);
+            //console.log('****** currentPageTextNodes', completeTextNodeList);
+            //console.log('****** currentPageShapeNodes', completeShapeNodeList);
         }
 
         function getTextNodes(nodes, page) {
@@ -345,9 +345,9 @@ class App {
         function sorter(obj1, obj2) {
             return obj1.dataset.animate - obj2.dataset.animate;
         }
-        console.log('****** completeTextNodeList ', completeTextNodeList)
-        console.log('****** completeShapeNodeList ', completeShapeNodeList)
-        console.log('****** setAminProps response', this.animations);
+        //console.log('****** completeTextNodeList ', completeTextNodeList)
+        //console.log('****** completeShapeNodeList ', completeShapeNodeList)
+        //console.log('****** setAminProps response', this.animations);
 
         if (completeTextNodeList.length) {
             this.textElementTimeline = new Timeline(completeTextNodeList, this.animationJson);
@@ -357,6 +357,7 @@ class App {
             this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
             this.shapeElementTimeline.setup();
         }
+        console.log('****** shapeElementTimeline', this.shapeElementTimeline);
 
         return;
 
