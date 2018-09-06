@@ -604,7 +604,7 @@ gulp.task('styles', () => {
         .pipe(concat('styles.css')) // this is what was missing
         .pipe(autoprefixer())
         .pipe(plugins().sourcemaps.write())
-        .pipe(gulp.dest('./build/css/'))
+        .pipe(gulp.dest('./build/iquiz/css/'))
         .pipe(notify({ message: 'styles task complete' }))
         .pipe(browserSync.stream());
 });
