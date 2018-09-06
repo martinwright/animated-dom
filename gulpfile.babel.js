@@ -601,10 +601,10 @@ gulp.task('styles', () => {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(plugins().sass().on('error', plugins().sass.logError))
-        .pipe(concat('styles.css')) // this is what was missing
+        .pipe(concat('style.css')) // this is what was missing
         .pipe(autoprefixer())
         .pipe(plugins().sourcemaps.write())
-        .pipe(gulp.dest('./build/iquiz/css/'))
+        .pipe(gulp.dest('./build/css/'))
         .pipe(notify({ message: 'styles task complete' }))
         .pipe(browserSync.stream());
 });
