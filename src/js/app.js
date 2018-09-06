@@ -167,6 +167,7 @@ class App {
         location.hash = location.hash || '#1';
         qs('.nav-bar .js-back').onclick = (e) => this.previousClick();
         qs('.nav-bar .js-next').onclick = (e) => this.nextClick();
+        qs('.nav-bar .js-replay').onclick = (e) => this.replayAnimation();
         qs('.nav-bar .js-animation input').checked = this.showAnimations;
         qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
     }
@@ -230,6 +231,10 @@ class App {
     toggleAnimation(e) {
         //console.log('****** toggleAnimation ', e.target.checked);
         this.showAnimations = e.target.checked;
+    }
+    replayAnimation() {
+        if (this.textElementTimeline) this.textElementTimeline.replayAnimation();
+        if (this.shapeElementTimeline) this.shapeElementTimeline.replayAnimation();
     }
     nextClick() {
         if (qs('#page-' + this.getPageNumber()).classList.contains('left')
@@ -324,8 +329,18 @@ class App {
             //console.log('****** currentPageShapeNodes', completeShapeNodeList);
         }
 
-        function getTextNodes(nodes, page) {
-            return nodes.filter(node => /P|H1|H2|H3|H4|H5|LI/.test(node.nodeName))
+        function getTextNodes(nodes, page, counter = 0) {
+            return nodes.filter(node => /P|H1|H2|H3|H4|H5|LI|DIV/.test(node.nodeName))
+                .map(node => {
+                    let step = node.getAttribute('data-animate');
+                    if (!step || step === '*' || step === '') {
+                        counter++;
+                        node.setAttribute('data-animate', counter)
+                    } else {
+                        counter = +step;
+                    }
+                    return node;
+                })
                 .sort(sorter)
                 .reverse()
                 .map(node => {

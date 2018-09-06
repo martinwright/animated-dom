@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,127 +14,165 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-4" class="article">
+            <article id="page-4" class="article">
 
-            <section class="col-40">
+                <section class="col-40">
 
-                <figure class="shape-20" data-animate="8" style="width: 200px;opacity:.8; top: -100px; left: 30%;">
-                    <img src="../images/_shapes/dia-s12.svg" />
-                </figure>
-
-                <h3 data-animate="1">The public sector</h3>
-
-                <h4 data-animate="2">1 Introduction</h4>
-
-                <ul>
-                    <li data-animate="4"><strong>Private </strong> <br>organisations that exist to make a profit
-                        (eg retailers) and are owned by shareholders which may number from one to thousands;
-                        companies whose shares may be bought by the public are identified by the letters plc
-                        after their name.
-                    </li>
-                    <li data-animate="5"><strong>Public </strong><br>organisations funded by public money
-                        (ie taxes), which include hospitals, schools, etc.
-                    </li>
-                    <li data-animate="6"><strong>Not-for-profit </strong><br>(the community and voluntary
-                        sector) – charitable organisations such as Oxfam.
-                    </li>
-                </ul>
-
-                <figure class="shape-100" data-animate="8" style="position: relative; z-index:-1">
-                    <img src="../images/t10-u1/public_sector_01.jpg">
-                    <figure class="shape-50" data-animate="8" style="opacity:.6; top: 20%; left: -15%;">
-                        <img src="../images/_shapes/pen-s15.svg" />
+                    <figure class="shape-20" data-animate="10" style="width: 200px;opacity:.8;z-index: 1; top: -100px; left: 30%;">
+                        <img src="../images/_shapes/dia-s12.svg" />
                     </figure>
-                    <figure class="shape-10" data-animate="8" style="opacity:.8; bottom: -40%; left: 75%;">
-                        <img src="../images/_shapes/cir-s9.svg" />
+
+                    <h3 data-animate="1">The public sector</h3>
+
+                    <h4 data-animate="2">1 Introduction</h4>
+
+                    <ul>
+                        <li data-animate="3"><strong>Private </strong> <br>organisations that exist to make a profit (eg
+                            retailers) and are owned by shareholders which may number from one to thousands; companies whose
+                            shares may be bought by the public are identified by the letters plc after their name.
+                        </li>
+                        <li data-animate="4"><strong>Public </strong><br>organisations funded by public money (ie taxes),
+                            which include hospitals, schools, etc.
+                        </li>
+                        <li data-animate="6"><strong>Not-for-profit </strong><br>(the community and voluntary sector) – charitable
+                            organisations such as Oxfam.
+                        </li>
+                    </ul>
+
+                    <figure class="shape-100" data-animate="7" style="position: relative; z-index:-1">
+                        <img src="../images/t10-u1/public_sector_01.jpg">
+                        <!-- <figure class="shape-50" data-animate="8" style="opacity:.6; top: 20%; left: -15%;">
+                            <img src="../images/_shapes/pen-s15.svg" />
+                        </figure>
+                        <figure class="shape-10" data-animate="8" style="opacity:.8; bottom: -40%; left: 75%;">
+                            <img src="../images/_shapes/cir-s9.svg" />
+                        </figure> -->
                     </figure>
-                </figure>
-
-            </section>
-
-            <section>
-
-                <p>There are major differences between these three groups or sectors, mainly in terms of
-                    their purposes, the way they are run, how they are financed and what they do with their
-                    profits or surpluses of cash. The following table shows the main differences between the
-                    public, private and not-for profit (or third) sectors:</p>
 
 
-                <div class="table--t10-u1-4">
-                    <div class="cell"></div>
-                    <div class="cell"><h3>Public</h3></div>
-                    <div class="cell"><h3>Private</h3></div>
-                    <div class="cell"><h3>Third</h3></div>
 
-                    <div class="cell"><h4>Purpose</h4></div>
-                    <div class="cell">To provide a good service to the public</div>
-                    <div class="cell">To make a profit for its shareholders</div>
-                    <div class="cell">To provide free services for those in need</div>
 
-                    <div class="cell"><h4>Finance</h4></div>
-                    <div class="cell">Public taxation</div>
-                    <div class="cell">Make a profit from shares and shareholder investment</div>
-                    <div class="cell">Donations</div>
 
-                    <div class="cell"><h4>Method</h4></div>
-                    <div class="cell">Meeting targets within a budget</div>
-                    <div class="cell">Increasing sales and lowering operating costs</div>
-                    <div class="cell">Appeals, fundraising activities, charity shops</div>
 
-                    <div class="cell"><h4>Profit surplus</h4></div>
-                    <div class="cell">Goes back to central government</div>
-                    <div class="cell">Pays shareholders dividends and then invested into the business with a view to
-                        making more money
+                        <!-- <figure class="shape-100" data-animate="6" style="position: relative; z-index:-1">
+                            <img src="../images/t10-u1/public_sector_01.jpg">
+                        </figure> -->
+                        <figure class="" data-animate="8" style="opacity:.6;    left: -4em;
+                        margin-top: -24%;
+                        /* bottom: 5em; */
+                        width: 48%;
+                        position: relative;">
+                            <img src="../images/_shapes/pen-s15.svg" />
+                        </figure>
+                        <figure class="" data-animate="9" style="opacity: 0.8; position: relative;
+                        width: 10%;
+                        /* bottom: 29%; */
+                        right: 15%;
+                        margin-top: -24%;
+                        float: right;">
+                            <img src="../images/_shapes/cir-s9.svg" />
+                        </figure>
+                </section>
+
+                <section>
+
+                    <p data-animate="13">There are major differences between these three groups or sectors, mainly in terms
+                        of their purposes, the way they are run, how they are financed and what they do with their profits
+                        or surpluses of cash. The following table shows the main differences between the public, private
+                        and not-for profit (or third) sectors:</p>
+
+
+                    <div class="table--t10-u1-4">
+                        <div data-animate="*" class="cell"></div>
+                        <div data-animate="*" class="cell">
+                            <h3>Public</h3>
+                        </div>
+                        <div data-animate="*" class="cell">
+                            <h3>Private</h3>
+                        </div>
+                        <div data-animate="*" class="cell">
+                            <h3>Third</h3>
+                        </div>
+
+                        <div data-animate="*" class="cell">
+                            <h4>Purpose</h4>
+                        </div>
+                        <div data-animate="*" class="cell">To provide a good service to the public</div>
+                        <div data-animate="*" class="cell">To make a profit for its shareholders</div>
+                        <div data-animate="*" class="cell">To provide free services for those in need</div>
+
+                        <div data-animate="*" class="cell">
+                            <h4>Finance</h4>
+                        </div>
+                        <div data-animate="*" class="cell">Public taxation</div>
+                        <div data-animate="*" class="cell">Make a profit from shares and shareholder investment</div>
+                        <div data-animate="*" class="cell">Donations</div>
+
+                        <div data-animate="*" class="cell">
+                            <h4>Method</h4>
+                        </div>
+                        <div data-animate="*" class="cell">Meeting targets within a budget</div>
+                        <div data-animate="*" class="cell">Increasing sales and lowering operating costs</div>
+                        <div data-animate="*" class="cell">Appeals, fundraising activities, charity shops</div>
+
+                        <div data-animate="*" class="cell">
+                            <h4>Profit surplus</h4>
+                        </div>
+                        <div data-animate="*" class="cell">Goes back to central government</div>
+                        <div data-animate="*" class="cell">Pays shareholders dividends and then invested into the business
+                            with a view to making more money
+                        </div>
+                        <div data-animate="*" class="cell">Spent on supporting the organisation's main aim</div>
+
+                        <div data-animate="*" class="cell">
+                            <h4>Examples of organisations</h4>
+                        </div>
+                        <div data-animate="*" class="cell">NHS, government departments, schools</div>
+                        <div data-animate="*" class="cell">Marks & Spencer, Virgin</div>
+                        <div data-animate="*" class="cell">Greenpeace, Save the Children, RSPCA</div>
+
+
                     </div>
-                    <div class="cell">Spent on supporting the organisation's main aim</div>
 
-                    <div class="cell"><h4>Examples of organisations</h4></div>
-                    <div class="cell">NHS, government departments, schools</div>
-                    <div class="cell">Marks & Spencer, Virgin</div>
-                    <div class="cell">Greenpeace, Save the Children, RSPCA</div>
+                    <p data-animate="100">The very different purposes of the sectors and the ways they are financed determine
+                        how they are structured and run.</p>
+
+                </section>
+
+            </article>
 
 
-                </div>
-
-                <p data-animate="7">The very different purposes of the sectors and the ways they are financed
-                    determine how they are structured and run.</p>
-
-            </section>
-
-        </article>
-
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

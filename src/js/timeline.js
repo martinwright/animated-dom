@@ -35,6 +35,10 @@ export default class Timeline {
         this.timeline.reverse();
         this.timeline.play();
     }
+    replayAnimation() {
+        this.timeline.restart();
+        this.timeline.reverse();
+    }
 
     setup() {
         //console.log('????????? setAnimations setup');
@@ -74,7 +78,13 @@ export default class Timeline {
                         defaultType = "zoom-in";
                     }
                 }
-
+            }
+            if (/DIV/.test(el.nodeName)) {
+                if (el.classList.contains('cell')) {
+                    defaultDuration = 100;
+                    defaultOffset = 30;
+                    el.style.borderColor = "white";
+                }
             }
 
 
@@ -95,6 +105,38 @@ export default class Timeline {
             console.log('el: ', el);
 
             switch (type) {
+
+                case 'loop-large-ccw':
+                this.timeline.add({
+                    targets: el,
+                    opacity: '0',
+                    
+                    //translateX: '20em',
+                    rotate: '1turn',
+                    translateX: '800',
+                    easing: 'easeInQuad',
+                    //direction: 'reverse',
+                    duration: duration,
+                    offset: offset,
+                    scale: 3
+                    //transformOrigin: "50% 50%"
+                });
+                break;
+                case 'loop-large-cw':
+                this.timeline.add({
+                    targets: el,
+                    opacity: '0',
+                    //translateX: '20em',
+                    rotate: '-1turn',
+                    translateX: '800',
+                    easing: 'easeInQuad',
+                    //direction: 'reverse',
+                    duration: duration,
+                    offset: offset,
+                    scale: 3
+                    //transformOrigin: "50% 50%"
+                });
+                break;
                 case 'zoom-in':
                     this.timeline.add({
                         targets: el,
@@ -113,7 +155,7 @@ export default class Timeline {
                         easing: 'easeInQuad',
                         duration: duration,
                         offset: offset,
-                        scale: 2,
+                        scale: el.dataset.scale || 2,
                         //transformOrigin: "50% 50%"
                     });
                     break;
@@ -204,7 +246,8 @@ export default class Timeline {
 
             [].slice.call(document.getElementsByClassName('cell'))
                 .forEach(function (elem) {
-                    elem.classList.add('--bottom-border');
+                    //elem.classList.add('--bottom-border');
+                    elem.style.borderColor = null;
                 });
         };
 

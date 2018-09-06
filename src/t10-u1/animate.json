@@ -7,19 +7,20 @@
         }
       }
     },
-    "2": {
+    "4": {
       "steps": {
-        "1": {
-          "type": "right-slide"
+        "10": {
+          "type": "loop-large-ccw"
         },
-        "2": {
-          "type": "right-slide"
-        },
-        "3": {
-          "type": "right-slide"
-        },
-        "4": {
-          "type": "right-slide"
+        "8": {
+          "type": "loop-large-ccw"
+        }
+      }
+    },
+    "8": {
+      "steps": {
+        "6": {
+          "type": "loop-large-ccw"
         }
       }
     }
