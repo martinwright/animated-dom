@@ -143,22 +143,22 @@
   
   }
   
-  /* ==== Accessibility ===== */
-  .aural {
-      clip: rect(1px, 1px, 1px, 1px);
-      height: 1px;
-      overflow: hidden;
-      position: absolute;
-      width: 1px;
-  
-      &:focus {
-          clip: rect(0, 0, 0, 0);
-          font-size: 1em;
-          height: auto;
-          outline: thin dotted;
-          position: static !important;
-          width: auto;
-          overflow: visible;
-          
-      }
+  ///* ==== Accessibility ===== */
+  //.aural {
+  //    clip: rect(1px, 1px, 1px, 1px);
+  //    height: 1px;
+  //    overflow: hidden;
+  //    position: absolute;
+  //    width: 1px;
+  //
+  //    &:focus {
+  //        clip: rect(0, 0, 0, 0);
+  //        font-size: 1em;
+  //        height: auto;
+  //        outline: thin dotted;
+  //        position: static !important;
+  //        width: auto;
+  //        overflow: visible;
+  //
+  //    }
   }
