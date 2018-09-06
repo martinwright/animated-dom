@@ -59,8 +59,8 @@
   top: -6px;
   text-align: center;
   img {
-    height: 20px;
-    margin: 7px 0 0 0;
+    height: 16px;
+    margin: 9px 0 0 0;
     opacity: .65;
   }
 }
@@ -222,9 +222,11 @@
   }
   .kSlidertext.On{
     left: 8px;
+    top:10px;
   }
   .kSlidertext.Off{
     left: 33px;
+    top:10px;
   }
 }
 
