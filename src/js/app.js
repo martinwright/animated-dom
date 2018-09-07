@@ -349,7 +349,7 @@ class App {
                 })
         }
         function getShapeNodes(nodes, page) {
-            return nodes.filter(node => /FIGURE/.test(node.nodeName))
+            return nodes.filter(node => /FIGURE|IMG/.test(node.nodeName))
                 .sort(sorter)
                 .reverse()
                 .map(node => {

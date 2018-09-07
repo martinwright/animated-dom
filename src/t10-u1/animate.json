@@ -1,4 +1,8 @@
 {
+  "params": {
+    "defaultDuration": "400",
+    "defaultOffset": "50"
+  },
   "screens": {
     "1": {
       "steps": {
@@ -13,13 +17,6 @@
           "type": "loop-large-ccw"
         },
         "8": {
-          "type": "loop-large-ccw"
-        }
-      }
-    },
-    "8": {
-      "steps": {
-        "6": {
           "type": "loop-large-ccw"
         }
       }

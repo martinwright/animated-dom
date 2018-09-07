@@ -42,9 +42,9 @@ export default class Timeline {
 
     setup() {
         //console.log('????????? setAnimations setup');
-        let defaultDuration = "200",
+        let defaultDuration = this.animationJson.params.defaultDuration || "400",
             defaultType = "slide-left",
-            defaultOffset = 50;
+            defaultOffset = +this.animationJson.params.defaultOffset || 50;
 
 
         if (!this.elementsList.length) return;
@@ -60,11 +60,12 @@ export default class Timeline {
                 animPage = el.pageNumber;
 
             defaultType = "slide-left";
-            if (/FIGURE/.test(el.nodeName)) {
+            //console.log('*********** el.nodeName: ', el.nodeName);
+            if (/IMG/.test(el.nodeName)) {
                 //console.log('*********** el: ', qs('img', el).src);
                 let img = qs('img', el);
-                if (img && img.src) {
-                    let [fileName, ...rest] = img.src.split('/').reverse();
+                if (el.src) {
+                    let [fileName, ...rest] = el.src.split('/').reverse();
                     if (fileName && /^cir-.*\.svg$/.test(fileName)) {
                         console.log('*********** CIRCLE: ');
                         defaultType = "zoom-out";
@@ -81,8 +82,8 @@ export default class Timeline {
             }
             if (/DIV/.test(el.nodeName)) {
                 if (el.classList.contains('cell')) {
-                    defaultDuration = 100;
-                    defaultOffset = 30;
+                    //defaultDuration = 100;
+                    //defaultOffset = 30;
                     el.style.borderColor = "white";
                 }
             }
@@ -107,36 +108,36 @@ export default class Timeline {
             switch (type) {
 
                 case 'loop-large-ccw':
-                this.timeline.add({
-                    targets: el,
-                    opacity: '0',
-                    
-                    //translateX: '20em',
-                    rotate: '1turn',
-                    translateX: '800',
-                    easing: 'easeInQuad',
-                    //direction: 'reverse',
-                    duration: duration,
-                    offset: offset,
-                    scale: 3
-                    //transformOrigin: "50% 50%"
-                });
-                break;
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+
+                        //translateX: '20em',
+                        rotate: '1turn',
+                        translateX: '800',
+                        easing: 'easeInQuad',
+                        //direction: 'reverse',
+                        duration: duration,
+                        offset: offset,
+                        scale: 3
+                        //transformOrigin: "50% 50%"
+                    });
+                    break;
                 case 'loop-large-cw':
-                this.timeline.add({
-                    targets: el,
-                    opacity: '0',
-                    //translateX: '20em',
-                    rotate: '-1turn',
-                    translateX: '800',
-                    easing: 'easeInQuad',
-                    //direction: 'reverse',
-                    duration: duration,
-                    offset: offset,
-                    scale: 3
-                    //transformOrigin: "50% 50%"
-                });
-                break;
+                    this.timeline.add({
+                        targets: el,
+                        opacity: '0',
+                        //translateX: '20em',
+                        rotate: '-1turn',
+                        translateX: '800',
+                        easing: 'easeInQuad',
+                        //direction: 'reverse',
+                        duration: duration * 2,
+                        offset: offset,
+                        scale: 3
+                        //transformOrigin: "50% 50%"
+                    });
+                    break;
                 case 'zoom-in':
                     this.timeline.add({
                         targets: el,
@@ -195,7 +196,7 @@ export default class Timeline {
                     this.timeline.add({
                         targets: el,
                         opacity: 0,
-                        translateX: '100',
+                        translateX: '300',
                         easing: 'easeInQuad',
                         duration: duration,
                         //direction: 'reverse',
