@@ -5,11 +5,11 @@
 .nav-bar__button {
   position: relative;
   color: white;
-  background: #e74;
+  background: #FFA300;
   border-radius: 50px;
   height: 2rem;
   width: 33px;
-  border-color: #e74;
+  border-color: #FFA300;
   cursor: pointer;
   transition: 0.2s;
   @include for-size(tablet-portrait-up) {
@@ -18,8 +18,8 @@
 }
 
 .nav-bar__button:not(:disabled):hover {
-  background: blue;
-  border-color: blue;
+  background: #FE5000;
+  border-color: #FE5000;
 }
 .nav-bar__button:disabled {
   background: lightgray;
@@ -81,9 +81,9 @@
   cursor: pointer;
   display: inline-block;
   white-space: nowrap;
-  background: #e74;
+  background: #0033a0;
   border-radius: 50px;
-  border: 0px solid #444;
+  //border: 0px solid #444;
   border-width: 0px 0px 0px 0px;
   padding: 8px 0px 8px 0px;
   color: #fff;
@@ -109,7 +109,7 @@
   //font-size: 16px;
   background: #fff;
   border-radius: 100px;
-  border: 4px solid #e74;
+  border: 4px solid #0033a0;
   //border-width: 4px 4px 4px 4px;
   //padding: 9px 12px 11px 12px;
   //margin: 6px 0px 0px 0px;
@@ -243,7 +243,7 @@
 }
 
 input:checked + .kSlider {
-  background-color: #2196F3;
+  background-color: #00B5E2;
   .kSliderC {
     transform: translateX(28px);
   }

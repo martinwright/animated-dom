@@ -7840,7 +7840,7 @@ var QuizMC = function () {
             $('.iquiz_popBG').fadeOut({ queue: false, duration: 200 }).promise().done(function () {
                 if (goNext == true) {
                     // loadNextPage(true); action next question screen load
-                    alert('loadNext Question Page');
+                    //alert('loadNext Question Page');
                 }
             });
 
@@ -7872,7 +7872,7 @@ var QuizMC = function () {
             var newTop = $(el).position().top + parseInt($(el).css('marginTop'));
             // var newTop = $(el).position().top;
             var newLeft = $(el).position().left + parseInt($(el).css('marginLeft'));
-            var topAdjuster = 12 / 100 * fontSize;
+            //var topAdjuster = (12 / 100) * fontSize;
             var newHeight = $(el).outerHeight();
             console.log('newTop:' + newTop);
             //
@@ -7881,12 +7881,12 @@ var QuizMC = function () {
                 console.log('multipleAnswers = false');
                 var s = '#' + clickGroupID + ' .quiz_highlighter';
                 var ss = '#' + clickGroupID + ' .quiz_clickText';
-                $(s).removeClass("selected"); // REMOVE SELECTED TO SHOW COLOUR
-                $(ss).removeClass("selected"); // CLEAR HIGHLIGHT
+                $(s).removeClass("hide"); // SHOW HIGHLIGHTER SO WE CAN ANIMATE IT
+                $(ss).removeClass("selected"); // REMOVE SELECTED ON ALL GROUP ELEMENTS
 
                 $(el).closest(".quiz_clickText_container").find('.quiz_highlighter').animate({ top: newTop + 'px', height: newHeight + 'px' }, 200, function () {
-                    $(el).addClass("selected");
-                    // $('.quiz_highlighter').addClass("selected");
+                    $(el).addClass("selected notransition");
+                    $('.quiz_highlighter').addClass("hide");
                 });
             } else {
                 $(el).toggleClass("selected");
