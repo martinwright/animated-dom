@@ -1,0 +1,9 @@
+{
+  "multipleAnswers": false,
+  "maxScore": 1,
+  "questionArray": [{
+    "qNum": 1,
+    "ans": [2],
+    "userAnswer": []
+  }]
+}
