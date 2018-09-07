@@ -703,7 +703,7 @@ gulp.task('jsmin', () => {
 /* Taks
 /* ----------------- */
 
-gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combine'], () => {
+gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combine', 'libs'], () => {
     browserSync({
         'server': {
             baseDir: "build/"

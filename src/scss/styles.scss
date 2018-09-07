@@ -137,7 +137,7 @@ nav.nav-bar {
 .wrapper {
   display: flex;
   justify-content: normal;
-  margin: 1rem auto 3rem auto;
+  margin: 36px auto 3rem auto;
   max-width: 1800px;
   //padding-left: 1em;
   //padding-right: 1em;
@@ -277,7 +277,10 @@ section {
   flex-basis: 0;
   padding: 20px;
   overflow: visible;
-  border: yellow solid 1px;
+  //border: yellow solid 1px;
+}
+.page-number {
+  visibility: hidden;
 }
 
 section.mobileHelper--1 {

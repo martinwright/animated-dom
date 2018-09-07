@@ -1,9 +1,21 @@
 {
+  "title": "LOADED quiz_clickText",
+  "id": "q333",
+  "type": "quiz_clickText_mc",
   "multipleAnswers": false,
-  "maxScore": 1,
-  "questionArray": [{
-    "qNum": 1,
-    "ans": [2],
-    "userAnswer": []
-  }]
+  "maxScore": 2,
+  "questionArray": [
+    {
+      "description": "this is q1 text",
+      "id": 0,
+      "qNum": 1,
+      "ans": [
+        2,
+        4
+      ],
+      "userAnswer": [
+        2
+      ]
+    }
+  ]
 }

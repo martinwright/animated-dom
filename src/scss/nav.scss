@@ -1,25 +1,27 @@
-@import 'mixins';
+@import "mixins";
 .nav-bar__button:focus {
   outline: none;
 }
 .nav-bar__button {
   position: relative;
   color: white;
-  background: #FFA300;
+  background: #ffa300;
   border-radius: 50px;
   height: 2rem;
   width: 33px;
-  border-color: #FFA300;
+  border-color: #ffa300;
   cursor: pointer;
   transition: 0.2s;
+  margin-right: 8px;
   @include for-size(tablet-portrait-up) {
     width: 130px;
+    margin-right: 0;
   }
 }
 
 .nav-bar__button:not(:disabled):hover {
-  background: #FE5000;
-  border-color: #FE5000;
+  background: #fe5000;
+  border-color: #fe5000;
 }
 .nav-bar__button:disabled {
   background: lightgray;
@@ -61,7 +63,7 @@
   img {
     height: 16px;
     margin: 9px 0 0 0;
-    opacity: .65;
+    opacity: 0.65;
   }
 }
 
@@ -73,7 +75,6 @@
   @extend %nav-bar__button-circle;
   right: -10px;
 }
-
 
 .button--navigation {
   /*backface-visibility: hidden;*/
@@ -99,7 +100,7 @@
   font-weight: 900;
   font-style: normal;
   text-align: center;
-  margin: 0px 0px 0px 30px
+  margin: 0px 0px 0px 30px;
 }
 
 .buttonCirc {
@@ -119,15 +120,13 @@
   /*left: -10px;*/
   /*bottom: -10px*/
   text-align: center;
-  img{
+  img {
     height: 14px;
     margin: 10px 0 0 0;
-    opacity: .65;
+    opacity: 0.65;
     //content: url('icons/end-solid.svg');
   }
 }
-
-
 
 .button--navigation.disabled {
   background: lightgrey;
@@ -143,7 +142,7 @@
 
 .button--navigation.next {
   .buttonText {
-    margin: 0px 30px 0px 0px
+    margin: 0px 30px 0px 0px;
   }
   .buttonCirc {
     right: 0px;
@@ -160,24 +159,15 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
 /* TOGGLE switch - the box around the slider */
 
-.nav--toggle{
+.nav--toggle {
   display: inline-block;
   font-size: 12px;
   font-family: Helvetica Neue;
   font-weight: 900;
   font-style: normal;
-  .title{
+  .title {
     position: relative;
     top: -12px;
     padding-right: 2px;
@@ -194,7 +184,7 @@
 
 /* Hide default HTML checkbox */
 .switch input {
-  display:none;
+  display: none;
 }
 
 /* The slider */
@@ -206,10 +196,10 @@
   right: 0;
   bottom: 0;
   border-radius: 34px;
-  background-color: rgba(0,0,0,.3);
-  -webkit-transition: .4s;
-  transition: .4s;
-  .kSlidertext{
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  .kSlidertext {
     position: absolute;
     color: white;
     font-size: 12px;
@@ -218,15 +208,15 @@
     font-style: normal;
     text-align: center;
     //margin: 10px 0px 0px 10px
-    top:9px;
+    top: 9px;
   }
-  .kSlidertext.On{
+  .kSlidertext.On {
     left: 8px;
-    top:10px;
+    top: 10px;
   }
-  .kSlidertext.Off{
+  .kSlidertext.Off {
     left: 33px;
-    top:10px;
+    top: 10px;
   }
 }
 
@@ -237,13 +227,13 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
 input:checked + .kSlider {
-  background-color: #00B5E2;
+  background-color: #00b5e2;
   .kSliderC {
     transform: translateX(28px);
   }

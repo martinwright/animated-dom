@@ -7563,6 +7563,8 @@ var _quizmc = require('./quizmc');
 
 var _quizmc2 = _interopRequireDefault(_quizmc);
 
+var _helpers = require('./helpers');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
@@ -7576,6 +7578,17 @@ var App = function () {
 
     _createClass(App, [{
         key: 'startUp',
+
+        //static iQuiz;
+
+        /* constructor() {
+            if (this.iQuiz) {
+                return this.iQuiz;
+            }
+             //this.state = "duke";
+            this.iQuiz = this;
+        } */
+
         value: function startUp() {
             var _this = this;
 
@@ -7588,8 +7601,15 @@ var App = function () {
                     rest = _loc$href$split$rever2.slice(2);
 
                 var jsonFile = loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-                console.log('APP: jsonFile: ', jsonFile);
-                return jsonFile;
+
+                var pathItems = loc.href.split('/');
+                fileName = pathItems.pop();
+                var path = pathItems.join('/');
+
+                var retPath = path + '/index.json';
+
+                console.log('APP: jsonFile: ', retPath);
+                return retPath;
             }
             function validateResponse(response) {
                 console.log('APP: validateResponse: ', response);
@@ -7627,6 +7647,7 @@ var App = function () {
     }, {
         key: 'startUpDemoQuiz',
         value: function startUpDemoQuiz() {
+            console.log('### APP: startUp: ');
             var demo = {
                 "title": "Title quiz_clickText",
                 "id": "q456",
@@ -7652,7 +7673,7 @@ var App = function () {
 
 exports.default = App;
 
-},{"./quizmc":330}],328:[function(require,module,exports){
+},{"./helpers":328,"./quizmc":330}],328:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7735,15 +7756,26 @@ var _app = require('./app.js');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _utils = require('./utils');
-
-var _quizmc = require('./quizmc');
-
-var _quizmc2 = _interopRequireDefault(_quizmc);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import DocReady from './windowLoaded';
+//import QuizMC from "./quizmc";
+
+
+/* export default class Singleton {
+
+    static instance;
+
+    constructor() {
+        if (instance) {
+            return instance;
+        }
+
+        this.state = "duke";
+        this.instance = this;
+    }
+
+} */
+
 var app = new _app2.default();
 var setApp = function setApp() {
     app.startUp();
@@ -7753,7 +7785,7 @@ var setApp = function setApp() {
 (0, _helpers.$on)(window, 'hashchange', setApp);
 //$on(window, 'resize', quizApp.doResize);
 
-},{"./app.js":327,"./helpers":328,"./quizmc":330,"./utils":331,"babel-polyfill":1}],330:[function(require,module,exports){
+},{"./app.js":327,"./helpers":328,"babel-polyfill":1}],330:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7840,7 +7872,7 @@ var QuizMC = function () {
             $('.iquiz_popBG').fadeOut({ queue: false, duration: 200 }).promise().done(function () {
                 if (goNext == true) {
                     // loadNextPage(true); action next question screen load
-                    //alert('loadNext Question Page');
+                    alert('loadNext Question Page');
                 }
             });
 
@@ -7872,7 +7904,7 @@ var QuizMC = function () {
             var newTop = $(el).position().top + parseInt($(el).css('marginTop'));
             // var newTop = $(el).position().top;
             var newLeft = $(el).position().left + parseInt($(el).css('marginLeft'));
-            //var topAdjuster = (12 / 100) * fontSize;
+            var topAdjuster = 12 / 100 * fontSize;
             var newHeight = $(el).outerHeight();
             console.log('newTop:' + newTop);
             //
@@ -7881,12 +7913,12 @@ var QuizMC = function () {
                 console.log('multipleAnswers = false');
                 var s = '#' + clickGroupID + ' .quiz_highlighter';
                 var ss = '#' + clickGroupID + ' .quiz_clickText';
-                $(s).removeClass("hide"); // SHOW HIGHLIGHTER SO WE CAN ANIMATE IT
-                $(ss).removeClass("selected"); // REMOVE SELECTED ON ALL GROUP ELEMENTS
+                $(s).removeClass("selected"); // REMOVE SELECTED TO SHOW COLOUR
+                $(ss).removeClass("selected"); // CLEAR HIGHLIGHT
 
                 $(el).closest(".quiz_clickText_container").find('.quiz_highlighter').animate({ top: newTop + 'px', height: newHeight + 'px' }, 200, function () {
-                    $(el).addClass("selected notransition");
-                    $('.quiz_highlighter').addClass("hide");
+                    $(el).addClass("selected");
+                    // $('.quiz_highlighter').addClass("selected");
                 });
             } else {
                 $(el).toggleClass("selected");

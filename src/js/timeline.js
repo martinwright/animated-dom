@@ -117,7 +117,7 @@ export default class Timeline {
                         translateX: '800',
                         easing: 'easeInQuad',
                         //direction: 'reverse',
-                        duration: duration,
+                        duration: duration * 2,
                         offset: offset,
                         scale: 3
                         //transformOrigin: "50% 50%"
@@ -164,7 +164,7 @@ export default class Timeline {
                     this.timeline.add({
                         targets: el,
                         opacity: '0',
-                        translateX: '400',
+                        translateX: '600',
                         //translateX: '20em',
                         rotate: '1turn',
                         easing: 'easeInQuad',
@@ -197,6 +197,17 @@ export default class Timeline {
                         targets: el,
                         opacity: 0,
                         translateX: '300',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        //direction: 'reverse',
+                        offset: offset
+                    });
+                    break;
+                case 'slide-up':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: 0,
+                        translateY: '300',
                         easing: 'easeInQuad',
                         duration: duration,
                         //direction: 'reverse',
