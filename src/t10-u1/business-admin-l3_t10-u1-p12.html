@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,88 +14,88 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
+    </nav>
+
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
+
+
+    <div class="wrapper hidden">
+
+        <div class="container--layout-1 -hidden right">
+
+            <article id="page-12" class="article">
+
+                <section>
+
+                    <figure class="shape-130" style="position: relative; top:-1em; right:10%; z-index: -1">
+                        <img data-animate="12" src="../images/t10-u1/_m_private_sector_04.jpg" />
+                        <figure class="shape-20" style="opacity:.6; left:10%; top: 30%;">
+                            <img data-animate="13" src="../images/_shapes/squ-s5.svg" />
+                        </figure>
+                        <figure class="shape-10" style="opacity:1; left:65%; top: 85%;">
+                            <img data-animate="14" src="../images/_shapes/cir-s3.svg" />
+                        </figure>
+                    </figure>
+
+                    <h4 data-animate="1">4 Limited company</h4>
+
+                    <p data-animate="2">Limited companies are incorporated with their own legal identity and can own assets
+                        and sue in the courts. Their ownership is divided into shares owned by shareholders. Limited company
+                        owners have no personal liability for their organisation’s debts and shareholders have limited liability.
+                        Limited companies must register the following details at <a href="https://www.gov.uk/government/organisations/companies-house">Companies
+                            House</a>:</p>
+
+                    <ul>
+                        <li data-animate="3">name and address of company
+                        </li>
+
+                        <li data-animate="4">directors (at least one) and secretary (optional)
+                        </li>
+
+                        <li data-animate="5">shareholder details and share capital.
+                        </li>
+                    </ul>
+
+                    <p data-animate="6">This above information is contained in these documents:</p>
+
+                    <ul>
+                        <li data-animate="7">Memorandum of Association
+                        </li>
+
+                        <li data-animate="8">Articles of Association
+                        </li>
+
+                        <li data-animate="9">Statement of capital and shareholdings.
+                        </li>
+                    </ul>
+
+                </section>
+
+            </article>
+
+
         </div>
-    </div>
-</nav>
-
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
-
-
-<div class="wrapper hidden">
-
-    <div class="container--layout-1 -hidden right">
-
-        <article id="page-12" class="article">
-
-            <section>
-
-                <figure class="shape-130" data-animate="2" style="position: relative; top:-1em; right:10%; z-index: -1">
-                    <img src="../images/t10-u1/_m_private_sector_04.jpg" />
-                    <figure class="shape-20" data-animate="9" style="opacity:.6; left:10%; top: 30%;">
-                        <img src="../images/_shapes/squ-s5.svg" />
-                    </figure>
-                    <figure class="shape-10" data-animate="9" style="opacity:1; left:65%; top: 85%;">
-                        <img src="../images/_shapes/cir-s3.svg" />
-                    </figure>
-                </figure>
-
-                <h4 data-animate="2">4 Limited company</h4>
-
-                <p data-animate="4">Limited companies are incorporated with their own legal identity and can own assets
-                    and sue in the courts. Their ownership is divided into shares owned by shareholders. Limited company
-                    owners have no personal liability for their organisation’s debts and shareholders have limited
-                    liability. Limited companies must register the following details at <a
-                            href="https://www.gov.uk/government/organisations/companies-house">Companies House</a>:</p>
-
-                <ul>
-                    <li>name and address of company
-                    </li>
-
-                    <li>directors (at least one) and secretary (optional)
-                    </li>
-
-                    <li>shareholder details and share capital.
-                    </li>
-                </ul>
-
-                <p>This above information is contained in these documents:</p>
-
-                <ul>
-                    <li>Memorandum of Association
-                    </li>
-
-                    <li>Articles of Association
-                    </li>
-
-                    <li>Statement of capital and shareholdings.
-                    </li>
-                </ul>
-
-            </section>
-
-        </article>
-
 
     </div>
-
-</div>
 </body>
+
 </html>

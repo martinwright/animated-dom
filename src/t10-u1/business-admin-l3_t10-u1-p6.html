@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,91 +14,107 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-6" class="article">
+            <article id="page-6" class="article">
 
-            <section>
+                <section>
 
-                <figure data-animate="*" class="shape-80" style="position: relative; left: -1em; top:-1em; z-index: -1">
-                    <img src="../images/t10-u1/public_sector_03.jpg" />
-                </figure>
+                    <figure data-animate="*" class="shape-80" style="position: relative; left: -1em; top:-1em; z-index: -1">
+                        <img src="../images/t10-u1/public_sector_03.jpg" />
+                    </figure>
 
-                <h4 data-animate="*">3 Local authorities</h4>
+                    <h4 data-animate="*">3 Local authorities</h4>
 
-<div class="p-60">
-                <p data-animate="*">Local authorities are responsible for the running of local areas. There are several types:</p>
+                    <div class="p-60">
+                        <p data-animate="*">Local authorities are responsible for the running of local areas. There are several
+                            types:
+                        </p>
 
-                <ul>
-                    <li data-animate="*">County and district councils – county councils cover large areas and provide most public
-                        services, including schools, social services and public transportation; district councils cover
-                        smaller areas within the county and provide more local services, including council housing, gyms
-                        and leisure facilities, local planning, recycling and rubbish collection.
-                    </li>
+                        <ul>
+                            <li data-animate="*">County and district councils – county councils cover large areas and provide
+                                most public services, including schools, social services and public transportation; district
+                                councils cover smaller areas within the county and provide more local services, including
+                                council housing, gyms and leisure facilities, local planning, recycling and rubbish collection.
+                            </li>
 
-                    <li data-animate="*">Unitary authorities – in most large towns and cities there will be just one level of local
-                        government called a 'unitary authority'. They are responsible for all local services, instead of
-                        the two-tier system of county and district councils.
-                    </li>
+                            <li data-animate="*">Unitary authorities – in most large towns and cities there will be just
+                                one level of local government called a 'unitary authority'. They are responsible for all
+                                local services, instead of the two-tier system of county and district councils.
+                            </li>
 
-                    <li data-animate="*">Town and parish councils – exist in some parts of England and Wales covering small areas, and
-                        with responsibility for, eg allotments, public toilets, parks, war memorials and local community
-                        centres.
-                    </li>
-                </ul>
+                            <li data-animate="*">Town and parish councils – exist in some parts of England and Wales covering
+                                small areas, and with responsibility for, eg allotments, public toilets, parks, war memorials
+                                and local community centres.
+                            </li>
+                        </ul>
 
-                <p data-animate="*">Some local authorities ‘share’ services covering a wider area, like police, fire services and public
-                    transport, because they may be too small to run an effective service on their own. This is known as
-                    <strong>joint services</strong>.</p>
+                        <p data-animate="*">Some local authorities ‘share’ services covering a wider area, like police, fire
+                            services and public transport, because they may be too small to run an effective service on their
+                            own. This is known as
+                            <strong>joint services</strong>.</p>
 
-</div>
+                    </div>
 
 
-                <figure class="shape-50" data-animate="*" style="opacity:.7; right:-10%; top: -20%;z-index: -1">
-                    <img src="../images/_shapes/dec-s5.svg" />
-                    <figure class="shape-40" data-animate="9" style="opacity:.8; left:5%; bottom: -25%;">
+                    <!-- <figure class="shape-50" data-animate="*" data-type="loop-large-ccw" style="position: absolute; width: 50%;opacity:.7; right:-10%; top: -20%;z-index: -1">
+                        <img src="../images/_shapes/dec-s5.svg" />
+                    </figure>
+                    
+                    <figure class="shape-40" data-animate="9" style="opacity: 0.4;position: relative;right: 15%;float: right;z-index: -1; margin-top: -27rem;width: 25%;">
                         <img src="../images/_shapes/cir-s10.svg" />
                     </figure>
-                    <figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">
+                    
+                    <figure class="shape-20" data-animate="9" style="opacity: 0.8;left: -4em;margin-top: -13rem;position: relative;width: 10%;float: right;z-index: -1;">
                         <img src="../images/_shapes/pen-s4.svg" />
+                    </figure> -->
+
+
+                    <figure class="shape-50" style="opacity:.7; right:-10%; top: -20%;z-index: -1">
+                        <img data-animate="*" data-type="loop-large-ccw" src="../images/_shapes/dec-s5.svg" />
+                        <figure class="shape-40" style="opacity:.8; left:5%; bottom: -25%;">
+                            <img data-animate="*" src="../images/_shapes/cir-s10.svg" />
+                        </figure>
+                        <figure class="shape-20" style="opacity:1; left:50%; bottom: -30%;">
+                            <img data-animate="*" src="../images/_shapes/pen-s4.svg" />
+                        </figure>
                     </figure>
-                </figure>
 
-            </section>
+                </section>
 
 
-        </article>
+            </article>
 
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

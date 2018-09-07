@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,62 +14,63 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden right">
+        <div class="container--layout-1 -hidden right">
 
-        <article id="page-19" class="article">
+            <article id="page-19" class="article">
 
-            <section>
+                <section>
 
-                <h4 data-animate="2">5 Charitable companies</h4>
+                    <h4 data-animate="*">5 Charitable companies</h4>
 
-                <p class="p-80">Charitable companies must be registered with Companies House and their trustees have limited or no
-                    liability for a charitable company’s debts or liabilities. An example is the Arts Theatre Trust.</p>
+                    <p data-animate="*" class="p-80">Charitable companies must be registered with Companies House and their
+                        trustees have limited or no liability for a charitable company’s debts or liabilities. An example
+                        is the Arts Theatre Trust.</p>
 
-                <figure class="shape-130" data-animate="2" style="position: relative; right: 0; top:5%; z-index: -1">
-                    <img src="../images/t10-u1/_m_voluntary_05.jpg" />
-                    <figure class="shape-50" data-animate="9" style="opacity:.6; right:10%; bottom: -85%;">
-                        <img src="../images/_shapes/cir-s16.svg" />
+                    <figure class="shape-130" style="position: relative; right: 0; top:5%; z-index: -1">
+                        <img data-animate="*" src="../images/t10-u1/_m_voluntary_05.jpg" />
+                        <figure class="shape-50" style="opacity:.6; right:10%; bottom: -85%;">
+                            <img data-animate="*" src="../images/_shapes/cir-s16.svg" />
+                        </figure>
                     </figure>
-                </figure>
 
-                <figure class="shape-15" data-animate="9" style="position: relative; opacity:.9; left:5%; margin-top: 10%;">
-                    <img src="../images/_shapes/dia-s14.svg" />
-                </figure>
+                    <figure class="shape-15" style="position: relative; opacity:.9; left:5%; margin-top: 10%;">
+                        <img data-animate="*" src="../images/_shapes/dia-s14.svg" />
+                    </figure>
 
-            </section>
+                </section>
 
-        </article>
+            </article>
 
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

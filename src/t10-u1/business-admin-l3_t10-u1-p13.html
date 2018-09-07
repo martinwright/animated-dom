@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,89 +14,91 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
+    </nav>
+
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
+
+
+    <div class="wrapper hidden">
+
+        <div class="container--layout-1 -hidden">
+
+            <article id="page-13" class="article">
+
+                <section>
+
+                    <h4 data-animate="*">5 Public limited company (PLC)</h4>
+
+                    <div class="p-60">
+
+                        <p data-animate="*">Public limited companies are often large well-known organisations such as manufacturers
+                            or retail chains. Their shares are traded on the London Stock Exchange and they become a plc
+                            by offering their shares for sale to the general public through flotations. Public limited companies
+                            must:
+                        </p>
+
+                        <ul>
+                            <li data-animate="*">have at least two directors, one of whom must be a company secretary
+                            </li>
+
+                            <li data-animate="*">meet minimum share capital and paid up capital requirements
+                            </li>
+
+                            <li data-animate="*">produce annual accounts and reports
+                            </li>
+
+                            <li data-animate="*">comply with the London Stock Exchange accounting principles and conditions
+                                and processes for the trading of shares
+                            </li>
+
+                            <li data-animate="*">submit to a due diligence investigation.
+                            </li>
+                        </ul>
+
+                        <p data-animate="*">Find out more about public limited companies <a href="http://www.bbc.co.uk/schools/gcsebitesize/business/aims/limitedcompaniesrev3.shtml">here</a>.</p>
+
+                    </div>
+
+                    <figure class="shape-110" style="position: relative; left:-1em; bottom: -1.5em; z-index: -1">
+                        <img data-animate="*" src="../images/t10-u1/_m_private_sector_05.jpg" />
+                        <figure class="shape-40" style="opacity:.4; left:-20%; top: -35%;">
+                            <img data-animate="*" data-type="loop-large-cw" src="../images/_shapes/dec-s12.svg" />
+                        </figure>
+                        <figure class="shape-20" style="opacity:.7; right:10%; top: -10%;">
+                            <img data-animate="*" src="../images/_shapes/cir-s15.svg" />
+                        </figure>
+                        <figure class="shape-5" style="opacity:.9; right:40%; top: -20%;">
+                            <img data-animate="*" src="../images/_shapes/dia-s9.svg" />
+                        </figure>
+                    </figure>
+
+                </section>
+
+            </article>
+
+
         </div>
-    </div>
-</nav>
-
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
-
-
-<div class="wrapper hidden">
-
-    <div class="container--layout-1 -hidden">
-
-        <article id="page-13" class="article">
-
-            <section>
-
-                <h4 data-animate="2">5 Public limited company (PLC)</h4>
-
-                <div class="p-60">
-
-                <p>Public limited companies are often large well-known organisations such as manufacturers or retail
-                    chains. Their shares are traded on the London Stock Exchange and they become a plc by offering their
-                    shares for sale to the general public through flotations. Public limited companies must:</p>
-
-                <ul>
-                    <li>have at least two directors, one of whom must be a company secretary
-                    </li>
-
-                    <li>meet minimum share capital and paid up capital requirements
-                    </li>
-
-                    <li>produce annual accounts and reports
-                    </li>
-
-                    <li>comply with the London Stock Exchange accounting principles and conditions and processes for the trading of shares
-                    </li>
-
-                    <li>submit to a due diligence investigation.
-                    </li>
-                </ul>
-
-                <p data-animate="4">Find out more about public limited companies <a
-                            href="http://www.bbc.co.uk/schools/gcsebitesize/business/aims/limitedcompaniesrev3.shtml">here</a>.</p>
-
-                </div>
-
-                <figure class="shape-110" data-animate="2" style="position: relative; left:-1em; bottom: -1.5em; z-index: -1">
-                    <img src="../images/t10-u1/_m_private_sector_05.jpg" />
-                    <figure class="shape-40" data-animate="9" style="opacity:.4; left:-20%; top: -35%;">
-                        <img src="../images/_shapes/dec-s12.svg" />
-                    </figure>
-                    <figure class="shape-20" data-animate="9" style="opacity:.7; right:10%; top: -10%;">
-                        <img src="../images/_shapes/cir-s15.svg" />
-                    </figure>
-                    <figure class="shape-5" data-animate="9" style="opacity:.9; right:40%; top: -20%;">
-                        <img src="../images/_shapes/dia-s9.svg" />
-                    </figure>
-                </figure>
-
-            </section>
-
-        </article>
-
 
     </div>
-
-</div>
 </body>
+
 </html>

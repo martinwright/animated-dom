@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,74 +14,72 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-14" class="article">
+            <article id="page-14" class="article">
 
-            <section>
+                <section>
 
-                <figure class="shape-30" data-animate="9" style="opacity:.6; right:-10%; top: 30%; z-index: -1">
-                    <img src="../images/_shapes/cir-s7.svg" />
-                </figure>
-
-                <figure class="shape-10" data-animate="9" style="opacity:.9; right:27%; top: 67%; z-index: -1">
-                    <img src="../images/_shapes/pen-p4.svg" />
-                </figure>
-
-                <figure class="shape-110" data-animate="2" style="position: relative; top:-1em; left:-1em; z-index: -2">
-                    <img src="../images/t10-u1/organisations_sectors_01_e.jpg" />
-                    <figure class="shape-70" data-animate="9" style="opacity:.6; left:-5%; top: -190%;">
-                        <img src="../images/_shapes/dec-s13.svg" />
+                    <figure class="shape-30" style="opacity:.6; right:-10%; top: 30%; z-index: -1">
+                        <img data-animate="*" src="../images/_shapes/cir-s7.svg" />
                     </figure>
 
-                </figure>
+                    <figure class="shape-10" style="opacity:.9; right:27%; top: 67%; z-index: -1">
+                        <img data-animate="*" src="../images/_shapes/pen-p4.svg" />
+                    </figure>
 
-                <h2 data-animate="2">The third sector</h2>
+                    <figure class="shape-110" style="position: relative; top:-1em; left:-1em; z-index: -2">
+                        <img data-animate="*" src="../images/t10-u1/organisations_sectors_01_e.jpg" />
+                        <figure class="shape-70" style="opacity:.6; left:-5%; top: -190%;">
+                            <img data-animate="*" data-type="loop-large-cw" src="../images/_shapes/dec-s13.svg" />
+                        </figure>
 
-                <div class="p-60">
+                    </figure>
 
-                    <p>This sector includes charities such as Age UK, or organisations operating under a charitable status
-                        where money is not raised for a cause, but rather invested back into the operation, eg City &
-                        Guilds.</p>
+                    <h2 data-animate="*">The third sector</h2>
+
+                    <div class="p-60">
+
+                        <p data-animate="*">This sector includes charities such as Age UK, or organisations operating under
+                            a charitable status where money is not raised for a cause, but rather invested back into the
+                            operation, eg City & Guilds.
+                        </p>
 
                     </div>
 
+                </section>
 
+            </article>
 
-            </section>
-
-        </article>
-
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>
