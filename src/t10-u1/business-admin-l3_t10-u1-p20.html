@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,64 +14,64 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
+    </nav>
+
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
+
+
+    <div class="wrapper hidden">
+
+        <div class="container--layout-1 -hidden">
+
+            <article id="page-21" class="article">
+
+                <section>
+
+                    <figure class="shape-110" data-animate="2" style="position: relative;    margin-top: -20px; left: -20px; top:0px; z-index: -1">
+                        <img src="../images/t10-u1/_m_voluntary_06.jpg" />
+                        <figure class="shape-30" data-animate="9" style="opacity:.9; left:-5%; top: 5%;">
+                            <img src="../images/_shapes/dec-s16.svg" />
+                        </figure>
+                        <figure class="shape-10" data-animate="9" style="opacity:.8; right:20%; top: 90%;">
+                            <img src="../images/_shapes/dia-s14.svg" />
+                        </figure>
+                    </figure>
+
+                    <h4 data-animate="2">6 Private company limited by guarantee (LBG)</h4>
+
+                    <p class="p-60">This is an alternative type of corporation used primarily for non-profit organisations.
+                        A private company limited by guarantee does not usually have share capital or shareholders, but instead
+                        has members who act as guarantors. These guarantors provide an undertaking to contribute a nominal
+                        amount of money in the event of the winding up of the company. Examples of private limited companies
+                        by guarantee are clubs and membership organisations.</p>
+
+                </section>
+
+            </article>
+
+
         </div>
-    </div>
-</nav>
-
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
-
-
-<div class="wrapper hidden">
-
-    <div class="container--layout-1 -hidden">
-
-        <article id="page-21" class="article">
-
-            <section>
-
-                <figure class="shape-110" data-animate="2" style="position: relative; left: -20px; top:0px; z-index: -1">
-                    <img src="../images/t10-u1/_m_voluntary_06.jpg" />
-                    <figure class="shape-30" data-animate="9" style="opacity:.9; left:-5%; top: 5%;">
-                        <img src="../images/_shapes/dec-s16.svg" />
-                    </figure>
-                    <figure class="shape-10" data-animate="9" style="opacity:.8; right:20%; top: 90%;">
-                        <img src="../images/_shapes/dia-s14.svg" />
-                    </figure>
-                </figure>
-
-                <h4 data-animate="2">6 Private company limited by guarantee (LBG)</h4>
-
-                <p class="p-60">This is an alternative type of corporation used primarily for non-profit organisations. A private
-                    company limited by guarantee does not usually have share capital or shareholders, but instead has
-                    members who act as guarantors. These guarantors provide an undertaking to contribute a nominal
-                    amount of money in the event of the winding up of the company. Examples of private limited companies
-                    by guarantee are clubs and membership organisations.</p>
-
-            </section>
-
-        </article>
-
 
     </div>
-
-</div>
 </body>
+
 </html>

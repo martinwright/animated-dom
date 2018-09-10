@@ -66,16 +66,17 @@ export default class Timeline {
                 let img = qs('img', el);
                 if (el.src) {
                     let [fileName, ...rest] = el.src.split('/').reverse();
+                    console.log('*********** fileName: ', fileName);
                     if (fileName && /^cir-.*\.svg$/.test(fileName)) {
-                        console.log('*********** CIRCLE: ');
+                        console.log('*********** CIRCLE: ', fileName);
                         defaultType = "zoom-out";
                     }
                     if (fileName && /^(dia|dec|hex|pen|squ)-.*\.svg$/.test(fileName)) {
-                        console.log('*********** DIAMOND: ');
+                        console.log('*********** DIAMOND: ', fileName);
                         defaultType = "roll-from-right";
                     }
                     if (fileName && /^.*\.(jpg|png)$/.test(fileName)) {
-                        console.log('*********** JPG: ');
+                        console.log('*********** JPG: ', fileName);
                         defaultType = "zoom-in";
                     }
                 }
@@ -103,7 +104,7 @@ export default class Timeline {
 
             //if (index === 0) offset = '0';
             //console.log('duration: ', duration);
-            console.log('el: ', el);
+            //console.log('el: ', el);
 
             switch (type) {
 
@@ -117,7 +118,7 @@ export default class Timeline {
                         translateX: '800',
                         easing: 'easeInQuad',
                         //direction: 'reverse',
-                        duration: duration,
+                        duration: duration * 2,
                         offset: offset,
                         scale: 3
                         //transformOrigin: "50% 50%"
@@ -164,7 +165,7 @@ export default class Timeline {
                     this.timeline.add({
                         targets: el,
                         opacity: '0',
-                        translateX: '400',
+                        translateX: '600',
                         //translateX: '20em',
                         rotate: '1turn',
                         easing: 'easeInQuad',
@@ -176,6 +177,7 @@ export default class Timeline {
                         //transformOrigin: "50% 50%"
                     });
                     break;
+
                 case 'roll-from-left':
                     this.timeline.add({
                         targets: el,
@@ -197,6 +199,28 @@ export default class Timeline {
                         targets: el,
                         opacity: 0,
                         translateX: '300',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        //direction: 'reverse',
+                        offset: offset
+                    });
+                    break;
+                case 'slide-up':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: 0,
+                        translateY: '300',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        //direction: 'reverse',
+                        offset: offset
+                    });
+                    break;
+                case 'slide-down':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: 0,
+                        translateY: '-300',
                         easing: 'easeInQuad',
                         duration: duration,
                         //direction: 'reverse',

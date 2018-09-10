@@ -10,16 +10,6 @@
           "type": "slide-left"
         }
       }
-    },
-    "4": {
-      "steps": {
-        "10": {
-          "type": "loop-large-ccw"
-        },
-        "8": {
-          "type": "loop-large-ccw"
-        }
-      }
     }
   }
 }

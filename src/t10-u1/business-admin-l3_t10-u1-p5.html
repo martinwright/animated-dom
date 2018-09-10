@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,103 +14,102 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Orginisation types</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-5" class="article">
+            <article id="page-5" class="article">
 
-            <section>
+                <section>
 
-                <figure  data-animate="*" class="shape-120" style="position: relative;margin-top: -1em; margin-left: -5em">
-                    <img src="../images/t10-u1/_m_public_sector_02.jpg">
-                    <figure class="shape-20" style="opacity:.8; top: 35%;right:10%">
-                        <img src="../images/_shapes/hex-s5.svg" />
+                    <figure class="shape-120" style="position: relative;margin-top: -1em; margin-left: -5em">
+                        <img data-animate="*" data-type="slide-down" src="../images/t10-u1/_m_public_sector_02.jpg">
+                        <figure class="shape-20" style="opacity:.8; top: 35%;right:10%">
+                            <img data-animate="*" src="../images/_shapes/hex-s5.svg" />
+                        </figure>
                     </figure>
-                </figure>
 
-                <h4 data-animate="*">2 The public sector</h4>
+                    <h4 data-animate="*">2 The public sector</h4>
 
-                <p data-animate="*">Within the public sector there are many different types of organisations of varying sizes,
-                    serving many different purposes and many different customers. The one thing they do have in
-                    common is that they are all funded, directly or indirectly, by public taxes and answer in
-                    one way or another to Parliament or central government.</p>
+                    <p data-animate="*">Within the public sector there are many different types of organisations of varying
+                        sizes, serving many different purposes and many different customers. The one thing they do have in
+                        common is that they are all funded, directly or indirectly, by public taxes and answer in one way
+                        or another to Parliament or central government.</p>
 
-                <p data-animate="*">Central government is organised into departments. These are much larger than what we
-                    traditionally understand as a department within an organisation. Some will be as large as
-                    a whole organisation; some will cover the UK as a whole and some only one or some of the
-                    countries that make up the UK. Broadly, public sector organisations fall into: those
-                    reporting to government departments, which are headed up by ministers of the political
-                    party in power, and those reporting to non-ministerial government departments that answer
-                    to Parliament rather than a cabinet minister, eg Ofsted, HMRC, Charity Commission. Major
-                    changes in government policy, eg through a change of government, may affect the structure
-                    of departments but not necessarily their functions. The departments work with local
-                    authorities, non-departmental public bodies and other government-sponsored organisations.</p>
+                    <p data-animate="*">Central government is organised into departments. These are much larger than what
+                        we traditionally understand as a department within an organisation. Some will be as large as a whole
+                        organisation; some will cover the UK as a whole and some only one or some of the countries that make
+                        up the UK. Broadly, public sector organisations fall into: those reporting to government departments,
+                        which are headed up by ministers of the political party in power, and those reporting to non-ministerial
+                        government departments that answer to Parliament rather than a cabinet minister, eg Ofsted, HMRC,
+                        Charity Commission. Major changes in government policy, eg through a change of government, may affect
+                        the structure of departments but not necessarily their functions. The departments work with local
+                        authorities, non-departmental public bodies and other government-sponsored organisations.</p>
 
-            </section>
+                </section>
 
-            <section>
+                <section>
 
-                <p data-animate="*">Public sector organisations include:</p>
+                    <p data-animate="*">Public sector organisations include:</p>
 
 
-                <ul>
-                    <li data-animate="*">government departments, eg Department of Health</li>
+                    <ul>
+                        <li data-animate="*">government departments, eg Department of Health</li>
 
-                    <li data-animate="*">executive agencies with a specific function, that operate as discrete entities within the
-                        government departments, eg The Met Office and HM Land Registry are both executive agencies
-                        within the Department of Business, Innovation and Skills (BIS)
-                    </li>
+                        <li data-animate="*">executive agencies with a specific function, that operate as discrete entities
+                            within the government departments, eg The Met Office and HM Land Registry are both executive
+                            agencies within the Department of Business, Innovation and Skills (BIS)
+                        </li>
 
-                    <li data-animate="*">non-ministerial departments are those that are not headed by a government minister, but
-                        rather are controlled by legislation, eg the Foods Standards Agency
-                    </li>
+                        <li data-animate="*">non-ministerial departments are those that are not headed by a government minister,
+                            but rather are controlled by legislation, eg the Foods Standards Agency
+                        </li>
 
-                    <li data-animate="*">non-departmental public bodies (NDPB) – sometimes called quangos – are groups set up to carry
-                        out a specific task outside the government department; they may simply advise on areas of
-                        policy (advisory NDPB), eg The Boundary Commission for England, or actually carry out a
-                        specific service (executive NDPB), eg The Health and Safety Executive
-                    </li>
+                        <li data-animate="*">non-departmental public bodies (NDPB) – sometimes called quangos – are groups
+                            set up to carry out a specific task outside the government department; they may simply advise
+                            on areas of policy (advisory NDPB), eg The Boundary Commission for England, or actually carry
+                            out a specific service (executive NDPB), eg The Health and Safety Executive
+                        </li>
 
-                    <li data-animate="*">local authorities (councils), eg London Borough of Ealing.</li>
-                </ul>
+                        <li data-animate="*">local authorities (councils), eg London Borough of Ealing.</li>
+                    </ul>
 
-                <figure data-animate="*" data-scale="6" class="shape-40" style="opacity:.3; bottom: 10%; right:-10%; z-index: -1">
-                    <img src="../images/_shapes/cir-s8.svg" />
-                </figure>
+                    <figure data-animate="*" data-scale="6" class="shape-40" style="opacity:.3; bottom: 10%; right:-10%; z-index: -1">
+                        <img src="../images/_shapes/cir-s8.svg" />
+                    </figure>
 
-            </section>
+                </section>
 
-        </article>
+            </article>
 
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

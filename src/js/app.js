@@ -2,6 +2,7 @@
 import { $on, qs } from './util';
 import DocReady from './windowLoaded';
 import Timeline from './timeline';
+//import { Base64 } from 'js-base64';
 
 DocReady(() => {
     //console.log("DocReady");
@@ -36,7 +37,19 @@ class App {
             //console.log('APP: getJsonFileName: ');
             let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
             //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-            return loc.origin + '/' + foldername + '/animate.json';
+
+            let pathItems = loc.href.split('/');
+            fileName = pathItems.pop();
+            let path = pathItems.join('/');
+
+            console.log('****** fileName', fileName);
+            console.log('****** foldername', foldername);
+            console.log('****** rest', rest);
+
+            let retPath = path + '/animate.json';
+            //let retPath = loc.origin + '/' + rest.reverse().pop().pop().pop().join('/') + foldername + '/animate.json';
+            console.log('****** retPath', retPath);
+            return retPath;
         }
         function validateResponse(response) {
             console.log('APP: validateResponse: ', response);
@@ -66,7 +79,16 @@ class App {
         this.hidePages();
 
         console.log('****** fetch ');
-        return fetch(getJsonFileName(window.location))
+
+        //let headers = new Headers();
+        //headers.set('Authorization', 'Basic ' + base64.encode("CandG" + ":" + "longpoint39"));
+
+
+
+        return fetch(getJsonFileName(window.location), {
+            headers: { Accept: 'application/json' },
+            credentials: 'same-origin'
+        })
             .then(validateResponse)
             .then(readResponseAsJSON)
             .then(logResult)
@@ -229,7 +251,7 @@ class App {
         }
     }
     toggleAnimation(e) {
-        //console.log('****** toggleAnimation ', e.target.checked);
+        console.log('****** toggleAnimation ', e.target.checked);
         this.showAnimations = e.target.checked;
     }
     replayAnimation() {
@@ -317,6 +339,9 @@ class App {
             completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
             completeShapeNodeList = getShapeNodes(currentPageNodelist, currentPageNum);
 
+            console.log('****** currentPageNodelist', currentPageNodelist);
+            console.log('****** completeShapeNodeList', completeShapeNodeList);
+
             /* const currentPageTextNodes = completeTextNodeList.map(el => {
                 el.pageNumber = currentPageNum;
                 return el;
@@ -372,7 +397,7 @@ class App {
             this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
             this.shapeElementTimeline.setup();
         }
-        console.log('****** textElementTimeline', this.textElementTimeline);
+        console.log('****** shapeElementTimeline', this.shapeElementTimeline);
 
         return;
 

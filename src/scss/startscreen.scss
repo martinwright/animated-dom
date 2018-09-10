@@ -1,5 +1,5 @@
-.startscreen{
-  border: solid 4px red;
+.startscreen {
+  //border: solid 4px red;
   text-align: center;
   padding: 0;
   //top:0;
@@ -9,48 +9,48 @@
   height: calc(100% - 4rem);
 }
 
-.startscreen img{
+.startscreen img {
   padding-top: 50px;
 }
 
-.startscreen h1{
+.startscreen h1 {
   font-size: 40px;
   font-weight: 600;
-  margin:0;
+  margin: 0;
   padding-top: 80px;
 }
 
-.startscreen h2{
+.startscreen h2 {
   font-size: 20px;
   font-weight: 500;
-  margin:0;
-  padding-top:0px;
+  margin: 0;
+  padding-top: 0px;
 }
 
 //@media screen and (min-aspect-ratio: 400/650) {
 @media (max-height: 650px) and (max-width: 540px) {
-  .startscreen figure{
+  .startscreen figure {
     visibility: hidden;
   }
 }
 @media (max-height: 580px) and (max-width: 580px) {
-  .startscreen figure{
+  .startscreen figure {
     visibility: hidden;
   }
 }
 
 @media (max-height: 400px) and (max-width: 620px) {
-  .startscreen figure{
+  .startscreen figure {
     visibility: hidden;
   }
 }
 
-.startscreen .minmax-1{
+.startscreen .minmax-1 {
   min-width: 200px;
   max-width: 500px;
 }
 
-.startscreen .minmax-2{
+.startscreen .minmax-2 {
   min-width: 50px;
   max-width: 100px;
 }
