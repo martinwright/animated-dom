@@ -339,6 +339,9 @@ class App {
             completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
             completeShapeNodeList = getShapeNodes(currentPageNodelist, currentPageNum);
 
+            console.log('****** currentPageNodelist', currentPageNodelist);
+            console.log('****** completeShapeNodeList', completeShapeNodeList);
+
             /* const currentPageTextNodes = completeTextNodeList.map(el => {
                 el.pageNumber = currentPageNum;
                 return el;
@@ -394,7 +397,7 @@ class App {
             this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
             this.shapeElementTimeline.setup();
         }
-        console.log('****** textElementTimeline', this.textElementTimeline);
+        console.log('****** shapeElementTimeline', this.shapeElementTimeline);
 
         return;
 

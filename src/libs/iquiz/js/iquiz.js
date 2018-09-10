@@ -7647,7 +7647,7 @@ var App = function () {
     }, {
         key: 'startUpDemoQuiz',
         value: function startUpDemoQuiz() {
-            console.log('### APP: startUp: ');
+            console.log('### APP: startUpDemoQuiz: ');
             var demo = {
                 "title": "Title quiz_clickText",
                 "id": "q456",
@@ -7760,29 +7760,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import QuizMC from "./quizmc";
 
-
-/* export default class Singleton {
-
-    static instance;
-
-    constructor() {
-        if (instance) {
-            return instance;
-        }
-
-        this.state = "duke";
-        this.instance = this;
-    }
-
-} */
-
 var app = new _app2.default();
 var setApp = function setApp() {
     app.startUp();
 };
 
 (0, _helpers.$on)(window, 'load', setApp);
-(0, _helpers.$on)(window, 'hashchange', setApp);
+//$on(window, 'hashchange', setApp);
 //$on(window, 'resize', quizApp.doResize);
 
 },{"./app.js":327,"./helpers":328,"babel-polyfill":1}],330:[function(require,module,exports){
@@ -7824,7 +7808,7 @@ var QuizMC = function () {
             var _this = this;
 
             console.log('initQuizNav');
-            FastClick.attach(document.body);
+            //FastClick.attach(document.body);
 
             $("#iqSubmit").click(function () {
                 _this.doSubmit();
@@ -7904,7 +7888,7 @@ var QuizMC = function () {
             var newTop = $(el).position().top + parseInt($(el).css('marginTop'));
             // var newTop = $(el).position().top;
             var newLeft = $(el).position().left + parseInt($(el).css('marginLeft'));
-            var topAdjuster = 12 / 100 * fontSize;
+            //var topAdjuster = (12 / 100) * fontSize;
             var newHeight = $(el).outerHeight();
             console.log('newTop:' + newTop);
             //
@@ -7913,12 +7897,12 @@ var QuizMC = function () {
                 console.log('multipleAnswers = false');
                 var s = '#' + clickGroupID + ' .quiz_highlighter';
                 var ss = '#' + clickGroupID + ' .quiz_clickText';
-                $(s).removeClass("selected"); // REMOVE SELECTED TO SHOW COLOUR
-                $(ss).removeClass("selected"); // CLEAR HIGHLIGHT
+                $(s).removeClass("hide"); // SHOW HIGHLIGHTER SO WE CAN ANIMATE IT
+                $(ss).removeClass("selected"); // REMOVE SELECTED ON ALL GROUP ELEMENTS
 
                 $(el).closest(".quiz_clickText_container").find('.quiz_highlighter').animate({ top: newTop + 'px', height: newHeight + 'px' }, 200, function () {
-                    $(el).addClass("selected");
-                    // $('.quiz_highlighter').addClass("selected");
+                    $(el).addClass("selected notransition");
+                    $('.quiz_highlighter').addClass("hide");
                 });
             } else {
                 $(el).toggleClass("selected");
