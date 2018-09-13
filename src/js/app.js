@@ -42,43 +42,43 @@ class App {
             fileName = pathItems.pop();
             let path = pathItems.join('/');
 
-            console.log('****** fileName', fileName);
-            console.log('****** foldername', foldername);
-            console.log('****** rest', rest);
+            //console.log('****** fileName', fileName);
+            //console.log('****** foldername', foldername);
+            //console.log('****** rest', rest);
 
             let retPath = path + '/animate.json';
             //let retPath = loc.origin + '/' + rest.reverse().pop().pop().pop().join('/') + foldername + '/animate.json';
-            console.log('****** retPath', retPath);
+            //console.log('****** retPath', retPath);
             return retPath;
         }
         function validateResponse(response) {
-            console.log('APP: validateResponse: ', response);
+            //console.log('APP: validateResponse: ', response);
             if (!response.ok) {
                 throw Error(response.statusText);
             }
             return response;
         }
         function readResponseAsJSON(response) {
-            console.log('APP: readResponseAsJSON: ', response);
+            //console.log('APP: readResponseAsJSON: ', response);
             return response.json();
         }
         function logResult(result) {
-            console.log('APP: logResult: ', result);
+            //console.log('APP: logResult: ', result);
             return result;
         }
         function logError(error) {
-            console.log('Looks like there was a problem: \n', error);
+            //console.log('Looks like there was a problem: \n', error);
         }
         function setAminProps(response) {
-            console.log('****** setAminProps response', response);
-            console.log('****** setAminProps response', this);
+            //console.log('****** setAminProps response', response);
+            //console.log('****** setAminProps response', this);
             this.animations = response;
         }
         //console.log('****** loadAnimationSeq start');
 
         this.hidePages();
 
-        console.log('****** fetch ');
+        //console.log('****** fetch ');
 
         //let headers = new Headers();
         //headers.set('Authorization', 'Basic ' + base64.encode("CandG" + ":" + "longpoint39"));
@@ -101,7 +101,7 @@ class App {
     }
 
     continueStartUp(json) {
-        console.log('****** continueStartUp ', json);
+        //console.log('****** continueStartUp ', json);
         this.animationJson = json;
         this.displayPage();
         this.doResize();
@@ -112,7 +112,7 @@ class App {
     }
 
     hashChangedHandler() {
-        console.log('****** updateView ');
+        //console.log('****** updateView ');
         this.hidePages();
         this.displayPage();
         this.doResize();
@@ -121,12 +121,12 @@ class App {
         if (this.showAnimations) this.playTimelines();
     }
     resizeHandler() {
-        console.log('****** resizeHandler ');
+        //console.log('****** resizeHandler ');
         this.doResize();
     }
 
     doResize() {
-        console.log('****** doResize');
+        //console.log('****** doResize');
         let thisPage = qs('#page-' + this.getPageNumber()),
             nextPage = qs('#page-' + this.getPageNumber(1)),
             prevPage = qs('#page-' + this.getPageNumber(-1)),
@@ -165,6 +165,8 @@ class App {
             isRight = currentPageNode.classList.contains('right');
 
         this.addPageNumber(currentPageNode, currentPageNum);
+
+        console.log('****** currentPageNode ', currentPageNode);
 
         // Show current page and left or right page
         currentPageNode.classList.remove('hidden');
