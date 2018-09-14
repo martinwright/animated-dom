@@ -30,6 +30,9 @@ class App {
         this.animationJson;
         this.throttled = false;
         this.showAnimations = true;
+        this.display = 'slides';
+        this.displayModeBtns = document.getElementsByName('displayMode');
+        console.log('****** this.displayModeBtns', this.displayModeBtns);
     };
 
     setView() {
@@ -195,10 +198,26 @@ class App {
         qs('.nav-bar .js-animation input').checked = this.showAnimations;
         qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
     }
+    displayModeChanged() {
+        Array.from(this.displayModeBtns).forEach(v => v.checked ? console.log(v.getAttribute('value')) : null)
+    }
     resetNavigationStates() {
         let thisPage = qs('#page-' + this.getPageNumber()),
             nextPage = qs('#page-' + this.getPageNumber(1)),
             prevPage = qs('#page-' + this.getPageNumber(-1));
+
+        Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', () => {
+            this.displayModeChanged();
+        }))
+
+
+        //this.display
+
+        /* console.log('****** input', qs('input[type=radio]'));
+        qs('input[type=radio]').change(() => {
+            alert("test  " + this);
+        }); */
+
 
         if (prevPage) {
             if (prevPage.classList.contains('left')) {
