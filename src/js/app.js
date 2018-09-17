@@ -30,7 +30,13 @@ class App {
         this.animationJson;
         this.throttled = false;
         this.showAnimations = true;
+        this.allSlides;
+        this.allQuestions;
+        this.currentNodeSelection;
         this.display = 'slides';
+        this.quizFirstPage;
+        this.quizCurrentPage = 21;
+        this.slidesCurrentPage = 0;
         this.displayModeBtns = document.getElementsByName('displayMode');
         console.log('****** this.displayModeBtns', this.displayModeBtns);
     };
@@ -79,6 +85,7 @@ class App {
         }
         //console.log('****** loadAnimationSeq start');
 
+        this.definePages();
         this.hidePages();
 
         //console.log('****** fetch ');
@@ -103,19 +110,32 @@ class App {
             });
     }
 
+    definePages() {
+        [...this.allSlides] = document.querySelectorAll('.container--layout-1');
+        console.log('****** this.allSlides ', this.allSlides[1].id);
+        console.log('****** this.allSlides ', this.allSlides[2].classList.contains('left'));
+        [...this.allQuestions] = document.querySelectorAll('.container--iquiz');
+        this.currentNodeSelection = this.allSlides;
+    }
     continueStartUp(json) {
-        //console.log('****** continueStartUp ', json);
+        console.log('****** continueStartUp ');
         this.animationJson = json;
+        //let quizFirstNode = qs('.container--iquiz');
+        //this.quizFirstPage = quizFirstNode;
+        //console.log('****** quizFirstPage start ', quizFirstPage);
         this.displayPage();
         this.doResize();
         this.setNavigationEvents();
         this.resetNavigationStates();
         if (this.showAnimations) this.createAnimationTimelines();
         if (this.showAnimations) this.playTimelines();
+        Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', (e) => {
+            this.displayModeChanged(e.currentTarget.value);
+        }))
     }
 
     hashChangedHandler() {
-        //console.log('****** updateView ');
+        console.log('****** updateView ');
         this.hidePages();
         this.displayPage();
         this.doResize();
@@ -129,7 +149,7 @@ class App {
     }
 
     doResize() {
-        //console.log('****** doResize');
+        console.log('****** doResize');
         let thisPage = qs('#page-' + this.getPageNumber()),
             nextPage = qs('#page-' + this.getPageNumber(1)),
             prevPage = qs('#page-' + this.getPageNumber(-1)),
@@ -145,14 +165,17 @@ class App {
         } else {
             if (pageToHide) pageToHide.classList.remove('hidden');
         }
-        this.resetNavigationStates();
+        //this.resetNavigationStates();
     }
 
     hidePages() {
         // Set wrapper and pages to hidden    
-        const allPages = document.querySelectorAll('.container--layout-1');
+
         qs('.wrapper').className = 'wrapper hidden';
-        [...allPages].forEach(el => {
+        this.allSlides.forEach(el => {
+            el.classList.add('hidden');
+        });
+        this.allQuestions.forEach(el => {
             el.classList.add('hidden');
         });
     }
@@ -161,9 +184,30 @@ class App {
         el.insertAdjacentHTML('beforeend', `<div class="page-number">${num}</div>`);
     }
 
+
+
+    displayModeChanged(e) {
+        //Array.from(this.displayModeBtns).forEach(v => v.checked ? console.log(v.getAttribute('value')) : null)
+        let checkedEl = Array.from(this.displayModeBtns).find(el => {
+            if (el.checked) return true;
+        })
+        console.log('****** checkedElx ', checkedEl.value);
+        if (this.display !== checkedEl.value) {
+            this.display = checkedEl.value;
+            this.currentNodeSelection = this.display = 'slides' ? this.allSlides : this.allQuestions;
+            this.hidePages();
+            this.displayPage();
+        }
+    }
+
     displayPage() {
+
+        console.log('****** this.allSlides ', this.allSlides[2].classList.contains('left'));
+
         let currentPageNum = this.getPageNumber();
-        const currentPageNode = qs('#page-' + currentPageNum),
+
+        //const currentPageNode = qs('#page-' + currentPageNum),
+        const currentPageNode = this.getNode(currentPageNum),
             isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
@@ -173,22 +217,35 @@ class App {
 
         // Show current page and left or right page
         currentPageNode.classList.remove('hidden');
+
         if (isLeft) {
-            qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
-            this.addPageNumber(qs(`#page-${currentPageNum + 1}`), currentPageNum + 1);
+            //qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
+            this.getNode(currentPageNum + 1).classList.remove('hidden');
+            this.addPageNumber(this.getNode(currentPageNum + 1));
         }
         if (isRight) {
-            qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
-            this.addPageNumber(qs(`#page-${currentPageNum + 1}`), currentPageNum - 1);
+            this.getNode(currentPageNum - 1).classList.remove('hidden');
+            this.addPageNumber(this.getNode(currentPageNum - 1));
         }
         // show wrapper
         qs('.wrapper').classList.remove('hidden');
     }
 
-    getPageNumber(num = 0) {
-        let currentHash = location.hash || '#1';
+    getPageNumber(offset = 0) {
+        const pagePrefix = this.display === 'slides' ? 's' : 'q';
+        let currentHash = location.hash || '#s1';
+
         return (+currentHash.replace('#', '')) + num;
     }
+    getPageNode() {
+
+    }
+    getNode(page) {
+
+        let node = this.currentNodeSelection.find(n => n.id === 'page-' + page);
+        return node;
+    }
+
     setNavigationEvents() {
         //console.log('****** setNavigationStates');
         location.hash = location.hash || '#1';
@@ -198,18 +255,13 @@ class App {
         qs('.nav-bar .js-animation input').checked = this.showAnimations;
         qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
     }
-    displayModeChanged() {
-        Array.from(this.displayModeBtns).forEach(v => v.checked ? console.log(v.getAttribute('value')) : null)
-    }
+
     resetNavigationStates() {
+        console.log('****** resetNavigationStates ');
+        // TODO let thisPage = this.getPageNode() 
         let thisPage = qs('#page-' + this.getPageNumber()),
             nextPage = qs('#page-' + this.getPageNumber(1)),
             prevPage = qs('#page-' + this.getPageNumber(-1));
-
-        Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', () => {
-            this.displayModeChanged();
-        }))
-
 
         //this.display
 
