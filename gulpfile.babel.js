@@ -137,7 +137,7 @@ gulp.task('build-html-combined-prom', function (done) {
                     //console.log('cont ', cont);
                     if (cont) $(cont).attr('id', 'page-' + pageNumber).addClass('hidden');
                     let quiz = $('.container--iquiz');
-                    console.log('quiz ', quiz.length);
+                    //console.log('quiz ', quiz.length);
                     //if (quiz) $(quiz).attr('id', 'page-' + pageNumber).addClass('hidden');
                     //$('.container--layout-1').attr('id', 'page-' + pageNumber).addClass('hidden');
                     $('.container--iquiz').each(function () {
@@ -310,7 +310,7 @@ gulp.task('partials-prom', function (done) {
                 }))
                 .pipe(cheerio(function ($, file) {
 
-                    sort($('.wrapper'));
+                    sort($('.js-wrapper'));
                     $.html();
 
                     function sort(main) {
@@ -619,6 +619,9 @@ gulp.task('styles', () => {
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest('./build/css/'))
         .pipe(notify({ message: 'styles task complete' }))
+        .pipe(gulp.dest('../Infuze-Quiz/_temp/build/css/'))
+        .pipe(notify({ message: 'styles task complete' }))
+
         .pipe(browserSync.stream());
 });
 /* ----------------- */

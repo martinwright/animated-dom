@@ -2,7 +2,7 @@ import { qs } from './util';
 
 export default class Timeline {
     constructor(el, anim) {
-        console.log('????????? anim', anim);
+        //console.log('????????? anim', anim);
         this.elementsList = el;
         this.animationJson = anim;
         this.timeline;

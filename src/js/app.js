@@ -1,5 +1,5 @@
 //import "babel-polyfill";
-import { $on, qs } from './util';
+import { $on, qs, $log } from './util';
 import DocReady from './windowLoaded';
 import Timeline from './timeline';
 //import { Base64 } from 'js-base64';
@@ -9,7 +9,6 @@ DocReady(() => {
     const app = new App();
     const loadHandler = () => app.setView();
     const debounce = (fn, time) => {
-        //console.log('debounce');
         let timeout;
         return function () {
             const functionCall = () => fn.apply(this, arguments);
@@ -38,26 +37,16 @@ class App {
         this.quizCurrentPage = 21; // TODO 1st quiz page
         this.slidesCurrentPage = 0; // TODO 1st slide page
         this.displayModeBtns = document.getElementsByName('displayMode');
-        console.log('****** this.displayModeBtns', this.displayModeBtns);
+        $log('displayModeBtns', this.displayModeBtns);
     };
 
     setView() {
         function getJsonFileName(loc) {
-            //console.log('APP: getJsonFileName: ');
             let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-
             let pathItems = loc.href.split('/');
             fileName = pathItems.pop();
             let path = pathItems.join('/');
-
-            //console.log('****** fileName', fileName);
-            //console.log('****** foldername', foldername);
-            //console.log('****** rest', rest);
-
             let retPath = path + '/animate.json';
-            //let retPath = loc.origin + '/' + rest.reverse().pop().pop().pop().join('/') + foldername + '/animate.json';
-            //console.log('****** retPath', retPath);
             return retPath;
         }
         function validateResponse(response) {
@@ -80,20 +69,12 @@ class App {
         }
         function setAminProps(response) {
             //console.log('****** setAminProps response', response);
-            //console.log('****** setAminProps response', this);
             this.animations = response;
         }
         //console.log('****** loadAnimationSeq start');
 
         this.definePages();
         this.hidePages();
-
-        //console.log('****** fetch ');
-
-        //let headers = new Headers();
-        //headers.set('Authorization', 'Basic ' + base64.encode("CandG" + ":" + "longpoint39"));
-
-
 
         return fetch(getJsonFileName(window.location), {
             headers: { Accept: 'application/json' },
@@ -112,19 +93,16 @@ class App {
 
     definePages() {
         [...this.allSlides] = document.querySelectorAll('.container--layout-1');
-        console.log('****** this.allSlides ', this.allSlides[1].id);
-        console.log('****** this.allSlides ', this.allSlides[2].classList.contains('left'));
         [...this.allQuestions] = document.querySelectorAll('.container--iquiz');
-        
     }
     hidePages() {
         // Set wrapper and pages to hidden    
-        qs('.wrapper').className = 'wrapper hidden';
+        qs('.js-wrapper').classList.add = 'hidden';
         this.allSlides.forEach(el => { el.classList.add('hidden') });
         this.allQuestions.forEach(el => { el.classList.add('hidden') });
     }
     continueStartUp(json) {
-        console.log('****** continueStartUp ');
+        //console.log('****** continueStartUp ');
         this.animationJson = json;
 
         //const pattern = /\#q(\d+)/u;
@@ -134,7 +112,6 @@ class App {
             this.display = 'quiz';
             this.currentNodeSelection = this.allQuestions;
             qs("#quizRadio").checked = true;
-
         }
         const slide = /\#s(\d+)/.exec(location.hash);
         if (slide) {
@@ -143,12 +120,7 @@ class App {
             this.currentNodeSelection = this.allSlides;
             qs("#slidesRadio").checked = true;
         }
-        console.log('****** slide ',slide);
-        console.log('****** quiz ',quiz);
-        
-        //let quizFirstNode = qs('.container--iquiz');
-        //this.quizFirstPage = quizFirstNode;
-        //console.log('****** quizFirstPage start ', quizFirstPage);
+
         this.setNavigationEvents();
         this.displayPage();
         this.doResize();
@@ -156,17 +128,16 @@ class App {
         this.resetNavigationStates();
         this.createAnimationTimelines();
         if (this.showAnimations) this.playTimelines();
-
     }
 
     setNavigationEvents() {
-        //console.log('****** setNavigationStates');
+        $log('setNavigationStates');
         location.hash = location.hash || '#s1';
-        qs('.nav-bar .js-back').onclick = (e) => this.previousClick();
-        qs('.nav-bar .js-next').onclick = (e) => this.nextClick();
-        qs('.nav-bar .js-replay').onclick = (e) => this.replayAnimation();
-        qs('.nav-bar .js-animation input').checked = this.showAnimations;
-        qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
+        qs('.js-back').onclick = (e) => this.previousClick();
+        qs('.js-next').onclick = (e) => this.nextClick();
+        qs('.js-replay').onclick = (e) => this.replayAnimation();
+        qs('.js-animation input').checked = this.showAnimations;
+        qs('.js-animation input').onclick = (e) => this.toggleAnimation(e);
         Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', (e) => {
             this.displayModeChanged(e.currentTarget.value);
         }))
@@ -174,15 +145,9 @@ class App {
 
     displayPage() {
         const currentPageNum = this.getPageNumber();
+        const currentPageNode = this.getPageNode(currentPageNum);
 
-        console.log('****** currentPageNum ', currentPageNum);
-
-
-         const   currentPageNode = this.getPageNode(currentPageNum);
-
-         console.log('****** currentPageNode ', currentPageNode);
-
-         const isLeft = currentPageNode.classList.contains('left'),
+        const isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
         this.addPageNumber(currentPageNode, currentPageNum);
@@ -198,11 +163,10 @@ class App {
             this.addPageNumber(this.getPageNode(currentPageNum - 1));
         }
         // show wrapper
-        qs('.wrapper').classList.remove('hidden');
+        qs('.js-wrapper').classList.remove('hidden');
     }
 
     hashChangedHandler() {
-        console.log('****** updateView ');
         this.hidePages();
         this.displayPage();
         this.doResize();
@@ -231,20 +195,16 @@ class App {
         //this.resetNavigationStates();
     }
 
-
-
     addPageNumber(el, num) {
         el.insertAdjacentHTML('beforeend', `<div class="page-number">${num}</div>`);
     }
-
-
 
     displayModeChanged(e) {
         //Array.from(this.displayModeBtns).forEach(v => v.checked ? console.log(v.getAttribute('value')) : null)
         let checkedEl = Array.from(this.displayModeBtns).find(el => {
             if (el.checked) return true;
         })
-        console.log('****** checkedElx ', checkedEl.value);
+        $log('checkedElx', checkedEl.value);
         if (this.display !== checkedEl.value) {
             this.display = checkedEl.value;
             this.currentNodeSelection = this.display === 'slides' ? this.allSlides : this.allQuestions;
@@ -252,6 +212,11 @@ class App {
             this.hidePages();
             this.navigateToPage(PageNum);
             this.displayPage();
+            this.doResize();
+            this.resetNavigationStates();
+            if (this.showAnimations) this.createAnimationTimelines();
+            if (this.showAnimations) this.playTimelines();
+            $log('this.display', this.display);
         }
     }
 
@@ -259,15 +224,12 @@ class App {
         location.hash = this.display === 'slides' ? '#s' + p : '#q' + p;
         if (this.display === 'slides') this.slidesCurrentPage = p;
         if (this.display === 'quiz') this.quizCurrentPage = p;
-
         this.resetNavigationStates();
     }
 
     getPageNumber(offset = 0) {
         const pagePrefix = this.display === 'slides' ? 's' : 'q';
         let currentHash = location.hash || '#s1';
-        console.log('****** currentHash ', currentHash);
-        console.log('****** this.display ', this.display);
         if (this.display === 'slides') {
             return (+currentHash.replace('#s', '')) + offset;
         } else if (this.display === 'quiz') {
@@ -276,15 +238,13 @@ class App {
     }
 
     getPageNode(page) {
-        console.log('******>>>>>> node ', node);
         const pageNamePrefix = this.display === 'slides' ? 'page-' : 'question-';
         let node = this.currentNodeSelection.find(n => n.id === pageNamePrefix + page);
-        console.log('******>>>>>> node ', node);
         return node;
     }
 
     resetNavigationStates() {
-        console.log('****** resetNavigationStates ');
+        $log('resetNavigationStates');
         let thisPageNode = this.getPageNode(this.getPageNumber()),
             nextPageNode = this.getPageNode(this.getPageNumber(1)),
             prevPageNode = this.getPageNode(this.getPageNumber(-1));
@@ -337,20 +297,20 @@ class App {
         }
 
         function disablePrevious() {
-            qs('.nav-bar .js-back').setAttribute("disabled", "");
+            qs('.js-back').setAttribute("disabled", "");
         }
         function enablePrevioust() {
-            qs('.nav-bar .js-back').removeAttribute("disabled");
+            qs('.js-back').removeAttribute("disabled");
         }
         function disableNext() {
-            qs('.nav-bar .js-next').setAttribute("disabled", "");
+            qs('.js-next').setAttribute("disabled", "");
         }
         function enableNext() {
-            qs('.nav-bar .js-next').removeAttribute("disabled");
+            qs('.js-next').removeAttribute("disabled");
         }
     }
     toggleAnimation(e) {
-        console.log('****** toggleAnimation ', e.target.checked);
+        //console.log('****** toggleAnimation ', e.target.checked);
         this.showAnimations = e.target.checked;
     }
     replayAnimation() {
@@ -375,37 +335,34 @@ class App {
             this.navigateToPage(this.getPageNumber(-1));
         }
     }
-   
+
 
     playTimelines() {
         if (this.textElementTimeline) this.textElementTimeline.startAmnimation();
         if (this.shapeElementTimeline) this.shapeElementTimeline.startAmnimation();
     }
 
-
     createAnimationTimelines() {
-        //console.log('****** createAnimationTimelines ')
-        return;
+        $log('createAnimationTimelines');
+
         const defaultDuration = "200",
             defaultOffset = "-=50",
             currentPageNum = this.getPageNumber(),
-            currentPageNode = qs('#page-' + currentPageNum),
-            prevPageNode = qs('#page-' + (currentPageNum - 1)),
-            nextPageNode = qs('#page-' + (currentPageNum + 1)),
+            currentPageNode = this.getPageNode(this.getPageNumber()),
+            prevPageNode = this.getPageNode(this.getPageNumber(-1)),
+            nextPageNode = this.getPageNode(this.getPageNumber(1)),
             isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
-        const [...currentPageNodelist] = document.querySelectorAll('#page-' + currentPageNum + ' [data-animate]'),
-            [...lefttNodelist] = document.querySelectorAll('#page-' + (currentPageNum - 1) + ' [data-animate]'),
-            [...rightNodelist] = document.querySelectorAll('#page-' + (currentPageNum + 1) + ' [data-animate]');
+        const pageNamePrefix = this.display === 'slides' ? '#page-' : '#question-';
+
+        const [...currentPageNodelist] = document.querySelectorAll(pageNamePrefix + currentPageNum + ' [data-animate]'),
+            [...lefttNodelist] = document.querySelectorAll(pageNamePrefix + (currentPageNum - 1) + ' [data-animate]'),
+            [...rightNodelist] = document.querySelectorAll(pageNamePrefix + (currentPageNum + 1) + ' [data-animate]');
         let completeTextNodeList,
             completeShapeNodeList;
 
-        console.log('****** thisNodelist ', currentPageNodelist)
-        //console.log('****** lefttNodelist ', lefttNodelist)
-        //console.log('****** rightNodelist ', rightNodelist)
-        //console.log('****** isLeft ', isLeft)
-        //console.log('****** isLeft ', isRight)
+        $log('currentPageNodelist', currentPageNodelist);
 
         if (isLeft && nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
             // Combine next page nodes
@@ -437,19 +394,9 @@ class App {
             completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
             completeShapeNodeList = getShapeNodes(currentPageNodelist, currentPageNum);
 
-            console.log('****** currentPageNodelist', currentPageNodelist);
-            console.log('****** completeShapeNodeList', completeShapeNodeList);
+            $log('currentPageNodelist', currentPageNodelist);
+            $log('completeShapeNodeList', completeShapeNodeList);
 
-            /* const currentPageTextNodes = completeTextNodeList.map(el => {
-                el.pageNumber = currentPageNum;
-                return el;
-            })
-            const currentPageShapeNodes = completeShapeNodeList.map(el => {
-                el.pageNumber = currentPageNum;
-                return el;
-            }) */
-            //console.log('****** currentPageTextNodes', completeTextNodeList);
-            //console.log('****** currentPageShapeNodes', completeShapeNodeList);
         }
 
         function getTextNodes(nodes, page, counter = 0) {
@@ -483,9 +430,8 @@ class App {
         function sorter(obj1, obj2) {
             return obj1.dataset.animate - obj2.dataset.animate;
         }
-        //console.log('****** completeTextNodeList ', completeTextNodeList)
-        //console.log('****** completeShapeNodeList ', completeShapeNodeList)
-        //console.log('****** setAminProps response', this.animations);
+
+        $log('completeTextNodeList', completeTextNodeList);
 
         if (completeTextNodeList.length) {
             this.textElementTimeline = new Timeline(completeTextNodeList, this.animationJson);
@@ -495,7 +441,6 @@ class App {
             this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
             this.shapeElementTimeline.setup();
         }
-        console.log('****** shapeElementTimeline', this.shapeElementTimeline);
 
         return;
 
