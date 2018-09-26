@@ -1,0 +1,99 @@
+.nav-bar__container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+
+  //height: 2em;
+}
+.nav-bar__button:focus {
+  outline: none;
+}
+.nav-bar__button {
+  position: relative;
+  color: white;
+  background: #ffa300;
+  border-radius: 50px;
+  height: 2rem;
+  width: 33px;
+  border-color: #ffa300;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-right: 8px;
+  border-style: none;
+  @include for-size(tablet-portrait-up) {
+    width: 130px;
+    margin-right: 0;
+  }
+}
+
+.nav-bar__button:active,
+.nav-bar__button:focus,
+.nav-bar__button.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-style: none;
+}
+
+.no-touchevents .nav-bar__button:not(:disabled):hover {
+  background: #fe5000;
+  border-color: #fe5000;
+}
+.nav-bar__button:disabled {
+  background: lightgray;
+  border-color: lightgray;
+  cursor: default;
+}
+
+%nav-bar__button-text {
+  color: white;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 900;
+  font-style: normal;
+  visibility: hidden;
+  border-style: none;
+  @include for-size(tablet-portrait-up) {
+    visibility: visible;
+  }
+}
+.nav-bar__button-text--left {
+  @extend %nav-bar__button-text;
+  margin: 0px 70px 0px 0px;
+}
+.nav-bar__button-text--right {
+  @extend %nav-bar__button-text;
+  margin: 0px 0px 0px 40px;
+}
+
+%nav-bar__button-circle {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 100px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: inherit;
+  position: absolute;
+  top: -6px;
+  text-align: center;
+
+  img {
+    height: 16px;
+    margin: 9px 0 0 0;
+    opacity: 0.65;
+  }
+}
+
+.nav-bar__button-circle--left {
+  @extend %nav-bar__button-circle;
+  left: -10px;
+}
+.nav-bar__button-circle--right {
+  @extend %nav-bar__button-circle;
+  right: -10px;
+}

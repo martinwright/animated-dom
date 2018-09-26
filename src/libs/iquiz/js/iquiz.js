@@ -7553,134 +7553,11 @@ module.exports = require('./modules/_core');
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //import "babel-polyfill";
-
-
-var _quizmc = require('./quizmc');
-
-var _quizmc2 = _interopRequireDefault(_quizmc);
-
-var _helpers = require('./helpers');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var App = function () {
-    function App() {
-        _classCallCheck(this, App);
-    }
-
-    _createClass(App, [{
-        key: 'startUp',
-
-        //static iQuiz;
-
-        /* constructor() {
-            if (this.iQuiz) {
-                return this.iQuiz;
-            }
-             //this.state = "duke";
-            this.iQuiz = this;
-        } */
-
-        value: function startUp() {
-            var _this = this;
-
-            console.log('### APP: startUp: ');
-            function getJsonFileName(loc) {
-                var _loc$href$split$rever = loc.href.split('/').reverse(),
-                    _loc$href$split$rever2 = _toArray(_loc$href$split$rever),
-                    fileName = _loc$href$split$rever2[0],
-                    foldername = _loc$href$split$rever2[1],
-                    rest = _loc$href$split$rever2.slice(2);
-
-                var jsonFile = loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-
-                var pathItems = loc.href.split('/');
-                fileName = pathItems.pop();
-                var path = pathItems.join('/');
-
-                var retPath = path + '/index.json';
-
-                console.log('APP: jsonFile: ', retPath);
-                return retPath;
-            }
-            function validateResponse(response) {
-                console.log('APP: validateResponse: ', response);
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response;
-            }
-            function readResponseAsJSON(response) {
-                console.log('APP: readResponseAsJSON: ', response);
-                return response.json();
-            }
-            function logResult(result) {
-                console.log('APP: logResult: ', result);
-                return result;
-            }
-            function logError(error) {
-                console.log('Looks like there was a problem: \n', error);
-            }
-            fetch(getJsonFileName(window.location)).then(validateResponse).then(readResponseAsJSON).then(logResult).then(function (res) {
-                return _this.startUpQuiz(res);
-            }).catch(function (err) {
-                logError(err);
-                _this.startUpDemoQuiz();
-            });
-        }
-    }, {
-        key: 'startUpQuiz',
-        value: function startUpQuiz(json) {
-            console.log('APP: startUpQuiz: ', json);
-            this.quiz = new _quizmc2.default(json);
-            this.quiz.startUp();
-            return Promise.resolve(json);
-        }
-    }, {
-        key: 'startUpDemoQuiz',
-        value: function startUpDemoQuiz() {
-            console.log('### APP: startUpDemoQuiz: ');
-            var demo = {
-                "title": "Title quiz_clickText",
-                "id": "q456",
-                "type": "quiz_clickText_mc",
-                "multipleAnswers": false,
-                "maxScore": 2,
-                "questionArray": [{
-                    description: "this is q1 text",
-                    id: 0,
-                    qNum: 1,
-                    ans: [2, 4],
-                    userAnswer: [2]
-                }]
-            };
-            console.log('APP: startUpDemoQuiz: ', demo);
-            this.quiz = new _quizmc2.default(demo);
-            this.quiz.startUp();
-        }
-    }]);
-
-    return App;
-}();
-
-exports.default = App;
-
-},{"./helpers":328,"./quizmc":330}],328:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.qs = qs;
 exports.$on = $on;
+exports.$log = $log;
 exports.$delegate = $delegate;
 /**
  * querySelector wrapper
@@ -7702,6 +7579,12 @@ function qs(selector, scope) {
  */
 function $on(target, type, callback, capture) {
   target.addEventListener(type, callback, !!capture);
+}
+
+function $log(msg) {
+  var val = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  console.log('~~~~~~~~~~~~~~ QUIZAPP: ' + msg + ' ' + val);
 }
 
 /**
@@ -7745,22 +7628,232 @@ var escapeForHTML = exports.escapeForHTML = function escapeForHTML(s) {
   });
 };
 
-},{}],329:[function(require,module,exports){
+},{}],328:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //import "babel-polyfill";
+
+
+var _qQuizmc = require('./q-quizmc');
+
+var _qQuizmc2 = _interopRequireDefault(_qQuizmc);
+
+var _helpers = require('./helpers');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var App = function () {
+    function App() {
+        _classCallCheck(this, App);
+    }
+
+    _createClass(App, [{
+        key: 'startUp',
+
+        //static iQuiz;
+
+        /* constructor() {
+            if (this.iQuiz) {
+                return this.iQuiz;
+            }
+             //this.state = "duke";
+            this.iQuiz = this;
+        } */
+
+        value: function startUp() {
+            var _this = this;
+
+            (0, _helpers.$log)('startUp');
+            function getJsonFileName(loc) {
+                var _loc$href$split$rever = loc.href.split('/').reverse(),
+                    _loc$href$split$rever2 = _toArray(_loc$href$split$rever),
+                    fileName = _loc$href$split$rever2[0],
+                    foldername = _loc$href$split$rever2[1],
+                    rest = _loc$href$split$rever2.slice(2);
+
+                var jsonFile = loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
+
+                var pathItems = loc.href.split('/');
+                fileName = pathItems.pop();
+                var path = pathItems.join('/');
+
+                var retPath = path + '/index.json';
+
+                (0, _helpers.$log)('jsonFile', retPath);
+                return retPath;
+            }
+            function validateResponse(response) {
+                (0, _helpers.$log)('validateResponse', response);
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response;
+            }
+            function readResponseAsJSON(response) {
+                (0, _helpers.$log)('readResponseAsJSON', response);
+                return response.json();
+            }
+            function logResult(result) {
+                (0, _helpers.$log)('logResult', result);
+                return result;
+            }
+            function logError(error) {
+                (0, _helpers.$log)('Looks like there was a problem', error);
+            }
+            fetch(getJsonFileName(window.location)).then(validateResponse).then(readResponseAsJSON).then(logResult).then(function (res) {
+                return _this.startUpQuiz(res);
+            }).catch(function (err) {
+                logError(err);
+                _this.startUpDemoQuiz();
+            });
+        }
+    }, {
+        key: 'hashChangedHandler',
+        value: function hashChangedHandler(e) {
+            (0, _helpers.$log)('hashChangedHandler', e.target);
+            this.refreshPage();
+            this.setNavStates();
+        }
+    }, {
+        key: 'refreshPage',
+        value: function refreshPage() {
+            Array.from(document.querySelectorAll('.container--iquiz')).forEach(function (el) {
+                el.classList.add('hidden');
+            });
+            var currentPageNode = (0, _helpers.qs)('#question-' + this.getPageNumber());
+            (0, _helpers.$log)('currentPageNode', currentPageNode);
+            currentPageNode.classList.remove('hidden');
+        }
+    }, {
+        key: 'startUpQuiz',
+        value: function startUpQuiz(json) {
+            var _this2 = this;
+
+            (0, _helpers.$log)('startUpQuiz', json);
+            this.quiz = new _qQuizmc2.default(json);
+            this.quiz.startUp();
+            if ((0, _helpers.qs)('.js-nav-bar')) {
+                location.hash = location.hash || '#0';
+                (0, _helpers.qs)('.js-back').onclick = function (e) {
+                    return _this2.previousClick();
+                };
+                (0, _helpers.qs)('.js-next').onclick = function (e) {
+                    return _this2.nextClick();
+                };
+                (0, _helpers.$on)(window, 'hashchange', this.hashChangedHandler.bind(this));
+                this.refreshPage();
+                this.setNavStates();
+            }
+            return Promise.resolve(json);
+        }
+    }, {
+        key: 'nextClick',
+        value: function nextClick(e) {
+            (0, _helpers.$log)('nextClick', e);
+            this.navigateToPage(this.getPageNumber(1));
+        }
+    }, {
+        key: 'previousClick',
+        value: function previousClick(e) {
+            (0, _helpers.$log)('previousClick', e);
+            this.navigateToPage(this.getPageNumber(-1));
+        }
+    }, {
+        key: 'setNavStates',
+        value: function setNavStates() {
+            var thisPageNode = (0, _helpers.qs)('#question-' + this.getPageNumber()),
+                nextPageNode = (0, _helpers.qs)('#question-' + this.getPageNumber(1)),
+                prevPageNode = (0, _helpers.qs)('#question-' + this.getPageNumber(-1));
+
+            if (prevPageNode) {
+                enablePrevioust();
+            } else {
+                disablePrevious();
+            }
+            if (nextPageNode) {
+                enableNext();
+            } else {
+                disableNext();
+            }
+            function disablePrevious() {
+                (0, _helpers.qs)('.nav-bar .js-back').setAttribute("disabled", "");
+            }
+            function enablePrevioust() {
+                (0, _helpers.qs)('.nav-bar .js-back').removeAttribute("disabled");
+            }
+            function disableNext() {
+                (0, _helpers.qs)('.nav-bar .js-next').setAttribute("disabled", "");
+            }
+            function enableNext() {
+                (0, _helpers.qs)('.nav-bar .js-next').removeAttribute("disabled");
+            }
+        }
+    }, {
+        key: 'navigateToPage',
+        value: function navigateToPage(p) {
+            location.hash = '#' + p;
+        }
+    }, {
+        key: 'getPageNumber',
+        value: function getPageNumber() {
+            var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+            var currentHash = location.hash || '#1';
+            return +currentHash.replace('#', '') + offset;
+        }
+    }, {
+        key: 'startUpDemoQuiz',
+        value: function startUpDemoQuiz() {
+            console.log('### APP: startUpDemoQuiz: ');
+            var demo = {
+                "title": "Title quiz_clickText",
+                "id": "q456",
+                "type": "quiz_clickText_mc",
+                "multipleAnswers": false,
+                "maxScore": 2,
+                "questionArray": [{
+                    description: "this is q1 text",
+                    id: 0,
+                    qNum: 1,
+                    ans: [2, 4],
+                    userAnswer: [2]
+                }]
+            };
+            console.log('APP: startUpDemoQuiz: ', demo);
+            this.quiz = new _qQuizmc2.default(demo);
+            this.quiz.startUp();
+        }
+    }]);
+
+    return App;
+}();
+
+exports.default = App;
+
+},{"./helpers":327,"./q-quizmc":330}],329:[function(require,module,exports){
 'use strict';
 
 require('babel-polyfill');
 
 var _helpers = require('./helpers');
 
-var _app = require('./app.js');
+var _qApp = require('./q-app');
 
-var _app2 = _interopRequireDefault(_app);
+var _qApp2 = _interopRequireDefault(_qApp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //import QuizMC from "./quizmc";
 
-var app = new _app2.default();
+var app = new _qApp2.default();
 var setApp = function setApp() {
     app.startUp();
 };
@@ -7769,7 +7862,7 @@ var setApp = function setApp() {
 //$on(window, 'hashchange', setApp);
 //$on(window, 'resize', quizApp.doResize);
 
-},{"./app.js":327,"./helpers":328,"babel-polyfill":1}],330:[function(require,module,exports){
+},{"./helpers":327,"./q-app":328,"babel-polyfill":1}],330:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

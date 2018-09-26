@@ -9,6 +9,9 @@ export function qs(selector, scope) {
     return (scope || document).querySelector(selector);
 }
 
+export function $log(msg, val = '') {
+    console.log('>>>>>>>>>>>>> APP: ' + msg + ' ', val);
+}
 
 /**
  * addEventListener wrapper

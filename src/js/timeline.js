@@ -42,9 +42,9 @@ export default class Timeline {
 
     setup() {
         //console.log('????????? setAnimations setup');
-        let defaultDuration = this.animationJson.params.defaultDuration || "400",
+        let defaultDuration = this.animationJson.params ? this.animationJson.params.defaultDuration : "400",
             defaultType = "slide-left",
-            defaultOffset = +this.animationJson.params.defaultOffset || 50;
+            defaultOffset = this.animationJson.params ? +this.animationJson.params.defaultOffset : 50;
 
 
         if (!this.elementsList.length) return;
@@ -66,17 +66,17 @@ export default class Timeline {
                 let img = qs('img', el);
                 if (el.src) {
                     let [fileName, ...rest] = el.src.split('/').reverse();
-                    console.log('*********** fileName: ', fileName);
+                    //console.log('*********** fileName: ', fileName);
                     if (fileName && /^cir-.*\.svg$/.test(fileName)) {
-                        console.log('*********** CIRCLE: ', fileName);
+                        //console.log('*********** CIRCLE: ', fileName);
                         defaultType = "zoom-out";
                     }
                     if (fileName && /^(dia|dec|hex|pen|squ)-.*\.svg$/.test(fileName)) {
-                        console.log('*********** DIAMOND: ', fileName);
+                        //console.log('*********** DIAMOND: ', fileName);
                         defaultType = "roll-from-right";
                     }
                     if (fileName && /^.*\.(jpg|png)$/.test(fileName)) {
-                        console.log('*********** JPG: ', fileName);
+                        //console.log('*********** JPG: ', fileName);
                         defaultType = "zoom-in";
                     }
                 }

@@ -13,6 +13,10 @@
     <script type="text/javascript" src="../vendor/anime/anime.min.js"></script>
     <script type="text/javascript" src="../libs/iquiz/js/iquiz.js"></script>
 
+    <!-- <link rel="stylesheet" href="../vendor/mdl/material.min.css">
+    <script src="../vendor/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
     <!-- Quiz styles -->
     <link rel="stylesheet" href="../libs/iquiz/css/iquiz.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -21,7 +25,7 @@
 
 <body>
     <script src="../js/bundle.js"></script>
-    <nav class="nav-bar">
+    <nav class="l-nav-bar">
         <!--<ul class="tags">-->
         <!--<li><a href="#">PREVIOUS</a></li>-->
 
@@ -50,7 +54,13 @@
                     </span>
                 </button>
 
+                <!-- <button class="nav-bar__button js-slides">
+                    SLIDES
+                </button>
 
+                <button class="nav-bar__button js-quiz">
+                    QUIZ
+                </button> -->
 
 
                 <!-- <button class="nav-bar__button js-back">
@@ -70,6 +80,29 @@
             </div>
 
 
+            <div class="stv-radio-buttons-wrapper">
+                <input type="radio" class="xstv-radio-button" name="displayMode" value="slides" id="slidesRadio"
+                    checked />
+                <label for="button1">SLIDES</label>
+
+                <input type="radio" class="xstv-radio-button" name="displayMode" value="quiz" id="quizRadio" />
+                <label for="button3">QUIZ</label>
+            </div>
+
+
+            <!-- <div class="nav--toggle">
+                <label class="switch js-animation">
+                    <input type="checkbox" checked>
+                    <span class="kSlider">
+                        <span class="kSlidertext On">SLIDES</span>
+                        <span class="kSlidertext Off">QUIZ</span>
+                        <span class="kSliderC">&nbsp;</span>
+                    </span>
+                </label>
+            </div> -->
+
+
+
             <div class="nav--toggle">
                 <span class="title">ANIMATION</span>
                 <label class="switch js-animation">
@@ -87,11 +120,11 @@
 
     </nav>
 
-    <header class="header">
-        <h1 class="banner-heading" style="grid-area: t" data-animate="1">Level 3 Business Administrator | <span>Professionalism</span></h1>
+    <header class="l-header">
+        <h1 class="l-header__banner" data-animate="1">Level 3 Business Administrator | <span>Professionalism</span></h1>
     </header>
 
-    <div class="wrapper hidden">
+    <div class="l-wrapper js-wrapper hidden">
 
         @@include('./combined.html')
         <!--<partial src="combined.html" title="Some title"></partial>-->

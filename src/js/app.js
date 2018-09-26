@@ -1,5 +1,5 @@
 //import "babel-polyfill";
-import { $on, qs } from './util';
+import { $on, qs, $log } from './util';
 import DocReady from './windowLoaded';
 import Timeline from './timeline';
 //import { Base64 } from 'js-base64';
@@ -9,7 +9,6 @@ DocReady(() => {
     const app = new App();
     const loadHandler = () => app.setView();
     const debounce = (fn, time) => {
-        //console.log('debounce');
         let timeout;
         return function () {
             const functionCall = () => fn.apply(this, arguments);
@@ -20,7 +19,7 @@ DocReady(() => {
     $on(window, 'load', loadHandler);
     $on(window, 'hashchange', app.hashChangedHandler.bind(app));
     $on(window, 'resize', debounce((e) => {
-        app.resizeHandler();
+        app.doResize();
     }, 250));
 });
 class App {
@@ -30,60 +29,52 @@ class App {
         this.animationJson;
         this.throttled = false;
         this.showAnimations = true;
+        this.allSlides;
+        this.allQuestions;
+        this.currentNodeSelection;
+        this.display;
+        this.quizFirstPage;
+        this.quizCurrentPage = 21; // TODO 1st quiz page
+        this.slidesCurrentPage = 0; // TODO 1st slide page
+        this.displayModeBtns = document.getElementsByName('displayMode');
+        $log('displayModeBtns', this.displayModeBtns);
     };
 
     setView() {
         function getJsonFileName(loc) {
-            //console.log('APP: getJsonFileName: ');
             let [fileName, foldername, ...rest] = loc.href.split('/').reverse();
-            //return loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-
             let pathItems = loc.href.split('/');
             fileName = pathItems.pop();
             let path = pathItems.join('/');
-
-            console.log('****** fileName', fileName);
-            console.log('****** foldername', foldername);
-            console.log('****** rest', rest);
-
             let retPath = path + '/animate.json';
-            //let retPath = loc.origin + '/' + rest.reverse().pop().pop().pop().join('/') + foldername + '/animate.json';
-            console.log('****** retPath', retPath);
             return retPath;
         }
         function validateResponse(response) {
-            console.log('APP: validateResponse: ', response);
+            //console.log('APP: validateResponse: ', response);
             if (!response.ok) {
                 throw Error(response.statusText);
             }
             return response;
         }
         function readResponseAsJSON(response) {
-            console.log('APP: readResponseAsJSON: ', response);
+            //console.log('APP: readResponseAsJSON: ', response);
             return response.json();
         }
         function logResult(result) {
-            console.log('APP: logResult: ', result);
+            //console.log('APP: logResult: ', result);
             return result;
         }
         function logError(error) {
-            console.log('Looks like there was a problem: \n', error);
+            //console.log('Looks like there was a problem: \n', error);
         }
         function setAminProps(response) {
-            console.log('****** setAminProps response', response);
-            console.log('****** setAminProps response', this);
+            //console.log('****** setAminProps response', response);
             this.animations = response;
         }
         //console.log('****** loadAnimationSeq start');
 
+        this.definePages();
         this.hidePages();
-
-        console.log('****** fetch ');
-
-        //let headers = new Headers();
-        //headers.set('Authorization', 'Basic ' + base64.encode("CandG" + ":" + "longpoint39"));
-
-
 
         return fetch(getJsonFileName(window.location), {
             headers: { Accept: 'application/json' },
@@ -100,19 +91,82 @@ class App {
             });
     }
 
+    definePages() {
+        [...this.allSlides] = document.querySelectorAll('.container--layout-1');
+        [...this.allQuestions] = document.querySelectorAll('.container--iquiz');
+    }
+    hidePages() {
+        // Set wrapper and pages to hidden    
+        qs('.js-wrapper').classList.add = 'hidden';
+        this.allSlides.forEach(el => { el.classList.add('hidden') });
+        this.allQuestions.forEach(el => { el.classList.add('hidden') });
+    }
     continueStartUp(json) {
-        console.log('****** continueStartUp ', json);
+        //console.log('****** continueStartUp ');
         this.animationJson = json;
+
+        //const pattern = /\#q(\d+)/u;
+        const quiz = /\#q(\d+)/.exec(location.hash);
+        if (quiz) {
+            this.quizCurrentPage = +quiz[1];
+            this.display = 'quiz';
+            this.currentNodeSelection = this.allQuestions;
+            qs("#quizRadio").checked = true;
+        }
+        const slide = /\#s(\d+)/.exec(location.hash);
+        if (slide) {
+            this.slidesCurrentPage = +slide[1];
+            this.display = 'slides';
+            this.currentNodeSelection = this.allSlides;
+            qs("#slidesRadio").checked = true;
+        }
+
+        this.setNavigationEvents();
         this.displayPage();
         this.doResize();
-        this.setNavigationEvents();
+
         this.resetNavigationStates();
-        if (this.showAnimations) this.createAnimationTimelines();
+        this.createAnimationTimelines();
         if (this.showAnimations) this.playTimelines();
     }
 
+    setNavigationEvents() {
+        $log('setNavigationStates');
+        location.hash = location.hash || '#s1';
+        qs('.js-back').onclick = (e) => this.previousClick();
+        qs('.js-next').onclick = (e) => this.nextClick();
+        qs('.js-replay').onclick = (e) => this.replayAnimation();
+        qs('.js-animation input').checked = this.showAnimations;
+        qs('.js-animation input').onclick = (e) => this.toggleAnimation(e);
+        Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', (e) => {
+            this.displayModeChanged(e.currentTarget.value);
+        }))
+    }
+
+    displayPage() {
+        const currentPageNum = this.getPageNumber();
+        const currentPageNode = this.getPageNode(currentPageNum);
+
+        const isLeft = currentPageNode.classList.contains('left'),
+            isRight = currentPageNode.classList.contains('right');
+
+        this.addPageNumber(currentPageNode, currentPageNum);
+
+        currentPageNode.classList.remove('hidden');
+        // Show current page and left or right page
+        if (isLeft) {
+            this.getPageNode(currentPageNum + 1).classList.remove('hidden');
+            this.addPageNumber(this.getPageNode(currentPageNum + 1));
+        }
+        if (isRight) {
+            this.getPageNode(currentPageNum - 1).classList.remove('hidden');
+            this.addPageNumber(this.getPageNode(currentPageNum - 1));
+        }
+        // show wrapper
+        qs('.js-wrapper').classList.remove('hidden');
+    }
+
     hashChangedHandler() {
-        console.log('****** updateView ');
         this.hidePages();
         this.displayPage();
         this.doResize();
@@ -120,91 +174,96 @@ class App {
         if (this.showAnimations) this.createAnimationTimelines();
         if (this.showAnimations) this.playTimelines();
     }
-    resizeHandler() {
-        console.log('****** resizeHandler ');
-        this.doResize();
-    }
 
     doResize() {
-        console.log('****** doResize');
-        let thisPage = qs('#page-' + this.getPageNumber()),
-            nextPage = qs('#page-' + this.getPageNumber(1)),
-            prevPage = qs('#page-' + this.getPageNumber(-1)),
-            isLeft = thisPage.classList.contains('left'),
-            isRight = thisPage.classList.contains('right'),
-            pageToHide;
+        //console.log('****** doResize');
+        const thisPageNode = this.getPageNode(this.getPageNumber()),
+            nextPageNode = this.getPageNode(this.getPageNumber(1)),
+            prevPageNode = this.getPageNode(this.getPageNumber(-1)),
+            isLeft = thisPageNode.classList.contains('left'),
+            isRight = thisPageNode.classList.contains('right');
+        let pageToHide;
 
-        if (isLeft) pageToHide = nextPage;
-        if (isRight) pageToHide = prevPage;
+        if (isLeft) pageToHide = nextPageNode;
+        if (isRight) pageToHide = prevPageNode;
 
-        if (window.innerWidth < 900) { //SAME AS tablet-landscape-up
+        if (window.innerWidth < 900) { //TODO SAME AS tablet-landscape-up
             if (pageToHide) pageToHide.classList.add('hidden');
         } else {
             if (pageToHide) pageToHide.classList.remove('hidden');
         }
-        this.resetNavigationStates();
-    }
-
-    hidePages() {
-        // Set wrapper and pages to hidden    
-        const allPages = document.querySelectorAll('.container--layout-1');
-        qs('.wrapper').className = 'wrapper hidden';
-        [...allPages].forEach(el => {
-            el.classList.add('hidden');
-        });
+        //this.resetNavigationStates();
     }
 
     addPageNumber(el, num) {
         el.insertAdjacentHTML('beforeend', `<div class="page-number">${num}</div>`);
     }
 
-    displayPage() {
-        let currentPageNum = this.getPageNumber();
-        const currentPageNode = qs('#page-' + currentPageNum),
-            isLeft = currentPageNode.classList.contains('left'),
-            isRight = currentPageNode.classList.contains('right');
-
-        this.addPageNumber(currentPageNode, currentPageNum);
-
-        // Show current page and left or right page
-        currentPageNode.classList.remove('hidden');
-        if (isLeft) {
-            qs(`#page-${currentPageNum + 1}`).classList.remove('hidden');
-            this.addPageNumber(qs(`#page-${currentPageNum + 1}`), currentPageNum + 1);
+    displayModeChanged(e) {
+        //Array.from(this.displayModeBtns).forEach(v => v.checked ? console.log(v.getAttribute('value')) : null)
+        let checkedEl = Array.from(this.displayModeBtns).find(el => {
+            if (el.checked) return true;
+        })
+        $log('checkedElx', checkedEl.value);
+        if (this.display !== checkedEl.value) {
+            this.display = checkedEl.value;
+            this.currentNodeSelection = this.display === 'slides' ? this.allSlides : this.allQuestions;
+            const PageNum = this.display === 'slides' ? this.slidesCurrentPage : this.quizCurrentPage;
+            this.hidePages();
+            this.navigateToPage(PageNum);
+            this.displayPage();
+            this.doResize();
+            this.resetNavigationStates();
+            if (this.showAnimations) this.createAnimationTimelines();
+            if (this.showAnimations) this.playTimelines();
+            $log('this.display', this.display);
         }
-        if (isRight) {
-            qs(`#page-${currentPageNum - 1}`).classList.remove('hidden');
-            this.addPageNumber(qs(`#page-${currentPageNum + 1}`), currentPageNum - 1);
-        }
-        // show wrapper
-        qs('.wrapper').classList.remove('hidden');
     }
 
-    getPageNumber(num = 0) {
-        let currentHash = location.hash || '#1';
-        return (+currentHash.replace('#', '')) + num;
+    navigateToPage(p) {
+        location.hash = this.display === 'slides' ? '#s' + p : '#q' + p;
+        if (this.display === 'slides') this.slidesCurrentPage = p;
+        if (this.display === 'quiz') this.quizCurrentPage = p;
+        this.resetNavigationStates();
     }
-    setNavigationEvents() {
-        //console.log('****** setNavigationStates');
-        location.hash = location.hash || '#1';
-        qs('.nav-bar .js-back').onclick = (e) => this.previousClick();
-        qs('.nav-bar .js-next').onclick = (e) => this.nextClick();
-        qs('.nav-bar .js-replay').onclick = (e) => this.replayAnimation();
-        qs('.nav-bar .js-animation input').checked = this.showAnimations;
-        qs('.nav-bar .js-animation input').onclick = (e) => this.toggleAnimation(e);
+
+    getPageNumber(offset = 0) {
+        const pagePrefix = this.display === 'slides' ? 's' : 'q';
+        let currentHash = location.hash || '#s1';
+        if (this.display === 'slides') {
+            return (+currentHash.replace('#s', '')) + offset;
+        } else if (this.display === 'quiz') {
+            return (+currentHash.replace('#q', '')) + offset;
+        }
     }
+
+    getPageNode(page) {
+        const pageNamePrefix = this.display === 'slides' ? 'page-' : 'question-';
+        let node = this.currentNodeSelection.find(n => n.id === pageNamePrefix + page);
+        return node;
+    }
+
     resetNavigationStates() {
-        let thisPage = qs('#page-' + this.getPageNumber()),
-            nextPage = qs('#page-' + this.getPageNumber(1)),
-            prevPage = qs('#page-' + this.getPageNumber(-1));
+        $log('resetNavigationStates');
+        let thisPageNode = this.getPageNode(this.getPageNumber()),
+            nextPageNode = this.getPageNode(this.getPageNumber(1)),
+            prevPageNode = this.getPageNode(this.getPageNumber(-1));
 
-        if (prevPage) {
-            if (prevPage.classList.contains('left')) {
-                if (prevPage.classList.contains('hidden')) {
+        //this.display
+
+        /* console.log('****** input', qs('input[type=radio]'));
+        qs('input[type=radio]').change(() => {
+            alert("test  " + this);
+        }); */
+
+
+        if (prevPageNode) {
+            if (prevPageNode.classList.contains('left')) {
+                if (prevPageNode.classList.contains('hidden')) {
                     enablePrevioust();
                 } else {
-                    prevPage = qs('#page-' + this.getPageNumber(-2));
-                    if (prevPage) {
+                    prevPageNode = this.getPageNode(this.getPageNumber(-2));
+                    if (prevPageNode) {
                         enablePrevioust();
                     } else {
                         disablePrevious();
@@ -217,14 +276,14 @@ class App {
             disablePrevious();
         }
 
-        if (nextPage) {
-            if (nextPage.classList.contains('right')) {
-                if (nextPage.classList.contains('hidden')) {
+        if (nextPageNode) {
+            if (nextPageNode.classList.contains('right')) {
+                if (nextPageNode.classList.contains('hidden')) {
                     enableNext();
                 } else {
                     // Already visible
-                    nextPage = qs('#page-' + this.getPageNumber(2));
-                    if (nextPage) {
+                    nextPageNode = this.getPageNode(this.getPageNumber(2));
+                    if (nextPageNode) {
                         enableNext();
                     } else {
                         disableNext();
@@ -238,20 +297,20 @@ class App {
         }
 
         function disablePrevious() {
-            qs('.nav-bar .js-back').setAttribute("disabled", "");
+            qs('.js-back').setAttribute("disabled", "");
         }
         function enablePrevioust() {
-            qs('.nav-bar .js-back').removeAttribute("disabled");
+            qs('.js-back').removeAttribute("disabled");
         }
         function disableNext() {
-            qs('.nav-bar .js-next').setAttribute("disabled", "");
+            qs('.js-next').setAttribute("disabled", "");
         }
         function enableNext() {
-            qs('.nav-bar .js-next').removeAttribute("disabled");
+            qs('.js-next').removeAttribute("disabled");
         }
     }
     toggleAnimation(e) {
-        console.log('****** toggleAnimation ', e.target.checked);
+        //console.log('****** toggleAnimation ', e.target.checked);
         this.showAnimations = e.target.checked;
     }
     replayAnimation() {
@@ -259,27 +318,24 @@ class App {
         if (this.shapeElementTimeline) this.shapeElementTimeline.replayAnimation();
     }
     nextClick() {
-        if (qs('#page-' + this.getPageNumber()).classList.contains('left')
-            && qs('#page-' + this.getPageNumber(1))
-            && !qs('#page-' + this.getPageNumber(1)).classList.contains('hidden')) {
+        if (this.getPageNode(this.getPageNumber()).classList.contains('left')
+            && this.getPageNode(this.getPageNumber(1))
+            && !this.getPageNode(this.getPageNumber(1)).classList.contains('hidden')) {
             this.navigateToPage(this.getPageNumber(2));
         } else {
             this.navigateToPage(this.getPageNumber(1));
         }
     }
     previousClick() {
-        if (qs('#page-' + this.getPageNumber()).classList.contains('right')
-            && qs('#page-' + this.getPageNumber(-1))
-            && !qs('#page-' + this.getPageNumber(-1)).classList.contains('hidden')) {
+        if (this.getPageNode(this.getPageNumber()).classList.contains('right')
+            && this.getPageNode(this.getPageNumber(-1))
+            && !this.getPageNode(this.getPageNumber(-1)).classList.contains('hidden')) {
             this.navigateToPage(this.getPageNumber(-2));
         } else {
             this.navigateToPage(this.getPageNumber(-1));
         }
     }
-    navigateToPage(p) {
-        location.hash = '#' + p;
-        this.resetNavigationStates();
-    }
+
 
     playTimelines() {
         if (this.textElementTimeline) this.textElementTimeline.startAmnimation();
@@ -287,27 +343,26 @@ class App {
     }
 
     createAnimationTimelines() {
-        //console.log('****** createAnimationTimelines ')
+        $log('createAnimationTimelines');
+
         const defaultDuration = "200",
             defaultOffset = "-=50",
             currentPageNum = this.getPageNumber(),
-            currentPageNode = qs('#page-' + currentPageNum),
-            prevPageNode = qs('#page-' + (currentPageNum - 1)),
-            nextPageNode = qs('#page-' + (currentPageNum + 1)),
+            currentPageNode = this.getPageNode(this.getPageNumber()),
+            prevPageNode = this.getPageNode(this.getPageNumber(-1)),
+            nextPageNode = this.getPageNode(this.getPageNumber(1)),
             isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
 
-        const [...currentPageNodelist] = document.querySelectorAll('#page-' + currentPageNum + ' [data-animate]'),
-            [...lefttNodelist] = document.querySelectorAll('#page-' + (currentPageNum - 1) + ' [data-animate]'),
-            [...rightNodelist] = document.querySelectorAll('#page-' + (currentPageNum + 1) + ' [data-animate]');
+        const pageNamePrefix = this.display === 'slides' ? '#page-' : '#question-';
+
+        const [...currentPageNodelist] = document.querySelectorAll(pageNamePrefix + currentPageNum + ' [data-animate]'),
+            [...lefttNodelist] = document.querySelectorAll(pageNamePrefix + (currentPageNum - 1) + ' [data-animate]'),
+            [...rightNodelist] = document.querySelectorAll(pageNamePrefix + (currentPageNum + 1) + ' [data-animate]');
         let completeTextNodeList,
             completeShapeNodeList;
 
-        console.log('****** thisNodelist ', currentPageNodelist)
-        //console.log('****** lefttNodelist ', lefttNodelist)
-        //console.log('****** rightNodelist ', rightNodelist)
-        //console.log('****** isLeft ', isLeft)
-        //console.log('****** isLeft ', isRight)
+        $log('currentPageNodelist', currentPageNodelist);
 
         if (isLeft && nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
             // Combine next page nodes
@@ -339,19 +394,9 @@ class App {
             completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
             completeShapeNodeList = getShapeNodes(currentPageNodelist, currentPageNum);
 
-            console.log('****** currentPageNodelist', currentPageNodelist);
-            console.log('****** completeShapeNodeList', completeShapeNodeList);
+            $log('currentPageNodelist', currentPageNodelist);
+            $log('completeShapeNodeList', completeShapeNodeList);
 
-            /* const currentPageTextNodes = completeTextNodeList.map(el => {
-                el.pageNumber = currentPageNum;
-                return el;
-            })
-            const currentPageShapeNodes = completeShapeNodeList.map(el => {
-                el.pageNumber = currentPageNum;
-                return el;
-            }) */
-            //console.log('****** currentPageTextNodes', completeTextNodeList);
-            //console.log('****** currentPageShapeNodes', completeShapeNodeList);
         }
 
         function getTextNodes(nodes, page, counter = 0) {
@@ -385,9 +430,8 @@ class App {
         function sorter(obj1, obj2) {
             return obj1.dataset.animate - obj2.dataset.animate;
         }
-        //console.log('****** completeTextNodeList ', completeTextNodeList)
-        //console.log('****** completeShapeNodeList ', completeShapeNodeList)
-        //console.log('****** setAminProps response', this.animations);
+
+        $log('completeTextNodeList', completeTextNodeList);
 
         if (completeTextNodeList.length) {
             this.textElementTimeline = new Timeline(completeTextNodeList, this.animationJson);
@@ -397,7 +441,6 @@ class App {
             this.shapeElementTimeline = new Timeline(completeShapeNodeList, this.animationJson);
             this.shapeElementTimeline.setup();
         }
-        console.log('****** shapeElementTimeline', this.shapeElementTimeline);
 
         return;
 

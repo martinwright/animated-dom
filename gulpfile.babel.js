@@ -133,9 +133,22 @@ gulp.task('build-html-combined-prom', function (done) {
                     unWrap($('.wrapper'));
                     unWrap($('body'));
                     unWrap($('html'));
-                    $('.container--layout-1').attr('id', 'page-' + pageNumber).addClass('hidden');
+                    let cont = $('.container--layout-1');
+                    //console.log('cont ', cont);
+                    if (cont) $(cont).attr('id', 'page-' + pageNumber).addClass('hidden');
+                    let quiz = $('.container--iquiz');
+                    //console.log('quiz ', quiz.length);
+                    //if (quiz) $(quiz).attr('id', 'page-' + pageNumber).addClass('hidden');
+                    //$('.container--layout-1').attr('id', 'page-' + pageNumber).addClass('hidden');
+                    $('.container--iquiz').each(function () {
+                        var $this = $(this);
+                        $(this).attr('id', 'question-' + pageNumber).addClass('hidden');
+                        pageNumber++;
+                    });
+
+                    /*     .attr('id', 'page-' + pageNumber).addClass('hidden');
                     $('article').attr('id', 'article-' + pageNumber).html();
-                    $.html();
+                    $.html(); */
 
                     function unWrap(selector) {
                         $(selector).each(function () {
@@ -297,15 +310,15 @@ gulp.task('partials-prom', function (done) {
                 }))
                 .pipe(cheerio(function ($, file) {
 
-                    sort($('.wrapper'));
+                    sort($('.js-wrapper'));
                     $.html();
 
                     function sort(main) {
 
                         let [...list] = main.children();
                         list.sort((a, b) => {
-                            let aP = +$(a).attr('id').replace('page-', '');
-                            let bP = +$(b).attr('id').replace('page-', '');
+                            let aP = +$(a).attr('id').replace('page-', '').replace('question-', '');
+                            let bP = +$(b).attr('id').replace('page-', '').replace('question-', '');;
                             return aP > bP ? 1 : -1;
                         })
                             .map(node => $(main).append(node));
@@ -606,6 +619,9 @@ gulp.task('styles', () => {
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest('./build/css/'))
         .pipe(notify({ message: 'styles task complete' }))
+        .pipe(gulp.dest('../Infuze-Quiz/_temp/build/css/'))
+        .pipe(notify({ message: 'styles task complete' }))
+
         .pipe(browserSync.stream());
 });
 /* ----------------- */

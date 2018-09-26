@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,73 +14,63 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Organisations and sectors</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Organisations and sectors</h1>
+    </header>
 
 
-<div class="container--layout-1 -hidden left">
+    <div class="container--layout-1 -hidden left">
 
-    <article id="page-1" class="article--50-50">
+        <article id="page-1" class="article--50-50">
 
-        <section>
-            <h2 class="sub-heading"
-                data-animate="1">Introduction</h2>
+            <section>
+                <h2 class="sub-heading" data-animate="1">Introduction</h2>
 
-            <img src="../images/t10-u1/organisations_sectors_01_a.jpg"
-                 alt=""
-                 style="width:80%;"
-                 data-animate="2" data-type="fadein"/>
+                <img src="../images/t10-u1/organisations_sectors_01_a.jpg" alt="" style="width:80%;" data-animate="2"
+                    data-type="fadein" />
 
-            <p data-animate="3">Your organisation will form part of one of three sectors: the public
-                sector, the private sector or the third sector. There are major differences between these three
-                sectors, mainly in their purpose, the way they are run and financed, as well as what they do with
-                any
-                profits.</p>
-            <p data-animate="4" data-offset="-=600">To understand how your organisation's policies and procedures affect your
-                role, it is important to recognise the differences between the three sectors. Talk to your employer
-                and colleagues
-                about your organisation – they will have an insight into the way its aims relate to its
-                sector.</p>
-            <!--</section>
+                <p data-animate="3">Your organisation will form part of one of three sectors: the public
+                    sector, the private sector or the third sector. There are major differences between these three
+                    sectors, mainly in their purpose, the way they are run and financed, as well as what they do with
+                    any
+                    profits.</p>
+                <p data-animate="4" data-offset="-=600">To understand how your organisation's policies and procedures
+                    affect your
+                    role, it is important to recognise the differences between the three sectors. Talk to your employer
+                    and colleagues
+                    about your organisation – they will have an insight into the way its aims relate to its
+                    sector.</p>
+                <!--</section>
 
             <section style="width:100%; margin:0 auto;position: relative;">-->
 
-            <!--<figure class="container__background"
-                    data-animate
-                    data-step="3"
-                    data-type="fade"
-                    data-duration="100"
-                    data-offset="-=50">
-                <img src="./images/slide3.png" alt=""/>
-            </figure>-->
 
-        </section>
-        <section>
+
+            </section>
+            <section>
 
 
 
-<!--            <figure class="square-green"
+                <!--            <figure class="square-green"
                     data-animate="1">
                 <svg viewBox="0 0 100 100" width="100" height="100">
                     <g fill="none" fill-rule="evenodd">
@@ -127,12 +118,13 @@
             </figure>-->
 
 
-        </section>
+            </section>
 
-    </article>
+        </article>
 
 
-</div>
+    </div>
 
 </body>
+
 </html>
