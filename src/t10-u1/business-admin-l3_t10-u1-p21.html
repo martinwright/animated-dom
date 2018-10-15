@@ -3,17 +3,22 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Quiz Multiple choice</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <script type='application/javascript' src='../vendor/fastclick.js'></script>
-    <link rel="stylesheet" href="../vendor/normalize.css" />
-    <script type="text/javascript" src="../vendor/jquery/jquery-3.3.1.min.js"></script>
+    <title>Animated DOM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="../../node_modules/animejs/anime.min.js"></script>
 
-    <!-- Quiz styles -->
-    <link rel="stylesheet" href="../libs/iquiz/css/iquiz.css">
+    <!--<link rel="stylesheet" href="./vendor/normalize.css">-->
+    <link rel="stylesheet" href="../scss/style.scss">
+    <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:700|Source+Sans+Pro:400,400i,600,600i,700,700i"
+          rel="stylesheet">-->
+
 </head>
 
 <body>
+    <script src="../js/app.js"></script>
+
+
     <nav class="nav-bar">
         <div class="nav-bar__container">
             <div class="nav-bar__paging">
@@ -35,210 +40,39 @@
 
     <div class="wrapper hidden">
 
+        <div class="container--layout-1 -hidden">
 
-        <div data-iquiz="q0" id="question-0" class="js-quiz container--iquiz -hidden">
-            <article class="article">
-                <section>
+            <section class="startscreen iquiz">
 
-                    <figure class="" style="opacity: 0.4; right: -15%; top: -40%; position: absolute; width: 20em;">
-                        <img data-animate="*" src="../libs/iquiz/images/_shapes/dec-s5.svg" />
+
+                <img data-animate="1" height="120px" src="../images/_nav/C&G_Logo_Group.jpg" />
+                <h1 data-animate="2" data-type="slide-up">Professionalism</h1>
+                <h3 data-animate="3" data-type="slide-up">End of <b>learning content</b>, now<br>
+                    <b>'Test Your Knowledge'</b></h3>
+                <!--<h2 data-animate="4" data-type="slide-up">This <b>'Test Your Knowledge'</b> quiz contains <b>4</b> questions covering material from the <b>Professionalism</b> unit</h2>-->
+
+                <button data-animate="5" data-type="slide-up" class="nav-bar__button gen" style="margin-top: 20px">
+                    <span class="nav-bar__button-text">GO TO QUIZ</span>
+                </button>
+
+                <figure data-animate="6" class="shape-30 minmax-1" style="bottom: 50px; right: -50px; z-index: -1">
+                    <img src="iquiz_assets/images/_m_quizKeyboard.png" />
+                    <figure data-animate="7" class="shape-70" style="opacity: .5; bottom: 0; left: -40%">
+                        <img src="../images/_shapes/dia-p4.svg">
                     </figure>
-
-                    <p data-animate="*">Introduction</p>
-
-                    <figure class="shape-10" style="position: relative; margin-top: -5%; width: 5em; opacity:1; left:5%; z-index: -1;">
-                        <img data-animate="*" src="../libs/iquiz/images/_shapes/dia-s10.svg" />
-                    </figure>
-
-                </section>
-            </article>
-        </div>
-
-
-        <div data-iquiz="q1" class="js-quiz container--iquiz -hidden">
-
-            <article class="article">
-
-                <!--<section style="position: fixed; width: 100%; height: 80%;padding: 0;">-->
-                <section>
-
-                    <div class="iquiz_Main">
-
-                        <div data-animate="1" class="iquiz_questionText">
-                            <h1>QUESTION 1</h1>
-                            <h2>Why is it important to make a good first impression?</h2>
-                            <h3>Choose one answer from the choices below.</h3>
-                            <!--<h3>Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.</h3>-->
-                        </div>
-
-                        <div id='g1' data-animate="2" class="quiz_clickText_container">
-                            <div class="quiz_highlighter"></div>
-                            <div id='1' class="quiz_clickText mc1">To make yourself feel good</div>
-                            <div id='2' class="quiz_clickText mc1">To represent your organisation in a positive way *</div>
-                            <div id='3' class="quiz_clickText mc1">To earn promotion</div>
-                            <div id='4' class="quiz_clickText mc1">To earn commission </div>
-                        </div>
-
-                        <div data-animate="3" class="iquiz_submitBtn" id="iqSubmit">SUBMIT</div>
-
-                    </div>
-
-                    <div class="iquiz_popBG"></div>
-                    <div class="iquiz_popContainer">
-                        <div class="iquiz_popClose">
-                            <a href="javascript:void(0)">&times;</a>
-                        </div>
-                        <div class="iquiz_popPanel">
-                            <div class="iquiz_popTitle">QUESTION 1</div>
-
-                            <div class="iquiz_innerScroll">
-                                <div class="iquiz_feedback correct">
-                                    <div class="iquiz_questionText">
-                                        <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_tickInCircle.png">
-                                        </div>
-                                        <h1>Correct Answer</h1>
-                                        <h1>Well Done</h1>
-                                        <h3>Move onto the next question.</h3>
-                                        <h3>TIP : Consider how you ‘come across’ to colleagues and customers.
-                                    </div>
-                                </div>
-
-                                <div class="iquiz_feedback wrong">
-                                    <div class="iquiz_questionText">
-                                        <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png">
-                                        </div>
-                                        <h1>Wrong Answer</h1>
-                                        <h2>Close this feedback and have another attempt - or move onto the next
-                                            question.</h2>
-                                        <h3>TIP : Consider how you ‘come across’ to colleagues and customers.</h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
-                    </div>
-
-                    <!--<figure class="shape-50" data-animate="*" style="position: relative;float: right;width: 400px;opacity: 0.5;right: -80px;margin-top: -622px;z-index: -1;">-->
-                    <!--<img src="../images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
-
-                    <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
-                        <img src="../images/_shapes/dec-s5.svg" />
-                    </figure>
-
-                    <figure class="shape-10" data-animate="9" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
-                        <img src="../images/_shapes/dia-s10.svg" />
-                    </figure>
-
-                    <!--<figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">-->
-                    <!--<img src="../images/_shapes/pen-s4.svg" />-->
-                    <!--</figure>-->
-                </section>
+                </figure>
+                <figure class="shape-10 minmax-2" data-animate="8" style="opacity:.6; left:30px; bottom: 50px;">
+                    <img src="../images/_shapes/cir-s4.svg" />
+                </figure>
 
 
 
-            </article>
+            </section>
 
 
         </div>
-
-
-        <div data-iquiz="q1" class="js-quiz container--iquiz -hidden">
-
-            <article class="article">
-
-                <!--<section style="position: fixed; width: 100%; height: 80%;padding: 0;">-->
-                <section>
-
-                    <div class="iquiz_Main">
-
-                        <div data-animate="1" class="iquiz_questionText">
-                            <h1>QUESTION 2</h1>
-                            <h2>Why is it important to make a good first impression?</h2>
-                            <h3>Choose one answer from the choices below.</h3>
-                            <!--<h3>Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.</h3>-->
-                        </div>
-
-                        <div id='g1' data-animate="2" class="quiz_clickText_container">
-                            <div class="quiz_highlighter"></div>
-                            <div id='1' class="quiz_clickText mc1">To make yourself feel good</div>
-                            <div id='2' class="quiz_clickText mc1">To represent your organisation in a positive way *</div>
-                            <div id='3' class="quiz_clickText mc1">To earn promotion</div>
-                            <div id='4' class="quiz_clickText mc1">To earn commission </div>
-                        </div>
-
-                        <div data-animate="3" class="iquiz_submitBtn" id="iqSubmit">SUBMIT</div>
-
-                    </div>
-
-                    <div class="iquiz_popBG"></div>
-                    <div class="iquiz_popContainer">
-                        <div class="iquiz_popClose">
-                            <a href="javascript:void(0)">&times;</a>
-                        </div>
-                        <div class="iquiz_popPanel">
-                            <div class="iquiz_popTitle">QUESTION 2</div>
-
-                            <div class="iquiz_innerScroll">
-                                <div class="iquiz_feedback correct">
-                                    <div class="iquiz_questionText">
-                                        <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_tickInCircle.png">
-                                        </div>
-                                        <h1>Correct Answer</h1>
-                                        <h1>Well Done</h1>
-                                        <h3>Move onto the next question.</h3>
-                                        <h3>TIP : Consider how you ‘come across’ to colleagues and customers.
-                                    </div>
-                                </div>
-
-                                <div class="iquiz_feedback wrong">
-                                    <div class="iquiz_questionText">
-                                        <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png">
-                                        </div>
-                                        <h1>Wrong Answer</h1>
-                                        <h2>Close this feedback and have another attempt - or move onto the next
-                                            question.</h2>
-                                        <h3>TIP : Consider how you ‘come across’ to colleagues and customers.</h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
-                    </div>
-
-                    <!--<figure class="shape-50" data-animate="*" style="position: relative;float: right;width: 400px;opacity: 0.5;right: -80px;margin-top: -622px;z-index: -1;">-->
-                    <!--<img src="../images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
-
-                    <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
-                        <img src="../images/_shapes/dec-s5.svg" />
-                    </figure>
-
-                    <figure class="shape-10" data-animate="9" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
-                        <img src="../images/_shapes/dia-s10.svg" />
-                    </figure>
-
-                    <!--<figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">-->
-                    <!--<img src="../images/_shapes/pen-s4.svg" />-->
-                    <!--</figure>-->
-                </section>
-
-
-
-            </article>
-
-
-        </div>
-
-
-
-
 
     </div>
-
-    <script src="../libs/iquiz/js/iquiz.js"></script>
 </body>
 
 </html>

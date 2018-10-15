@@ -7563,8 +7563,6 @@ var _quizmc = require('./quizmc');
 
 var _quizmc2 = _interopRequireDefault(_quizmc);
 
-var _helpers = require('./helpers');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
@@ -7578,17 +7576,6 @@ var App = function () {
 
     _createClass(App, [{
         key: 'startUp',
-
-        //static iQuiz;
-
-        /* constructor() {
-            if (this.iQuiz) {
-                return this.iQuiz;
-            }
-             //this.state = "duke";
-            this.iQuiz = this;
-        } */
-
         value: function startUp() {
             var _this = this;
 
@@ -7601,15 +7588,8 @@ var App = function () {
                     rest = _loc$href$split$rever2.slice(2);
 
                 var jsonFile = loc.origin + '/' + foldername + '/' + fileName.split('.')[0] + '.json';
-
-                var pathItems = loc.href.split('/');
-                fileName = pathItems.pop();
-                var path = pathItems.join('/');
-
-                var retPath = path + '/index.json';
-
-                console.log('APP: jsonFile: ', retPath);
-                return retPath;
+                console.log('APP: jsonFile: ', jsonFile);
+                return jsonFile;
             }
             function validateResponse(response) {
                 console.log('APP: validateResponse: ', response);
@@ -7647,7 +7627,6 @@ var App = function () {
     }, {
         key: 'startUpDemoQuiz',
         value: function startUpDemoQuiz() {
-            console.log('### APP: startUp: ');
             var demo = {
                 "title": "Title quiz_clickText",
                 "id": "q456",
@@ -7673,7 +7652,7 @@ var App = function () {
 
 exports.default = App;
 
-},{"./helpers":328,"./quizmc":330}],328:[function(require,module,exports){
+},{"./quizmc":330}],328:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7756,20 +7735,25 @@ var _app = require('./app.js');
 
 var _app2 = _interopRequireDefault(_app);
 
+var _utils = require('./utils');
+
+var _quizmc = require('./quizmc');
+
+var _quizmc2 = _interopRequireDefault(_quizmc);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import QuizMC from "./quizmc";
-
+//import DocReady from './windowLoaded';
 var app = new _app2.default();
 var setApp = function setApp() {
     app.startUp();
 };
 
 (0, _helpers.$on)(window, 'load', setApp);
-//$on(window, 'hashchange', setApp);
+(0, _helpers.$on)(window, 'hashchange', setApp);
 //$on(window, 'resize', quizApp.doResize);
 
-},{"./app.js":327,"./helpers":328,"babel-polyfill":1}],330:[function(require,module,exports){
+},{"./app.js":327,"./helpers":328,"./quizmc":330,"./utils":331,"babel-polyfill":1}],330:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7800,7 +7784,7 @@ var QuizMC = function () {
             (0, _utils.shuffleDivs)('#g1', '.quiz_clickText');
             this.initQuizNav();
             this.initQuizClickText();
-            // this.reState(true);
+            //this.reState(showAns = true);
         }
     }, {
         key: 'initQuizNav',
@@ -7808,7 +7792,7 @@ var QuizMC = function () {
             var _this = this;
 
             console.log('initQuizNav');
-            // FastClick.attach(document.body);
+            FastClick.attach(document.body);
 
             $("#iqSubmit").click(function () {
                 _this.doSubmit();
@@ -8094,4 +8078,4 @@ function shuffleDivs(p, c) {
 
 },{}]},{},[329])
 
-//# sourceMappingURL=iquiz.js.map
+//# sourceMappingURL=bundle.js.map
