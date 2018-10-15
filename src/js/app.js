@@ -34,7 +34,7 @@ class App {
         this.currentNodeSelection;
         this.display;
         this.quizFirstPage;
-        this.quizCurrentPage = 21; // TODO 1st quiz page
+        this.quizCurrentPage = 22; // TODO 1st quiz page
         this.slidesCurrentPage = 0; // TODO 1st slide page
         this.displayModeBtns = document.getElementsByName('displayMode');
         $log('displayModeBtns', this.displayModeBtns);
@@ -142,6 +142,14 @@ class App {
             this.displayModeChanged(e.currentTarget.value);
         }))
     }
+
+    // MARTIN - NEED TO UPDATE THIS FUNCTION FOR THE PROGRESS BAR
+    //
+    // updateProgressBar(n){
+    //     $( ".nav-bar__progress_barMarker" ).width(n+'%');
+    //     var pg = 'PAGE '+(Number(currentPageArrPos)+1)+'/'+ (unitData[currentUnit][currentSection].length);
+    //     $( ".nav-bar__progress_txt" ).html(pg);
+    // }
 
     displayPage() {
         const currentPageNum = this.getPageNumber();

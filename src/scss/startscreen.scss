@@ -13,37 +13,88 @@
   padding-top: 50px;
 }
 
+.startscreen.iquiz.-end img {
+  padding-top: 10px;
+}
+
 .startscreen h1 {
   font-size: 40px;
   font-weight: 600;
   margin: 0;
-  padding-top: 80px;
+  padding-top: 10vh;
 }
 
+.startscreen.iquiz h1 {
+  //padding-top: 10vh;
+  font-size: 36px;
+}
+
+.startscreen.iquiz.-end h1 {
+   padding-top: 10px;
+   font-size: 36px;
+}
+
+
 .startscreen h2 {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0;
-  padding-top: 0px;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 auto;
+    padding-top: 0px;
+  }
+
+.startscreen.iquiz h2 {
+  width: 40%;
+  padding-top: 10px;
+  //text-align: center;
+}
+
+.startscreen.iquiz h3 {
+  font-weight: normal;
+  padding-top: 20px;
+}
+
+.startscreen.iquiz.-end h3 {
+  padding-top: 4px;
+  padding-top: 10vh;
 }
 
 //@media screen and (min-aspect-ratio: 400/650) {
 @media (max-height: 650px) and (max-width: 540px) {
-  .startscreen figure {
+  .startscreen:not(.-end) figure {
     visibility: hidden;
   }
+  //.figure {
+  //    visibility: hidden;
+  //}
 }
 @media (max-height: 580px) and (max-width: 580px) {
-  .startscreen figure {
+  .startscreen:not(.-end) figure {
+    visibility: hidden;
+  }
+  //.figure {
+  //  visibility: hidden;
+  //}
+}
+
+@media (max-height: 400px) and (max-width: 620px) {
+  .startscreen:not(.-end) figure {
     visibility: hidden;
   }
 }
 
-@media (max-height: 400px) and (max-width: 620px) {
-  .startscreen figure {
+@media (max-height: 740px) and (max-width: 620px) {
+  .startscreen.iquiz:not(.-end) figure {
     visibility: hidden;
   }
 }
+
+@media (max-width: 850px) {
+  .startscreen.iquiz h2 {
+    width: 80%;
+  }
+}
+
+
 
 .startscreen .minmax-1 {
   min-width: 200px;

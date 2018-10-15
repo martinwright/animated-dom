@@ -26,33 +26,88 @@
 <body>
     <script src="../js/bundle.js"></script>
     <nav class="l-nav-bar">
+
+        <!--<div class="nav-bar__progress">-->
+            <!--nav-bar__progress-->
+        <!--</div>-->
+
+        <!-- PROGRESS BAR -->
+        <div class="nav-bar__progress">
+            <div class='nav-bar__progress_bgBar'>
+                <div class='nav-bar__progress_barMarker'></div>
+            </div>
+            <div class="nav-bar__progress_txt">10/10</div>
+        </div>
+
         <!--<ul class="tags">-->
         <!--<li><a href="#">PREVIOUS</a></li>-->
 
         <!--</ul>-->
 
         <div class="nav-bar__container">
-            <div class="nav-bar__paging">
+            <!--<div class="nav-bar__paging">-->
 
                 <!-- <button class="button--navigation js-back">Previous</button>
                 <button class="button--navigation js-next">Next</button> -->
 
+                <!--<div class="stv-radio-buttons-wrapper">-->
+                    <!--<input type="radio" class="xstv-radio-button" name="displayMode" value="slides" id="slidesRadio"-->
+                           <!--checked />-->
+                    <!--<label for="button1">SLIDES</label>-->
+
+                    <!--<input type="radio" class="xstv-radio-button" name="displayMode" value="quiz" id="quizRadio" />-->
+                    <!--<label for="button3">QUIZ</label>-->
+                <!--</div>-->
+
+                <div class="stv-radio-buttons-wrapper">
+                    <div>
+                        <input type="radio" name="displayMode" value="slides" id="slidesRadio" checked>
+                        <span class="rSpan r1"><label for="slidesRadio"><img src="../images/_nav/icons/icon_docs.svg"><span class="button-text">SLIDES</span></label></span>
+                    </div>
+                    <!--<div>-->
+                        <!--<input type="radio" name="displayMode" value="vid" id="vidRadio">-->
+                        <!--<span class="rSpan"><label for="vidRadio"><img src="images/icon_quiz.svg"><span class="button-text">VIDEO</span></label></span>-->
+                    <!--</div>-->
+                    <div>
+                        <input type="radio" name="displayMode" value="quiz" id="quizRadio">
+                        <span class="rSpan r2"><label for="quizRadio"><img src="../images/_nav/icons/icon_quiz.svg"><span class="button-text">QUIZ</span></label></span>
+                    </div>
+                </div>
 
 
+                <div class="nav--toggle">
+                    <div>
 
-                <button class="nav-bar__button js-back touchevents">
-                    <span class="nav-bar__button-circle--left">
-                        <img src="../images/_nav/icons/arrow-left-solid.svg" />
-                    </span>
-                    <span class="nav-bar__button-text--right">PREVIOUS</span>
-                </button>
+                        <label class="switch js-animation">
+                            <input type="checkbox" checked>
+                        <span class="kSlider">
+                            <!--<span class="kSlidertext On">ON</span>-->
+                            <!--<span class="kSlidertext Off">OFF</span>-->
+                            <span class="kSliderC">&nbsp;</span>
+                        </span>
+                        </label>
+                    </div>
+                    <div class="title">
+                       ANIMATION
+                    </div>
+                </div>
 
-                <button class="nav-bar__button js-next touchevents">
-                    <span class="nav-bar__button-text--left">NEXT</span>
-                    <span class="nav-bar__button-circle--right">
-                        <img src="../images/_nav/icons/arrow-right-solid.svg" />
-                    </span>
-                </button>
+
+                <div class="nav-bar_leftRight_wrapper">
+                    <button class="nav-bar__button js-back touchevents">
+                        <span class="nav-bar__button-circle--left">
+                            <img src="../images/_nav/icons/arrow-left-solid.svg" />
+                        </span>
+                        <span class="nav-bar__button-text--right">PREVIOUS</span>
+                    </button>
+
+                    <button class="nav-bar__button js-next touchevents">
+                        <span class="nav-bar__button-text--left">NEXT</span>
+                        <span class="nav-bar__button-circle--right">
+                            <img src="../images/_nav/icons/arrow-right-solid.svg" />
+                        </span>
+                    </button>
+                </div>
 
                 <!-- <button class="nav-bar__button js-slides">
                     SLIDES
@@ -71,7 +126,7 @@
                     <span>NEXT</span>
                     <img src="../images/_nav/icons/arrow-right-solid.svg" />
                 </button> -->
-            </div>
+            <!--</div>-->
 
             <div class="nav-bar__controls hidden">
                 <!-- <button class="button&#45;&#45;control js-play">Play</button>
@@ -80,14 +135,7 @@
             </div>
 
 
-            <div class="stv-radio-buttons-wrapper">
-                <input type="radio" class="xstv-radio-button" name="displayMode" value="slides" id="slidesRadio"
-                    checked />
-                <label for="button1">SLIDES</label>
 
-                <input type="radio" class="xstv-radio-button" name="displayMode" value="quiz" id="quizRadio" />
-                <label for="button3">QUIZ</label>
-            </div>
 
 
             <!-- <div class="nav--toggle">
@@ -103,17 +151,7 @@
 
 
 
-            <div class="nav--toggle">
-                <span class="title">ANIMATION</span>
-                <label class="switch js-animation">
-                    <input type="checkbox" checked>
-                    <span class="kSlider">
-                        <span class="kSlidertext On">ON</span>
-                        <span class="kSlidertext Off">OFF</span>
-                        <span class="kSliderC">&nbsp;</span>
-                    </span>
-                </label>
-            </div>
+
 
 
         </div>
