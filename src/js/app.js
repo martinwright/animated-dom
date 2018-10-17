@@ -33,7 +33,7 @@ class App {
         this.allQuestions;
         this.currentNodeSelection;
         this.display;
-        this.quizFirstPage;
+        this.quizFirstPage = 22; // TODO 1st quiz page
         this.quizCurrentPage = 22; // TODO 1st quiz page
         this.slidesCurrentPage = 0; // TODO 1st slide page
         this.slideCount = 0;
@@ -109,7 +109,18 @@ class App {
         //console.log('****** continueStartUp ');
         this.animationJson = json;
 
-        //const pattern = /\#q(\d+)/u;
+        this.setStateValues();
+
+        this.setNavigationEvents();
+        this.displayPage();
+        this.doResize();
+
+        this.resetNavigationStates();
+        this.createAnimationTimelines();
+        if (this.showAnimations) this.playTimelines();
+    }
+
+    setStateValues() {
         const quiz = /\#q(\d+)/.exec(location.hash);
         if (quiz) {
             this.quizCurrentPage = +quiz[1];
@@ -124,14 +135,6 @@ class App {
             this.currentNodeSelection = this.allSlides;
             qs("#slidesRadio").checked = true;
         }
-
-        this.setNavigationEvents();
-        this.displayPage();
-        this.doResize();
-
-        this.resetNavigationStates();
-        this.createAnimationTimelines();
-        if (this.showAnimations) this.playTimelines();
     }
 
     setNavigationEvents() {
@@ -142,6 +145,10 @@ class App {
         qs('.js-replay').onclick = (e) => this.replayAnimation();
         qs('.js-animation input').checked = this.showAnimations;
         qs('.js-animation input').onclick = (e) => this.toggleAnimation(e);
+        document.querySelectorAll('.js-start-quiz').forEach(el => {
+            el.onclick = (e) => this.startQuiz(e);
+        })
+
         Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', (e) => {
             this.displayModeChanged(e.currentTarget.value);
         }))
@@ -160,6 +167,9 @@ class App {
     displayPage() {
         const currentPageNum = this.getPageNumber();
         const currentPageNode = this.getPageNode(currentPageNum);
+
+        console.log('****** currentPageNum ', currentPageNum);
+        console.log('****** currentPageNode ', currentPageNode);
 
         const isLeft = currentPageNode.classList.contains('left'),
             isRight = currentPageNode.classList.contains('right');
@@ -181,6 +191,7 @@ class App {
     }
 
     hashChangedHandler() {
+        this.setStateValues();
         this.hidePages();
         this.displayPage();
         this.doResize();
@@ -211,6 +222,25 @@ class App {
 
     addPageNumber(el, num) {
         el.insertAdjacentHTML('beforeend', `<div class="page-number">${num}</div>`);
+    }
+
+    startQuiz(e) {
+        console.log('****** startQuiz ', e.target);
+        this.display = 'quiz';
+        this.currentNodeSelection = this.allQuestions;
+        const PageNum = this.quizFirstPage;
+        this.displayModeBtns.forEach(el => {
+            if (el.value === 'quiz') {
+                el.checked = true;
+            }
+        })
+        this.hidePages();
+        this.navigateToPage(PageNum);
+        this.displayPage();
+        this.doResize();
+        this.resetNavigationStates();
+        if (this.showAnimations) this.createAnimationTimelines();
+        if (this.showAnimations) this.playTimelines();
     }
 
     displayModeChanged(e) {
@@ -246,6 +276,8 @@ class App {
     getPageNumber(offset = 0) {
         const pagePrefix = this.display === 'slides' ? 's' : 'q';
         let currentHash = location.hash || '#s1';
+        console.log('currentHash ', currentHash)
+        console.log('this.display ', this.display)
         if (this.display === 'slides') {
             return (+currentHash.replace('#s', '')) + offset;
         } else if (this.display === 'quiz') {
@@ -259,11 +291,18 @@ class App {
         return node;
     }
 
-    updateProgressBar(pc, text) {
+    updateProgressBar() {
         const bar = qs(".nav-bar__progress-bar"),
-            desc = qs(".nav-bar__progress-txt");
-        bar.style.width = pc + '%';
-        desc.textContent = text;
+            desc = qs(".nav-bar__progress-txt"),
+            pageNumOffset = this.isNextPageVisible() ? 2 : 1;
+
+        if (this.display === 'slides') {
+            bar.style.width = (this.getPageNumber() + pageNumOffset) / this.slideCount * 100 + '%';
+            desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${this.slideCount}`;
+        } else if (this.display === 'quiz') {
+            bar.style.width = (this.getPageNumber() - this.slideCount + pageNumOffset) / this.quizCount * 100 + '%';
+            desc.textContent = `${this.getPageNumber() - this.slideCount + pageNumOffset} / ${this.quizCount}`;
+        }
     }
 
     resetNavigationStates() {
@@ -311,14 +350,7 @@ class App {
             disableNext();
         }
 
-        let progressText = `${this.slideCount} / ${this.slideCount}`
-        if (this.isNextPageVisible()) {
-            this.updateProgressBar((this.getPageNumber() + 2) / this.slideCount * 100,
-                `${this.getPageNumber() + 2} / ${this.slideCount}`);
-        } else {
-            this.updateProgressBar((this.getPageNumber() + 1) / this.slideCount * 100,
-                `${this.getPageNumber() + 1} / ${this.slideCount}`);
-        }
+        this.updateProgressBar();
 
 
         function disablePrevious() {
@@ -334,6 +366,7 @@ class App {
             qs('.js-next').removeAttribute("disabled");
         }
     }
+
     toggleAnimation(e) {
         //console.log('****** toggleAnimation ', e.target.checked);
         this.showAnimations = e.target.checked;

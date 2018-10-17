@@ -1,3 +1,5 @@
+@import "_core";
+
 .nav-bar__container {
   display: flex;
   align-items: center;
@@ -24,27 +26,11 @@
   outline: none;
 }
 .nav-bar__button {
-  position: relative;
-  color: white;
-  background: #ffa300;
-  border-radius: 50px;
-  height: 30px;
+  @extend %simple-button;
   width: 28px;
-  border-color: #ffa300;
-  cursor: pointer;
-  transition: 0.2s;
-  //margin-right: 8px;
-  border-style: none;
   @include for-size(tablet-portrait-up) {
     width: 110px;
-    //margin-right: 0;
   }
-}
-
-.nav-bar__button.gen {
-  width: auto;
-  text-align: center;
-  padding: 0 40px 0 40px;
 }
 
 .nav-bar__button:last-child {
