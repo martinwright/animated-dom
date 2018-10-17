@@ -17,7 +17,7 @@ DocReady(() => {
         }
     }
     $on(window, 'load', loadHandler);
-    $on(window, 'hashchange', app.hashChangedHandler.bind(app));
+    //$on(window, 'hashchange', app.hashChangedHandler.bind(app));
     $on(window, 'resize', debounce((e) => {
         app.doResize();
     }, 250));
@@ -36,6 +36,8 @@ class App {
         this.quizFirstPage;
         this.quizCurrentPage = 22; // TODO 1st quiz page
         this.slidesCurrentPage = 0; // TODO 1st slide page
+        this.slideCount = 0;
+        this.quizCount = 0;
         this.displayModeBtns = document.getElementsByName('displayMode');
         $log('displayModeBtns', this.displayModeBtns);
     };
@@ -94,6 +96,8 @@ class App {
     definePages() {
         [...this.allSlides] = document.querySelectorAll('.container--layout-1');
         [...this.allQuestions] = document.querySelectorAll('.container--iquiz');
+        this.slideCount = this.allSlides.length;
+        this.quizCount = this.allQuestions.length;
     }
     hidePages() {
         // Set wrapper and pages to hidden    
@@ -141,16 +145,18 @@ class App {
         Array.from(this.displayModeBtns).forEach(v => v.addEventListener('change', (e) => {
             this.displayModeChanged(e.currentTarget.value);
         }))
+        $on(window, 'hashchange', this.hashChangedHandler.bind(this));
     }
 
-    // MARTIN - NEED TO UPDATE THIS FUNCTION FOR THE PROGRESS BAR
-    //
-    // updateProgressBar(n){
-    //     $( ".nav-bar__progress_barMarker" ).width(n+'%');
-    //     var pg = 'PAGE '+(Number(currentPageArrPos)+1)+'/'+ (unitData[currentUnit][currentSection].length);
-    //     $( ".nav-bar__progress_txt" ).html(pg);
-    // }
-
+    isNextPageVisible() {
+        const currentPageNum = this.getPageNumber();
+        let nextPageNode = this.getPageNode(currentPageNum + 1);
+        if (nextPageNode && nextPageNode.classList.contains('right') && !nextPageNode.classList.contains('hidden')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     displayPage() {
         const currentPageNum = this.getPageNumber();
         const currentPageNode = this.getPageNode(currentPageNum);
@@ -229,10 +235,12 @@ class App {
     }
 
     navigateToPage(p) {
+        //window.removeEventListener('hashchange', this.hashChangedHandler.bind(this));
         location.hash = this.display === 'slides' ? '#s' + p : '#q' + p;
+        //$on(window, 'hashchange', this.hashChangedHandler.bind(this));
         if (this.display === 'slides') this.slidesCurrentPage = p;
         if (this.display === 'quiz') this.quizCurrentPage = p;
-        this.resetNavigationStates();
+        //this.resetNavigationStates();
     }
 
     getPageNumber(offset = 0) {
@@ -251,19 +259,18 @@ class App {
         return node;
     }
 
+    updateProgressBar(pc, text) {
+        const bar = qs(".nav-bar__progress-bar"),
+            desc = qs(".nav-bar__progress-txt");
+        bar.style.width = pc + '%';
+        desc.textContent = text;
+    }
+
     resetNavigationStates() {
-        $log('resetNavigationStates');
+        $log('resetNavigationStates 22');
         let thisPageNode = this.getPageNode(this.getPageNumber()),
             nextPageNode = this.getPageNode(this.getPageNumber(1)),
             prevPageNode = this.getPageNode(this.getPageNumber(-1));
-
-        //this.display
-
-        /* console.log('****** input', qs('input[type=radio]'));
-        qs('input[type=radio]').change(() => {
-            alert("test  " + this);
-        }); */
-
 
         if (prevPageNode) {
             if (prevPageNode.classList.contains('left')) {
@@ -303,6 +310,16 @@ class App {
         } else {
             disableNext();
         }
+
+        let progressText = `${this.slideCount} / ${this.slideCount}`
+        if (this.isNextPageVisible()) {
+            this.updateProgressBar((this.getPageNumber() + 2) / this.slideCount * 100,
+                `${this.getPageNumber() + 2} / ${this.slideCount}`);
+        } else {
+            this.updateProgressBar((this.getPageNumber() + 1) / this.slideCount * 100,
+                `${this.getPageNumber() + 1} / ${this.slideCount}`);
+        }
+
 
         function disablePrevious() {
             qs('.js-back').setAttribute("disabled", "");
