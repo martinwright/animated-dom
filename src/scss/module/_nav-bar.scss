@@ -10,10 +10,25 @@
   //line-height: 50px;
 }
 
+.nav-bar__button-group {
+  float: left;
+  width: 30%;
+  max-width: 250px;
+  min-width: 120px;
+}
+
 .nav-bar_leftRight_wrapper {
   //border: 1px solid red;
-  padding-right: 1.5em;
+  //float: right;
+  //padding-right: 1.5em;
+  float: right;
+  display: inline-block;
+  //width: 50%;
 }
+.nav-bar_leftRight_wrapper div {
+  //display: inline-block;
+}
+
 .nav-bar_leftRight_wrapper:after {
   content: "";
   clear: both;
@@ -122,34 +137,26 @@
 
 /*Radio Buttons NAV */
 
-.stv-radio-buttons-wrapper {
-  //border: 1px solid red;
-  width: 30%;
-  max-width: 250px;
-  //height: 200px;
-  min-width: 120px;
-}
-
-.stv-radio-buttons-wrapper:after {
+.nav-bar__button-group:after {
   content: "";
   clear: both;
   display: table;
 }
 
-.stv-radio-buttons-wrapper input[type="radio"] {
+.nav-bar__button-group input[type="radio"] {
   //display: none;
   opacity: 0;
   position: absolute;
 }
 
-.stv-radio-buttons-wrapper div {
+.nav-bar__button-group div {
   /*border: 10px solid green;*/
-  width: calc(50% - 1px);
+  width: 48%;
   float: left;
-  margin-right: 1px;
+  margin-left: 2px;
 }
 
-.stv-radio-buttons-wrapper .rSpan {
+.nav-bar__button-group .rSpan {
   display: inline-block;
   width: 100%;
   height: 34px;
@@ -164,26 +171,26 @@
   }
 }
 
-.stv-radio-buttons-wrapper .rSpan img {
+.nav-bar__button-group .rSpan img {
   height: 22px;
   vertical-align: middle;
 }
 
-.stv-radio-buttons-wrapper .r1 {
+.nav-bar__button-group .r1 {
   border-radius: 20px 0 0 20px;
 }
 
-.stv-radio-buttons-wrapper .r2 {
+.nav-bar__button-group .r2 {
   border-radius: 0 20px 20px 0;
 }
 
-.stv-radio-buttons-wrapper label {
+.nav-bar__button-group label {
   display: inline-block;
   cursor: pointer;
   width: 100%;
 }
 
-.stv-radio-buttons-wrapper .rSpan .button-text {
+.nav-bar__button-group .rSpan .button-text {
   color: white;
   font-size: 12px;
   font-family: Helvetica Neue;
@@ -203,12 +210,12 @@
 //  }
 //}
 
-.stv-radio-buttons-wrapper input[type="radio"]:checked + span {
+.nav-bar__button-group input[type="radio"]:checked + span {
   background-color: #fe5000;
   transition: 0s;
 }
 
-.stv-radio-buttons-wrapper input[type="radio"]:not(:checked):hover + span {
+.nav-bar__button-group input[type="radio"]:not(:checked):hover + span {
   background-color: #fe5000;
   transition: 0.3s;
 }
@@ -224,6 +231,7 @@
   //font-family: Helvetica Neue;
   font-weight: 900;
   font-style: normal;
+  float: left;
   .title {
     //border: 1px solid blue;
     font-size: 10px;
