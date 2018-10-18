@@ -14,14 +14,15 @@
 .l-nav-bar {
   position: fixed;
   background-color: #f1f1f1;
-  width: calc(100% - 2rem);
+  //width: calc(100% - 2rem);
+  width: 100%;
   z-index: 1;
   bottom: 0;
-  height: 50px;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 54px;
+  //padding: 0 .5rem;
+  //display: flex;
+  //align-items: center;
+  //justify-content: space-between;
 }
 .l-wrapper {
   display: flex;
