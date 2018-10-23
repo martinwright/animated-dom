@@ -29,6 +29,9 @@
   justify-content: normal;
   margin: 36px auto 50px auto;
   max-width: 1800px;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  overflow-x: hidden;
   //padding-left: 1em;
   //padding-right: 1em;
 }
@@ -36,7 +39,7 @@
 %container {
   //padding: 1rem;
   //max-width: 1024px;
-  overflow: hidden;
+  //overflow: hidden;
   position: relative;
   //margin-top: 4rem;
   //margin-bottom: 3rem;

@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 15px;
+  overflow-y: hidden;
 
   @include for-size(phone-only) {
     font-size: 16px;
