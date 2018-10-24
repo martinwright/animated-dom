@@ -14162,15 +14162,21 @@ module.exports = require('./modules/_core');
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
 },{}],361:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 exports.qs = qs;
 exports.$on = $on;
 exports.$log = $log;
 exports.$delegate = $delegate;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * querySelector wrapper
  *
@@ -14190,13 +14196,47 @@ function qs(selector, scope) {
  * @param {boolean} [capture] Capture the event
  */
 function $on(target, type, callback, capture) {
+  $log("on", target);
+  $log("on", type);
   target.addEventListener(type, callback, !!capture);
 }
 
-function $log(msg) {
-  var val = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+var EventEmitter = exports.EventEmitter = function () {
+  function EventEmitter() {
+    _classCallCheck(this, EventEmitter);
 
-  console.log('~~~~~~~~~~~~~~ QUIZAPP: ' + msg + ' ' + val);
+    this._cb = {};
+  }
+
+  _createClass(EventEmitter, [{
+    key: "addEventListener",
+    value: function addEventListener(type, func) {
+      if (this._cb[type]) {
+        this._cb[type].handlers.push(func);
+      } else {
+        this._cb[type] = {
+          handlers: [func]
+        };
+      }
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(type, data) {
+      if (this._cb[type]) {
+        this._cb[type].handlers.forEach(function (handle) {
+          return handle(data);
+        });
+      }
+    }
+  }]);
+
+  return EventEmitter;
+}();
+
+function $log(msg) {
+  var val = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+  console.log("~~~~~~~~~~~~~~ QUIZAPP: " + msg + " " + val);
 }
 
 /**
@@ -14236,7 +14276,7 @@ function $delegate(target, selector, type, handler, capture) {
  */
 var escapeForHTML = exports.escapeForHTML = function escapeForHTML(s) {
   return s.replace(/[&<]/g, function (c) {
-    return c === '&' ? '&amp;' : '&lt;';
+    return c === "&" ? "&amp;" : "&lt;";
   });
 };
 
@@ -14253,6 +14293,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _qQuizmc = require("./q-quizmc");
 
 var _qQuizmc2 = _interopRequireDefault(_qQuizmc);
+
+var _qIntro = require("./q-intro");
+
+var _qIntro2 = _interopRequireDefault(_qIntro);
 
 var _helpers = require("./helpers");
 
@@ -14286,6 +14330,7 @@ var App = function () {
       var _this = this;
 
       (0, _helpers.$log)("startUp");
+      var screen = void 0;
 
       var _document$querySelect = document.querySelectorAll("[data-iquiz]");
 
@@ -14295,32 +14340,61 @@ var App = function () {
 
 
       this.allQuestionNodes.forEach(function (el) {
-        var screenNumber = el.dataset.iquiz,
-            screenType = el.dataset.type,
-            screenParams = el.dataset.params,
-            screenAnswer = el.dataset.answer,
-            screenState = el.dataset.state;
-        (0, _helpers.$log)("screenType", screenType);
-        switch (screenType) {
+        var number = el.dataset.iquiz,
+            type = el.dataset.type,
+            params = el.dataset.params || {},
+            answer = el.dataset.answer,
+            state = el.dataset.state || [];
+
+        switch (type) {
           case "click-text-mc":
-            var screen = new _qQuizmc2.default(el, {
-              screenNumber: screenNumber,
-              screenType: screenType,
-              screenParams: screenParams,
-              screenAnswer: screenAnswer,
-              screenState: screenState
+            screen = new _qQuizmc2.default(el, {
+              number: number,
+              type: type,
+              params: params,
+              answer: answer,
+              state: state
             });
-            (0, _helpers.$log)("screen", screen);
             _this.questionInstances.push(screen);
+            (0, _helpers.$on)(screen, "nextQuestion", _this.nextQuestion.bind(_this));
             screen.startUp();
+            break;
+          case "intro":
+            screen = new _qIntro2.default(el, {
+              number: number,
+              type: type,
+              params: params,
+              answer: answer,
+              state: state
+            });
+            _this.questionInstances.push(screen);
+            (0, _helpers.$on)(screen, "startQuiz", _this.startQuiz.bind(_this));
+            break;
+          case "results":
+            //
+            break;
         }
-        (0, _helpers.$log)("screenNumber", screenNumber);
-        (0, _helpers.$log)("screenType", screenType);
       });
 
       this.initialzeNavigation();
+    }
+  }, {
+    key: "startQuiz",
+    value: function startQuiz() {
+      var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-      (0, _helpers.$log)("this.allQuestionNodes ", this.allQuestionNodes);
+      (0, _helpers.$log)("startQuiz", e);
+      (0, _helpers.$log)("startQuiz", this);
+      this.navigateToPage(this.getPageNumber(1));
+    }
+  }, {
+    key: "nextQuestion",
+    value: function nextQuestion() {
+      var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      (0, _helpers.$log)("nextQuestion", e);
+      (0, _helpers.$log)("nextQuestion", this);
+      this.navigateToPage(this.getPageNumber(1));
     }
   }, {
     key: "initialzeNavigation",
@@ -14366,16 +14440,16 @@ var App = function () {
         el.classList.add("hidden");
       });
       (0, _helpers.$log)("this.getPageNumber()", this.getPageNumber());
-      var currentPageNode = (0, _helpers.qs)("#question-" + this.getPageNumber());
+      var currentPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber() + "\"]");
       (0, _helpers.$log)("currentPageNode", currentPageNode);
       currentPageNode.classList.remove("hidden");
     }
   }, {
     key: "setNavStates",
     value: function setNavStates() {
-      var thisPageNode = (0, _helpers.qs)("#question-" + this.getPageNumber()),
-          nextPageNode = (0, _helpers.qs)("#question-" + this.getPageNumber(1)),
-          prevPageNode = (0, _helpers.qs)("#question-" + this.getPageNumber(-1));
+      var thisPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber() + "\"]"),
+          nextPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber(1) + "\"]"),
+          prevPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber(-1) + "\"]");
 
       if (prevPageNode) {
         enablePrevioust();
@@ -14403,15 +14477,18 @@ var App = function () {
   }, {
     key: "navigateToPage",
     value: function navigateToPage(p) {
-      location.hash = "#" + p;
+      (0, _helpers.$log)("navigateToPage", p);
+      (0, _helpers.$log)("navigateToPage", "#q" + p);
+
+      location.hash = "#q" + p;
     }
   }, {
     key: "getPageNumber",
     value: function getPageNumber() {
       var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-      var currentHash = location.hash || "#1";
-      return +currentHash.replace("#", "") + offset;
+      var currentHash = location.hash || "#q1";
+      return +currentHash.replace("#q", "") + offset;
     }
   }, {
     key: "decryptAnswers",
@@ -14522,7 +14599,54 @@ var App = function () {
 
 exports.default = App;
 
-},{"./helpers":361,"./q-quizmc":364,"crypto-js":334}],363:[function(require,module,exports){
+},{"./helpers":361,"./q-intro":363,"./q-quizmc":365,"crypto-js":334}],363:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _helpers = require("./helpers");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Intro = function (_EventEmitter) {
+  _inherits(Intro, _EventEmitter);
+
+  function Intro(el, data) {
+    _classCallCheck(this, Intro);
+
+    var _this = _possibleConstructorReturn(this, (Intro.__proto__ || Object.getPrototypeOf(Intro)).call(this));
+
+    _this.qData = data;
+    _this.node = el;
+
+    Array.from(_this.node.querySelectorAll(".js-start-quiz")).forEach(function (element) {
+      return element.addEventListener("click", _this.doStartQuiz.bind(_this));
+    });
+    return _this;
+  }
+
+  _createClass(Intro, [{
+    key: "doStartQuiz",
+    value: function doStartQuiz(e) {
+      console.log("doStartQuiz:", e);
+      this.trigger("startQuiz", { a: 11 });
+    }
+  }]);
+
+  return Intro;
+}(_helpers.EventEmitter);
+
+exports.default = Intro;
+
+},{"./helpers":361}],364:[function(require,module,exports){
 'use strict';
 
 require('babel-polyfill');
@@ -14546,91 +14670,119 @@ var setApp = function setApp() {
 //$on(window, 'hashchange', setApp);
 //$on(window, 'resize', quizApp.doResize);
 
-},{"./helpers":361,"./q-app":362,"babel-polyfill":1}],364:[function(require,module,exports){
+},{"./helpers":361,"./q-app":362,"babel-polyfill":1}],365:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _utils = require("./utils");
 
+var _helpers = require("./helpers");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var QuizMC = function () {
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var QuizMC = function (_EventEmitter) {
+  _inherits(QuizMC, _EventEmitter);
+
   function QuizMC(el, data) {
     _classCallCheck(this, QuizMC);
 
-    this.qData = data;
-    this.node = el;
+    var _this = _possibleConstructorReturn(this, (QuizMC.__proto__ || Object.getPrototypeOf(QuizMC)).call(this));
+
+    _this.qData = data;
+    _this.node = el;
+
+    if (_this.qData.answer && _this.qData.answer !== "") {
+      try {
+        _this.qData.answer = JSON.parse(_this.qData.answer);
+      } catch (e) {
+        console.error("iQuiz Error parsing data-answer from JSON to object: ", e);
+        alert("Error parsing data-answer from JSON to object: " + e);
+      }
+    }
+
+    if (_this.qData.state && _this.qData.state !== "" && !_typeof(_this.qData.state) === "Array") {
+      try {
+        _this.qData.state = JSON.parse(_this.qData.state);
+      } catch (e) {
+        console.error("iQuiz Error parsing data-state from JSON to object: ", e);
+        alert("Error parsing data-state from JSON to object: " + e);
+      }
+    }
+
+    if (_this.qData.params && _this.qData.params !== "" && !_typeof(_this.qData.params) === "Object") {
+      try {
+        _this.qData.params = JSON.parse(_this.qData.params.replace(/#/gi, '"'));
+      } catch (e) {
+        console.error("iQuiz Error parsing data-params from JSON to object: ", e);
+        alert("Error parsing data-params from JSON to object: " + e);
+      }
+    }
 
     //let qData = btoa(qData); // base-64 encoding (reverse with atob)
-    console.log("qData:" + this.qData);
+    console.log("qData:", _this.qData);
+    return _this;
   }
 
   _createClass(QuizMC, [{
     key: "startUp",
     value: function startUp() {
       console.log("initQuiz");
-      //let [...answerNodeList] = document.querySelectorAll(".js-answer");
-      //let randomNodeList = answerNodeList.sort(function () { return Math.random() - Math.random() })
-
-      /* console.log("shuffleDivs p ", p);
-      console.log("shuffleDivs c ", c);
-      var parent = $(p);
-      var divs = parent.children(c);
-      console.log("shuffleDivs parent ", parent);
-      console.log("shuffleDivs divs ", divs);
-      while (divs.length) {
-        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-      } */
-
       var group = this.node.querySelector(".js-answer-group");
       var answers = group.querySelectorAll(".js-answer");
-
-      console.log("group:", group);
-      console.log("answers:", answers);
 
       for (var i = answers.length; i >= 0; i--) {
         group.appendChild(answers[Math.random() * i | 0]);
       }
-
       //shuffleDivs(".js-answer-group", ".js-answer");
       this.initQuizNav();
       this.initQuizClickText();
-      // this.reState(true);
+      this.reState(true);
     }
   }, {
     key: "initQuizNav",
     value: function initQuizNav() {
-      var _this = this;
+      var _this2 = this;
 
       console.log("initQuizNav");
       // FastClick.attach(document.body);
 
-      $("#iqSubmit").click(function () {
-        _this.doSubmit();
-      });
-
-      $("#iqFeedbackNext").click(function () {
-        _this.closePop(true);
+      this.node.querySelector(".js-submit").onclick = function (e) {
+        return _this2.doSubmit(e);
+      };
+      Array.from(this.node.querySelectorAll(".js-next-question")).forEach(function (element) {
+        return element.addEventListener("click", _this2.doNextQuestion.bind(_this2));
       });
 
       $(".iquiz_popClose, .iquiz_popBG").click(function () {
-        _this.closePop();
+        _this2.closePop();
       });
     }
   }, {
     key: "initQuizClickText",
     value: function initQuizClickText() {
-      var _this2 = this;
+      var _this3 = this;
 
-      $(".quiz_clickText").click(function (e) {
-        //var el = $(e.target);
-        _this2.setAnswer(e.target);
+      Array.from(this.node.querySelectorAll(".quiz_clickText")).forEach(function (element) {
+        return element.addEventListener("click", _this3.setAnswer.bind(_this3));
       });
+    }
+  }, {
+    key: "doNextQuestion",
+    value: function doNextQuestion(e) {
+      console.log("doNextQuestion:", e);
+      this.closePop(true);
+      this.trigger("nextQuestion", { a: 11 });
     }
   }, {
     key: "showPop",
@@ -14656,7 +14808,8 @@ var QuizMC = function () {
       $(".iquiz_popBG").fadeOut({ queue: false, duration: 200 }).promise().done(function () {
         if (goNext == true) {
           // loadNextPage(true); action next question screen load
-          alert("loadNext Question Page");
+          //this.trigger("nextQuestion");
+          //alert("loadNext Question Page");
         }
       });
 
@@ -14664,8 +14817,10 @@ var QuizMC = function () {
     }
   }, {
     key: "setAnswer",
-    value: function setAnswer(el) {
-      console.log("setAnswer:");
+    value: function setAnswer(e) {
+      var el = e.target;
+      console.log("setAnswer:", e);
+      console.log("setAnswer:", el);
       //
       // SET HIGHLIGHT BAR
       //
@@ -14673,41 +14828,22 @@ var QuizMC = function () {
       // GET CLICKED ELEMENTS
       //
       var clickTextID = Number($(el).data("answer"));
-      /* var clickGroupID = $(el)
-        .closest(".quiz_clickText_container")
-        .attr("id"); */
+      var clickGroupID = this.qData.number;
 
-      var clickGroupID = this.qData.screen;
-
-      console.log("clickGroupID:" + clickGroupID);
-      //
-      var text = $(el).text();
-      var element = $(el);
-      //        console.log('setAnswer:'+$(e.target).attr('class'));
-      //        console.log('y:'+$(e.target).position().top);
-      console.log("el:" + el);
-      console.log("$(el):" + $(el));
-      var style = window.getComputedStyle(el, null).getPropertyValue("font-size");
-      var fontSize = parseFloat(style);
-      // console.log(fontSize);
       var newTop = $(el).position().top + parseInt($(el).css("marginTop"));
-      // var newTop = $(el).position().top;
       var newLeft = $(el).position().left + parseInt($(el).css("marginLeft"));
-      //var topAdjuster = (12 / 100) * fontSize;
       var newHeight = $(el).outerHeight();
-      console.log("newTop:" + newTop);
-      //
-      if (this.qData.multipleAnswers == false) {
-        // ONLY ALLOW 1 ANSWER SO CLEAR OTHERS
-        console.log("multipleAnswers = false");
-        var s = "#" + clickGroupID + " .quiz_highlighter";
-        var ss = "#" + clickGroupID + " .quiz_clickText";
-        $(s).removeClass("hide"); // SHOW HIGHLIGHTER SO WE CAN ANIMATE IT
-        $(ss).removeClass("selected"); // REMOVE SELECTED ON ALL GROUP ELEMENTS
 
-        $(el).closest(".quiz_clickText_container").find(".quiz_highlighter").animate({ top: newTop + "px", height: newHeight + "px" }, 200, function () {
+      if (this.qData.params.multipleAnswers == false || this.qData.params.multipleAnswers === "false") {
+        var highlight = this.node.querySelector(".js-highlight");
+        highlight.classList.remove("hide");
+        this.node.querySelectorAll(".quiz_clickText").forEach(function (el) {
+          el.classList.remove("selected");
+        });
+
+        $(highlight).animate({ top: newTop + "px", height: newHeight + "px" }, 200, function () {
           $(el).addClass("selected notransition");
-          $(".quiz_highlighter").addClass("hide");
+          $(this).addClass("hide");
         });
       } else {
         $(el).toggleClass("selected");
@@ -14718,14 +14854,16 @@ var QuizMC = function () {
       //
 
       //clickGroupID = clickGroupID.replace("g", ""); // remove letters from ID
-      var userAnswerArr = this.qData.questionArray[clickGroupID - 1].userAnswer;
+      //var userAnswerArr = this.qData.questionArray[clickGroupID - 1].userAnswer;
+      var userAnswerArr = this.qData.state;
+      console.log("userAnswerArr ", userAnswerArr);
 
       //        console.log(clickTextID);
       //        console.log(clickGroupID);
       //     qData.questionArray[(clickGroupID-1)].userAnswer = Number(clickTextID);
 
       // USER ANSWER ARRAY STUFF
-      if (this.qData.multipleAnswers == false) {
+      if (this.qData.params.multipleAnswers == false || this.qData.params.multipleAnswers === "false") {
         // ONLY ALLOW 1 ANSWER
         userAnswerArr[0] = clickTextID;
       } else {
@@ -14744,30 +14882,34 @@ var QuizMC = function () {
           }
         }
       }
-
-      console.log(this.qData.questionArray);
+      console.log("this.qData ", this.qData);
     }
   }, {
     key: "reState",
     value: function reState(showAns) {
       console.log("reState:showAns:" + showAns);
-      for (var i = 0; i < this.qData.questionArray.length; i++) {
+      var state = this.qData.state;
+      for (var i = 0; i < state.length; i++) {
         // LOOP THROUGH GROUPS OF ANSWERS
-        var answerArr;
+        var selected = this.node.querySelector("[data-answer=\"" + state[i] + "\"]");
+        selected.classList.add("selected");
+        console.log("selected:" + selected);
+        /* var answerArr;
         if (showAns == true) {
           answerArr = this.qData.questionArray[i].ans;
         } else {
           answerArr = this.qData.questionArray[i].userAnswer;
-        }
-        if (answerArr.length > 0) {
-          // FIRST CHECK THERE ARE SOME ANSWERS TO LOOP THROUGH IN THIS GROUP
-          console.log("userAnswerArr:" + answerArr);
-          for (var ii = 0; ii < answerArr.length; ii++) {
-            var s = "#g" + (i + 1) + " #" + answerArr[ii]; // Build string to target Click Element in Group
-            var el = $(s).get(0);
-            $(el).toggleClass("selected"); // Set Element to selected
-          }
-        }
+        } */
+
+        //if (answerArr.length > 0) {
+        // FIRST CHECK THERE ARE SOME ANSWERS TO LOOP THROUGH IN THIS GROUP
+        //console.log("userAnswerArr:" + answerArr);
+        /* for (let ii = 0; ii < answerArr.length; ii++) {
+          var s = "#g" + (i + 1) + " #" + answerArr[ii]; // Build string to target Click Element in Group
+          var el = $(s).get(0);
+          $(el).toggleClass("selected"); // Set Element to selected
+        } */
+        //}
       }
 
       //var s = '#g1 #1';
@@ -14778,56 +14920,50 @@ var QuizMC = function () {
     }
   }, {
     key: "doSubmit",
-    value: function doSubmit(event) {
-      console.log("doSubmit");
+    value: function doSubmit(e) {
+      console.log("doSubmit:", e);
+      var state = this.qData.state,
+          answers = this.qData.answer;
 
-      console.log(this.qData.questionArray[0].ans);
-      //
-      // work out score
-      //
-      var myScore = 0;
-      //var myTotalScore = 0;
-      for (var i = 0; i < this.qData.questionArray.length; i++) {
-        // ADD UP SCORE
-        var userAnswerArr = this.qData.questionArray[i].userAnswer;
-        var answerArr = this.qData.questionArray[i].ans;
-        //
-        if (userAnswerArr.length == answerArr.length) {
-          // FIRST CHECK NUMBER OF ANSWERS MATCH
-          // console.log('array lengths match:');
-          for (var ii = 0; ii < answerArr.length; ii++) {
-            if ($.inArray(answerArr[ii], userAnswerArr) > -1) {
-              myScore++;
-            }
-          }
+      var arraysAreEqual = function arraysAreEqual(a, b) {
+        if (a.length !== b.length) {
+          return false;
         }
-      }
-      console.log("myScore:" + myScore);
-      //
-      //check score & action feedback
-      //
+        var aSorted = a.sort(),
+            bSorted = b.sort();
+        return aSorted.map(function (val, i) {
+          return bSorted[i] === val;
+        }).every(function (isSame) {
+          return isSame;
+        });
+      };
+
       $(".iquiz_feedback.wrong").css({ display: "none" });
       $(".iquiz_feedback.correct").css({ display: "none" });
-      //
-      if (myScore === this.qData.maxScore) {
+
+      if (arraysAreEqual(state, answers)) {
+        console.log("correct");
         $(".iquiz_feedback.correct").css({ display: "block" });
+        if (this.qData.params && this.qData.params.maxScore && state.length === this.qData.state.maxScore) {
+          //
+        } else {
+            //
+          }
       } else {
+        console.log("wrong");
         $(".iquiz_feedback.wrong").css({ display: "block" });
       }
-      //
-      // SHOW FEEDBACK
-      //
 
       this.showPop();
     }
   }]);
 
   return QuizMC;
-}();
+}(_helpers.EventEmitter);
 
 exports.default = QuizMC;
 
-},{"./utils":365}],365:[function(require,module,exports){
+},{"./helpers":361,"./utils":366}],366:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14898,6 +15034,6 @@ function shuffleDivs(p, c) {
 //
 //     var originalString = new Buffer("SGVsbG8gV29ybGQ=", 'base64').toStr
 
-},{}]},{},[363])
+},{}]},{},[364])
 
 //# sourceMappingURL=iquiz.js.map

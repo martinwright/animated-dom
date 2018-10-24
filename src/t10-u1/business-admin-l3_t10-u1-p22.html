@@ -36,19 +36,19 @@
     <div class="wrapper hidden">
 
 
-        <div data-iquiz="q0" id="question-0" class="js-quiz container--iquiz -hidden">
-
+        <div data-iquiz="1" data-params="" data-type="intro" data-answer="" data-state="" class="js-quiz container--iquiz -hidden">
             <article class="article">
-
                 <section class="startscreen iquiz">
 
 
                     <img data-animate="1" height="120px" src="../images/_nav/C&G_Logo_Group.jpg" />
                     <h1 data-animate="2" data-type="slide-up">QUIZ : Professionalism</h1>
                     <h3 data-animate="3" data-type="slide-up"><b>Test Your Knowledge</b></h3>
-                    <h2 data-animate="4" data-type="slide-up">This <b>'Test Your Knowledge'</b> quiz contains <b>4</b> questions covering material from the <b>Professionalism</b> unit</h2>
+                    <h2 data-animate="4" data-type="slide-up">This <b>'Test Your Knowledge'</b> quiz contains <b>4</b>
+                        questions
+                        covering material from the <b>Professionalism</b> unit</h2>
 
-                    <button data-animate="5" data-type="slide-up" class="nav-bar__button gen" style="margin-top: 20px">
+                    <button data-animate="5" data-type="slide-up" class="js-begin-quiz nav-bar__button gen" style="margin-top: 20px">
                         <span class="nav-bar__button-text">START QUIZ</span>
                     </button>
 
@@ -65,34 +65,17 @@
 
 
                 </section>
-
-
             </article>
-
-
-            <!--<article class="article">-->
-                <!--<section>-->
-
-                    <!--<figure class="" style="opacity: 0.4; right: -15%; top: -40%; position: absolute; width: 20em;">-->
-                        <!--<img data-animate="*" src="../libs/iquiz/images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
-
-                    <!--<p data-animate="*">Introduction</p>-->
-
-                    <!--<figure class="shape-10" style="position: relative; margin-top: -5%; width: 5em; opacity:1; left:5%; z-index: -1;">-->
-                        <!--<img data-animate="*" src="../libs/iquiz/images/_shapes/dia-s10.svg" />-->
-                    <!--</figure>-->
-
-                <!--</section>-->
-            <!--</article>-->
         </div>
 
 
-        <div data-iquiz="q1" class="js-quiz container--iquiz -hidden">
 
+
+
+
+        <div data-iquiz="2" data-params="{#multipleAnswers#: #true#, #maxScore#: #1#}" data-type="click-text-mc"
+            data-answer="[2]" data-state="" class="js-quiz container--iquiz -hidden">
             <article class="article">
-
-                <!--<section style="position: fixed; width: 100%; height: 80%;padding: 0;">-->
                 <section>
 
                     <div class="iquiz_Main">
@@ -101,18 +84,18 @@
                             <h1>QUESTION 1</h1>
                             <h2>Why is it important to make a good first impression?</h2>
                             <h3>Choose one answer from the choices below.</h3>
-                            <!--<h3>Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.Choose one answer from the choice below.</h3>-->
                         </div>
 
-                        <div id='g1' data-animate="2" data-type="slide-up" class="quiz_clickText_container">
-                            <div class="quiz_highlighter"></div>
-                            <div id='1' class="quiz_clickText mc1">To make yourself feel good</div>
-                            <div id='2' class="quiz_clickText mc1">To represent your organisation in a positive way *</div>
-                            <div id='3' class="quiz_clickText mc1">To earn promotion</div>
-                            <div id='4' class="quiz_clickText mc1">To earn commission </div>
+                        <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                            <div class="js-highlight quiz_highlighter"></div>
+                            <div data-answer="1" class="js-answer quiz_clickText mc1">To make yourself feel good</div>
+                            <div data-answer="2" class="js-answer quiz_clickText mc1">To represent your organisation in
+                                a positive way *</div>
+                            <div data-answer="3" class="js-answer quiz_clickText mc1">To earn promotion</div>
+                            <div data-answer="4" class="js-answer quiz_clickText mc1">To earn commission </div>
                         </div>
 
-                        <div data-animate="3" data-type="zoom-in" class="iquiz_submitBtn" id="iqSubmit">SUBMIT</div>
+                        <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
 
                     </div>
 
@@ -149,13 +132,8 @@
                             </div>
 
                         </div>
-                        <div class="iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                        <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
                     </div>
-
-                    <!--<figure class="shape-50" data-animate="*" style="position: relative;float: right;width: 400px;opacity: 0.5;right: -80px;margin-top: -622px;z-index: -1;">-->
-                    <!--<img src="../images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
-
                     <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
                         <img src="../images/_shapes/dec-s5.svg" />
                     </figure>
@@ -164,43 +142,36 @@
                         <img src="../images/_shapes/dia-s10.svg" />
                     </figure>
 
-                    <!--<figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">-->
-                    <!--<img src="../images/_shapes/pen-s4.svg" />-->
-                    <!--</figure>-->
                 </section>
-
-
-
             </article>
-
-
         </div>
 
 
-        <div data-iquiz="q2" class="js-quiz container--iquiz -hidden">
 
+
+
+        <div data-iquiz="3" data-params="{#multipleAnswers#: #false#, #maxScore#: #2#}" data-type="click-text-mc"
+            data-answer="[2]" data-state="" class="js-quiz container--iquiz -hidden">
             <article class="article">
-
-                <!--<section style="position: fixed; width: 100%; height: 80%;padding: 0;">-->
                 <section>
 
                     <div class="iquiz_Main">
 
                         <div data-animate="1" data-type="slide-down" class="iquiz_questionText">
                             <h1>QUESTION 2</h1>
-                            <h2>A supplier is shouting at you.  What is the best way to handle this?</h2>
+                            <h2>A supplier is shouting at you. What is the best way to handle this?</h2>
                             <h3>Choose one answer from the choices below.</h3>
                         </div>
 
-                        <div id='g1' data-animate="2" data-type="slide-up" class="quiz_clickText_container">
-                            <div class="quiz_highlighter"></div>
-                            <div id='1' class="quiz_clickText mc1">Walk away</div>
-                            <div id='2' class="quiz_clickText mc1">Listen carefully *</div>
-                            <div id='3' class="quiz_clickText mc1">Shout back</div>
-                            <div id='4' class="quiz_clickText mc1">Cry</div>
+                        <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                            <div class="js-highlight quiz_highlighter"></div>
+                            <div data-answer="1" class="js-answer quiz_clickText mc1">Walk away</div>
+                            <div data-answer="2" class="js-answer quiz_clickText mc1">Listen carefully *</div>
+                            <div data-answer="3" class="js-answer quiz_clickText mc1">Shout back</div>
+                            <div data-answer="4" class="js-answer quiz_clickText mc1">Cry</div>
                         </div>
 
-                        <div data-animate="3" data-type="zoom-in" class="iquiz_submitBtn" id="iqSubmit">SUBMIT</div>
+                        <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
 
                     </div>
 
@@ -237,12 +208,8 @@
                             </div>
 
                         </div>
-                        <div class="iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                        <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
                     </div>
-
-                    <!--<figure class="shape-50" data-animate="*" style="position: relative;float: right;width: 400px;opacity: 0.5;right: -80px;margin-top: -622px;z-index: -1;">-->
-                    <!--<img src="../images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
 
                     <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
                         <img src="../images/_shapes/cir-p1.svg" />
@@ -252,9 +219,6 @@
                         <img src="../images/_shapes/hex-s10.svg" />
                     </figure>
 
-                    <!--<figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">-->
-                    <!--<img src="../images/_shapes/pen-s4.svg" />-->
-                    <!--</figure>-->
                 </section>
             </article>
         </div>
@@ -262,7 +226,11 @@
 
 
 
-        <div data-iquiz="q3" class="js-quiz container--iquiz -hidden">
+
+
+
+        <div data-iquiz="4" data-params="{#multipleAnswers#: #false#, #maxScore#: #1#}" data-type="click-text-mc"
+            data-answer="[3]" data-state="" class="js-quiz container--iquiz -hidden">
 
             <article class="article">
 
@@ -277,15 +245,19 @@
                             <h3>Choose one answer from the choices below.</h3>
                         </div>
 
-                        <div id='g1' data-animate="2" data-type="slide-up" class="quiz_clickText_container">
-                            <div class="quiz_highlighter"></div>
-                            <div id='1' class="quiz_clickText mc1">To have a fancy slogan on their website</div>
-                            <div id='2' class="quiz_clickText mc1">To publicise what a great service they provide</div>
-                            <div id='3' class="quiz_clickText mc1">To confirm to customers what they can expect *</div>
-                            <div id='4' class="quiz_clickText mc1">To ensure that customers are always satisfied</div>
+                        <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                            <div class="js-highlight quiz_highlighter"></div>
+                            <div data-answer="1" class="js-answer quiz_clickText mc1">To have a fancy slogan on their
+                                website</div>
+                            <div data-answer="2" class="js-answer quiz_clickText mc1">To publicise what a great service
+                                they provide</div>
+                            <div data-answer="3" class="js-answer quiz_clickText mc1">To confirm to customers what they
+                                can expect *</div>
+                            <div data-answer="4" class="js-answer quiz_clickText mc1">To ensure that customers are
+                                always satisfied</div>
                         </div>
 
-                        <div data-animate="3" data-type="zoom-in" class="iquiz_submitBtn" id="iqSubmit">SUBMIT</div>
+                        <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
 
                     </div>
 
@@ -322,12 +294,8 @@
                             </div>
 
                         </div>
-                        <div class="iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                        <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
                     </div>
-
-                    <!--<figure class="shape-50" data-animate="*" style="position: relative;float: right;width: 400px;opacity: 0.5;right: -80px;margin-top: -622px;z-index: -1;">-->
-                    <!--<img src="../images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
 
                     <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
                         <img src="../images/_shapes/dec-s5.svg" />
@@ -337,9 +305,6 @@
                         <img src="../images/_shapes/dia-s10.svg" />
                     </figure>
 
-                    <!--<figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">-->
-                    <!--<img src="../images/_shapes/pen-s4.svg" />-->
-                    <!--</figure>-->
                 </section>
             </article>
         </div>
@@ -348,7 +313,8 @@
 
 
 
-        <div data-iquiz="q4" class="js-quiz container--iquiz -hidden">
+        <div data-iquiz="5" data-params="{#multipleAnswers#: #false#, #maxScore#: #1#}" data-type="click-text-mc"
+            data-answer="[3]" data-state="" class="js-quiz container--iquiz -hidden">
 
             <article class="article">
 
@@ -359,19 +325,21 @@
 
                         <div data-animate="1" data-type="slide-down" class="iquiz_questionText">
                             <h1>QUESTION 4</h1>
-                            <h2>Sam is very friendly towards his colleagues and customers and calls everyone ‘mate’. Why might this be seen as unprofessional to some people?</h2>
+                            <h2>Sam is very friendly towards his colleagues and customers and calls everyone ‘mate’.
+                                Why might
+                                this be seen as unprofessional to some people?</h2>
                             <h3>Choose one answer from the choices below.</h3>
                         </div>
 
-                        <div id='g1' data-animate="2" data-type="slide-up" class="quiz_clickText_container">
-                            <div class="quiz_highlighter"></div>
-                            <div id='1' class="quiz_clickText mc1">Because they just don’t like him</div>
-                            <div id='2' class="quiz_clickText mc1">Because they are stuck up</div>
-                            <div id='3' class="quiz_clickText mc1">Because it is over-familiar *</div>
-                            <div id='4' class="quiz_clickText mc1">Because it sounds funny</div>
+                        <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                            <div class="js-highlight quiz_highlighter"></div>
+                            <div data-answer="1" class="js-answer quiz_clickText mc1">Because they just don’t like him</div>
+                            <div data-answer="2" class="js-answer quiz_clickText mc1">Because they are stuck up</div>
+                            <div data-answer="3" class="js-answer quiz_clickText mc1">Because it is over-familiar *</div>
+                            <div data-answer="4" class="js-answer quiz_clickText mc1">Because it sounds funny</div>
                         </div>
 
-                        <div data-animate="3" data-type="zoom-in" class="iquiz_submitBtn" id="iqSubmit">SUBMIT</div>
+                        <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
 
                     </div>
 
@@ -391,7 +359,8 @@
                                         <h1>Correct Answer</h1>
                                         <h1>Well Done</h1>
                                         <h3>Move onto the next question.</h3>
-                                        <h3>TIP : Think about the language used in personal versus professional settings.</h3>
+                                        <h3>TIP : Think about the language used in personal versus professional
+                                            settings.</h3>
                                     </div>
                                 </div>
 
@@ -402,18 +371,15 @@
                                         <h1>Wrong Answer</h1>
                                         <h2>Close this feedback and have another attempt - or move onto the next
                                             question.</h2>
-                                        <h3>TIP : Think about the language used in personal versus professional settings.</h3>
+                                        <h3>TIP : Think about the language used in personal versus professional
+                                            settings.</h3>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                        <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
                     </div>
-
-                    <!--<figure class="shape-50" data-animate="*" style="position: relative;float: right;width: 400px;opacity: 0.5;right: -80px;margin-top: -622px;z-index: -1;">-->
-                    <!--<img src="../images/_shapes/dec-s5.svg" />-->
-                    <!--</figure>-->
 
                     <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
                         <img src="../images/_shapes/pen-s16.svg" />
@@ -423,15 +389,12 @@
                         <img src="../images/_shapes/cir-p3.svg" />
                     </figure>
 
-                    <!--<figure class="shape-20" data-animate="9" style="opacity:1; left:50%; bottom: -30%;">-->
-                    <!--<img src="../images/_shapes/pen-s4.svg" />-->
-                    <!--</figure>-->
                 </section>
             </article>
         </div>
 
 
-        <div data-iquiz="qEnd" id="question-0" class="js-quiz container--iquiz -hidden">
+        <div data-iquiz="6" data-params="" data-type="results" data-answer="" data-state="" class="js-quiz container--iquiz -hidden">
 
             <article class="article">
 
@@ -445,7 +408,7 @@
                     <figure data-animate="5" class="shape-30 minmax-1" style="position:relative; z-index: -1; margin: 0 auto;">
                         <img src="iquiz_assets/images/_m_quizKeyboard.png" />
                         <figure data-animate="6" class="shape-70" style="opacity: .5; bottom: 0; left: -40%">
-                            <img src="../images/_shapes/dia-p4.svg">
+                            <img src="../../images/_shapes/dia-p4.svg">
                         </figure>
                         <figure class="shape-20" data-animate="9" style="opacity:.6; left:100%; top: 0px;">
                             <img src="../images/_shapes/cir-s4.svg" />
