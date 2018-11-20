@@ -85,7 +85,7 @@ export default class Timeline {
                 if (el.classList.contains('cell')) {
                     //defaultDuration = 100;
                     //defaultOffset = 30;
-                    el.style.borderColor = "white";
+                    //el.style.borderColor = "white";
                 }
             }
 
@@ -272,6 +272,8 @@ export default class Timeline {
             [].slice.call(document.getElementsByClassName('cell'))
                 .forEach(function (elem) {
                     //elem.classList.add('--bottom-border');
+                    elem.style['border-right-color'] = null;
+                    elem.style['border-left-color'] = null;
                     elem.style.borderColor = null;
                 });
         };

@@ -10,7 +10,7 @@ DocReady(() => {
   const loadHandler = () => app.setView();
   const debounce = (fn, time) => {
     let timeout;
-    return function() {
+    return function () {
       const functionCall = () => fn.apply(this, arguments);
       clearTimeout(timeout);
       timeout = setTimeout(functionCall, time);
@@ -46,6 +46,7 @@ class App {
   }
 
   setView() {
+
     function getJsonFileName(loc) {
       let [fileName, foldername, ...rest] = loc.href.split("/").reverse();
       let pathItems = loc.href.split("/");
@@ -80,8 +81,10 @@ class App {
 
     this.definePages();
     this.hidePages();
+    this.continueStartUp();
+    return;
 
-    return (
+    /* return (
       fetch(getJsonFileName(window.location), {
         headers: { Accept: "application/json" },
         credentials: "same-origin"
@@ -95,7 +98,7 @@ class App {
           logError(err);
           this.continueStartUp({});
         })
-    );
+    ); */
   }
 
   definePages() {
@@ -114,7 +117,7 @@ class App {
       el.classList.add("hidden");
     });
   }
-  continueStartUp(json) {
+  continueStartUp(json = {}) {
     //console.log('****** continueStartUp ');
     this.animationJson = json;
     this.setStateValues();
@@ -150,7 +153,7 @@ class App {
     qs(".js-replay").onclick = e => this.replayAnimation();
     qs(".js-animation input").checked = this.showAnimations;
     qs(".js-animation input").onclick = e => this.toggleAnimation(e);
-    document.querySelectorAll(".js-start-quiz").forEach(el => {
+    Array.from(document.querySelectorAll(".js-start-quiz")).forEach(el => {
       el.onclick = e => this.startQuiz(e);
     });
 
@@ -235,11 +238,11 @@ class App {
   }
 
   startQuiz(e) {
-    //console.log("****** startQuiz ", e.target);
+    console.log("****** startQuiz ", e.target);
     this.display = "quiz";
     this.currentNodeSelection = this.allQuestions;
     const PageNum = this.quizFirstPage;
-    this.displayModeBtns.forEach(el => {
+    Array.from(this.displayModeBtns).forEach(el => {
       if (el.value === "quiz") {
         el.checked = true;
       }
@@ -321,12 +324,12 @@ class App {
         ((this.getPageNumber() + pageNumOffset) / this.slideCount) * 100 + "%";
       desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${
         this.slideCount
-      }`;
+        }`;
     } else if (this.display === "quiz") {
       let width = (bar.style.width =
         ((this.getPageNumber() - this.slideCount + pageNumOffset) /
           this.quizCount) *
-          100 +
+        100 +
         "%");
       desc.textContent = `${this.getPageNumber() -
         this.slideCount +
@@ -446,8 +449,8 @@ class App {
     const pageNamePrefix = this.display === "slides" ? "#page-" : "#question-";
 
     const [...currentPageNodelist] = document.querySelectorAll(
-        pageNamePrefix + currentPageNum + " [data-animate]"
-      ),
+      pageNamePrefix + currentPageNum + " [data-animate]"
+    ),
       [...lefttNodelist] = document.querySelectorAll(
         pageNamePrefix + (currentPageNum - 1) + " [data-animate]"
       ),
@@ -467,9 +470,9 @@ class App {
       //console.log('****** nextPageNode ', nextPageNode)
 
       const currentPageTextNodelistSorted = getTextNodes(
-          currentPageNodelist,
-          currentPageNum
-        ),
+        currentPageNodelist,
+        currentPageNum
+      ),
         currentPageShapeNodelistSorted = getShapeNodes(
           currentPageNodelist,
           currentPageNum
@@ -499,9 +502,9 @@ class App {
     ) {
       // Combine previous page nodes
       const currentPageTextNodelistSorted = getTextNodes(
-          currentPageNodelist,
-          currentPageNum
-        ),
+        currentPageNodelist,
+        currentPageNum
+      ),
         currentPageShapeNodelistSorted = getShapeNodes(
           currentPageNodelist,
           currentPageNum
