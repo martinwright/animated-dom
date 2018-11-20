@@ -11,7 +11,8 @@
   height: calc(100% - 4rem);
 }
 
-.startscreen__button {
+.startscreen__button,
+.startquiz__button {
   @extend %simple-button;
   padding: 0 40px 0 40px;
 }
