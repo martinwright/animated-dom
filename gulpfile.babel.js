@@ -615,7 +615,7 @@ gulp.task('styles', () => {
         .pipe(plugins().sourcemaps.init())
         .pipe(plugins().sass().on('error', plugins().sass.logError))
         .pipe(concat('style.css')) // this is what was missing
-        .pipe(autoprefixer())
+        .pipe(autoprefixer({ grid: true, browsers: ['last 4 versions'] }))
         .pipe(plugins().sourcemaps.write())
         .pipe(gulp.dest('./build/css/'))
         .pipe(notify({ message: 'styles task complete' }))
