@@ -14346,6 +14346,11 @@ var App = function () {
             answer = el.dataset.answer,
             state = el.dataset.state || [];
 
+        if (typeof params === 'string') {
+          params = String(params).replace(/\#/g, '\"');
+          params = JSON.parse(params);
+        }
+
         switch (type) {
           case "click-text-mc":
             screen = new _qQuizmc2.default(el, {
@@ -14368,7 +14373,7 @@ var App = function () {
               state: state
             });
             _this.questionInstances.push(screen);
-            (0, _helpers.$on)(screen, "startQuiz", _this.startQuiz.bind(_this));
+            (0, _helpers.$on)(screen, "beginQuiz", _this.beginQuiz.bind(_this));
             break;
           case "results":
             //
@@ -14379,12 +14384,17 @@ var App = function () {
       this.initialzeNavigation();
     }
   }, {
-    key: "startQuiz",
-    value: function startQuiz() {
+    key: "beginQuiz",
+    value: function beginQuiz() {
       var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-      (0, _helpers.$log)("startQuiz", e);
-      (0, _helpers.$log)("startQuiz", this);
+      (0, _helpers.$log)("beginQuiz", e);
+      (0, _helpers.$log)("beginQuiz", location.hash);
+
+      //location.hash = "q23";
+
+      //$log("beginQuiz", location.hash);
+
       this.navigateToPage(this.getPageNumber(1));
     }
   }, {
@@ -14442,7 +14452,9 @@ var App = function () {
       (0, _helpers.$log)("this.getPageNumber()", this.getPageNumber());
       var currentPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber() + "\"]");
       (0, _helpers.$log)("currentPageNode", currentPageNode);
-      currentPageNode.classList.remove("hidden");
+      if (currentPageNode) {
+        currentPageNode.classList.remove("hidden");
+      }
     }
   }, {
     key: "setNavStates",
@@ -14627,17 +14639,17 @@ var Intro = function (_EventEmitter) {
     _this.qData = data;
     _this.node = el;
 
-    Array.from(_this.node.querySelectorAll(".js-start-quiz")).forEach(function (element) {
-      return element.addEventListener("click", _this.doStartQuiz.bind(_this));
+    Array.from(_this.node.querySelectorAll(".js-begin-quiz")).forEach(function (element) {
+      return element.addEventListener("click", _this.doBeginQuiz.bind(_this));
     });
     return _this;
   }
 
   _createClass(Intro, [{
-    key: "doStartQuiz",
-    value: function doStartQuiz(e) {
-      console.log("doStartQuiz:", e);
-      this.trigger("startQuiz", { a: 11 });
+    key: "doBeginQuiz",
+    value: function doBeginQuiz(e) {
+      console.log("doBeginQuiz:", e);
+      this.trigger("beginQuiz", { a: 11 });
     }
   }]);
 
@@ -14834,10 +14846,12 @@ var QuizMC = function (_EventEmitter) {
       var newLeft = $(el).position().left + parseInt($(el).css("marginLeft"));
       var newHeight = $(el).outerHeight();
 
+      console.log("################# this.qData.params.multipleAnswers:", this.qData.params);
+
       if (this.qData.params.multipleAnswers == false || this.qData.params.multipleAnswers === "false") {
         var highlight = this.node.querySelector(".js-highlight");
         highlight.classList.remove("hide");
-        this.node.querySelectorAll(".quiz_clickText").forEach(function (el) {
+        Array.from(this.node.querySelectorAll(".quiz_clickText")).forEach(function (el) {
           el.classList.remove("selected");
         });
 
