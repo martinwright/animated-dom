@@ -84,10 +84,12 @@ h2.sub-heading--right {
 //--------------------------//
 .article {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  
   @include for-size(tablet-landscape-up) {
+    display: flex;
     flex-direction: row;
+    //flex-direction: column;
   }
 }
 .page-number {
