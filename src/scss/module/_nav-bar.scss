@@ -29,7 +29,7 @@
   @extend %simple-button;
   width: 28px;
   @include for-size(tablet-portrait-up) {
-    width: 110px;
+    width: 130px;
   }
 }
 
@@ -172,7 +172,7 @@
 .stv-radio-buttons-wrapper .rSpan .button-text {
   color: white;
   font-size: 12px;
-  font-family: Helvetica Neue;
+  font-family: Avenir;
   font-weight: 900;
   font-style: normal;
   /*vertical-align: middle;*/
