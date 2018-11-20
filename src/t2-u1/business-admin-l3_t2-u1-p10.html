@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,110 +14,135 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="1">Personal development planning</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="1">Personal development planning</h1>
+    </header>
 
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-5" class="article">
+            <article id="page-5" class="article">
 
-            <section class="col-60">
+                <section class="col-60">
 
-                <figure class="shape-120" style="position: relative;margin-top: -1em; margin-left: -5em">
-                    <img src="../images/t2-u1/different_problem_01.jpg">
+                    <figure class="shape-120" style="position: relative;margin-top: -1em; margin-left: -5em">
+                        <img src="../images/t2-u1/different_problem_01.jpg">
 
-                    <figure class="shape-15" style="opacity:.8; top: 35%;right:8%">
-                        <img src="../images/_shapes/pen-s15.svg" />
+                        <figure class="shape-15" style="opacity:.8; top: 35%;right:8%">
+                            <img src="../images/_shapes/pen-s15.svg" />
+                        </figure>
                     </figure>
-                </figure>
 
-                <h4 class="sub-heading"
-                    data-animate="2">3 SWOT analysis</h4>
+                    <h4 class="sub-heading" data-animate="2">3 SWOT analysis</h4>
 
-                <p data-animate="4">As well as doing a skills audit and reflecting on your choices, you can also do a <strong>SWOT</strong> analysis to focus your attention:</p>
+                    <p data-animate="4">As well as doing a skills audit and reflecting on your choices, you can also do
+                        a <strong>SWOT</strong> analysis to focus your attention:</p>
 
-                <div class="table--t2-u1-10a">
-                    <div class="cell"><strong>S</strong></div>
-                    <div class="cell">Strengths</div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
+                                <div class="table--t2-u1-10a">
+                                    <div class="cell"><strong>S</strong></div>
+                                    <div class="cell">Strengths</div>
 
-                    <div class="cell"><strong>W</strong></div>
-                    <div class="cell">Weaknesses</div>
+                                    <div class="cell"><strong>W</strong></div>
+                                    <div class="cell">Weaknesses</div>
 
-                    <div class="cell"><strong>O</strong></div>
-                    <div class="cell">Opportunities for improvement</div>
+                                    <div class="cell"><strong>O</strong></div>
+                                    <div class="cell">Opportunities for improvement</div>
 
-                    <div class="cell"><strong>T</strong></div>
-                    <div class="cell">Threats to such progress – things that may stop progress.</div>
+                                    <div class="cell"><strong>T</strong></div>
+                                    <div class="cell">Threats to such progress – things that may stop progress.</div>
 
-                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p data-animate="6">A SWOT analysis examines the current situation, gives details about the goals
+                        and highlights potential problems that may get in the way of progress.</p>
+
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
+
+                                <div class="table--t2-u1-10b">
+                                    <div class="cell">
+                                        <h3>S</h3>
+                                    </div>
+                                    <div class="cell">Strengths</div>
+                                    <div class="cell">What are my strengths? What am I good at already? What
+                                        qualifications do I have? What have I achieved already? What do people praise?
+                                        When do I get positive feedback?</div>
+
+                                    <div class="cell">
+                                        <h3>W</h3>
+                                    </div>
+                                    <div class="cell">Weaknesses</div>
+                                    <div class="cell">What areas of weakness do I have? What mistakes did I make, or
+                                        nearly make? What are the gaps in my skills, knowledge, understanding and
+                                        experience?</div>
+
+                                    <div class="cell">
+                                        <h3>O</h3>
+                                    </div>
+                                    <div class="cell">Opportunities for improvement</div>
+                                    <div class="cell">How can I improve? What training can I do to improve? What
+                                        support do I need? Which work opportunities can I find that will help me to
+                                        develop?</div>
+
+                                    <div class="cell">
+                                        <h3>T</h3>
+                                    </div>
+                                    <div class="cell">Threats to such progress</div>
+                                    <div class="cell">What might stop me? Finance? Time? Support from others? Lack of
+                                        information? What can I do to minimise these potential problems?</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <img src="../images/t2-u1/SWOT.png" alt="" style="width:100%;" data-animate="3" />
+
+                    <figure class="shape-40" style="opacity:.8; bottom: -10%; right:-10%; z-index: -1">
+                        <img src="../images/_shapes/cir-s13.svg" />
+                    </figure>
+
+                </section>
+
+            </article>
 
 
-                <p data-animate="6">A SWOT analysis examines the current situation, gives details about the goals and highlights potential problems that may get in the way of progress.</p>
-
-                <div class="table--t2-u1-10b">
-                    <div class="cell"><h3>S</h3></div>
-                    <div class="cell">Strengths</div>
-                    <div class="cell">What are my strengths? What am I good at already? What qualifications do I have? What have I achieved already? What do people praise? When do I get positive feedback?</div>
-
-                    <div class="cell"><h3>W</h3></div>
-                    <div class="cell">Weaknesses</div>
-                    <div class="cell">What areas of weakness do I have? What mistakes did I make, or nearly make? What are the gaps in my skills, knowledge, understanding and experience?</div>
-
-                    <div class="cell"><h3>O</h3></div>
-                    <div class="cell">Opportunities for improvement</div>
-                    <div class="cell">How can I improve? What training can I do to improve? What support do I need? Which work opportunities can I find that will help me to develop?</div>
-
-                    <div class="cell"><h3>T</h3></div>
-                    <div class="cell">Threats to such progress</div>
-                    <div class="cell">What might stop me? Finance? Time? Support from others? Lack of information? What can I do to minimise these potential problems?</div>
-
-                </div>
-
-            </section>
-
-            <section>
-
-                <img src="../images/t2-u1/SWOT.png"
-                     alt=""
-                     style="width:100%;"
-                     data-animate="3"/>
-
-                <figure class="shape-40" style="opacity:.8; bottom: -10%; right:-10%; z-index: -1">
-                    <img src="../images/_shapes/cir-s13.svg" />
-                </figure>
-
-            </section>
-
-        </article>
-
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

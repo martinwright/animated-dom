@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,113 +14,149 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="1">Personal development planning</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="1">Personal development planning</h1>
+    </header>
 
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-1" class="article">
+            <article id="page-1" class="article">
 
-            <section class="col-50">
+                <section class="col-50">
 
-                <figure class="shape-115" style="position: relative;margin-top: -1em; margin-left: -5em">
-                    <img src="../images/t2-u1/_m_performance_standards_03.jpg">
+                    <figure class="shape-115" style="position: relative;margin-top: -1em; margin-left: -5em">
+                        <img src="../images/t2-u1/_m_performance_standards_03.jpg">
 
-                    <figure class="shape-15" style="opacity:.8; top: 25%;right:5%">
-                        <img src="../images/_shapes/pen-p4.svg" />
+                        <figure class="shape-15" style="opacity:.8; top: 25%;right:5%">
+                            <img src="../images/_shapes/pen-p4.svg" />
+                        </figure>
                     </figure>
-                </figure>
 
-                <h4 class="sub-heading"
-                    data-animate="2">5 SMART objectives</h4>
+                    <h4 class="sub-heading" data-animate="2">5 SMART objectives</h4>
 
-                <p data-animate="4">Once areas for personal development have been identified, it is important to set targets. By having your goals and objectives clearly in mind, there is a much greater chance of success. One good way to set goals is to use
-                    <strong>SMART objectives</strong>:</p>
+                    <p data-animate="4">Once areas for personal development have been identified, it is important to
+                        set targets. By having your goals and objectives clearly in mind, there is a much greater
+                        chance of success. One good way to set goals is to use
+                        <strong>SMART objectives</strong>:</p>
 
-                <div class="table--t2-u1-12a">
-                    <div class="cell"><strong>S</strong></div>
-                    <div class="cell"><strong>Specific</strong> – details about exactly what needs to be achieved.</div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
 
-                    <div class="cell"><strong>M</strong></div>
-                    <div class="cell"><strong>Measurable</strong> – this could be the number of tasks to be covered.</div>
+                                <div class="table--t2-u1-12a">
+                                    <div class="cell"><strong>S</strong></div>
+                                    <div class="cell"><strong>Specific</strong> – details about exactly what needs to
+                                        be achieved.</div>
 
-                    <div class="cell"><strong>A</strong></div>
-                    <div class="cell"><strong>Achievable</strong> – the task needs to be possible for the individual.</div>
+                                    <div class="cell"><strong>M</strong></div>
+                                    <div class="cell"><strong>Measurable</strong> – this could be the number of tasks
+                                        to be covered.</div>
 
-                    <div class="cell"><strong>R</strong></div>
-                    <div class="cell"><strong>Realistic</strong> – the target and limits set need to be realistic.</div>
+                                    <div class="cell"><strong>A</strong></div>
+                                    <div class="cell"><strong>Achievable</strong> – the task needs to be possible for
+                                        the individual.</div>
 
-                    <div class="cell"><strong>T</strong></div>
-                    <div class="cell"><strong>Time-bound</strong> – the deadline for achieving the target or completing the task.</div>
+                                    <div class="cell"><strong>R</strong></div>
+                                    <div class="cell"><strong>Realistic</strong> – the target and limits set need to be
+                                        realistic.</div>
 
-                </div>
+                                    <div class="cell"><strong>T</strong></div>
+                                    <div class="cell"><strong>Time-bound</strong> – the deadline for achieving the
+                                        target or completing the task.</div>
 
-            </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-            <section>
+                <section>
 
-                <br>
+                    <br>
 
-                <div class="table--t2-u1-12b">
-                    <div class="cell"><h3>S</h3></div>
-                    <div class="cell">Specific</div>
-                    <div class="cell">What are the details of the learning activity, task or training course that I want to do? What qualifications do I need for that promotion? Which job am I aiming for?</div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
 
-                    <div class="cell"><h3>M</h3></div>
-                    <div class="cell">Measurable</div>
-                    <div class="cell">Is there a certificate or report that can show my progress? Can I count the number of units I am covering so that I can see my progress?</div>
+                                <div class="table--t2-u1-12b">
+                                    <div class="cell">
+                                        <h3>S</h3>
+                                    </div>
+                                    <div class="cell">Specific</div>
+                                    <div class="cell">What are the details of the learning activity, task or training
+                                        course that I want to do? What qualifications do I need for that promotion?
+                                        Which job am I aiming for?</div>
 
-                    <div class="cell"><h3>A</h3></div>
-                    <div class="cell">Achievable</div>
-                    <div class="cell">Can I do it? What support do I need to find to make sure that I can achieve these goals?</div>
+                                    <div class="cell">
+                                        <h3>M</h3>
+                                    </div>
+                                    <div class="cell">Measurable</div>
+                                    <div class="cell">Is there a certificate or report that can show my progress? Can I
+                                        count the number of units I am covering so that I can see my progress?</div>
 
-                    <div class="cell"><h3>R</h3></div>
-                    <div class="cell">Realistic</div>
-                    <div class="cell">Is it realistic to do the training or tasks in the time that is allowed? Is it realistic to work full time and do all of this study quickly, or do I need to study over a longer period of time?</div>
+                                    <div class="cell">
+                                        <h3>A</h3>
+                                    </div>
+                                    <div class="cell">Achievable</div>
+                                    <div class="cell">Can I do it? What support do I need to find to make sure that I
+                                        can achieve these goals?</div>
 
-                    <div class="cell"><h3>T</h3></div>
-                    <div class="cell">Time-Bound</div>
-                    <div class="cell">What are the deadlines? Do I need to have completed this task before my tutor comes next time, or in time for my annual review?</div>
+                                    <div class="cell">
+                                        <h3>R</h3>
+                                    </div>
+                                    <div class="cell">Realistic</div>
+                                    <div class="cell">Is it realistic to do the training or tasks in the time that is
+                                        allowed? Is it realistic to work full time and do all of this study quickly, or
+                                        do I need to study over a longer period of time?</div>
 
-                </div>
+                                    <div class="cell">
+                                        <h3>T</h3>
+                                    </div>
+                                    <div class="cell">Time-Bound</div>
+                                    <div class="cell">What are the deadlines? Do I need to have completed this task
+                                        before my tutor comes next time, or in time for my annual review?</div>
 
-                <figure class="shape-50" style="opacity:.8; bottom: -95%; right:0%; z-index: -1">
-                    <img src="../images/_shapes/dec-s15.svg" />
-                </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <figure class="shape-50" style="opacity:.8; bottom: -95%; right:0%; z-index: -1">
+                        <img src="../images/_shapes/dec-s15.svg" />
+                    </figure>
 
 
-            </section>
+                </section>
 
-        </article>
+            </article>
 
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>
