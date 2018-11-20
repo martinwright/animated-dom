@@ -138,6 +138,20 @@ figure.shape-105 {
   }
 }
 
+figure.full-width {
+  position: relative;
+  left: -1em;
+  width: calc(100% + 2em);
+  img {
+    width: 100%;
+  }
+}
+figure.full-width-top {
+  @extend figure.full-width;
+  top:-1em;
+}
+
+
 figure.shape-110 {
   position: absolute;
   width: 110%;
