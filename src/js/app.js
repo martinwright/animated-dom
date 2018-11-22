@@ -1,4 +1,3 @@
-//import "babel-polyfill";
 import { $on, qs, $log } from "./util";
 import DocReady from "./windowLoaded";
 import Timeline from "./timeline";
@@ -435,7 +434,7 @@ class App {
   }
 
   createAnimationTimelines() {
-    //$log("createAnimationTimelines");
+    $log("createAnimationTimelines");
 
     const defaultDuration = "200",
       defaultOffset = "-=50",
@@ -459,12 +458,14 @@ class App {
       );
     let completeTextNodeList, completeShapeNodeList;
 
+
     if (
       isLeft &&
       nextPageNode &&
       nextPageNode.classList.contains("right") &&
       !nextPageNode.classList.contains("hidden")
     ) {
+      console.log('>>>>>>>>>>>>>>>> Combine next page nodes ')
       // Combine next page nodes
       //console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
       //console.log('****** nextPageNode ', nextPageNode)
@@ -500,6 +501,7 @@ class App {
       prevPageNode.classList.contains("left") &&
       !prevPageNode.classList.contains("hidden")
     ) {
+      console.log('>>>>>>>>>>>>>>>> Combine previous page nodes ')
       // Combine previous page nodes
       const currentPageTextNodelistSorted = getTextNodes(
         currentPageNodelist,
@@ -527,6 +529,7 @@ class App {
         ...previousPageShapeNodelistSorted
       ];
     } else {
+      console.log('>>>>>>>>>>>>>>>> Combine only this page nodes ')
       // This page nodes only
       completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
       completeShapeNodeList = getShapeNodes(
@@ -534,6 +537,7 @@ class App {
         currentPageNum
       );
     }
+
 
     function getTextNodes(nodes, page, counter = 0) {
       return nodes
@@ -555,9 +559,19 @@ class App {
           return node;
         });
     }
-    function getShapeNodes(nodes, page) {
+    function getShapeNodes(nodes, page, counter = 0) {
       return nodes
         .filter(node => /FIGURE|IMG/.test(node.nodeName))
+        .map(node => {
+          let step = node.getAttribute("data-animate");
+          if (!step || step === "*" || step === "") {
+            counter++;
+            node.setAttribute("data-animate", counter);
+          } else {
+            counter = +step;
+          }
+          return node;
+        })
         .sort(sorter)
         .reverse()
         .map(node => {

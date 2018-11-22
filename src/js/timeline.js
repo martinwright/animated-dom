@@ -6,6 +6,8 @@ export default class Timeline {
         this.elementsList = el;
         this.animationJson = anim;
         this.timeline;
+        //console.log('????????? el', el);
+        //console.log('????????? anim', anim);
     };
 
     getAnimProp(page, step, prop, defaultVal) {
@@ -32,6 +34,7 @@ export default class Timeline {
     startAmnimation() {
         //console.log('????????? setAnimations start');
         //this.timeline.play();
+        console.log('????????? this.timeline', this.timeline);
         this.timeline.reverse();
         this.timeline.play();
     }
@@ -41,7 +44,7 @@ export default class Timeline {
     }
 
     setup() {
-        //console.log('????????? setAnimations setup');
+        console.log('????????? setAnimations setup');
         let defaultDuration = this.animationJson.params ? this.animationJson.params.defaultDuration : "400",
             defaultType = "slide-left",
             defaultOffset = this.animationJson.params ? +this.animationJson.params.defaultOffset : 50;
@@ -106,13 +109,17 @@ export default class Timeline {
             //console.log('duration: ', duration);
             //console.log('el: ', el);
 
-            switch (type) {
 
+            function logAnimProgress(anim) {
+                console.log('################### logAnimProgress: ', anim);
+            }
+            console.log('type: ', type);
+            switch (type) {
                 case 'loop-large-ccw':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: '0',
-
                         //translateX: '20em',
                         rotate: '1turn',
                         translateX: '800',
@@ -126,6 +133,7 @@ export default class Timeline {
                     break;
                 case 'loop-large-cw':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: '0',
                         //translateX: '20em',
@@ -141,6 +149,7 @@ export default class Timeline {
                     break;
                 case 'zoom-in':
                     this.timeline.add({
+                        update: logAnimProgress,
                         targets: el,
                         opacity: '0',
                         easing: 'easeInQuad',
@@ -152,6 +161,7 @@ export default class Timeline {
                     break;
                 case 'zoom-out':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: '0',
                         easing: 'easeInQuad',
@@ -163,6 +173,7 @@ export default class Timeline {
                     break;
                 case 'roll-from-right':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: '0',
                         translateX: '600',
@@ -171,7 +182,7 @@ export default class Timeline {
                         easing: 'easeInQuad',
                         //direction: 'reverse',
                         duration: duration,
-                        offset: offset,
+                        offset: offset
 
                         //scale: 4,
                         //transformOrigin: "50% 50%"
@@ -180,6 +191,7 @@ export default class Timeline {
 
                 case 'roll-from-left':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: '0',
                         translateX: '-400',
@@ -196,6 +208,7 @@ export default class Timeline {
                     break;
                 case 'slide-left':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: 0,
                         translateX: '300',
@@ -218,6 +231,7 @@ export default class Timeline {
                     break;
                 case 'slide-up':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: 0,
                         translateY: '300',
@@ -229,6 +243,7 @@ export default class Timeline {
                     break;
                 case 'slide-down':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: 0,
                         translateY: '-300',
@@ -240,6 +255,7 @@ export default class Timeline {
                     break;
                 case 'left-roll':
                     this.timeline.add({
+                        //update: logAnimProgress,
                         targets: el,
                         opacity: '0',
                         //translateX: '20em',
@@ -263,7 +279,7 @@ export default class Timeline {
         });
 
         this.timeline.begin = () => {
-            console.log('#################### myTimeline begin ');
+            //console.log('#################### myTimeline begin ');
 
             let wait = setTimeout(() => {
                 this.elementsList.forEach((el, index) => {
