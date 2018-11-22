@@ -29,11 +29,14 @@
   justify-content: normal;
   margin: 36px auto 50px auto;
   max-width: 1800px;
-  height: calc(100vh - 90px);
+  //height: calc(100vh - 90px);
+  height: calc(100vh + 150px);
   overflow-y: auto;
   overflow-x: hidden;
+  //-webkit-overflow-scrolling: touch;
   //padding-left: 1em;
   //padding-right: 1em;
+  border: red solid 10px;
 }
 
 %container {
