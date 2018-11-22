@@ -205,6 +205,17 @@ export default class Timeline {
                         offset: offset
                     });
                     break;
+                case 'slide-right':
+                    this.timeline.add({
+                        targets: el,
+                        opacity: 0,
+                        translateX: '-300',
+                        easing: 'easeInQuad',
+                        duration: duration,
+                        //direction: 'reverse',
+                        offset: offset
+                    });
+                    break;
                 case 'slide-up':
                     this.timeline.add({
                         targets: el,
