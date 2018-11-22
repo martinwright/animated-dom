@@ -953,30 +953,33 @@ div.table--fr4-fr8 {
 /* ---------------------------------- */
 
 div.table--t1-u1-10 {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 1fr 1fr;
-  font-size: $table-font-size;
+  @include tables(2, 'top', (50%, 50%), true);
+  min-width: 10em;
 
-  .cell {
-    &:nth-child(-n + 2) {
-      background-color: $table-fill-col;
-      border-bottom: $table-line;
-      border-top: $table-line;
-    }
-
-    &:nth-child(odd) {
-      border-right: $table-line;
-    }
-
-    &:nth-last-child(-n + 2) {
-      border-bottom: $table-line;
-    }
-
-    padding: 0.5rem;
-    display: flex;
-  }
-
+  //display: grid;
+  //grid-gap: 0;
+  //grid-template-columns: 1fr 1fr;
+  //font-size: $table-font-size;
+  //
+  //.cell {
+  //  &:nth-child(-n + 2) {
+  //    background-color: $table-fill-col;
+  //    border-bottom: $table-line;
+  //    border-top: $table-line;
+  //  }
+  //
+  //  &:nth-child(odd) {
+  //    border-right: $table-line;
+  //  }
+  //
+  //  &:nth-last-child(-n + 2) {
+  //    border-bottom: $table-line;
+  //  }
+  //
+  //  padding: 0.5rem;
+  //  display: flex;
+  //}
+  //
   h3 {
     display: flex;
     align-self: center;
@@ -988,26 +991,28 @@ div.table--t1-u1-10 {
 }
 
 div.table--t1-u2-7 {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 1fr 1fr;
-  font-size: $table-font-size;
-
-  .cell {
-    &:nth-child(-n + 2) {
-      border-bottom: $table-line;
-    }
-    &:nth-child(even) {
-      background-color: $table-fill-col;
-    }
-
-    &:nth-child(odd) {
-      border-right: $table-line;
-      background-color: $table-fill-col2;
-    }
-
-    padding: 0.5rem;
-  }
+  @include tables(2, 'top', (50%, 50%), true);
+  min-width: 10em;
+  //display: grid;
+  //grid-gap: 0;
+  //grid-template-columns: 1fr 1fr;
+  //font-size: $table-font-size;
+  //
+  //.cell {
+  //  &:nth-child(-n + 2) {
+  //    border-bottom: $table-line;
+  //  }
+  //  &:nth-child(even) {
+  //    background-color: $table-fill-col;
+  //  }
+  //
+  //  &:nth-child(odd) {
+  //    border-right: $table-line;
+  //    background-color: $table-fill-col2;
+  //  }
+  //
+  //  padding: 0.5rem;
+  //}
 }
 
 div.table--t1-u2-14,
@@ -1143,6 +1148,8 @@ div.table--t2-u1-12b {
 }*/
 
 div.table--t2-u1-14 {
+  //@include tables(2, 'top', (30%, 70%), true);
+  //min-width: 20em;
   display: grid;
   grid-gap: 0;
   grid-template-columns: 4fr 8fr;
