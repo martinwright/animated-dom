@@ -17,6 +17,7 @@ import autoprefixer from 'gulp-autoprefixer';
 
 const newer = require('gulp-newer');
 import fs from 'fs';
+import log from 'fancy-log';
 
 const merge = require('merge-stream');
 const packConfig = require('./pack-config.json');
@@ -40,56 +41,6 @@ const glob = require('glob');
 /* ----------------- */
 /* Combine HTMLs
 /* ----------------- */
-gulp.task('build-html-combined', function (done) {
-
-    let tasks = [],
-        courseName = packConfig.course;
-    packConfig.packs.map(pack => {
-        let dir = 'build/' + pack.topic + '-' + pack.unit;
-
-        tasks.push(function () {
-            //let tmp = config[i];
-            return function (callback) {
-
-                gulp.src(dir + '/' + courseName + '*.html')
-
-                    .pipe(cheerio(function ($, file) {
-                        // Each file will be run through cheerio and each corresponding `$` will be passed here.
-                        // `file` is the gulp file object
-                        // Make all h1 tags uppercase
-                        $('script').replaceWith('');
-                        $('head').replaceWith('');
-                        $('.header').replaceWith('');
-                        $('.nav-bar').replaceWith('');
-                        unWrap($('.wrapper'));
-                        unWrap($('body'));
-                        unWrap($('html'));
-                        $.html();
-
-                        function unWrap(selector) {
-                            $(selector).each(function () {
-                                var $this = $(this);
-                                $(this).after($this.contents()).remove();
-                            });
-                        }
-                    }))
-
-                    .pipe(replace(/<!DOCTYPE html>/g, ''))
-                    //.pipe(print(filepath => `build-html-combined: ${filepath}`))
-                    .pipe(concat('combined.html'))
-                    .pipe(gulp.dest(dir + '/'))
-                    .on("end", callback);
-            }
-        }()
-        );
-
-    });
-
-    async.parallel(tasks, done);
-
-});
-
-
 gulp.task('build-html-combined-prom', function (done) {
 
     let courseName = packConfig.course,
@@ -100,55 +51,35 @@ gulp.task('build-html-combined-prom', function (done) {
 
         //console.log('build-html-combined ', dir);
         let pageNumber = '';
+        let headerTitle, header;
 
         jsBundleStreams.push(
             gulp.src(dir + '/' + courseName + '*.html')
 
                 .pipe(tap(function (file) {
-                    //console.log('###### file.path ', file.path);
                     let [filename, folder, ...rest] = file.path.split('/').reverse();
-                    //let regex = /-p(.*).html$/g;
-                    //var arr = regex.exec(filename);
-                    //pageNumber = filename.match(/-p(.*).html$/g)[0]
-
-
-                    //let myString = "something format_abc";
                     let myRegexp = /(^.*)-p(.*?)(.html)/g;
                     let match = myRegexp.exec(filename);
-                    //console.log('build-html-combined match '+filename + ' : ' + match[2]);
                     pageNumber = match[2] || '0'; // abc
-
-
                 }))
                 .pipe(cheerio(function ($, file) {
-                    // Each file will be run through cheerio and each corresponding `$` will be passed here.
-                    // `file` is the gulp file object
-                    // Make all h1 tags uppercase
-                    //console.log('pageNumber ', pageNumber);
                     $('script').replaceWith('');
                     $('head').replaceWith('');
-                    $('.header').replaceWith('');
+                    header = header || $('header.true-header').html();
+                    $('header').replaceWith('');
                     $('.nav-bar').replaceWith('');
                     $('.-hidden').removeClass('-hidden')
                     unWrap($('.wrapper'));
                     unWrap($('body'));
                     unWrap($('html'));
                     let cont = $('.container--layout-1');
-                    //console.log('cont ', cont);
                     if (cont) $(cont).attr('id', 'page-' + pageNumber).addClass('hidden');
                     let quiz = $('.container--iquiz');
-                    //console.log('quiz ', quiz.length);
-                    //if (quiz) $(quiz).attr('id', 'page-' + pageNumber).addClass('hidden');
-                    //$('.container--layout-1').attr('id', 'page-' + pageNumber).addClass('hidden');
                     $('.container--iquiz').each(function () {
                         var $this = $(this);
                         $(this).attr('id', 'question-' + pageNumber).addClass('hidden');
                         pageNumber++;
                     });
-
-                    /*     .attr('id', 'page-' + pageNumber).addClass('hidden');
-                    $('article').attr('id', 'article-' + pageNumber).html();
-                    $.html(); */
 
                     function unWrap(selector) {
                         $(selector).each(function () {
@@ -161,6 +92,12 @@ gulp.task('build-html-combined-prom', function (done) {
                 .pipe(replace(/<!DOCTYPE html>/g, ''))
                 //.pipe(print(filepath => `build-html-combined: ${filepath}`))
                 .pipe(concat('combined.html'))
+                .pipe(tap(function (file) {
+                    file.contents = Buffer.concat([
+                        new Buffer('<header class="l-header true-header">' + header + '</header>'),
+                        file.contents
+                    ]);
+                }))
                 .pipe(gulp.dest(dir + '/'))
         );
     });
@@ -168,32 +105,6 @@ gulp.task('build-html-combined-prom', function (done) {
     return merge(jsBundleStreams);
 
 });
-
-
-gulp.task('delete-index', function (done) {
-
-    let tasks = [];
-    packConfig.packs.map(pack => {
-        let dir = 'build/' + pack.topic + '-' + pack.unit;
-
-        //console.log('build-html-combined ', dir);
-
-        let indexFile = 'build/' + pack.topic + '-' + pack.unit + '/index.html';
-        tasks.push(function () {
-            //let tmp = config[i];
-
-            return function (callback) {
-                gulp.src(indexFile)
-                    //.pipe(print(filepath => `delete-index: ${filepath}`))
-                    .pipe(vinylPaths(del))
-                    .on("end", callback);
-            }
-        }()
-        );
-    });
-    async.parallel(tasks, done);
-});
-
 
 gulp.task('delete-index-prom', function (done) {
 
@@ -212,34 +123,9 @@ gulp.task('delete-index-prom', function (done) {
     return merge(jsBundleStreams);
 });
 
-
 /* ----------------- */
 /* Copy Index.html from /partials
 /* ----------------- */
-gulp.task('copy-index', function (done) {
-
-    let tasks = [];
-
-    packConfig.packs.map(pack => {
-        let dir = 'build/' + pack.topic + '-' + pack.unit;
-
-        tasks.push(function () {
-            return function (callback) {
-                gulp.src('src/partials/index.html')
-                    //.pipe(newer(dir))
-                    .pipe(plumber({
-                        errorHandler: onError
-                    }))
-                    //.pipe(print(filepath => `copy-index: ${dir}`))
-                    .pipe(gulp.dest(dir))
-                    .on("end", callback);
-            }
-        }()
-        );
-    });
-    async.parallel(tasks, done);
-});
-
 gulp.task('copy-index-prom', function (done) {
 
     let jsBundleStreams = [];
@@ -263,44 +149,13 @@ gulp.task('copy-index-prom', function (done) {
 /* ----------------- */
 /* Insert partials
 /* ----------------- */
-gulp.task('partials', function (done) {
-
-    let tasks = [];
-
-    packConfig.packs.map(pack => {
-        let dir = 'build/' + pack.topic + '-' + pack.unit;
-
-        tasks.push(function () {
-            //let tmp = config[i];
-
-            return function (callback) {
-                gulp.src([dir + '/index.html'])
-                    .pipe(fileinclude({
-                        prefix: '@@',
-                        basepath: '@file'
-                    }))
-                    .pipe(htmltidy({
-                        doctype: 'html5',
-                        hideComments: true,
-                        wrap: 100,
-                        indentSpaces: 4,
-                        indent: true
-                    }))
-                    .pipe(print(filepath => `partials: ${filepath}`))
-                    .pipe(gulp.dest(dir))
-                    .on("end", callback);
-            }
-        }()
-        );
-    });
-    async.parallel(tasks, done);
-});
 gulp.task('partials-prom', function (done) {
 
     let jsBundleStreams = [];
 
     packConfig.packs.map(pack => {
         let dir = 'build/' + pack.topic + '-' + pack.unit;
+        let header;
 
         jsBundleStreams.push(
             gulp.src([dir + '/index.html'])
@@ -309,12 +164,13 @@ gulp.task('partials-prom', function (done) {
                     basepath: '@file'
                 }))
                 .pipe(cheerio(function ($, file) {
-
+                    header = $('header');
+                    $('header').remove();
                     sort($('.js-wrapper'));
                     $.html();
+                    $('nav').after(header);
 
                     function sort(main) {
-
                         let [...list] = main.children();
                         list.sort((a, b) => {
                             let aP = +$(a).attr('id').replace('page-', '').replace('question-', '');
@@ -322,7 +178,6 @@ gulp.task('partials-prom', function (done) {
                             return aP > bP ? 1 : -1;
                         })
                             .map(node => $(main).append(node));
-
                     }
                 }))
                 .pipe(htmltidy({
@@ -377,8 +232,8 @@ gulp.task('build-packs', () => {
         jsBundleStreams.push(gulp.src(cssSrc)
             .pipe(newer(cssDest))
             .pipe(plumber({ errorHandler: onError }))
-            .pipe(gulp.dest(cssDest))
-            .pipe(notify({ message: `js copy task complete` })));
+            .pipe(gulp.dest(cssDest)))
+        //.pipe(notify({ message: `js copy task complete` })));
 
         // Add JS from build to to pack if newer
         let jsSrc = `build/js/**`,
@@ -386,8 +241,8 @@ gulp.task('build-packs', () => {
         jsBundleStreams.push(gulp.src(jsSrc)
             .pipe(newer(jsDest))
             .pipe(plumber({ errorHandler: onError }))
-            .pipe(gulp.dest(jsDest))
-            .pipe(notify({ message: `js copy ${pack} task complete` })));
+            .pipe(gulp.dest(jsDest)))
+        //.pipe(notify({ message: `js copy ${pack} task complete` })));
 
         // Add Libs from build to to pack if newer
         let libSrc = `build/libs/**`,
@@ -395,8 +250,8 @@ gulp.task('build-packs', () => {
         jsBundleStreams.push(gulp.src(libSrc)
             .pipe(newer(libDest))
             .pipe(plumber({ errorHandler: onError }))
-            .pipe(gulp.dest(libDest))
-            .pipe(notify({ message: `libs copy ${pack} task complete` })));
+            .pipe(gulp.dest(libDest)))
+        //.pipe(notify({ message: `libs copy ${pack} task complete` })));
 
         // Add Images from build to to pack if newer
         let imgSrc = `build/images/${pack.topic}-${pack.unit}/**`,
@@ -405,8 +260,8 @@ gulp.task('build-packs', () => {
             .pipe(newer(imgDest))
             .pipe(plumber({ errorHandler: onError }))
             .pipe(imagemin())
-            .pipe(gulp.dest(imgDest))
-            .pipe(notify({ message: `imgs copy ${pack} task complete` })));
+            .pipe(gulp.dest(imgDest)))
+        //.pipe(notify({ message: `imgs copy ${pack} task complete` })));
 
         // Add HTML from build to to pack if newer
         // TODO update build paths
@@ -415,8 +270,8 @@ gulp.task('build-packs', () => {
         jsBundleStreams.push(gulp.src(htmlSrc)
             .pipe(newer(htmlDest))
             .pipe(plumber({ errorHandler: onError }))
-            .pipe(gulp.dest(htmlDest))
-            .pipe(notify({ message: `html copy task complete` })));
+            .pipe(gulp.dest(htmlDest)))
+        //.pipe(notify({ message: `html copy task complete` })));
 
     });
 
@@ -435,7 +290,7 @@ gulp.task('pack-libs', () => {
                 errorHandler: onError
             }))
             .pipe(gulp.dest(`packs/unit-${i}/libs`))
-            .pipe(notify({ message: `Libs copy unit-${i}/libs complete` }))
+        //.pipe(notify({ message: `Libs copy unit-${i}/libs complete` }))
         /*.pipe(gulp.src('build/js/!**'))
         .pipe(gulp.dest(`packs/unit-${i}/js`))
         .pipe(notify({message: `Libs copy unit-${i}/js complete`}));*/
@@ -461,7 +316,7 @@ gulp.task('fonts', () => {
             errorHandler: onError
         }))
         .pipe(gulp.dest('build/css/fonts'))
-        .pipe(notify({ message: 'Images task complete' }));
+    //.pipe(notify({ message: 'Images task complete' }));
 });
 
 /* ----------------- */
@@ -475,24 +330,12 @@ gulp.task('vendor', () => {
             errorHandler: onError
         }))
         .pipe(gulp.dest('build/vendor'))
-        .pipe(notify({ message: 'Images task complete' }));
+    //.pipe(notify({ message: 'Images task complete' }));
 });
 
 /* ----------------- */
 /* QUIZ assets
 /* ----------------- */
-gulp.task('xquiz', () => {
-    // Copy quiz files
-    gulp.src('src/quiz/**')
-        //.pipe(newer('build/quiz'))
-        .pipe(plumber({
-            errorHandler: onError
-        }))
-        .pipe(gulp.dest('build/quiz'))
-        .pipe(notify({ message: 'quiz task complete' }));
-});
-
-
 gulp.task('quiz', function (done) {
     glob('./app/main-**.js', function (err, files) {
         if (err) {
@@ -512,40 +355,6 @@ gulp.task('quiz', function (done) {
         // Only call done when merged stream has ended
         es.merge(tasks).on('end', done);
     })
-});
-
-
-/* ----------------- */
-/* Quiz Scripts
-/* ----------------- */
-gulp.task('xxxquiz', () => {
-    return browserify({
-        'entries': ['./src/quiz/js/quiz.js'],
-        'debug': true,
-        'transform': [
-            babelify.configure({
-                'presets': ['env', 'react']
-            })
-        ]
-    })
-        .bundle()
-        .on('error', function () {
-            var args = Array.prototype.slice.call(arguments);
-
-            plugins().notify.onError({
-                'title': 'Compile Error',
-                'message': '<%= error.message %>'
-            }).apply(this, args);
-
-            this.emit('end');
-        })
-        .pipe(source('quiz.js'))
-        .pipe(buffer())
-        .pipe(plugins().sourcemaps.init({ 'loadMaps': true }))
-        .pipe(plugins().sourcemaps.write('.'))
-        .pipe(gulp.dest('./build/quiz/js/'))
-        .pipe(browserSync.stream());
-
 });
 
 
@@ -750,4 +559,3 @@ gulp.task('combine', function (callback) {
 gulp.task('default', ['development']);
 gulp.task('deploy', ['folders', 'html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
 gulp.task('pack', ['build-packs']);
-//gulp.task('combine', ['delete-index', 'copy-index', 'build-html-combined', 'partials']);
