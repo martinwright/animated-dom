@@ -537,7 +537,7 @@ class App {
 
     function getTextNodes(nodes, page, counter = 0) {
       return nodes
-        .filter(node => /P|H1|H2|H3|H4|H5|LI|DIV/.test(node.nodeName))
+        .filter(node => /P|H1|H2|H3|H4|H5|LI|DIV|BUTTON/.test(node.nodeName))
         .map(node => {
           let step = node.getAttribute("data-animate");
           if (!step || step === "*" || step === "") {
