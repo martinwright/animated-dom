@@ -2,29 +2,32 @@
 import { $on, qs, $log } from "./util";
 import DocReady from "./windowLoaded";
 import Timeline from "./timeline";
+import { SCORM } from "pipwerks-scorm-api-wrapper";
 //import { Base64 } from 'js-base64';
 
 DocReady(() => {
   //console.log("DocReady");
-  const app = new App();
-  const loadHandler = () => app.setView();
+  const app = new App().setView();
+  SCORM.init();
+
   const debounce = (fn, time) => {
     let timeout;
-    return function () {
+    return function() {
       const functionCall = () => fn.apply(this, arguments);
       clearTimeout(timeout);
       timeout = setTimeout(functionCall, time);
     };
   };
-  $on(window, "load", loadHandler);
-  //$on(window, 'hashchange', app.hashChangedHandler.bind(app));
-  $on(
-    window,
-    "resize",
+  //$on(window, "load", loadHandler);
+  $on(window, "resize", doDebounce);
+  $on(window, "onbeforeunload", SCORM.quit);
+  $on(window, "onunload", SCORM.quit);
+
+  function doDebounce(e) {
     debounce(e => {
       app.doResize();
-    }, 250)
-  );
+    }, 250);
+  }
 });
 class App {
   constructor() {
@@ -46,7 +49,6 @@ class App {
   }
 
   setView() {
-
     function getJsonFileName(loc) {
       let [fileName, foldername, ...rest] = loc.href.split("/").reverse();
       let pathItems = loc.href.split("/");
@@ -324,12 +326,12 @@ class App {
         ((this.getPageNumber() + pageNumOffset) / this.slideCount) * 100 + "%";
       desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${
         this.slideCount
-        }`;
+      }`;
     } else if (this.display === "quiz") {
       let width = (bar.style.width =
         ((this.getPageNumber() - this.slideCount + pageNumOffset) /
           this.quizCount) *
-        100 +
+          100 +
         "%");
       desc.textContent = `${this.getPageNumber() -
         this.slideCount +
@@ -449,8 +451,8 @@ class App {
     const pageNamePrefix = this.display === "slides" ? "#page-" : "#question-";
 
     const [...currentPageNodelist] = document.querySelectorAll(
-      pageNamePrefix + currentPageNum + " [data-animate]"
-    ),
+        pageNamePrefix + currentPageNum + " [data-animate]"
+      ),
       [...lefttNodelist] = document.querySelectorAll(
         pageNamePrefix + (currentPageNum - 1) + " [data-animate]"
       ),
@@ -470,9 +472,9 @@ class App {
       //console.log('****** nextPageNode ', nextPageNode)
 
       const currentPageTextNodelistSorted = getTextNodes(
-        currentPageNodelist,
-        currentPageNum
-      ),
+          currentPageNodelist,
+          currentPageNum
+        ),
         currentPageShapeNodelistSorted = getShapeNodes(
           currentPageNodelist,
           currentPageNum
@@ -502,9 +504,9 @@ class App {
     ) {
       // Combine previous page nodes
       const currentPageTextNodelistSorted = getTextNodes(
-        currentPageNodelist,
-        currentPageNum
-      ),
+          currentPageNodelist,
+          currentPageNum
+        ),
         currentPageShapeNodelistSorted = getShapeNodes(
           currentPageNodelist,
           currentPageNum
