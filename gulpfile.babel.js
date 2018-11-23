@@ -533,7 +533,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
         'server': {
             baseDir: "build/"
         },
-        port: 3030,
+        port: 3032,
         startPath: "/t10-u1/index.html",
         'snippetOptions': {
             'rule': {
