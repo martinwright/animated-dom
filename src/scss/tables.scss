@@ -1345,12 +1345,12 @@ div.table--t13-u2-11 {
     //border-bottom: $table-line;
     padding: 0.5rem;
 
-    &:nth-child(5n + 5) {
-        border-right: none;
-      }
-    &:nth-child(1n + 1) {
-      border-left: none;
-    }
+    //&:nth-child(5n + 5) {
+    //    border-right: none;
+    //  }
+    //&:nth-child(1n + 1) {
+    //  border-left: none;
+    //}
 
     p {
       margin: 0 0 0.8em 0;
