@@ -461,6 +461,10 @@ class App {
       );
     let completeTextNodeList, completeShapeNodeList;
 
+    console.log("****************** isLeft ", isLeft);
+
+    console.log("****************** isRight ", isRight);
+
     if (
       isLeft &&
       nextPageNode &&
@@ -503,6 +507,7 @@ class App {
       !prevPageNode.classList.contains("hidden")
     ) {
       // Combine previous page nodes
+      console.log("****************** Combine previous page nodes ");
       const currentPageTextNodelistSorted = getTextNodes(
           currentPageNodelist,
           currentPageNum
@@ -530,7 +535,12 @@ class App {
       ];
     } else {
       // This page nodes only
+      console.log("****************** This page nodes only ");
       completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
+      console.log(
+        "****************** completeTextNodeList ",
+        completeTextNodeList
+      );
       completeShapeNodeList = getShapeNodes(
         currentPageNodelist,
         currentPageNum
@@ -539,7 +549,7 @@ class App {
 
     function getTextNodes(nodes, page, counter = 0) {
       return nodes
-        .filter(node => /P|H1|H2|H3|H4|H5|LI|DIV/.test(node.nodeName))
+        .filter(node => /P|H1|H2|H3|H4|H5|LI|UL|DIV|BUTTON/.test(node.nodeName))
         .map(node => {
           let step = node.getAttribute("data-animate");
           if (!step || step === "*" || step === "") {

@@ -85,6 +85,7 @@ h2.sub-heading--right {
 .article {
   position: relative;
   display: block;
+  padding-bottom: 1em;
   
   @include for-size(tablet-landscape-up) {
     display: flex;
