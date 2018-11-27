@@ -311,9 +311,10 @@ class App {
     const pageNamePrefix = this.display === "slides" ? "page-" : "question-";
     let node = this.currentNodeSelection.find(
       n => n.id === pageNamePrefix + page
-    );
+    ) || null;
     return node;
   }
+
 
   updateProgressBar() {
     //$log("updateProgressBar quiz ", this.display);
