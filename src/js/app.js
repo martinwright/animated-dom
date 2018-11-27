@@ -12,7 +12,7 @@ DocReady(() => {
 
   const debounce = (fn, time) => {
     let timeout;
-    return function() {
+    return function () {
       const functionCall = () => fn.apply(this, arguments);
       clearTimeout(timeout);
       timeout = setTimeout(functionCall, time);
@@ -289,6 +289,7 @@ class App {
     //if (this.display === 'quiz') this.quizCurrentPage = p;
     this.setPageNumber(p);
     //this.resetNavigationStates();
+    document.querySelector('body').scrollTop = 0;
   }
 
   setPageNumber(page) {
@@ -326,12 +327,12 @@ class App {
         ((this.getPageNumber() + pageNumOffset) / this.slideCount) * 100 + "%";
       desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${
         this.slideCount
-      }`;
+        }`;
     } else if (this.display === "quiz") {
       let width = (bar.style.width =
         ((this.getPageNumber() - this.slideCount + pageNumOffset) /
           this.quizCount) *
-          100 +
+        100 +
         "%");
       desc.textContent = `${this.getPageNumber() -
         this.slideCount +
@@ -451,8 +452,8 @@ class App {
     const pageNamePrefix = this.display === "slides" ? "#page-" : "#question-";
 
     const [...currentPageNodelist] = document.querySelectorAll(
-        pageNamePrefix + currentPageNum + " [data-animate]"
-      ),
+      pageNamePrefix + currentPageNum + " [data-animate]"
+    ),
       [...lefttNodelist] = document.querySelectorAll(
         pageNamePrefix + (currentPageNum - 1) + " [data-animate]"
       ),
@@ -476,9 +477,9 @@ class App {
       //console.log('****** nextPageNode ', nextPageNode)
 
       const currentPageTextNodelistSorted = getTextNodes(
-          currentPageNodelist,
-          currentPageNum
-        ),
+        currentPageNodelist,
+        currentPageNum
+      ),
         currentPageShapeNodelistSorted = getShapeNodes(
           currentPageNodelist,
           currentPageNum
@@ -509,9 +510,9 @@ class App {
       // Combine previous page nodes
       console.log("****************** Combine previous page nodes ");
       const currentPageTextNodelistSorted = getTextNodes(
-          currentPageNodelist,
-          currentPageNum
-        ),
+        currentPageNodelist,
+        currentPageNum
+      ),
         currentPageShapeNodelistSorted = getShapeNodes(
           currentPageNodelist,
           currentPageNum
