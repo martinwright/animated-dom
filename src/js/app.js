@@ -7,9 +7,8 @@ import { SCORM } from "pipwerks-scorm-api-wrapper";
 
 DocReady(() => {
   //console.log("DocReady");
-  const app = new App().setView();
-  SCORM.init();
-
+  const app = new App();
+  const loadHandler = () => app.setView();
   const debounce = (fn, time) => {
     let timeout;
     return function () {
@@ -18,16 +17,12 @@ DocReady(() => {
       timeout = setTimeout(functionCall, time);
     };
   };
-  //$on(window, "load", loadHandler);
-  $on(window, "resize", doDebounce);
-  $on(window, "onbeforeunload", SCORM.quit);
-  $on(window, "onunload", SCORM.quit);
-
-  function doDebounce(e) {
-    debounce(e => {
-      app.doResize();
-    }, 250);
-  }
+  $on(window, "load", loadHandler);
+  //$on(window, 'hashchange', app.hashChangedHandler.bind(app));
+  $on(window, "resize", debounce(e => {
+    app.doResize();
+  }, 100)
+  );
 });
 class App {
   constructor() {
