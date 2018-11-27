@@ -149,7 +149,7 @@ class App {
   }
 
   setNavigationEvents() {
-    location.hash = location.hash || "#s1";
+    location.hash = location.hash || "#s0";
     qs(".js-back").onclick = e => this.previousClick();
     qs(".js-next").onclick = e => this.nextClick();
     qs(".js-replay").onclick = e => this.replayAnimation();
@@ -299,7 +299,7 @@ class App {
 
   getPageNumber(offset = 0) {
     const pagePrefix = this.display === "slides" ? "s" : "q";
-    let currentHash = location.hash || "#s1";
+    let currentHash = location.hash || "#s0";
     if (this.display === "slides") {
       return +currentHash.replace("#s", "") + offset;
     } else if (this.display === "quiz") {
