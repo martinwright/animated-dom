@@ -590,7 +590,7 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
             baseDir: "build/"
         },
         port: 3032,
-        startPath: "/t10-u1/index.html",
+        startPath: "/t3-u2/index.html",
         'snippetOptions': {
             'rule': {
                 'match': /<\/body>/i,

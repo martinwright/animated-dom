@@ -31,9 +31,13 @@
   padding: 0 40px 0 40px;
 }
 
-.startscreen__button, .startquiz__button:not(:disabled):hover {
-  background: #fe5000;
-  border-color: #fe5000;
+.startscreen__button:hover, .startquiz__button:hover {
+    background: #fe5000;
+    border-color: #fe5000;
+  }
+
+.startscreen__button:focus, .startquiz__button:focus {
+  outline:0;
 }
 
 .startscreen img {
