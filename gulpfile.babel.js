@@ -241,7 +241,7 @@ gulp.task('build-packs', () => {
             .pipe(gulp.dest(manifestDest)))
 
 
-        dir = dir + '/contents';
+        dir = dir + '/content';
         if (!fs.existsSync(dir))
             fs.mkdirSync(dir),
                 console.log('📁  folder created:', dir);
@@ -312,6 +312,13 @@ gulp.task('build-packs', () => {
             .pipe(gulp.dest(shapesDest)))
 
 
+        let iquizSrc = `build/${pack.topic}-${pack.unit}/iquiz_assets/**`,
+            iquizDest = `${dir}/iquiz_assets`;
+        jsBundleStreams.push(gulp.src(iquizSrc)
+            .pipe(newer(iquizDest))
+            .pipe(plumber({ errorHandler: onError }))
+            .pipe(imagemin())
+            .pipe(gulp.dest(iquizDest)))
 
         // Add HTML from build to to pack if newer
         // TODO update build paths
@@ -414,38 +421,7 @@ gulp.task('quiz', function (done) {
 });
 
 
-/* ----------------- */
-/* Scripts
-/* ----------------- */
-gulp.task('scripts', () => {
-    return browserify({
-        'entries': ['./src/js/app.js'],
-        'debug': true,
-        'transform': [
-            babelify.configure({
-                'presets': ['env', 'react']
-            })
-        ]
-    })
-        .bundle()
-        .on('error', function () {
-            var args = Array.prototype.slice.call(arguments);
 
-            plugins().notify.onError({
-                'title': 'Compile Error',
-                'message': '<%= error.message %>'
-            }).apply(this, args);
-
-            this.emit('end');
-        })
-        .pipe(source('bundle.js'))
-        .pipe(buffer())
-        .pipe(plugins().sourcemaps.init({ 'loadMaps': true }))
-        .pipe(plugins().sourcemaps.write('.'))
-        .pipe(gulp.dest('./build/js/'))
-        .pipe(browserSync.stream());
-
-});
 
 
 // Gulp plumber error handler
@@ -554,6 +530,40 @@ gulp.task('cssmin', () => {
 
 
 /* ----------------- */
+/* Scripts
+/* ----------------- */
+gulp.task('scripts', () => {
+    return browserify({
+        'entries': ['./src/js/app.js'],
+        'debug': true,
+        'transform': [
+            babelify.configure({
+                'presets': ['env', 'react']
+            })
+        ]
+    })
+        .bundle()
+        .on('error', function () {
+            var args = Array.prototype.slice.call(arguments);
+
+            plugins().notify.onError({
+                'title': 'Compile Error',
+                'message': '<%= error.message %>'
+            }).apply(this, args);
+
+            this.emit('end');
+        })
+        .pipe(source('bundle.js'))
+        .pipe(buffer())
+        .pipe(plugins().sourcemaps.init({ 'loadMaps': true }))
+        .pipe(plugins().sourcemaps.write('.'))
+        .pipe(gulp.dest('./build/js/'))
+        .pipe(browserSync.stream());
+
+});
+
+
+/* ----------------- */
 /* Jsmin
 /* ----------------- */
 gulp.task('jsmin', () => {
@@ -612,5 +622,5 @@ gulp.task('combine', function (callback) {
 });
 
 gulp.task('default', ['development']);
-gulp.task('deploy', ['folders', 'html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
-gulp.task('pack', ['build-packs']);
+gulp.task('build', ['folders', 'html', 'json', 'images', 'jsmin', 'libs', 'vendor', 'fonts']);
+gulp.task('packs', ['build-packs']);
