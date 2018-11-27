@@ -211,17 +211,37 @@ gulp.task('build-packs', () => {
     packConfig.packs.map(pack => {
 
         // set pack folder name
-        let dir = pack.title.toLowerCase();
-        dir = dir.replace(/,/g, '');
-        dir = dir.replace(/\s/g, '-');
-        dir = 'packs/' + pack.topic + '-' + pack.unit + '-' + dir;
+        let title = pack.title.toLowerCase();
+        title = title.replace(/,/g, '');
+        title = title.replace(/\s/g, '-');
+        let folder = pack.topic + '-' + pack.unit + '-' + title
+        let dir = 'packs/' + folder;
         //console.log('📁  dir:', dir);
 
         // Create pack folder and Contents folder
         if (!fs.existsSync(dir))
             fs.mkdirSync(dir),
                 console.log('📁  folder created:', dir);
-        dir = dir + '/Contents';
+
+
+        // Add content pack files
+        let packSrc = `src/imsmanifest/**`,
+            packDest = `${dir}`;
+        jsBundleStreams.push(gulp.src(packSrc)
+            .pipe(newer(packDest))
+            .pipe(plumber({ errorHandler: onError }))
+            .pipe(gulp.dest(packDest)))
+
+        // Add imsmanifest
+        let manifestSrc = `src/${pack.topic}-${pack.unit}/imsmanifest.xml`,
+            manifestDest = `${dir}`;
+        jsBundleStreams.push(gulp.src(manifestSrc)
+            .pipe(newer(manifestDest))
+            .pipe(plumber({ errorHandler: onError }))
+            .pipe(gulp.dest(manifestDest)))
+
+
+        dir = dir + '/contents';
         if (!fs.existsSync(dir))
             fs.mkdirSync(dir),
                 console.log('📁  folder created:', dir);
@@ -229,11 +249,15 @@ gulp.task('build-packs', () => {
         // Add CSS from build to to pack if newer
         let cssSrc = `build/css/**`,
             cssDest = `${dir}/css`;
+
+        if (!fs.existsSync(cssDest))
+            fs.mkdirSync(cssDest),
+                console.log('📁  folder created:', cssDest);
+
         jsBundleStreams.push(gulp.src(cssSrc)
-            .pipe(newer(cssDest))
-            .pipe(plumber({ errorHandler: onError }))
+            //.pipe(newer(cssDest))
+            //.pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(cssDest)))
-        //.pipe(notify({ message: `js copy task complete` })));
 
         // Add JS from build to to pack if newer
         let jsSrc = `build/js/**`,
@@ -253,6 +277,14 @@ gulp.task('build-packs', () => {
             .pipe(gulp.dest(libDest)))
         //.pipe(notify({ message: `libs copy ${pack} task complete` })));
 
+        // Add Libs from build to to pack if newer
+        let venSrc = `build/vendor/**`,
+            venDest = `${dir}/vendor`;
+        jsBundleStreams.push(gulp.src(venSrc)
+            .pipe(newer(venDest))
+            .pipe(plumber({ errorHandler: onError }))
+            .pipe(gulp.dest(venDest)))
+
         // Add Images from build to to pack if newer
         let imgSrc = `build/images/${pack.topic}-${pack.unit}/**`,
             imgDest = `${dir}/images/${pack.topic}-${pack.unit}`;
@@ -261,23 +293,46 @@ gulp.task('build-packs', () => {
             .pipe(plumber({ errorHandler: onError }))
             .pipe(imagemin())
             .pipe(gulp.dest(imgDest)))
-        //.pipe(notify({ message: `imgs copy ${pack} task complete` })));
+
+
+        let navSrc = `build/images/_nav/**/*`,
+            navDest = `${dir}/images/_nav`;
+        jsBundleStreams.push(gulp.src(navSrc)
+            .pipe(newer(navDest))
+            .pipe(plumber({ errorHandler: onError }))
+            .pipe(imagemin())
+            .pipe(gulp.dest(navDest)))
+
+        let shapesSrc = `build/images/_shapes/**`,
+            shapesDest = `${dir}/images/_shapes`;
+        jsBundleStreams.push(gulp.src(shapesSrc)
+            .pipe(newer(shapesDest))
+            .pipe(plumber({ errorHandler: onError }))
+            .pipe(imagemin())
+            .pipe(gulp.dest(shapesDest)))
+
+
 
         // Add HTML from build to to pack if newer
         // TODO update build paths
-        let htmlSrc = `build/${courseName}_${pack.topic}-${pack.unit}-*.{html, json}`,
+        let htmlSrc = `build/${pack.topic}-${pack.unit}/index.html`,
             htmlDest = `${dir}`;
         jsBundleStreams.push(gulp.src(htmlSrc)
             .pipe(newer(htmlDest))
+            .pipe(replace(/"\.\.\/vendor\//g, '"./vendor/'))
+            .pipe(replace(/"\.\.\/libs\//g, '"./libs/'))
+            .pipe(replace(/"\.\.\/css\//g, '"./css/'))
+            .pipe(replace(/"\.\.\/images\//g, '"./images/'))
+            .pipe(replace(/"\.\.\/js\//g, '"./js/'))
             .pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(htmlDest)))
-        //.pipe(notify({ message: `html copy task complete` })));
+        //.pipe(notify({ message: `html copy task complete` }))
 
     });
 
     return merge(jsBundleStreams);
 
-});
+})
 
 /* ----------------- */
 /* Pack Libs
