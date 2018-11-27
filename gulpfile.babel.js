@@ -324,6 +324,7 @@ gulp.task('build-packs', () => {
             .pipe(replace(/"\.\.\/css\//g, '"./css/'))
             .pipe(replace(/"\.\.\/images\//g, '"./images/'))
             .pipe(replace(/"\.\.\/js\//g, '"./js/'))
+            .pipe(replace(/<title>[\W\w\s\n\r]*<\/title>/g, `<title>${courseName} | ${pack.title}</title>`))
             .pipe(plumber({ errorHandler: onError }))
             .pipe(gulp.dest(htmlDest)))
         //.pipe(notify({ message: `html copy task complete` }))
@@ -605,7 +606,6 @@ gulp.task('development', ['scripts', 'styles', 'images', 'html', 'json', 'combin
     gulp.watch('src/**/*.html', ['combine', browserSync.reload]);
     gulp.watch('src/**/*.json', ['json', browserSync.reload]);
 });
-
 
 gulp.task('combine', function (callback) {
     runSequence('html', 'delete-index-prom', 'copy-index-prom', 'build-html-combined-prom', 'partials-prom', callback);
