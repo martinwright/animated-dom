@@ -14412,7 +14412,7 @@ var App = function () {
       var _this2 = this;
 
       if ((0, _helpers.qs)(".js-nav-bar")) {
-        location.hash = location.hash || "#1";
+        location.hash = location.hash || "#q1";
         (0, _helpers.qs)(".js-back").onclick = function (e) {
           return _this2.previousClick();
         };
@@ -14450,7 +14450,7 @@ var App = function () {
         el.classList.add("hidden");
       });
       (0, _helpers.$log)("this.getPageNumber()", this.getPageNumber());
-      var currentPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber() + "\"]");
+      var currentPageNode = (0, _helpers.qs)("[data-iquiz=\"" + this.getPageNumber() + "\"]");
       (0, _helpers.$log)("currentPageNode", currentPageNode);
       if (currentPageNode) {
         currentPageNode.classList.remove("hidden");
@@ -14459,9 +14459,9 @@ var App = function () {
   }, {
     key: "setNavStates",
     value: function setNavStates() {
-      var thisPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber() + "\"]"),
-          nextPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber(1) + "\"]"),
-          prevPageNode = (0, _helpers.qs)("[data-iquiz=\"q" + this.getPageNumber(-1) + "\"]");
+      var thisPageNode = (0, _helpers.qs)("[data-iquiz=\"" + this.getPageNumber() + "\"]"),
+          nextPageNode = (0, _helpers.qs)("[data-iquiz=\"" + this.getPageNumber(1) + "\"]"),
+          prevPageNode = (0, _helpers.qs)("[data-iquiz=\"" + this.getPageNumber(-1) + "\"]");
 
       if (prevPageNode) {
         enablePrevioust();
@@ -14802,9 +14802,17 @@ var QuizMC = function (_EventEmitter) {
       console.log("showPop");
       $("body").addClass("no-scroll");
       // stopScroll('.player_container'); // stop scroll on main content to avoid double scroll
-      $(".iquiz_popBG").fadeIn(200, function () {
+      // $(".iquiz_popBG").fadeIn(2000, function () {
+      //   $(".iquiz_popContainer")
+      //     .css({ top: "0px" })
+      //     .fadeIn({ queue: false, duration: 2000 })
+      //     .animate({ top: "80px" }, 2000);
+      //
+      //   $(".iquiz_innerScroll").scrollTop(0); // set scroll to top
+      // });
+      $(".iquiz_popBG").fadeIn({ queue: false, duration: 200 }).promise().done(function () {
         $(".iquiz_popContainer").css({ top: "0px" }).fadeIn({ queue: false, duration: 200 }).animate({ top: "80px" }, 200);
-
+        //
         $(".iquiz_innerScroll").scrollTop(0); // set scroll to top
       });
     }
@@ -14833,6 +14841,10 @@ var QuizMC = function (_EventEmitter) {
       var el = e.target;
       console.log("setAnswer:", e);
       console.log("setAnswer:", el);
+      //
+      // SET SUBMIT BTN to active
+      //
+      this.node.querySelector(".js-submit").classList.remove("disabled");
       //
       // SET HIGHLIGHT BAR
       //
@@ -14936,6 +14948,11 @@ var QuizMC = function (_EventEmitter) {
     key: "doSubmit",
     value: function doSubmit(e) {
       console.log("doSubmit:", e);
+      var el = e.target;
+      if ($(el).hasClass("disabled")) {
+        return;
+      }
+
       var state = this.qData.state,
           answers = this.qData.answer;
 
