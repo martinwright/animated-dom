@@ -45,7 +45,7 @@
                 <img height="120px" src="../images/_nav/C&G_Logo_Group.jpg"/>
                 <h1 data-animate="2" data-type="slide-up">QUIZ : Organisations and sectors</h1>
                 <!--<h3 data-animate="3" data-type="slide-up"><b>Test Your Knowledge</b></h3>-->
-                <h3 data-animate="4" data-type="slide-up">This <b>'Test Your Knowledge'</b> quiz contains <b>4</b> questions covering material from the <b>Organisations and sectors</b> unit</h3>
+                <h3 data-animate="4" data-type="slide-up">This <b>'Test Your Knowledge'</b> quiz contains<br><b>4</b> questions covering material from<br>the <b>Organisations and sectors</b> unit.</h3>
 
                 <button data-animate="5" data-type="slide-up" class="js-begin-quiz startquiz__button" style="margin-top: 20px">
                     <span class="nav-bar__button-text">START QUIZ</span>
@@ -53,7 +53,7 @@
 
                 <figure data-animate="6" class="shape-30 minmax-1" style="bottom: 50px; right: -50px; z-index: -1">
                     <img src="iquiz_assets/images/_m_quizKeyboard.png"/>
-                    <figure data-animate="7" class="shape-70" style="opacity: .5; bottom: 0; left: -40%">
+                    <figure data-animate="7" class="shape-60" style="opacity: .5; bottom: 0; left: -30%">
                         <img src="../images/_shapes/dia-p4.svg">
                     </figure>
                 </figure>
@@ -90,7 +90,7 @@
                         <div data-answer="4" class="js-answer quiz_clickText mc1">Children in Need</div>
                     </div>
 
-                    <div data-animate="3" data-duration="100" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
+                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
 
                 </div>
 
@@ -126,11 +126,11 @@
                     </div>
                     <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
                 </div>
-                <figure class="shape-50" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
+                <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
                     <img src="../images/_shapes/dec-s5.svg"/>
                 </figure>
 
-                <figure class="shape-10" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
                     <img src="../images/_shapes/dia-s10.svg"/>
                 </figure>
 
@@ -162,7 +162,7 @@
                         <div data-answer="4" class="js-answer quiz_clickText mc1">To provide a good service for those in need</div>
                     </div>
 
-                    <div data-animate="3" data-offset="0" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
+                    <div data-animate="3" data-offset="0" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
 
                 </div>
 
@@ -236,7 +236,7 @@
                         <div data-answer="4" class="js-answer quiz_clickText mc1">Through appeals</div>
                     </div>
 
-                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
+                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
 
                 </div>
 
@@ -276,7 +276,7 @@
                     <img src="../images/_shapes/dec-s5.svg"/>
                 </figure>
 
-                <figure class="shape-10" data-animate="9" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
                     <img src="../images/_shapes/dia-s10.svg"/>
                 </figure>
 
@@ -309,7 +309,7 @@
                         <div data-answer="4" class="js-answer quiz_clickText mc1">Public sector company</div>
                     </div>
 
-                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn">SUBMIT</div>
+                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
 
                 </div>
 
@@ -335,21 +335,21 @@
                                 <div class="iquiz_questionText">
                                     <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png"></div>
                                     <h1>Wrong Answer</h1>
-                                    <h2>Close this feedback and have another attempt - or move onto the next question.</h2>
+                                    <h2>Close this feedback and have another attempt - or select 'END QUIZ'.</h2>
                                     <h3>TIP : These types of companies are often large well-known organisations.</h3>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                    <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">END QUIZ</div>
                 </div>
 
                 <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
                     <img src="../images/_shapes/pen-s16.svg"/>
                 </figure>
 
-                <figure class="shape-10" data-animate="9" style="width:100px;position:relative;opacity:.5; left:5%; z-index: -1;">
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:.5; left:5%; z-index: -1;">
                     <img src="../images/_shapes/cir-p3.svg"/>
                 </figure>
 
@@ -358,8 +358,7 @@
     </div>
 
 
-    <div data-iquiz="6" data-params="" data-type="results" data-answer="" data-state=""
-         class="js-quiz container--iquiz -hidden">
+    <div data-iquiz="6" data-params="" data-type="results" data-answer="" data-state="" class="js-quiz container--iquiz -hidden">
 
         <article class="article">
 
@@ -375,7 +374,7 @@
                     <figure data-animate="6" class="shape-70" style="opacity: .5; bottom: 0; left: -40%">
                         <img src="../../images/_shapes/dia-p4.svg">
                     </figure>
-                    <figure class="shape-20" data-animate="9" style="opacity:.6; left:100%; top: 0px;">
+                    <figure class="shape-20" data-animate="7" style="opacity:.6; left:100%; top: 0px;">
                         <img src="../images/_shapes/cir-s4.svg"/>
                     </figure>
                 </figure>
