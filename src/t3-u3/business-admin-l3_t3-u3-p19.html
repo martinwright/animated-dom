@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Quiz Multiple choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script type='application/javascript' src='../vendor/fastclick.js'></script>
+    <link rel="stylesheet" href="../vendor/normalize.css"/>
+    <script type="text/javascript" src="../vendor/jquery/jquery-3.3.1.min.js"></script>
+
+    <!-- Quiz styles -->
+    <link rel="stylesheet" href="../libs/iquiz/css/iquiz.css">
+</head>
+
+<body>
+<nav class="nav-bar">
+    <div class="nav-bar__container">
+        <div class="nav-bar__paging">
+            <button disabled class="button--navigation js-back">Previous</button>
+            <button class="button--navigation js-next">Next</button>
+        </div>
+        <div class="nav-bar__controls">
+            <button class="button--control js-play">Play</button>
+            <button class="button--control js-pause">Pause</button>
+            <button class="button--control js-restart">Restart</button>
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1 class="main-heading" style="grid-area: t" data-animate="2">Orginisation types</h1>
+</header>
+
+
+<div class="wrapper hidden">
+
+
+    <div data-iquiz="1" data-params="" data-type="intro" data-answer="" data-state=""
+         class="js-quiz container--iquiz -hidden">
+        <article class="article">
+            <section class="startscreen iquiz">
+
+
+                <img height="120px" src="../images/_nav/C&G_Logo_Group.jpg"/>
+                <h1 data-animate="2" data-type="slide-up">QUIZ : Digital and social media</h1>
+                <!--<h3 data-animate="3" data-type="slide-up"><b>Test Your Knowledge</b></h3>-->
+                <h3 data-animate="4" data-type="slide-up">This <b>'Test Your Knowledge'</b> quiz contains<br><b>4</b> questions covering material from<br>the <b>Digital and social media</b> unit.</h3>
+
+                <button data-animate="5" data-type="slide-up" class="js-begin-quiz startquiz__button" style="margin-top: 20px">
+                    <span class="nav-bar__button-text">START QUIZ</span>
+                </button>
+
+                <figure data-animate="6" class="shape-30 minmax-1" style="bottom: 50px; right: -50px; z-index: -1">
+                    <img src="iquiz_assets/images/_m_quizKeyboard.png"/>
+                    <figure data-animate="7" class="shape-60" style="opacity: .5; bottom: 0; left: -30%">
+                        <img src="../images/_shapes/dia-p4.svg">
+                    </figure>
+                </figure>
+                <figure class="shape-10 minmax-2" data-animate="8" style="opacity:.6; left:30px; bottom: 50px;">
+                    <img src="../images/_shapes/cir-s4.svg"/>
+                </figure>
+
+
+            </section>
+        </article>
+    </div>
+
+
+    <!--QUESTION 1-->
+
+    <div data-iquiz="1" data-params="{#multipleAnswers#: #false#, #maxScore#: #1#}" data-type="click-text-mc"
+         data-answer="[1]" data-state="" class="js-quiz container--iquiz -hidden">
+        <article class="article">
+            <section>
+
+                <div class="iquiz_Main">
+
+                    <div data-animate="1" data-type="slide-down" class="iquiz_questionText">
+                        <h1>QUESTION 1</h1>
+                        <h2>Why do most organisations have a strict social media policy for employees?</h2>
+                        <h3>Choose one answer from the choices below.</h3>
+                    </div>
+
+                    <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                        <div class="js-highlight quiz_highlighter"></div>
+                        <div data-answer="1" class="js-answer quiz_clickText mc1">To safeguard their company image</div>
+                        <div data-answer="2" class="js-answer quiz_clickText mc1">To train staff on how to respond to complaints</div>
+                        <div data-answer="3" class="js-answer quiz_clickText mc1">To ensure that personal pictures are not offensive</div>
+                        <div data-answer="4" class="js-answer quiz_clickText mc1">To gain maximum exposure about the company</div>
+                    </div>
+
+                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
+
+                </div>
+
+                <div class="iquiz_popBG"></div>
+                <div class="iquiz_popContainer">
+                    <div class="iquiz_popClose">
+                        <a href="javascript:void(0)">&times;</a>
+                    </div>
+                    <div class="iquiz_popPanel">
+                        <div class="iquiz_popTitle">QUESTION 1</div>
+
+                        <div class="iquiz_innerScroll">
+                            <div class="iquiz_feedback correct">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_tickInCircle.png"></div>
+                                    <h1>Correct Answer</h1>
+                                    <h1>Well Done</h1>
+                                    <h3>Move onto the next question.</h3>
+
+                                </div>
+                            </div>
+
+                            <div class="iquiz_feedback wrong">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png"></div>
+                                    <h1>Wrong Answer</h1>
+                                    <h2>Close this feedback and have another attempt - or move onto the next question.</h2>
+                                    <h3>TIP : Check your own organisation’s social media policy.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                </div>
+                <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
+                    <img src="../images/_shapes/dec-s5.svg"/>
+                </figure>
+
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
+                    <img src="../images/_shapes/dia-s10.svg"/>
+                </figure>
+
+            </section>
+        </article>
+    </div>
+
+
+    <!--QUESTION 2-->
+
+
+    <div data-iquiz="2" data-params="{#multipleAnswers#: #false#, #maxScore#: #2#}" data-type="click-text-mc" data-answer="[4]" data-state="" class="js-quiz container--iquiz -hidden">
+        <article class="article">
+            <section>
+
+                <div class="iquiz_Main">
+
+                    <div data-animate="1" data-type="slide-down" class="iquiz_questionText">
+                        <h1>QUESTION 2</h1>
+                        <h2>What is a feature of ‘traditional’ media?</h2>
+                        <h3>Choose one answer from the choices below.</h3>
+                    </div>
+
+                    <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                        <div class="js-highlight quiz_highlighter"></div>
+                        <div data-answer="1" class="js-answer quiz_clickText mc1">Bottom up reporting</div>
+                        <div data-answer="2" class="js-answer quiz_clickText mc1">User-generated content</div>
+                        <div data-answer="3" class="js-answer quiz_clickText mc1">Unstructured layouts</div>
+                        <div data-answer="4" class="js-answer quiz_clickText mc1">Controlled content</div>
+                    </div>
+
+                    <div data-animate="3" data-offset="0" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
+
+                </div>
+
+                <div class="iquiz_popBG"></div>
+                <div class="iquiz_popContainer">
+                    <div class="iquiz_popClose">
+                        <a href="javascript:void(0)">&times;</a>
+                    </div>
+                    <div class="iquiz_popPanel">
+                        <div class="iquiz_popTitle">QUESTION 2</div>
+
+                        <div class="iquiz_innerScroll">
+                            <div class="iquiz_feedback correct">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_tickInCircle.png"></div>
+                                    <h1>Correct Answer</h1>
+                                    <h1>Well Done</h1>
+                                    <h3>Move onto the next question.</h3>
+                                </div>
+                            </div>
+
+                            <div class="iquiz_feedback wrong">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png"></div>
+                                    <h1>Wrong Answer</h1>
+                                    <h2>Close this feedback and have another attempt - or move onto the next question.</h2>
+                                    <h3>TIP : ‘Traditional’ media refers to printed publications such as newspapers.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                </div>
+
+                <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
+                    <img src="../images/_shapes/cir-p1.svg"/>
+                </figure>
+
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
+                    <img src="../images/_shapes/hex-s10.svg"/>
+                </figure>
+
+            </section>
+        </article>
+    </div>
+
+
+    <!--QUESTION 3-->
+
+
+    <div data-iquiz="3" data-params="{#multipleAnswers#: #false#, #maxScore#: #1#}" data-type="click-text-mc" data-answer="[3]" data-state="" class="js-quiz container--iquiz -hidden">
+
+        <article class="article">
+
+            <section>
+
+                <div class="iquiz_Main">
+
+                    <div data-animate="1" data-type="slide-down" class="iquiz_questionText">
+                        <h1>QUESTION 3</h1>
+                        <h2>What would a business network such as LinkedIn be most useful for?</h2>
+                        <h3>Choose one answer from the choices below.</h3>
+                    </div>
+
+                    <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                        <div class="js-highlight quiz_highlighter"></div>
+                        <div data-answer="1" class="js-answer quiz_clickText mc1">Posting information about your organisation</div>
+                        <div data-answer="2" class="js-answer quiz_clickText mc1">Publicising forthcoming events</div>
+                        <div data-answer="3" class="js-answer quiz_clickText mc1">Making contact with other professionals</div>
+                        <div data-answer="4" class="js-answer quiz_clickText mc1">Sharing pictures and videos</div>
+                    </div>
+
+                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
+
+                </div>
+
+                <div class="iquiz_popBG"></div>
+                <div class="iquiz_popContainer">
+                    <div class="iquiz_popClose">
+                        <a href="javascript:void(0)">&times;</a>
+                    </div>
+                    <div class="iquiz_popPanel">
+                        <div class="iquiz_popTitle">QUESTION 3</div>
+
+                        <div class="iquiz_innerScroll">
+                            <div class="iquiz_feedback correct">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_tickInCircle.png"></div>
+                                    <h1>Correct Answer</h1>
+                                    <h1>Well Done</h1>
+                                    <h3>Move onto the next question.</h3>
+                                </div>
+                            </div>
+
+                            <div class="iquiz_feedback wrong">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png"></div>
+                                    <h1>Wrong Answer</h1>
+                                    <h2>Close this feedback and have another attempt - or move onto the next question.</h2>
+                                    <h3>TIP : Research what different social media platforms are used for.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">NEXT QUESTION</div>
+                </div>
+
+                <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
+                    <img src="../images/_shapes/dec-s5.svg"/>
+                </figure>
+
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:1; left:5%; z-index: -1;">
+                    <img src="../images/_shapes/dia-s10.svg"/>
+                </figure>
+
+            </section>
+        </article>
+    </div>
+
+
+    <!--QUESTION 4-->
+
+    <div data-iquiz="4" data-params="{#multipleAnswers#: #false#, #maxScore#: #1#}" data-type="click-text-mc" data-answer="[2]" data-state="" class="js-quiz container--iquiz -hidden">
+
+        <article class="article">
+
+            <section>
+
+                <div class="iquiz_Main">
+
+                    <div data-animate="1" data-type="slide-down" class="iquiz_questionText">
+                        <h1>QUESTION 4</h1>
+                        <h2>Why should you be careful about what you post on social media?</h2>
+                        <h3>Choose one answer from the choices below.</h3>
+                    </div>
+
+                    <div id='g1' data-animate="2" data-type="slide-up" class="js-answer-group quiz_clickText_container">
+                        <div class="js-highlight quiz_highlighter"></div>
+                        <div data-answer="1" class="js-answer quiz_clickText mc1">Because it can enhance your career prospects</div>
+                        <div data-answer="2" class="js-answer quiz_clickText mc1">Because once out there, it never goes away</div>
+                        <div data-answer="3" class="js-answer quiz_clickText mc1">Because it means engaging with friends and family</div>
+                        <div data-answer="4" class="js-answer quiz_clickText mc1">Because it demonstrates your personality</div>
+                    </div>
+
+                    <div data-animate="3" data-type="zoom-in" class="js-submit iquiz_submitBtn disabled">SUBMIT</div>
+
+                </div>
+
+                <div class="iquiz_popBG"></div>
+                <div class="iquiz_popContainer">
+                    <div class="iquiz_popClose">
+                        <a href="javascript:void(0)">&times;</a>
+                    </div>
+                    <div class="iquiz_popPanel">
+                        <div class="iquiz_popTitle">QUESTION 4</div>
+
+                        <div class="iquiz_innerScroll">
+                            <div class="iquiz_feedback correct">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_tickInCircle.png"></div>
+                                    <h1>Correct Answer</h1>
+                                    <h1>Well Done</h1>
+                                    <h3>Move onto the next question.</h3>
+                                </div>
+                            </div>
+
+                            <div class="iquiz_feedback wrong">
+                                <div class="iquiz_questionText">
+                                    <div class="feedbackTickCross"><img height="100px" src="iquiz_assets/images/quiz_crossInCircle.png"></div>
+                                    <h1>Wrong Answer</h1>
+                                    <h2>Close this feedback and have another attempt - or select 'END QUIZ'.</h2>
+                                    <h3>TIP : Consider the shelf life of internet content.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="js-next-question iquiz_submitBtn" id="iqFeedbackNext">END QUIZ</div>
+                </div>
+
+                <figure class="shape-50" data-animate="*" style="width: 400px; opacity: 0.5; right: -60px; top: -240px; z-index: -1;">
+                    <img src="../images/_shapes/pen-s16.svg"/>
+                </figure>
+
+                <figure class="shape-10" data-animate="*" style="width:100px;position:relative;opacity:.5; left:5%; z-index: -1;">
+                    <img src="../images/_shapes/cir-p3.svg"/>
+                </figure>
+
+            </section>
+        </article>
+    </div>
+
+
+    <div data-iquiz="6" data-params="" data-type="results" data-answer="" data-state="" class="js-quiz container--iquiz -hidden">
+
+        <article class="article">
+
+            <section class="startscreen iquiz -end">
+
+                <!--<img data-animate="1" height="120px" src="../images/_nav/C&G_Logo_Group.jpg" />-->
+                <h1 data-animate="2" data-type="slide-up"><b>Well done</b></h1>
+                <h2 data-animate="3" data-type="slide-up">You have completed the course</h2>
+                <h1 data-animate="4" data-type="slide-up"><b>Digital and social media</b></h1>
+
+                <figure data-animate="5" class="shape-30 minmax-1" style="position:relative; z-index: -1; margin: 0 auto;">
+                    <img src="iquiz_assets/images/_m_quizKeyboard.png"/>
+                    <figure data-animate="6" class="shape-70" style="opacity: .5; bottom: 0; left: -40%">
+                        <img src="../../images/_shapes/dia-p4.svg">
+                    </figure>
+                    <figure class="shape-20" data-animate="7" style="opacity:.6; left:100%; top: 0px;">
+                        <img src="../images/_shapes/cir-s4.svg"/>
+                    </figure>
+                </figure>
+
+            </section>
+        </article>
+    </div>
+
+
+</div>
+
+<script src="../libs/iquiz/js/iquiz.js"></script>
+</body>
+
+</html>
