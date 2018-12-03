@@ -35,9 +35,9 @@ class App {
     this.allQuestions;
     this.currentNodeSelection;
     this.display;
-    this.quizFirstPage = 22; // TODO 1st quiz page
-    this.quizCurrentPage = 22; // TODO 1st quiz page
-    this.slidesCurrentPage = 0; // TODO 1st slide page
+    this.quizFirstPage;
+    this.quizCurrentPage;
+    this.slidesCurrentPage = 0;
     this.slideCount = 0;
     this.quizCount = 0;
     this.displayModeBtns = document.getElementsByName("displayMode");
@@ -103,6 +103,9 @@ class App {
     [...this.allQuestions] = document.querySelectorAll(".container--iquiz");
     this.slideCount = this.allSlides.length;
     this.quizCount = this.allQuestions.length;
+
+    this.quizFirstPage = this.slideCount;
+    this.quizCurrentPage = this.slideCount;
   }
   hidePages() {
     // Set wrapper and pages to hidden
@@ -236,6 +239,9 @@ class App {
 
   startQuiz(e) {
     console.log("****** startQuiz ", e.target);
+    if (!this.quizFirstPage) {
+      return;
+    }
     this.display = "quiz";
     this.currentNodeSelection = this.allQuestions;
     const PageNum = this.quizFirstPage;
