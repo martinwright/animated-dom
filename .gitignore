@@ -72,3 +72,5 @@ books/*/*
 /www/answers/Contents
 /build
 /packs
+
+.DS_Store
