@@ -1,5 +1,5 @@
 //import "babel-polyfill";
-import { $on, qs, $log } from "./util";
+import { $on, qs, $log, $logt } from "./util";
 import DocReady from "./windowLoaded";
 import Timeline from "./timeline";
 import { SCORM } from "pipwerks-scorm-api-wrapper";
@@ -316,7 +316,6 @@ class App {
     return node;
   }
 
-
   updateProgressBar() {
     //$log("updateProgressBar quiz ", this.display);
 
@@ -439,9 +438,35 @@ class App {
     if (this.shapeElementTimeline) this.shapeElementTimeline.startAmnimation();
   }
 
-  createAnimationTimelines() {
-    //$log("createAnimationTimelines");
+  disableNav() {
+    qs(".js-next").setAttribute("disabled", "");
+    qs(".js-back").setAttribute("disabled", "");
+  }
+  enableNav() {
+    qs(".js-next").removeAttribute("disabled");
+    qs(".js-back").removeAttribute("disabled");
+  }
 
+  onTimelineStarted(evt) {
+    $log(">>>>>>>>>>>>>> onTimelineStarted ", evt);
+    this.disableNav();
+  }
+  onTimelineFinished(evt) {
+    $log(">>>>>>>>>>>>>> onTimelineFinished ", evt);
+    let textComplete = true,
+      shapesComplete = true;
+
+    if (this.textElementTimeline && this.textElementTimeline.status !== 'complete') {
+      textComplete = false
+    }
+    if (this.shapeElementTimeline && this.shapeElementTimeline.status !== 'complete') {
+      shapesComplete = false
+    }
+    if (textComplete && shapesComplete) this.enableNav();
+  }
+
+  createAnimationTimelines() {
+    $log(">>>>>>>>>>>>>> createAnimationTimelines");
     const defaultDuration = "200",
       defaultOffset = "-=50",
       currentPageNum = this.getPageNumber(),
@@ -453,9 +478,7 @@ class App {
 
     const pageNamePrefix = this.display === "slides" ? "#page-" : "#question-";
 
-    const [...currentPageNodelist] = document.querySelectorAll(
-      pageNamePrefix + currentPageNum + " [data-animate]"
-    ),
+    const [...currentPageNodelist] = document.querySelectorAll(pageNamePrefix + currentPageNum + " [data-animate]"),
       [...lefttNodelist] = document.querySelectorAll(
         pageNamePrefix + (currentPageNum - 1) + " [data-animate]"
       ),
@@ -464,9 +487,8 @@ class App {
       );
     let completeTextNodeList, completeShapeNodeList;
 
-    console.log("****************** isLeft ", isLeft);
-
-    console.log("****************** isRight ", isRight);
+    $log("****************** isLeft ", isLeft);
+    $log("****************** isRight ", isRight);
 
     if (
       isLeft &&
@@ -475,9 +497,7 @@ class App {
       !nextPageNode.classList.contains("hidden")
     ) {
       // Combine next page nodes
-      //console.log('****** nextPageNode ', nextPageNode.classList.contains('hidden'))
-      //console.log('****** nextPageNode ', nextPageNode)
-
+      $log("****************** Combine next page nodes ");
       const currentPageTextNodelistSorted = getTextNodes(
         currentPageNodelist,
         currentPageNum
@@ -510,7 +530,7 @@ class App {
       !prevPageNode.classList.contains("hidden")
     ) {
       // Combine previous page nodes
-      console.log("****************** Combine previous page nodes ");
+      $log("****************** Combine previous page nodes ");
       const currentPageTextNodelistSorted = getTextNodes(
         currentPageNodelist,
         currentPageNum
@@ -538,12 +558,8 @@ class App {
       ];
     } else {
       // This page nodes only
-      console.log("****************** This page nodes only ");
+      $log("****************** This page nodes only ");
       completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
-      console.log(
-        "****************** completeTextNodeList ",
-        completeTextNodeList
-      );
       completeShapeNodeList = getShapeNodes(
         currentPageNodelist,
         currentPageNum
@@ -585,194 +601,26 @@ class App {
     }
 
     if (completeTextNodeList.length) {
+      $logt(completeTextNodeList, 'completeTextNodeList');
       this.textElementTimeline = new Timeline(
         completeTextNodeList,
         this.animationJson
       );
+      this.textElementTimeline.on('started', this.onTimelineStarted.bind(this));
+      this.textElementTimeline.on('complete', this.onTimelineFinished.bind(this));
       this.textElementTimeline.setup();
     }
     if (completeShapeNodeList.length) {
+      $logt(completeShapeNodeList, 'completeShapeNodeList');
       this.shapeElementTimeline = new Timeline(
         completeShapeNodeList,
         this.animationJson
       );
+      this.shapeElementTimeline.on('started', this.onTimelineStarted.bind(this));
+      this.shapeElementTimeline.on('complete', this.onTimelineFinished.bind(this));
       this.shapeElementTimeline.setup();
     }
 
     return;
   }
 }
-
-/*document.querySelector('.nav-bar .js-play').onclick = (e) => {
-            myTimeline.play()
-        };
-        document.querySelector('.nav-bar .js-pause').onclick = (e) => {
-            myTimeline.pause()
-        };
-        document.querySelector('.nav-bar .js-restart').onclick = (e) => {
-            myTimeline.restart()
-        };
-        document.querySelector('.nav-bar .js-back').onclick = (e) => {
-           console.log('back')
-            window.location.href = "index.html";
-        };
-        document.querySelector('.nav-bar .js-next').onclick = (e) => {
-            console.log('next')
-            window.location.href = "page2.html";
-        };*/
-
-//data-step="9"
-//data-type="right-slide"
-//data-duration="200"
-//data-offset="-=50"
-
-//const nodesArray = [...Array.from(document.querySelectorAll("[data-step]"))];
-
-/*function renumber(obj, n) {
-            console.log('renumber ', obj, n);
-            obj.dataset.order = (n - parseInt(obj.dataset.step)).toString();
-        }*/
-
-// TODO table animation
-/* let tCols = 4, tRows = 6;
-         for (let i = 5; i >= 0; i--) {
-             console.log('nth ', (i * 4) + 1, (i * 4) + 4);
-
-             let start = (i * 4) + 1, end = (i * 4) + 4,
-                 offset = (end === 24 && start === 21) ? '0' : '-=25';
-
-             Array.from(document.querySelectorAll(`.cell:nth-child(n+${start}):nth-child(-n+${end})`)).forEach(function (el) {
-                 myTimeline.add({
-                     targets: el,
-                     opacity: '0',
-                     translateX: '100',
-                     easing: 'easeInQuad',
-                     duration: 50,
-                     offset: offset
-                 });
-             });
-         }*/
-
-// TODO various anim types
-/*Array.from(myArr)
-            .forEach(function (el) {
-                let elTarget = `[data-step="${el.dataset.step}"]`,
-                    elOffset = el.dataset.offset,
-                    elDuration = el.dataset.duration;
-                animationStep++;
-
-                console.log('elDuration', elDuration);
-
-                switch (el.dataset.type) {
-                    case 'fade':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: 0,
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: elOffset,
-                            scale: .5
-                            //direction: 'reverse'
-                        });
-                        break;
-                    case 'right-slide':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: '0',
-                            translateX: '150',
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: elOffset
-                        });
-                        break;
-                    case 'left-slide':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: '0',
-                            translateX: '-150',
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: elOffset
-                            //direction: 'reverse'
-                        });
-                        break;
-                    case 'left-roll':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: '0',
-                            //translateX: '20em',
-                            rotate: '-1turn',
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: elOffset,
-                            scale: 4,
-                            translateX: '350'
-                            /!*rotate: {
-                                value: 25,
-                                duration: 2000,
-                                easing: 'easeInOutSine'
-                            }*!/
-                            //direction: 'reverse'
-                        });
-                        break;
-                    case 'right-roll':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: '0',
-                            translateX: '20em',
-                            rotate: '2turn',
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: Number(elOffset)
-                            //scale: 4
-                            //translateX: '-350'
-                            /!*rotate: {
-                                value: 25,
-                                duration: 2000,
-                                easing: 'easeInOutSine'
-                            }*!/
-                            //direction: 'reverse'
-                        });
-                        break;
-                    case 'roll-from-left':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: '0',
-                            //translateX: '20em',
-                            rotate: '-2turn',
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: elOffset,
-                            scale: 4,
-                            translateY: '-1350'
-                            /!*rotate: {
-                                value: 25,
-                                duration: 2000,
-                                easing: 'easeInOutSine'
-                            }*!/
-                            //direction: 'reverse'
-                        });
-                        break;
-
-                    case 'top-roll':
-                        myTimeline.add({
-                            targets: elTarget,
-                            opacity: 0.1,
-                            //translateX: '20em',
-                            rotate: 270,
-                            easing: 'easeInQuad',
-                            duration: elDuration,
-                            offset: elOffset,
-                            //scale: 4,
-                            translateY: 1200,
-                            translateX: 1200
-                            /!*rotate: {
-                                value: 45,
-                                duration: 800,
-                                easing: 'easeInOutSine'
-                            },*!/
-                            //direction: 'reverse'
-                        });
-                        break;
-                }
-            });*/
