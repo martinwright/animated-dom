@@ -538,12 +538,8 @@ class App {
       ];
     } else {
       // This page nodes only
-      console.log("****************** This page nodes only ");
+      $log("****************** This page nodes only ");
       completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
-      console.log(
-        "****************** completeTextNodeList ",
-        completeTextNodeList
-      );
       completeShapeNodeList = getShapeNodes(
         currentPageNodelist,
         currentPageNum
@@ -552,7 +548,7 @@ class App {
 
     function getTextNodes(nodes, page, counter = 0) {
       return nodes
-        .filter(node => /P|H1|H2|H3|H4|H5|LI|UL|DIV|BUTTON/.test(node.nodeName))
+        .filter(node => /P|H1|H2|H3|H4|H5|LI|UL|OL|DIV|BUTTON/.test(node.nodeName))
         .map(node => {
           let step = node.getAttribute("data-animate");
           if (!step || step === "*" || step === "") {
