@@ -452,7 +452,7 @@ gulp.task('images', () => {
 /* Styles
 /* ----------------- */
 gulp.task('styles', () => {
-    return gulp.src('./src/scss/**/*.scss')
+    return gulp.src('./src/scss/**/styles.scss')
         .pipe(plugins().sourcemaps.init())
         .pipe(plugins().sass().on('error', plugins().sass.logError))
         .pipe(concat('style.css')) // this is what was missing
