@@ -1,11 +1,17 @@
-import { qs, $loh } from "./util";
+import { qs, $log, $on } from "./util";
+import EventEmitter from 'events'
+import Event from 'events'
 
-export default class Timeline {
+export default class Timeline extends Event {
   constructor(el, anim) {
+    super();
     //console.log('????????? anim', anim);
     this.elementsList = el;
     this.animationJson = anim;
     this.timeline;
+    this.status = null;
+    // Create a new event
+    //this.timelineStartedEvent = new Event('started');
   }
 
   getAnimProp(page, step, prop, defaultVal) {
@@ -45,8 +51,8 @@ export default class Timeline {
   setup() {
     //console.log('????????? setAnimations setup');
     let defaultDuration = this.animationJson.params
-        ? this.animationJson.params.defaultDuration
-        : "300",
+      ? this.animationJson.params.defaultDuration
+      : "300",
       defaultType = "slide-left",
       defaultOffset = this.animationJson.params
         ? +this.animationJson.params.defaultOffset
@@ -57,7 +63,8 @@ export default class Timeline {
 
     this.timeline = anime.timeline({
       //direction: 'reverse',
-      autoplay: false
+      autoplay: false,
+      el: 's'
     });
 
     this.elementsList.forEach((el, index) => {
@@ -101,8 +108,8 @@ export default class Timeline {
       //console.log('animPage: ', animPage);
       //defaultOffset = defaultOffset + 500;
       let offset =
-          el.dataset.offset ||
-          this.getAnimProp(animPage, animStep, "offset", defaultOffset),
+        el.dataset.offset ||
+        this.getAnimProp(animPage, animStep, "offset", defaultOffset),
         duration =
           el.dataset.duration ||
           this.getAnimProp(animPage, animStep, "duration", defaultDuration),
@@ -262,32 +269,38 @@ export default class Timeline {
           break;
       }
 
-      console.log(
-        "#################### myTimeline this.timeline ",
-        this.timeline
-      );
+
     });
+
+    console.log("#################### myTimeline this.timeline ", this.timeline);
 
     this.timeline.begin = () => {
       console.log("#################### myTimeline begin ");
+      this.status = 'started';
+      this.emit('started', 'started');
 
       let wait = setTimeout(() => {
         this.elementsList.forEach((el, index) => {
           el.classList.remove("hidden");
         });
+
       }, 10);
     };
 
-    this.timeline.complete = function() {
+    this.timeline.complete = (e) => {
+      $log('timeline.complete ', e)
       // TODO
       //let wrapper = document.getElementsByClassName("wrapper")[0];
       //wrapper.classList.remove('hidden');
 
       //(document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
+      console.log("#################### myTimeline complete ");
+      this.status = 'complete';
+      this.emit('complete', 'complete');
 
       [].slice
         .call(document.getElementsByClassName("cell"))
-        .forEach(function(elem) {
+        .forEach(function (elem) {
           //elem.classList.add('--bottom-border');
           elem.style["border-right-color"] = null;
           elem.style["border-left-color"] = null;
