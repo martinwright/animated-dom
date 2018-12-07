@@ -1598,22 +1598,24 @@ div.table--t7-u2-14,
 div.table--t12-u1-23,
 div.table--t12-u1-24,
 div.table--t12-u1-25 {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 1fr 1fr;
+  //display: grid;
+  //grid-gap: 0;
+  //grid-template-columns: 1fr 1fr;
+  @include tables(2, 'right');
+  //min-width: 40em;
   font-size: $table-font-size;
 
   .cell {
     &:nth-child(even) {
-      background-color: $table-fill-col;
+      //background-color: $table-fill-col;
     }
 
     &:nth-child(odd) {
       background-color: $table-fill-col2;
-      border-right: $table-line;
+      //border-right: $table-line;
     }
 
-    padding: 0.5rem;
+    //padding: 0.5rem;
   }
 
   h3,
@@ -1934,6 +1936,8 @@ div.table--t5-u1-25 {
   display: grid;
   grid-gap: 0;
   grid-template-columns: 80px 1fr 1fr 1fr 1fr 1fr 1fr;
+  //@include tables(7, 'top');
+  //min-width: 30em;
   font-size: $table-font-size;
   text-align: center;
 
@@ -1973,6 +1977,8 @@ div.table--t10-u3-12 {
   display: grid;
   grid-gap: 0;
   grid-template-columns: 2fr 4fr 6fr;
+  //@include tables(3, 'top', (10%, 20%, 70%));
+  //min-width: 60em;
   font-size: $table-font-size;
   text-align: left;
 
@@ -2312,28 +2318,30 @@ div.table--t13-u2-20 {
 
 
 div.table--t10-u2-11 {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 3fr 1fr 1fr;
+  //display: grid;
+  //grid-gap: 0;
+  //grid-template-columns: 3fr 1fr 1fr;
+  @include tables(3, 'none', (40%, 30%, 30%));
+  //min-width: 40em;
   font-size: $table-font-size;
 
   .cell {
-    border-left: $table-line;
+    //border-left: $table-line;
 
-    &:nth-child(-n + 3) {
-      border-top: $table-line;
-    }
+    //&:nth-child(-n + 3) {
+    //  border-top: $table-line;
+    //}
 
-    &:nth-child(3n + 2) {
-      border-left: $table-line;
-    }
+    //&:nth-child(3n + 2) {
+    //  border-left: $table-line;
+    //}
+    //
+    //&:nth-child(3n + 1) {
+    //  border-left: none;
+    //}
 
-    &:nth-child(3n + 1) {
-      border-left: none;
-    }
-
-    border-bottom: $table-line;
-    padding: 0.5rem;
+    //border-bottom: $table-line;
+    //padding: 0.5rem;
   }
 }
 
@@ -2342,6 +2350,7 @@ div.table--t12-u1-7 {
   display: grid;
   grid-gap: 0;
   grid-template-columns: 1fr 2fr 2fr;
+  //@include tables(3, 'top', (20%, 40%, 40%));
   font-size: $table-font-size;
 
   .cell {
