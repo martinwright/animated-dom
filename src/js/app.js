@@ -443,8 +443,9 @@ class App {
     qs(".js-back").setAttribute("disabled", "");
   }
   enableNav() {
-    qs(".js-next").removeAttribute("disabled");
-    qs(".js-back").removeAttribute("disabled");
+    this.resetNavigationStates();
+    //qs(".js-next").removeAttribute("disabled");
+    //qs(".js-back").removeAttribute("disabled");
   }
 
   onTimelineStarted(evt) {
