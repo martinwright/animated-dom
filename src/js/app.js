@@ -157,12 +157,18 @@ class App {
       el.onclick = e => this.startQuiz(e);
     });
 
-    Array.from(this.displayModeBtns).forEach(v =>
-      v.addEventListener("change", e => {
+    Array.from(this.displayModeBtns)
+      .forEach(v => v.addEventListener("change", e => {
         this.displayModeChanged(e.currentTarget.value);
-      })
-    );
+      }));
     $on(window, "hashchange", this.hashChangedHandler.bind(this));
+    qs("body").addEventListener("touchmove", this.freezeVp, false);
+    qs(".l-nav-bar").addEventListener("touchmove", this.freezeVp, false);
+  }
+
+  freezeVp(e) {
+    console.log("APP freezeVp ", e);
+    e.preventDefault();
   }
 
   isNextPageVisible() {
@@ -444,16 +450,14 @@ class App {
   }
   enableNav() {
     this.resetNavigationStates();
-    //qs(".js-next").removeAttribute("disabled");
-    //qs(".js-back").removeAttribute("disabled");
   }
 
   onTimelineStarted(evt) {
-    $log(">>>>>>>>>>>>>> onTimelineStarted ", evt);
+    //$log(">>>>>>>>>>>>>> onTimelineStarted ", evt);
     this.disableNav();
   }
   onTimelineFinished(evt) {
-    $log(">>>>>>>>>>>>>> onTimelineFinished ", evt);
+    //$log(">>>>>>>>>>>>>> onTimelineFinished ", evt);
     let textComplete = true,
       shapesComplete = true;
 
@@ -467,7 +471,7 @@ class App {
   }
 
   createAnimationTimelines() {
-    $log(">>>>>>>>>>>>>> createAnimationTimelines");
+    //$log(">>>>>>>>>>>>>> createAnimationTimelines");
     const defaultDuration = "200",
       defaultOffset = "-=50",
       currentPageNum = this.getPageNumber(),
@@ -488,8 +492,8 @@ class App {
       );
     let completeTextNodeList, completeShapeNodeList;
 
-    $log("****************** isLeft ", isLeft);
-    $log("****************** isRight ", isRight);
+    //$log("****************** isLeft ", isLeft);
+    //$log("****************** isRight ", isRight);
 
     if (
       isLeft &&
@@ -498,7 +502,7 @@ class App {
       !nextPageNode.classList.contains("hidden")
     ) {
       // Combine next page nodes
-      $log("****************** Combine next page nodes ");
+      //$log("****************** Combine next page nodes ");
       const currentPageTextNodelistSorted = getTextNodes(
         currentPageNodelist,
         currentPageNum
@@ -531,7 +535,7 @@ class App {
       !prevPageNode.classList.contains("hidden")
     ) {
       // Combine previous page nodes
-      $log("****************** Combine previous page nodes ");
+      //$log("****************** Combine previous page nodes ");
       const currentPageTextNodelistSorted = getTextNodes(
         currentPageNodelist,
         currentPageNum
@@ -559,7 +563,7 @@ class App {
       ];
     } else {
       // This page nodes only
-      $log("****************** This page nodes only ");
+      //$log("****************** This page nodes only ");
       completeTextNodeList = getTextNodes(currentPageNodelist, currentPageNum);
       completeShapeNodeList = getShapeNodes(
         currentPageNodelist,
@@ -602,7 +606,7 @@ class App {
     }
 
     if (completeTextNodeList.length) {
-      $logt(completeTextNodeList, 'completeTextNodeList');
+      //$logt(completeTextNodeList, 'completeTextNodeList');
       this.textElementTimeline = new Timeline(
         completeTextNodeList,
         this.animationJson
@@ -612,7 +616,7 @@ class App {
       this.textElementTimeline.setup();
     }
     if (completeShapeNodeList.length) {
-      $logt(completeShapeNodeList, 'completeShapeNodeList');
+      //$logt(completeShapeNodeList, 'completeShapeNodeList');
       this.shapeElementTimeline = new Timeline(
         completeShapeNodeList,
         this.animationJson
