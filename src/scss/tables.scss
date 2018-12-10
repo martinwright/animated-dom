@@ -169,6 +169,15 @@ div.table--t10-u1-4 {
   min-width: 32em;
 }
 
+div.table--t2-u1-18 {
+  @include tables(1, 'top');
+  min-width: 30em;
+  .cell > span {
+    border-left: solid 1px #33cbe6;
+    float: right;
+    padding: 0 5px;
+  }
+}
 
 
 /* --------- */
@@ -1214,47 +1223,7 @@ div.table--t2-u1-14 {
   }
 }
 
-div.table--t2-u1-18 {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: 1fr 1fr;
-  font-size: $table-font-size;
 
-  .cell {
-    &:nth-child(1) {
-      background-color: $table-fill-col;
-      border-top: $table-line;
-    }
-    &:nth-child(3) {
-      border-left: $table-line;
-    }
-
-    border-bottom: $table-line;
-    padding: 0.5rem;
-
-    p {
-      margin: 0 0 0.8em 0;
-
-      &:last-child {
-        margin: 0;
-      }
-    }
-  }
-
-  h3 {
-    display: flex;
-    align-self: center;
-    justify-content: flex-start;
-    width: 100%;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  .span-item1 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-}
 
 div.table--t2-u1-19,
 div.table--t12-u1-15 {
