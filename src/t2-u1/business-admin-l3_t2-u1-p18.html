@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,84 +14,95 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="1">Personal development planning</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="1">Personal development planning</h1>
+    </header>
 
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article id="page-1" class="article">
+            <article class="article">
 
-            <section class="col-60">
+                <section class="col-60">
 
-                <h4 class="sub-heading"
-                    data-animate="2">2 Sample personal development plan</h4>
+                    <h4 class="sub-heading" data-animate="2">2 Sample personal development plan</h4>
 
-                <p data-animate="3">Here is an example of a PDP for Alex Smith, a senior supervisor:</p>
+                    <p data-animate="3">Here is an example of a PDP for Alex Smith, a senior supervisor:</p>
 
-                <div class="table--t2-u1-18">
-                    <div class="cell span-item1"><h3>Personal development plan</h3></div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
 
-                    <div class="cell"><strong>Name:</strong> Alex Smith</div>
-                    <div class="cell"><strong>Job title:</strong> Senior supervisor (one of three)</div>
+                                <div class="table--t2-u1-18" data-animate="table">
+                                    <div class="cell">
+                                        <h3>Personal development plan</h3>
+                                    </div>
 
-                    <div class="cell span-item1">
-                        <p><strong>Relevant professional and vocational qualifications:</strong></p>
-                        <p>A level business studies, GCSE economics</p>
-                        <p>Qualified first-aider</p>
-                        <p>PTTLS (training qualification), qualified H&S induction trainer</p>
-                        <p>Level two team leading</p>
-                        <p>Level two customer service</p>
-                        <p>Level three diploma in management (part of the way through)</p>
+                                    <div class="cell"><strong>Name:</strong> Alex Smith<span class=""><strong>Job
+                                                title:</strong> Senior supervisor (one of three)</span></div>
+
+
+                                    <div class="cell">
+                                        <p><strong>Relevant professional and vocational qualifications:</strong></p>
+                                        <p>A level business studies, GCSE economics</p>
+                                        <p>Qualified first-aider</p>
+                                        <p>PTTLS (training qualification), qualified H&S induction trainer</p>
+                                        <p>Level two team leading</p>
+                                        <p>Level two customer service</p>
+                                        <p>Level three diploma in management (part of the way through)</p>
+                                    </div>
+
+                                    <div class="cell"><strong>Date:</strong> 1 April 2017</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="cell span-item1"><strong>Date:</strong> 1 April 2017</div>
-                </div>
-
-                <figure class="shape-15" data-animate="8" style="position: relative; opacity:.9; left: 110%; top: 0%;">
-                    <img src="../images/_shapes/pen-s14.svg" />
-                </figure>
-
-                <figure class="shape-40" data-animate="8" style="opacity:.7; right: -10%; top: -15%; z-index: -1">
-                    <img src="../images/_shapes/dec-s16.svg" />
-                </figure>
-
-                <figure class="shape-20" data-animate="9" style="opacity:.7; right: -10%; top: 50%; z-index: -1">
-                    <img src="../images/_shapes/squ-p4.svg" />
-                </figure>
 
 
-            </section>
+                    <figure class="shape-15" data-animate="8" style="position: relative; opacity:.9; left: 110%; top: 0%;">
+                        <img src="../images/_shapes/pen-s14.svg" />
+                    </figure>
 
-        </article>
+                    <figure class="shape-40" data-animate="8" style="opacity:.7; right: -10%; top: -15%; z-index: -1">
+                        <img src="../images/_shapes/dec-s16.svg" />
+                    </figure>
 
+                    <figure class="shape-20" data-animate="9" style="opacity:.7; right: -10%; top: 50%; z-index: -1">
+                        <img src="../images/_shapes/squ-p4.svg" />
+                    </figure>
+
+
+                </section>
+
+            </article>
+
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>
