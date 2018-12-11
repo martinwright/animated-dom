@@ -2053,11 +2053,11 @@ div.table--t10-u1-7,
 div.table--t13-u2-20 {
   @include tables(2, 'right');
 
-  .cell {
-    &:nth-child(2n) {
-      flex-basis: 10%;
-    }
-  }
+  //.cell {
+  //  &:nth-child(2n) {
+  //    flex-basis: 10%;
+  //  }
+  //}
 
   
 
