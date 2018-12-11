@@ -41,7 +41,7 @@ const glob = require("glob");
 /* ----------------- */
 /* Combine HTMLs
 /* ----------------- */
-gulp.task("build-html-combined-prom", function(done) {
+gulp.task("build-html-combined-prom", function (done) {
   let courseName = packConfig.course,
     jsBundleStreams = [];
 
@@ -57,7 +57,7 @@ gulp.task("build-html-combined-prom", function(done) {
         .src(dir + "/" + courseName + "*.html")
 
         .pipe(
-          tap(function(file) {
+          tap(function (file) {
             let [filename, folder, ...rest] = file.path.split("/").reverse();
             let myRegexp = /(^.*)-p(.*?)(.html)/g;
             let match = myRegexp.exec(filename);
@@ -65,7 +65,7 @@ gulp.task("build-html-combined-prom", function(done) {
           })
         )
         .pipe(
-          cheerio(function($, file) {
+          cheerio(function ($, file) {
             $("script").replaceWith("");
             $("head").replaceWith("");
             header = header || $("header.true-header").html();
@@ -81,7 +81,7 @@ gulp.task("build-html-combined-prom", function(done) {
                 .attr("id", "page-" + pageNumber)
                 .addClass("hidden");
             let quiz = $(".container--iquiz");
-            $(".container--iquiz").each(function() {
+            $(".container--iquiz").each(function () {
               var $this = $(this);
               $(this)
                 .attr("id", "question-" + pageNumber)
@@ -90,7 +90,7 @@ gulp.task("build-html-combined-prom", function(done) {
             });
 
             function unWrap(selector) {
-              $(selector).each(function() {
+              $(selector).each(function () {
                 var $this = $(this);
                 $(this)
                   .after($this.contents())
@@ -104,7 +104,7 @@ gulp.task("build-html-combined-prom", function(done) {
         //.pipe(print(filepath => `build-html-combined: ${filepath}`))
         .pipe(concat("combined.html"))
         .pipe(
-          tap(function(file) {
+          tap(function (file) {
             file.contents = Buffer.concat([
               new Buffer(
                 '<header class="l-header true-header">' + header + "</header>"
@@ -120,7 +120,7 @@ gulp.task("build-html-combined-prom", function(done) {
   return merge(jsBundleStreams);
 });
 
-gulp.task("delete-index-prom", function(done) {
+gulp.task("delete-index-prom", function (done) {
   let jsBundleStreams = [];
 
   packConfig.packs.map(pack => {
@@ -140,7 +140,7 @@ gulp.task("delete-index-prom", function(done) {
 /* ----------------- */
 /* Copy Index.html from /partials
 /* ----------------- */
-gulp.task("copy-index-prom", function(done) {
+gulp.task("copy-index-prom", function (done) {
   let jsBundleStreams = [];
   packConfig.packs.map(pack => {
     let dir = "build/" + pack.topic + "-" + pack.unit;
@@ -165,7 +165,7 @@ gulp.task("copy-index-prom", function(done) {
 /* ----------------- */
 /* Insert partials
 /* ----------------- */
-gulp.task("partials-prom", function(done) {
+gulp.task("partials-prom", function (done) {
   let jsBundleStreams = [];
 
   packConfig.packs.map(pack => {
@@ -182,12 +182,12 @@ gulp.task("partials-prom", function(done) {
           })
         )
         .pipe(
-          cheerio(function($, file) {
+          cheerio(function ($, file) {
             header = $("header");
             $("header").remove();
             sort($(".js-wrapper"));
             $.html();
-            $("nav").after(header);
+            $(".js-wrapper").before(header);
 
             function sort(main) {
               let [...list] = main.children();
@@ -420,7 +420,7 @@ gulp.task("pack-libs", () => {
 /* ----------------- */
 /* Libs
 /* ----------------- */
-gulp.task("libs", function() {
+gulp.task("libs", function () {
   gulp
     .src(npmDist(), { base: "./node_modules" })
     .pipe(gulp.dest("./build/libs"));
@@ -462,14 +462,14 @@ gulp.task("vendor", () => {
 /* ----------------- */
 /* QUIZ assets
 /* ----------------- */
-gulp.task("quiz", function(done) {
-  glob("./app/main-**.js", function(err, files) {
+gulp.task("quiz", function (done) {
+  glob("./app/main-**.js", function (err, files) {
     if (err) {
       done(err);
       return;
     }
 
-    var tasks = files.map(function(entry) {
+    var tasks = files.map(function (entry) {
       return browserify({ entries: [entry] })
         .bundle()
         .pipe(source(entry))
@@ -486,7 +486,7 @@ gulp.task("quiz", function(done) {
 });
 
 // Gulp plumber error handler
-var onError = function(err) {
+var onError = function (err) {
   console.log(err);
 };
 
@@ -624,7 +624,7 @@ gulp.task("scripts", () => {
     ]
   })
     .bundle()
-    .on("error", function() {
+    .on("error", function () {
       var args = Array.prototype.slice.call(arguments);
 
       plugins()
@@ -704,7 +704,7 @@ gulp.task(
   }
 );
 
-gulp.task("combine", function(callback) {
+gulp.task("combine", function (callback) {
   runSequence(
     "html",
     "delete-index-prom",

@@ -18,7 +18,7 @@
   width: 100%;
   z-index: 1;
   bottom: 0;
-  height: 54px;
+  height: 60px;
   //padding: 0 .5rem;
   //display: flex;
   //align-items: center;
@@ -29,13 +29,14 @@
   justify-content: normal;
   //margin: 36px auto 54px auto;
   max-width: 1800px;
-  height: calc(100% - 90px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  position: absolute;
-  top: 36px;
-  width: 100%;
+  padding: 36px 0;
+  //height: calc(100% - 90px);
+  //overflow-y: auto;
+  //overflow-x: hidden;
+  //-webkit-overflow-scrolling: touch;
+  //position: absolute;
+  //top: 36px;
+  //width: 100%;
   //padding-left: 1em;
   //padding-right: 1em;
   //border: red solid 10px;
@@ -45,10 +46,10 @@
   //padding: 1rem;
   //max-width: 1024px;
   //overflow: hidden;
-  position: relative;
+  //position: relative;
   //margin-top: 4rem;
   //margin-bottom: 3rem;
-  height: 100%;
+  height: auto;
 }
 .container--layout-1 {
   @extend %container;
