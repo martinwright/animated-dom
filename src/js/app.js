@@ -164,6 +164,7 @@ class App {
     $on(window, "hashchange", this.hashChangedHandler.bind(this));
     qs("body").addEventListener("touchmove", this.freezeVp, false);
     qs(".l-nav-bar").addEventListener("touchmove", this.freezeVp, false);
+    qs(".l-header").addEventListener("touchmove", this.freezeVp, false);
   }
 
   freezeVp(e) {
