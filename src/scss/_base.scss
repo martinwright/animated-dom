@@ -1,15 +1,16 @@
 @import "mixins";
 
-
 html {
   margin: 0;
   padding: 0;
   height: 100%;
-   width: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 body {
   height: 100%;
-   width: 100%;
+  width: 100%;
+  min-height: 100%;
   -webkit-text-size-adjust: none;
   font-family: "Avenir", sans-serif;
   margin: 0;

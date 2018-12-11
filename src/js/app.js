@@ -23,7 +23,12 @@ DocReady(() => {
     app.doResize();
   }, 100)
   );
+
+  /* setInterval(function () {
+    console.log(innerHeight());
+  }, 100); */
 });
+
 class App {
   constructor() {
     this.textElementTimeline;
@@ -162,7 +167,7 @@ class App {
         this.displayModeChanged(e.currentTarget.value);
       }));
     $on(window, "hashchange", this.hashChangedHandler.bind(this));
-    qs("body").addEventListener("touchmove", this.freezeVp, false);
+    //qs("body").addEventListener("touchmove", this.freezeVp, false);
     qs(".l-nav-bar").addEventListener("touchmove", this.freezeVp, false);
     qs(".l-header").addEventListener("touchmove", this.freezeVp, false);
   }
