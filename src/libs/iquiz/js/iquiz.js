@@ -14713,6 +14713,7 @@ var QuizMC = function (_EventEmitter) {
 
     _this.qData = data;
     _this.node = el;
+    _this.sel = "[data-iquiz=\"" + _this.qData.number + "\"]";
 
     if (_this.qData.answer && _this.qData.answer !== "") {
       try {
@@ -14779,6 +14780,7 @@ var QuizMC = function (_EventEmitter) {
       $(".iquiz_popClose, .iquiz_popBG").click(function () {
         _this2.closePop();
       });
+      document.body.addEventListener("touchmove", this.freezeVp, false);
     }
   }, {
     key: "initQuizClickText",
@@ -14797,23 +14799,31 @@ var QuizMC = function (_EventEmitter) {
       this.trigger("nextQuestion", { a: 11 });
     }
   }, {
+    key: "freezeVp",
+    value: function freezeVp(e) {
+      //console.log("freezeVp ", e);
+      e.preventDefault();
+    }
+  }, {
+    key: "stopBodyScrolling",
+    value: function stopBodyScrolling(bool) {
+      //console.log("stopBodyScrolling ", bool);
+      if (bool === true) {
+        document.querySelector(this.sel + " .iquiz_popBG").addEventListener("touchmove", this.freezeVp, false);
+      } else {
+        document.querySelector(this.sel + " .iquiz_popBG").removeEventListener("touchmove", this.freezeVp, false);
+      }
+    }
+  }, {
     key: "showPop",
     value: function showPop() {
       console.log("showPop");
-      $("body").addClass("no-scroll");
-      // stopScroll('.player_container'); // stop scroll on main content to avoid double scroll
-      // $(".iquiz_popBG").fadeIn(2000, function () {
-      //   $(".iquiz_popContainer")
-      //     .css({ top: "0px" })
-      //     .fadeIn({ queue: false, duration: 2000 })
-      //     .animate({ top: "80px" }, 2000);
-      //
-      //   $(".iquiz_innerScroll").scrollTop(0); // set scroll to top
-      // });
-      $(".iquiz_popBG").fadeIn({ queue: false, duration: 200 }).promise().done(function () {
-        $(".iquiz_popContainer").css({ top: "0px" }).fadeIn({ queue: false, duration: 200 }).animate({ top: "80px" }, 200);
+      this.stopBodyScrolling(true);
+      var app = this;
+      $(this.sel + " .iquiz_popBG").fadeIn({ queue: false, duration: 200 }).promise().done(function () {
+        $(app.sel + " .iquiz_popContainer").css({ top: "0px" }).fadeIn({ queue: false, duration: 200 }).animate({ top: "80px" }, 200);
         //
-        $(".iquiz_innerScroll").scrollTop(0); // set scroll to top
+        $(app.sel + " .iquiz_innerScroll").scrollTop(0); // set scroll to top
       });
     }
   }, {
@@ -14822,10 +14832,10 @@ var QuizMC = function (_EventEmitter) {
       var goNext = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
       console.log("closePop");
-      $("body").removeClass("no-scroll");
+      this.stopBodyScrolling(false);
       // $('.iquiz_innerScroll').scrollTop(0); // set scroll to top
-      $(".iquiz_popContainer").fadeOut({ queue: false, duration: 200 }).animate({ top: "0px" }, 200);
-      $(".iquiz_popBG").fadeOut({ queue: false, duration: 200 }).promise().done(function () {
+      $(this.sel + " .iquiz_popContainer").fadeOut({ queue: false, duration: 200 }).animate({ top: "0px" }, 200);
+      $(this.sel + " .iquiz_popBG").fadeOut({ queue: false, duration: 200 }).promise().done(function () {
         if (goNext == true) {
           // loadNextPage(true); action next question screen load
           //this.trigger("nextQuestion");
@@ -14969,12 +14979,12 @@ var QuizMC = function (_EventEmitter) {
         });
       };
 
-      $(".iquiz_feedback.wrong").css({ display: "none" });
-      $(".iquiz_feedback.correct").css({ display: "none" });
+      $(this.sel + " .iquiz_feedback.wrong").css({ display: "none" });
+      $(this.sel + " .iquiz_feedback.correct").css({ display: "none" });
 
       if (arraysAreEqual(state, answers)) {
         console.log("correct");
-        $(".iquiz_feedback.correct").css({ display: "block" });
+        $(this.sel + " .iquiz_feedback.correct").css({ display: "block" });
         if (this.qData.params && this.qData.params.maxScore && state.length === this.qData.state.maxScore) {
           //
         } else {
@@ -14982,7 +14992,7 @@ var QuizMC = function (_EventEmitter) {
           }
       } else {
         console.log("wrong");
-        $(".iquiz_feedback.wrong").css({ display: "block" });
+        $(this.sel + " .iquiz_feedback.wrong").css({ display: "block" });
       }
 
       this.showPop();

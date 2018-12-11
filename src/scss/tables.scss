@@ -1571,7 +1571,7 @@ div.table--t12-u1-25 {
   //grid-gap: 0;
   //grid-template-columns: 1fr 1fr;
   @include tables(2, 'right');
-  //min-width: 40em;
+  min-width: 10em;
   font-size: $table-font-size;
 
   .cell {
