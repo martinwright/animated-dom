@@ -142,8 +142,22 @@ $table-font-size: 90%;
   flex: 1;
   overflow-x: auto;
 }
+.no-bottom-border {
+  border-bottom: none !important;
+}
+.thick-bottom-border {
+  border-bottom-width: 3px !important;
+}
 
 ////   TABLES   ////
+div.table--t9-u1-22 {
+  @include tables(3, "top", (20%, 35%, 45%));
+  min-width: 45em;
+  h3,
+  h4 {
+    font-size: 100%;
+  }
+}
 
 div.table--t8-u1-9 {
   @include tables(7, "top", (28%, 9%, 13%, 13%, 13%, 16%, 8%));
@@ -1946,7 +1960,7 @@ div.table--t5-u1-25 {
 }
 
 div.table--t7-u2-6,
-div.table--t9-u1-22,
+div.table--t9-u1-22-old,
 div.table--t10-u3-12 {
   display: grid;
   grid-gap: 0;
