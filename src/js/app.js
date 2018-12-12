@@ -5,6 +5,9 @@ import Timeline from "./timeline";
 import { SCORM } from "pipwerks-scorm-api-wrapper";
 //import { Base64 } from 'js-base64';
 
+//const disableBodyScroll = bodyScrollLock.disableBodyScroll;
+//const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+
 DocReady(() => {
   //console.log("DocReady");
   const app = new App();
@@ -207,6 +210,10 @@ class App {
     }
     // show wrapper
     qs(".js-wrapper").classList.remove("hidden");
+
+
+
+
   }
 
   hashChangedHandler() {
@@ -473,6 +480,9 @@ class App {
     if (textComplete && shapesComplete) this.enableNav();
     document.querySelector("body").scrollTop = 0;
     window.scrollTo(0, 1);
+
+    //const targetElement = document.querySelector(".js-wrapper");
+    //bodyScrollLock.disableBodyScroll(targetElement);
   }
 
   createAnimationTimelines() {
