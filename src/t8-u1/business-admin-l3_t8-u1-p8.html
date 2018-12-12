@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,155 +14,226 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Decision-making techniques</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Decision-making techniques</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article class="article">
+            <article class="article">
 
-            <section>
+                <section>
 
-                <h4 data-animate="2">4 Paired comparison analysis</h4>
+                    <h4 data-animate="2">4 Paired comparison analysis</h4>
 
-                <p data-animate=“*”>This type of analysis is useful when you need to work out relevant factors when
-                    choices are quite
-                    different from each other – rather like the classic case of comparing apples and oranges.</p>
+                    <p data-animate=“*”>This type of analysis is useful when you need to work out relevant factors when
+                        choices are quite
+                        different from each other – rather like the classic case of comparing apples and oranges.</p>
 
-                <p data-animate=“*”>We will do an example based on someone having to choose which type of charity to
-                    support – an animal
-                    charity, a bequest for a university, a children’s charity or disaster relief.</p>
+                    <p data-animate=“*”>We will do an example based on someone having to choose which type of charity
+                        to
+                        support – an animal
+                        charity, a bequest for a university, a children’s charity or disaster relief.</p>
 
-                <p data-animate=“*”>There are six stages:</p>
+                    <p data-animate=“*”>There are six stages:</p>
 
-                <p data-animate=“*”><strong>Stage 1</strong> – make a list of things that need to be compared and assign
-                    each
-                    option a letter – eg A for animals, B for bequest, C for children and D for disaster.</p>
+                    <p data-animate=“*”><strong>Stage 1</strong> – make a list of things that need to be compared and
+                        assign
+                        each
+                        option a letter – eg A for animals, B for bequest, C for children and D for disaster.</p>
 
-                <p data-animate=“*”><strong>Stage 2</strong> – put the letters in a grid and block out squares where
-                    data would be duplicated.</p>
-                <div class="main-container">
-                    <div class="content-wrapper">
-                        <div class="overflow-container">
-                            <div class="table--t8-u1-8" data-animate="table">
-                                <div class="cell"></div>
-                                <div class="cell"><h3>A – Animal charity</h3></div>
-                                <div class="cell"><h3>B – Bequest for university</h3></div>
-                                <div class="cell"><h3>C – Children’s charity</h3></div>
-                                <div class="cell"><h3>D – Disaster relief</h3></div>
+                    <p data-animate=“*”><strong>Stage 2</strong> – put the letters in a grid and block out squares
+                        where
+                        data would be duplicated.</p>
 
-                                <div class="cell"><h3>A – Animal charity</h3></div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">A1</div>
-                                <div class="cell">C2</div>
-                                <div class="cell">D2</div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
+                                <div class="table--t8-u1-8" data-animate="table">
+                                    <div class="cell">
+                                        <h3>&nbsp;</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>A – Animal charity</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>B – Bequest for university</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>C – Children’s charity</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>D – Disaster relief</h3>
+                                    </div>
 
-                                <div class="cell"><h3>B – Bequest for university</h3></div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">C2</div>
-                                <div class="cell">D2</div>
+                                    <div class="cell">
+                                        A – Animal charity
+                                    </div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">A1</div>
+                                    <div class="cell">C2</div>
+                                    <div class="cell">D2</div>
 
-                                <div class="cell"><h3>C – Children’s charity</h3></div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">C1</div>
+                                    <div class="cell">
+                                        B – Bequest for university
+                                    </div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">C2</div>
+                                    <div class="cell">D2</div>
 
-                                <div class="cell"><h3>D – Disaster relief</h3></div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">XXXXXXXXXX</div>
-                                <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">
+                                        C – Children’s charity
+                                    </div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">C1</div>
+
+                                    <div class="cell">
+                                        D – Disaster relief
+                                    </div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                    <div class="cell">XXXXXXXXXX</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <figure class="shape-30" data-animate="9" data-type="slide-down"
-                        style="opacity:.4; left:-22%; top: 0%; z-index: -1">
-                    <img src="../images/_shapes/hex-p4.svg"/>
-                </figure>
+                    <!-- <div class="table--t8-u1-8-old" data-animate="table">
+                        <div class="cell"></div>
+                        <div class="cell">
+                            <h3>A – Animal charity</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>B – Bequest for university</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>C – Children’s charity</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>D – Disaster relief</h3>
+                        </div>
 
-            </section>
+                        <div class="cell">
+                            <h3>A – Animal charity</h3>
+                        </div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">A1</div>
+                        <div class="cell">C2</div>
+                        <div class="cell">D2</div>
 
-            <section>
+                        <div class="cell">
+                            <h3>B – Bequest for university</h3>
+                        </div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">C2</div>
+                        <div class="cell">D2</div>
 
-                <figure class="shape-100" data-animate="2"
-                        style="position: relative; top:-1em; right:-1em; z-index: -2">
-                    <img src="../images/t8-u1/different_problem_04.jpg"/>
-                </figure>
+                        <div class="cell">
+                            <h3>C – Children’s charity</h3>
+                        </div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">C1</div>
 
-                <p data-animate=“*”><strong>Stage 3</strong> – within each cell, compare the options and decided which
-                    is most important
-                    – eg A is more important than B in the above grid.</p>
+                        <div class="cell">
+                            <h3>D – Disaster relief</h3>
+                        </div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">XXXXXXXXXX</div>
+                        <div class="cell">XXXXXXXXXX</div>
+                    </div> -->
 
-                <p data-animate=“*”><strong>Stage 4</strong> – give the letter a rating to show how important the choice
-                    is – eg from 0
-                    for no importance to 3 for extremely important – A has been given rating 1 in the above grid.</p>
+                    <figure class="shape-30" data-animate="9" data-type="slide-down" style="opacity:.4; left:-22%; top: 0%; z-index: -1">
+                        <img src="../images/_shapes/hex-p4.svg" />
+                    </figure>
 
-                <p data-animate=“*”><strong>Stage 5</strong> – consolidate results by adding up the values for each of
-                    the options –
-                    maybe converting them to percentage values. In the example:</p>
+                </section>
 
+                <section>
 
-                <ul data-animate=“*”>
-                    <li>A = 1 (10%)
-                    </li>
+                    <figure class="shape-100" data-animate="2" style="position: relative; top:-1em; right:-1em; z-index: -2">
+                        <img src="../images/t8-u1/different_problem_04.jpg" />
+                    </figure>
 
-                    <li>B = 0
-                    </li>
+                    <p data-animate=“*”><strong>Stage 3</strong> – within each cell, compare the options and decided
+                        which
+                        is most important
+                        – eg A is more important than B in the above grid.</p>
 
-                    <li>C = 5 (50%)
-                    </li>
+                    <p data-animate=“*”><strong>Stage 4</strong> – give the letter a rating to show how important the
+                        choice
+                        is – eg from 0
+                        for no importance to 3 for extremely important – A has been given rating 1 in the above grid.</p>
 
-                    <li>D = 4 (40%).
-                    </li>
-                </ul>
-
-                <p data-animate=“*”><strong>Stage 6</strong> – use common sense and manually adjust as necessary.</p>
-
-                <p data-animate=“*”>In the example after comparing the results, the person decides to make their main
-                    donation to the
-                    children’s charity, with some going to disaster relief.</p>
-
-                <figure class="shape-40" data-animate="9" data-type="roll-from-right"
-                        style="opacity:.4; right:-15%; top: 40%; z-index: -1">
-                    <img src="../images/_shapes/dia-s8.svg"/>
-                </figure>
+                    <p data-animate=“*”><strong>Stage 5</strong> – consolidate results by adding up the values for each
+                        of
+                        the options –
+                        maybe converting them to percentage values. In the example:</p>
 
 
-            </section>
+                    <ul data-animate=“*”>
+                        <li>A = 1 (10%)
+                        </li>
 
-        </article>
+                        <li>B = 0
+                        </li>
 
+                        <li>C = 5 (50%)
+                        </li>
+
+                        <li>D = 4 (40%).
+                        </li>
+                    </ul>
+
+                    <p data-animate=“*”><strong>Stage 6</strong> – use common sense and manually adjust as necessary.</p>
+
+                    <p data-animate=“*”>In the example after comparing the results, the person decides to make their
+                        main
+                        donation to the
+                        children’s charity, with some going to disaster relief.</p>
+
+                    <figure class="shape-40" data-animate="9" data-type="roll-from-right" style="opacity:.4; right:-15%; top: 40%; z-index: -1">
+                        <img src="../images/_shapes/dia-s8.svg" />
+                    </figure>
+
+
+                </section>
+
+            </article>
+
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>

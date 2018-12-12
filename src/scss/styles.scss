@@ -78,6 +78,11 @@
     //background-color: yellow;
   }
 }
+.col-force-50 {
+  @include for-size(tablet-landscape-up) {
+    max-width: calc(50% - 4em);
+  }
+}
 
 .col-60 {
   @include for-size(tablet-landscape-up) {
