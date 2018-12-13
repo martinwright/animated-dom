@@ -187,7 +187,8 @@ gulp.task("partials-prom", function (done) {
             $("header").remove();
             sort($(".js-wrapper"));
             $.html();
-            $(".js-wrapper").before(header);
+            $("nav").after(header);
+            ///$(".js-wrapper").before(header);
 
             function sort(main) {
               let [...list] = main.children();
