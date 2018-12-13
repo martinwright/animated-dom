@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,225 +14,368 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Decision-making techniques</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Decision-making techniques</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article class="article">
+            <article class="article">
 
-            <section>
+                <section>
 
-                <h4 data-animate="2">5 Weighted grid analysis</h4>
+                    <h4 data-animate="2">5 Weighted grid analysis</h4>
 
-                <p data-animate=“*”>A grid analysis is a useful technique to use when making a decision, especially when
-                    there are many
-                    factors and alternatives to take into account. There are several steps:</p>
+                    <p data-animate=“*”>A grid analysis is a useful technique to use when making a decision, especially
+                        when
+                        there are many
+                        factors and alternatives to take into account. There are several steps:</p>
 
-                <ul data-animate=“*”>
-                    <li><strong>Step 1</strong><br>list the options as row labels and the factors as column labels.
-                    </li>
+                    <ul data-animate=“*”>
+                        <li><strong>Step 1</strong><br>list the options as row labels and the factors as column labels.
+                        </li>
 
-                    <li><strong>Step 2</strong><br>work out the relative importance of the factors in the decision and
-                        show them as numbers to give each factor a weight – eg from 1 (not important) to 5 (extremely
-                        important).
-                    </li>
+                        <li><strong>Step 2</strong><br>work out the relative importance of the factors in the decision
+                            and
+                            show them as numbers to give each factor a weight – eg from 1 (not important) to 5
+                            (extremely
+                            important).
+                        </li>
 
-                    <li><strong>Step 3</strong><br>work through and score each option for each of the important factors
-                        – score from 0 (poor) to 3 (very good).
-                    </li>
+                        <li><strong>Step 3</strong><br>work through and score each option for each of the important
+                            factors
+                            – score from 0 (poor) to 3 (very good).
+                        </li>
 
-                    <li><strong>Step 4</strong><br>multiply each of the scores to reveal the relative importance.
-                    </li>
+                        <li><strong>Step 4</strong><br>multiply each of the scores to reveal the relative importance.
+                        </li>
 
-                    <li><strong>Step 5</strong><br>add up the weighted scores – the highest score ‘wins’.
-                    </li>
-                </ul>
+                        <li><strong>Step 5</strong><br>add up the weighted scores – the highest score ‘wins’.
+                        </li>
+                    </ul>
 
-                <p data-animate=“*”>For example: a manager is reviewing where to purchase a new machine to use on the
-                    production line
-                    that is in operation 24 hours a day, seven days a week. As it is a long-term investment, the quality
-                    of the machine and the back-up service from the supplier are extremely important.</p>
-                <div class="main-container">
-                    <div class="content-wrapper">
-                        <div class="overflow-container">
-                            <div class="table--t8-u1-9" data-animate=“table”>
-                                <div class="cell"></div>
-                                <div class="cell"><h3>Factor 1 – Cost</h3></div>
-                                <div class="cell"><h3>Factor 2 – Availability of stock</h3></div>
-                                <div class="cell"><h3>Factor 3 – Speed of delivery</h3></div>
-                                <div class="cell"><h3>Factor 4 – Quality of product</h3></div>
-                                <div class="cell"><h3>Factor 5 – 24/7 service, back-up and maintenance</h3></div>
-                                <div class="cell"><h3>Total</h3></div>
+                    <p data-animate=“*”>For example: a manager is reviewing where to purchase a new machine to use on
+                        the
+                        production line
+                        that is in operation 24 hours a day, seven days a week. As it is a long-term investment, the
+                        quality
+                        of the machine and the back-up service from the supplier are extremely important.</p>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
+                                <div class="table--t8-u1-9" data-animate=“table”>
+                                    <div class="cell"></div>
+                                    <div class="cell">
+                                        <h3>Factor 1 – Cost</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 2 – Availability of stock</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 3 – Speed of delivery</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 4 – Quality of product</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 5 – 24/7 service, back-up and maintenance</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Total</h3>
+                                    </div>
 
-                                <div class="cell"><h3>Weights:</h3></div>
-                                <div class="cell">4</div>
-                                <div class="cell">3</div>
-                                <div class="cell">3</div>
-                                <div class="cell">5</div>
-                                <div class="cell">5</div>
-                                <div class="cell"></div>
+                                    <div class="cell">
+                                        <h3>Weights:</h3>
+                                    </div>
+                                    <div class="cell">4</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">5</div>
+                                    <div class="cell">5</div>
+                                    <div class="cell"></div>
 
-                                <div class="cell"><h4>Option 1 – Acme Supplies and Co</h4></div>
-                                <div class="cell">2</div>
-                                <div class="cell">3</div>
-                                <div class="cell">1</div>
-                                <div class="cell">2</div>
-                                <div class="cell">1</div>
-                                <div class="cell"></div>
+                                    <div class="cell">
+                                        <h4>Option 1 – Acme Supplies and Co</h4>
+                                    </div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">1</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">1</div>
+                                    <div class="cell"></div>
 
-                                <div class="cell"><h4>Option 2 – Bloggs and Co</h4></div>
-                                <div class="cell">3</div>
-                                <div class="cell">2</div>
-                                <div class="cell">2</div>
-                                <div class="cell">2</div>
-                                <div class="cell">3</div>
-                                <div class="cell"></div>
+                                    <div class="cell">
+                                        <h4>Option 2 – Bloggs and Co</h4>
+                                    </div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell"></div>
 
-                                <div class="cell"><h4>Option 3 – Charming Suppliers Ltd</h4></div>
-                                <div class="cell">2</div>
-                                <div class="cell">3</div>
-                                <div class="cell">2</div>
-                                <div class="cell">3</div>
-                                <div class="cell">0</div>
-                                <div class="cell"></div>
+                                    <div class="cell">
+                                        <h4>Option 3 – Charming Suppliers Ltd</h4>
+                                    </div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">0</div>
+                                    <div class="cell"></div>
 
-                                <div class="cell"><h4>Option 4 – Done Good Company</h4></div>
-                                <div class="cell">1</div>
-                                <div class="cell">3</div>
-                                <div class="cell">2</div>
-                                <div class="cell">2</div>
-                                <div class="cell">2</div>
-                                <div class="cell"></div>
+                                    <div class="cell">
+                                        <h4>Option 4 – Done Good Company</h4>
+                                    </div>
+                                    <div class="cell">1</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell"></div>
 
-                                <div class="cell"><h4>Option 5 – Even Better Company</h4></div>
-                                <div class="cell">2</div>
-                                <div class="cell">2</div>
-                                <div class="cell">3</div>
-                                <div class="cell">2</div>
-                                <div class="cell">2</div>
-                                <div class="cell"></div>
+                                    <div class="cell">
+                                        <h4>Option 5 – Even Better Company</h4>
+                                    </div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell">2</div>
+                                    <div class="cell"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <figure class="shape-50" data-animate="9" data-type="zoom-out"
-                        style="opacity:.4; left:-15%; top: 2%; z-index: -1">
-                    <img src="../images/_shapes/dia-s15.svg"/>
-                </figure>
 
-            </section>
+                    <!-- <div class="table--t8-u1-9-old" data-animate=“table”>
+                        <div class="cell"></div>
+                        <div class="cell">
+                            <h3>Factor 1 – Cost</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>Factor 2 – Availability of stock</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>Factor 3 – Speed of delivery</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>Factor 4 – Quality of product</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>Factor 5 – 24/7 service, back-up and maintenance</h3>
+                        </div>
+                        <div class="cell">
+                            <h3>Total</h3>
+                        </div>
 
-            <section>
+                        <div class="cell">
+                            Weights:
+                        </div>
+                        <div class="cell">4</div>
+                        <div class="cell">3</div>
+                        <div class="cell">3</div>
+                        <div class="cell">5</div>
+                        <div class="cell">5</div>
+                        <div class="cell"></div>
 
-                <figure class="shape-80" style="position: relative; top:1em; right:-3em; z-index: -2">
-                    <img data-animate="2" data-type="zoom-in" src="../images/t8-u1/_m_different_problem_05.jpg"/>
+                        <div class="cell">
+                            Option 1 – Acme Supplies and Co
+                        </div>
+                        <div class="cell">2</div>
+                        <div class="cell">3</div>
+                        <div class="cell">1</div>
+                        <div class="cell">2</div>
+                        <div class="cell">1</div>
+                        <div class="cell"></div>
 
-                    <figure class="shape-20" data-animate="9" data-type="slide-down"
-                            style="opacity:.9; left:-6%; bottom: 52%;">
-                        <img src="../images/_shapes/cir-p4.svg"/>
+                        <div class="cell">
+                            Option 2 – Bloggs and Co
+                        </div>
+                        <div class="cell">3</div>
+                        <div class="cell">2</div>
+                        <div class="cell">2</div>
+                        <div class="cell">2</div>
+                        <div class="cell">3</div>
+                        <div class="cell"></div>
+
+                        <div class="cell">
+                            Option 3 – Charming Suppliers Ltd
+                        </div>
+                        <div class="cell">2</div>
+                        <div class="cell">3</div>
+                        <div class="cell">2</div>
+                        <div class="cell">3</div>
+                        <div class="cell">0</div>
+                        <div class="cell"></div>
+
+                        <div class="cell">
+                            Option 4 – Done Good Company
+                        </div>
+                        <div class="cell">1</div>
+                        <div class="cell">3</div>
+                        <div class="cell">2</div>
+                        <div class="cell">2</div>
+                        <div class="cell">2</div>
+                        <div class="cell"></div>
+
+                        <div class="cell">
+                            Option 5 – Even Better Company
+                        </div>
+                        <div class="cell">2</div>
+                        <div class="cell">2</div>
+                        <div class="cell">3</div>
+                        <div class="cell">2</div>
+                        <div class="cell">2</div>
+                        <div class="cell"></div>
+                    </div> -->
+
+                    <figure class="shape-50" data-animate="9" data-type="zoom-out" style="opacity:.4; left:-15%; top: 2%; z-index: -1">
+                        <img src="../images/_shapes/dia-s15.svg" />
                     </figure>
 
-                    <figure class="shape-40" data-animate="9" style="opacity:.7; left:68%; bottom: 12%;">
-                        <img src="../images/_shapes/pen-s16.svg"/>
+                </section>
+
+                <section>
+
+                    <figure class="shape-80" style="position: relative; top:1em; right:-3em; z-index: -2">
+                        <img data-animate="2" data-type="zoom-in" src="../images/t8-u1/_m_different_problem_05.jpg" />
+
+                        <figure class="shape-20" data-animate="9" data-type="slide-down" style="opacity:.9; left:-6%; bottom: 52%;">
+                            <img src="../images/_shapes/cir-p4.svg" />
+                        </figure>
+
+                        <figure class="shape-40" data-animate="9" style="opacity:.7; left:68%; bottom: 12%;">
+                            <img src="../images/_shapes/pen-s16.svg" />
+                        </figure>
+
                     </figure>
 
-                </figure>
+                    <p data-animate=“*”>Then multiply the figures by the weights …</p>
 
-                <p data-animate=“*”>Then multiply the figures by the weights …</p>
 
-                <div class="table--t8-u1-9">
-                    <div class="cell"></div>
-                    <div class="cell"><h3>Factor 1 – Cost</h3></div>
-                    <div class="cell"><h3>Factor 2 – Availability of stock</h3></div>
-                    <div class="cell"><h3>Factor 3 – Speed of delivery</h3></div>
-                    <div class="cell"><h3>Factor 4 – Quality of product</h3></div>
-                    <div class="cell"><h3>Factor 5 – 24/7 service, back-up and maintenance</h3></div>
-                    <div class="cell"><h3>Total</h3></div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
 
-                    <div class="cell"><h3>Weights:</h3></div>
-                    <div class="cell">4</div>
-                    <div class="cell">3</div>
-                    <div class="cell">3</div>
-                    <div class="cell">5</div>
-                    <div class="cell">5</div>
-                    <div class="cell"></div>
+                                <div class="table--t8-u1-9">
+                                    <div class="cell"></div>
+                                    <div class="cell">
+                                        <h3>Factor 1 – Cost</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 2 – Availability of stock</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 3 – Speed of delivery</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 4 – Quality of product</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Factor 5 – 24/7 service, back-up and maintenance</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>Total</h3>
+                                    </div>
 
-                    <div class="cell"><h4>Option 1 – Acme Supplies and Co</h4></div>
-                    <div class="cell">8 (2x4)</div>
-                    <div class="cell">9 (3x3)</div>
-                    <div class="cell">3 (1x3)</div>
-                    <div class="cell">10 (2x5)</div>
-                    <div class="cell">5 (1x5)</div>
-                    <div class="cell">35</div>
+                                    <div class="cell">
+                                        <h3>Weights:</h3>
+                                    </div>
+                                    <div class="cell">4</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">3</div>
+                                    <div class="cell">5</div>
+                                    <div class="cell">5</div>
+                                    <div class="cell"></div>
 
-                    <div class="cell"><h4>Option 2 – Bloggs and Co</h4></div>
-                    <div class="cell">12 (3x4)</div>
-                    <div class="cell">6 (2x3)</div>
-                    <div class="cell">6 (2x3)</div>
-                    <div class="cell">10 (2x5)</div>
-                    <div class="cell">15 (3x5)</div>
-                    <div class="cell">49</div>
+                                    <div class="cell">
+                                        <h4>Option 1 – Acme Supplies and Co</h4>
+                                    </div>
+                                    <div class="cell">8 (2x4)</div>
+                                    <div class="cell">9 (3x3)</div>
+                                    <div class="cell">3 (1x3)</div>
+                                    <div class="cell">10 (2x5)</div>
+                                    <div class="cell">5 (1x5)</div>
+                                    <div class="cell">35</div>
 
-                    <div class="cell"><h4>Option 3 – Charming Suppliers Ltd</h4></div>
-                    <div class="cell">8 (2x4)</div>
-                    <div class="cell">9 (3x3)</div>
-                    <div class="cell">6 (2x3)</div>
-                    <div class="cell">15 (3x5)</div>
-                    <div class="cell">0 (0x5)</div>
-                    <div class="cell">38</div>
+                                    <div class="cell">
+                                        <h4>Option 2 – Bloggs and Co</h4>
+                                    </div>
+                                    <div class="cell">12 (3x4)</div>
+                                    <div class="cell">6 (2x3)</div>
+                                    <div class="cell">6 (2x3)</div>
+                                    <div class="cell">10 (2x5)</div>
+                                    <div class="cell">15 (3x5)</div>
+                                    <div class="cell">49</div>
 
-                    <div class="cell"><h4>Option 4 – Done Good Company</h4></div>
-                    <div class="cell">4 (1x4)</div>
-                    <div class="cell">9 (3x3)</div>
-                    <div class="cell">6 (2x3)</div>
-                    <div class="cell">10 (2x5)</div>
-                    <div class="cell">10 (2x5)</div>
-                    <div class="cell">39</div>
+                                    <div class="cell">
+                                        <h4>Option 3 – Charming Suppliers Ltd</h4>
+                                    </div>
+                                    <div class="cell">8 (2x4)</div>
+                                    <div class="cell">9 (3x3)</div>
+                                    <div class="cell">6 (2x3)</div>
+                                    <div class="cell">15 (3x5)</div>
+                                    <div class="cell">0 (0x5)</div>
+                                    <div class="cell">38</div>
 
-                    <div class="cell"><h4>Option 5 – Even Better Company</h4></div>
-                    <div class="cell">8 (2x4)</div>
-                    <div class="cell">6 (2x3)</div>
-                    <div class="cell">9 (3x3)</div>
-                    <div class="cell">10 (2x5)</div>
-                    <div class="cell">10 (2x5)</div>
-                    <div class="cell">43</div>
-                </div>
+                                    <div class="cell">
+                                        <h4>Option 4 – Done Good Company</h4>
+                                    </div>
+                                    <div class="cell">4 (1x4)</div>
+                                    <div class="cell">9 (3x3)</div>
+                                    <div class="cell">6 (2x3)</div>
+                                    <div class="cell">10 (2x5)</div>
+                                    <div class="cell">10 (2x5)</div>
+                                    <div class="cell">39</div>
 
-                <p data-animate=“*”>In this example, Bloggs and Co come out as the favoured supplier.</p>
+                                    <div class="cell">
+                                        <h4>Option 5 – Even Better Company</h4>
+                                    </div>
+                                    <div class="cell">8 (2x4)</div>
+                                    <div class="cell">6 (2x3)</div>
+                                    <div class="cell">9 (3x3)</div>
+                                    <div class="cell">10 (2x5)</div>
+                                    <div class="cell">10 (2x5)</div>
+                                    <div class="cell">43</div>
+                                </div>
 
-            </section>
+                            </div>
+                        </div>
+                    </div>
+                    <p data-animate=“*”>In this example, Bloggs and Co come out as the favoured supplier.</p>
 
-        </article>
+                </section>
 
+            </article>
+
+
+        </div>
 
     </div>
-
-</div>
 </body>
+
 </html>
