@@ -81,7 +81,7 @@
 }
 .col-force-50 {
   @include for-size(tablet-landscape-up) {
-    max-width: calc(50% - 4em);
+    max-width: calc(50% - 2em);
   }
 }
 
