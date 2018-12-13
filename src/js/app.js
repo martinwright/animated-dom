@@ -23,10 +23,6 @@ DocReady(() => {
     app.doResize();
   }, 100)
   );
-
-  /* setInterval(function () {
-    console.log(innerHeight());
-  }, 100); */
 });
 
 class App {
@@ -220,12 +216,13 @@ class App {
     this.doResize();
     this.resetNavigationStates();
     this.setPageNumber(this.getPageNumber());
+    document.querySelector("body").scrollTop = 0;
     if (this.showAnimations) this.createAnimationTimelines();
     if (this.showAnimations) this.playTimelines();
   }
 
   doResize() {
-    //console.log('****** doResize');
+    console.log('****** doResize');
     const thisPageNode = this.getPageNode(this.getPageNumber()),
       nextPageNode = this.getPageNode(this.getPageNumber(1)),
       prevPageNode = this.getPageNode(this.getPageNumber(-1)),
@@ -474,6 +471,8 @@ class App {
       shapesComplete = false
     }
     if (textComplete && shapesComplete) this.enableNav();
+    document.querySelector("body").scrollTop = 0;
+    window.scrollTo(0, 1);
   }
 
   createAnimationTimelines() {
