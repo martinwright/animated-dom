@@ -165,12 +165,17 @@ div.table--t8-u1-9 {
   font-size: 85%;
   h3 {
     font-size: 100%;
+    font-weight: bold;
   }
 }
 div.table--t8-u1-8 {
   @include tables(5, "top");
   min-width: 39em;
   font-size: 87%;
+  h3 {
+    font-size: 100%;
+    font-weight: bold;
+  }
 }
 
 div.table--t2-u1-10b,
