@@ -187,7 +187,8 @@ gulp.task("partials-prom", function (done) {
             $("header").remove();
             sort($(".js-wrapper"));
             $.html();
-            $(".js-wrapper").before(header);
+            $("nav").after(header);
+            ///$(".js-wrapper").before(header);
 
             function sort(main) {
               let [...list] = main.children();
@@ -566,9 +567,7 @@ gulp.task("html", () => {
     gulp
       .src("./src/**/*.{html, json}")
       .pipe(newer("build"))
-      .pipe(
-        replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, "../libs$1/$2.js")
-      )
+      .pipe(replace(/\.\.\/\.\.\/node_modules(.*)\/(.*).js/g, "../libs$1/$2.js"))
       .pipe(replace(/src="\.\.\/js\/app.js"/g, 'src="../js/bundle.js"'))
       .pipe(replace(/href="\.\.\/scss\/(.*)\.scss"/g, 'href="../css/$1.css"'))
 
