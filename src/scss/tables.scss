@@ -150,7 +150,8 @@ $table-font-size: 90%;
 }
 
 ////   TABLES   ////
-div.table--t9-u1-22 {
+div.table--t9-u1-22,
+div.table--t7-u2-6 {
   @include tables(3, "top", (20%, 35%, 45%));
   min-width: 45em;
   h3,
@@ -1964,7 +1965,7 @@ div.table--t5-u1-25 {
   }
 }
 
-div.table--t7-u2-6,
+div.table--t7-u2-6-old,
 div.table--t9-u1-22-old,
 div.table--t10-u3-12 {
   display: grid;

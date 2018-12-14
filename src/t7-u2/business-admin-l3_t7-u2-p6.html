@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Animated DOM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<script src="../node_modules/jquery/dist/jquery.min.js"></script>-->
     <script src="../../node_modules/animejs/anime.min.js"></script>
 
@@ -13,239 +14,327 @@
           rel="stylesheet">-->
 
 </head>
+
 <body>
-<script src="../js/app.js"></script>
+    <script src="../js/app.js"></script>
 
 
-<nav class="nav-bar">
-    <div class="nav-bar__container">
-        <div class="nav-bar__paging">
-            <button disabled class="button--navigation js-back">Previous</button>
-            <button class="button--navigation js-next">Next</button>
+    <nav class="nav-bar">
+        <div class="nav-bar__container">
+            <div class="nav-bar__paging">
+                <button disabled class="button--navigation js-back">Previous</button>
+                <button class="button--navigation js-next">Next</button>
+            </div>
+            <div class="nav-bar__controls">
+                <button class="button--control js-play">Play</button>
+                <button class="button--control js-pause">Pause</button>
+                <button class="button--control js-restart">Restart</button>
+            </div>
         </div>
-        <div class="nav-bar__controls">
-            <button class="button--control js-play">Play</button>
-            <button class="button--control js-pause">Pause</button>
-            <button class="button--control js-restart">Restart</button>
-        </div>
-    </div>
-</nav>
+    </nav>
 
-<header class="header">
-    <h1 class="main-heading"
-        style="grid-area: t"
-        data-animate="2">Business process improvements</h1>
-</header>
+    <header class="header">
+        <h1 class="main-heading" style="grid-area: t" data-animate="2">Business process improvements</h1>
+    </header>
 
 
-<div class="wrapper hidden">
+    <div class="wrapper hidden">
 
-    <div class="container--layout-1 -hidden">
+        <div class="container--layout-1 -hidden">
 
-        <article class="article">
+            <article class="article">
 
-            <section class="col-40">
+                <section class="col-force-50">
 
-                <h4 data-animate="2">2 PESTLE analysis</h4>
+                    <h4 data-animate="2">2 PESTLE analysis</h4>
 
-                <figure data-animate="2" class="shape-100" style="position: relative; margin-left:-1em">
-                    <img src="../images/t7-u2/_m_the_process_developing_03.jpg">
-                </figure>
+                    <figure data-animate="2" class="shape-100" style="position: relative; margin-left:-1em">
+                        <img src="../images/t7-u2/_m_the_process_developing_03.jpg">
+                    </figure>
 
-                <p data-animate=“*”>When developing strategies and plans, the senior decision-makers will evaluate and
-                    analyse the impact
-                    of all relevant external and internal factors. They may prepare a PESTLE and/or SWOT analysis.
-                    PESTLE stands for:</p>
+                    <p data-animate=“*”>When developing strategies and plans, the senior decision-makers will evaluate
+                        and
+                        analyse the impact
+                        of all relevant external and internal factors. They may prepare a PESTLE and/or SWOT analysis.
+                        PESTLE stands for:</p>
 
-                <p data-animate=“*”><strong>P</strong> – political</p>
+                    <p data-animate=“*”><strong>P</strong> – political</p>
 
-                <p data-animate=“*”><strong>E</strong> – economic</p>
+                    <p data-animate=“*”><strong>E</strong> – economic</p>
 
-                <p data-animate=“*”><strong>S</strong> – social</p>
+                    <p data-animate=“*”><strong>S</strong> – social</p>
 
-                <p data-animate=“*”><strong>T</strong> – technological</p>
+                    <p data-animate=“*”><strong>T</strong> – technological</p>
 
-                <p data-animate=“*”><strong>L</strong> – legal</p>
+                    <p data-animate=“*”><strong>L</strong> – legal</p>
 
-                <p data-animate=“*”><strong>E</strong> – environmental.</p>
+                    <p data-animate=“*”><strong>E</strong> – environmental.</p>
 
-                <p data-animate=“*”>Collecting data in a logical fashion enables senior managers and directors to review
-                    the
-                    organisation’s vision and purpose, the internal and external influences, and which decisions they
-                    need to make to adapt to changes.</p>
+                    <p data-animate=“*”>Collecting data in a logical fashion enables senior managers and directors to
+                        review
+                        the
+                        organisation’s vision and purpose, the internal and external influences, and which decisions
+                        they
+                        need to make to adapt to changes.</p>
 
-                <figure data-animate="2" data-type="slide-down" class="shape-80"
-                        style="position: relative; opacity:.2; margin-top: -75%; margin-left:-30%; z-index: -1">
-                    <img src="../images/_shapes/cir-s15.svg"/>
-                </figure>
+                    <figure data-animate="2" data-type="slide-down" class="shape-80" style="position: relative; opacity:.2; margin-top: -75%; margin-left:-30%; z-index: -1">
+                        <img src="../images/_shapes/cir-s15.svg" />
+                    </figure>
 
-            </section>
+                </section>
 
-            <section>
+                <section class="col-force-50">
 
-                <p data-animate=“*”>The table below shows the types of influence covered by a PESTLE analysis with some
-                    examples:</p>
-                <div class="main-container">
-                    <div class="content-wrapper">
-                        <div class="overflow-container">
-
-                            <div class="table--t7-u2-6" data-animate=“table”>
-                                <div class="cell"></div>
-                                <div class="cell"><h3>Possible influences include:</h3></div>
-                                <div class="cell"><h3>For example:</h3></div>
+                    <p data-animate=“*”>The table below shows the types of influence covered by a PESTLE analysis with
+                        some
+                        examples:</p>
 
 
-                                <div class="cell no-border">Local government rules and regulations</div>
-                                <div class="cell no-border">Planning regulations; waste management strategy</div>
 
-                                <!-- ROW 2 -->
-                                <div class="cell span-item1"><h4>P – political</h4></div>
-                                <div class="cell">Government funding</div>
-                                <div class="cell">Schemes to assist people who want to buy their own homes</div>
+                    <div class="main-container">
+                        <div class="content-wrapper">
+                            <div class="overflow-container">
 
-                                <div class="cell">Taxation, national insurance and pension contributions</div>
-                                <div class="cell">Changes in the rate of VAT; tax charges for having a company car; tax
-                                    relief for making contributions to employees’ pension plans
+                                <div class="table--t7-u2-6" data-animate=“table”>
+                                    <div class="cell"></div>
+                                    <div class="cell">
+                                        <h3>Possible influences include:</h3>
+                                    </div>
+                                    <div class="cell">
+                                        <h3>For example:</h3>
+                                    </div>
+
+
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Local government rules and regulations</div>
+                                    <div class="cell">Planning regulations; waste management strategy</div>
+
+                                    <div class="cell no-bottom-border">
+                                        <h4>P – political</h4>
+                                    </div>
+                                    <div class="cell">Government funding</div>
+                                    <div class="cell">Schemes to assist people who want to buy their own homes</div>
+
+                                    <div class="cell thick-bottom-border"></div>
+                                    <div class="cell thick-bottom-border">Taxation, national insurance and pension
+                                        contributions</div>
+                                    <div class="cell thick-bottom-border">Changes in the rate of VAT; tax charges for
+                                        having a company car;
+                                        tax
+                                        relief for making contributions to employees’ pension plans
+                                    </div>
+
+
+
+
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Interest rates</div>
+                                    <div class="cell">Making borrowing cheaper or more expensive</div>
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Staff remuneration costs</div>
+                                    <div class="cell">Changes in national insurance and employer pension
+                                        contributions;
+                                        paying the right salary for the job to attract the right people
+                                    </div>
+
+                                    <div class="cell no-bottom-border">
+                                        <h4>E – economic</h4>
+                                    </div>
+                                    <div class="cell">Recession</div>
+                                    <div class="cell">People and businesses generally review their positions and
+                                        hold
+                                        back
+                                        on spending until things settle
+                                    </div>
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Inflation</div>
+                                    <div class="cell">Increased costs of materials, wages etc; concern about how to
+                                        ‘future-
+                                        proof’ decisions to cope with possible inflation
+                                    </div>
+
+                                    <div class="cell thick-bottom-border"></div>
+                                    <div class="cell thick-bottom-border">Consumer confidence</div>
+                                    <div class="cell thick-bottom-border">Fears about recession and unemployment
+                                        generally make people
+                                        spend
+                                        less; confidence in growth and having more disposable income can increase
+                                        spending
+                                        levels
+                                    </div>
+
+
+
+
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell no-border">Attitudes to work, leisure and family life</div>
+                                    <div class="cell no-border">Changing attitudes and rights about taking time off
+                                        work for
+                                        family issues; changing working hours and location to improve the work-life
+                                        balance
+                                    </div>
+
+                                    <div class="cell no-bottom-border">
+                                        <h4>S – social</h4>
+                                    </div>
+                                    <div class="cell">Education</div>
+                                    <div class="cell">Increased number of graduates; emphasis on engineering
+                                        training
+                                        to
+                                        fill the demand for skills
+                                    </div>
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Lifestyle changes</div>
+                                    <div class="cell">More people driving to work; effects of lifestyles on health
+                                        and
+                                        fitness
+                                    </div>
+
+                                    <div class="cell thick-bottom-border"></div>
+                                    <div class="cell thick-bottom-border">Demographics of the population</div>
+                                    <div class="cell thick-bottom-border">Dealing with an ageing population and gearing
+                                        up services and
+                                        products
+                                        to satisfy demand
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell no-border">Increased online activities</div>
+                                    <div class="cell no-border">More Internet shopping than before; more services
+                                        and
+                                        forms
+                                        done online
+                                    </div>
+
+                                    <div class="cell no-bottom-border">
+                                        <h4>T – technological</h4>
+                                    </div>
+                                    <div class="cell">ICT developments</div>
+                                    <div class="cell">Faster computers with more capacity to do more complex tasks;
+                                        mobile
+                                        devices that can do more tasks; increased processing speeds; greater
+                                        network
+                                        coverage improving accessibility
+                                    </div>
+
+                                    <div class="cell thick-bottom-border"></div>
+                                    <div class="cell thick-bottom-border">Production technique developments</div>
+                                    <div class="cell thick-bottom-border">Mechanisation and computerisation of tasks
+                                        previously done by
+                                        people;
+                                        better or worse accuracy and reliability; shorter or longer waiting times
+                                        for
+                                        products or services
+                                    </div>
+
+
+
+
+
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Employment law</div>
+                                    <div class="cell">Affecting working hours, rates and conditions</div>
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Health and safety laws</div>
+                                    <div class="cell">Amended to incorporate new technologies and procedures;
+                                        simplified to
+                                        reduce time-wasting health and safety myths
+                                    </div>
+
+                                    <div class="cell no-bottom-border">
+                                        <h4>L – legal</h4>
+                                    </div>
+                                    <div class="cell">Data protection law</div>
+                                    <div class="cell">To cover collection, use, storage and destruction of personal
+                                        and
+                                        confidential data
+                                    </div>
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Food safety laws</div>
+                                    <div class="cell">To protect customers, staff and others from harm from the
+                                        incorrect
+                                        storage and preparation of food
+                                    </div>
+
+                                    <div class="cell thick-bottom-border"></div>
+                                    <div class="cell thick-bottom-border">Consumer laws</div>
+                                    <div class="cell thick-bottom-border">To ensure that consumers are treated fairly
+                                        and that their
+                                        rights
+                                        are
+                                        observed
+                                    </div>
+
+
+
+
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Waste management regulations</div>
+                                    <div class="cell">Affecting the disposal of items such as fridges and
+                                        cars;
+                                        recycling targets; regulations to reduce packaging
+                                    </div>
+
+                                    <div class="cell no-bottom-border"></div>
+                                    <div class="cell">Environmental protection legislation</div>
+                                    <div class="cell">Dealing with pollution of land, air and water; using
+                                        environmental
+                                        impact assessments to assess risks; encouraging and enforcing recycling,
+                                        reusing and
+                                        reprocessing
+                                    </div>
+
+                                    <div class="cell no-bottom-border">
+                                        <h4>E – environmental</h4>
+                                    </div>
+                                    <div class="cell">Energy consumption</div>
+                                    <div class="cell">Looking at the impact of leaving equipment on stand-by for
+                                        long
+                                        periods; vehicle fuel consumption
+                                    </div>
+
+                                    <div class="cell thick-bottom-border"></div>
+                                    <div class="cell thick-bottom-border">Ecodesign</div>
+                                    <div class="cell thick-bottom-border">Supporting the design and installation of
+                                        eco-friendly
+                                        equipment,
+                                        affecting products such as boilers, air conditioning and water-using
+                                        equipment
+                                    </div>
+
+
                                 </div>
-
-                                <div class="cell span-item-line"></div>
-
-                                <div class="cell no-border">Interest rates</div>
-                                <div class="cell no-border">Making borrowing cheaper or more expensive</div>
-
-                                <div class="cell">Staff remuneration costs</div>
-                                <div class="cell">Changes in national insurance and employer pension contributions;
-                                    paying the right salary for the job to attract the right people
-                                </div>
-
-                                <!-- ROW 6 -->
-                                <div class="cell span-item2"><h4>E – economic</h4></div>
-                                <div class="cell">Recession</div>
-                                <div class="cell">People and businesses generally review their positions and hold back
-                                    on spending until things settle
-                                </div>
-
-                                <div class="cell">Inflation</div>
-                                <div class="cell">Increased costs of materials, wages etc; concern about how to ‘future-
-                                    proof’ decisions to cope with possible inflation
-                                </div>
-
-                                <div class="cell">Consumer confidence</div>
-                                <div class="cell">Fears about recession and unemployment generally make people spend
-                                    less; confidence in growth and having more disposable income can increase spending
-                                    levels
-                                </div>
-
-                                <div class="cell span-item-line"></div>
-
-                                <div class="cell no-border">Attitudes to work, leisure and family life</div>
-                                <div class="cell no-border">Changing attitudes and rights about taking time off work for
-                                    family issues; changing working hours and location to improve the work-life balance
-                                </div>
-
-                                <div class="cell">Education</div>
-                                <div class="cell">Increased number of graduates; emphasis on engineering training to
-                                    fill the demand for skills
-                                </div>
-
-                                <!-- ROW 12 -->
-                                <div class="cell span-item3"><h4>S – social</h4></div>
-                                <div class="cell">Lifestyle changes</div>
-                                <div class="cell">More people driving to work; effects of lifestyles on health and
-                                    fitness
-                                </div>
-
-                                <div class="cell">Demographics of the population</div>
-                                <div class="cell">Dealing with an ageing population and gearing up services and products
-                                    to satisfy demand
-                                </div>
-
-                                <div class="cell span-item-line"></div>
-
-                                <div class="cell no-border">Increased online activities</div>
-                                <div class="cell no-border">More Internet shopping than before; more services and forms
-                                    done online
-                                </div>
-
-                                <!-- ROW 17 -->
-                                <div class="cell span-item4"><h4>T – technological</h4></div>
-                                <div class="cell">ICT developments</div>
-                                <div class="cell">Faster computers with more capacity to do more complex tasks; mobile
-                                    devices that can do more tasks; increased processing speeds; greater network
-                                    coverage improving accessibility
-                                </div>
-
-                                <div class="cell">Production technique developments</div>
-                                <div class="cell">Mechanisation and computerisation of tasks previously done by people;
-                                    better or worse accuracy and reliability; shorter or longer waiting times for
-                                    products or services
-                                </div>
-
-                                <div class="cell span-item-line"></div>
-
-                                <div class="cell no-border">Employment law</div>
-                                <div class="cell no-border">Affecting working hours, rates and conditions</div>
-
-                                <div class="cell">Health and safety laws</div>
-                                <div class="cell">Amended to incorporate new technologies and procedures; simplified to
-                                    reduce time-wasting health and safety myths
-                                </div>
-
-                                <!-- ROW 21 -->
-                                <div class="cell span-item5"><h4>L – legal</h4></div>
-                                <div class="cell">Data protection law</div>
-                                <div class="cell">To cover collection, use, storage and destruction of personal and
-                                    confidential data
-                                </div>
-
-                                <div class="cell">Food safety laws</div>
-                                <div class="cell">To protect customers, staff and others from harm from the incorrect
-                                    storage and preparation of food
-                                </div>
-
-                                <div class="cell">Consumer laws</div>
-                                <div class="cell">To ensure that consumers are treated fairly and that their rights are
-                                    observed
-                                </div>
-
-                                <div class="cell span-item-line"></div>
-
-                                <div class="cell no-border">Waste management regulations</div>
-                                <div class="cell no-border">Affecting the disposal of items such as fridges and cars;
-                                    recycling targets; regulations to reduce packaging
-                                </div>
-
-                                <div class="cell">Environmental protection legislation</div>
-                                <div class="cell">Dealing with pollution of land, air and water; using environmental
-                                    impact assessments to assess risks; encouraging and enforcing recycling, reusing and
-                                    reprocessing
-                                </div>
-
-                                <!-- ROW 27 -->
-                                <div class="cell span-item6"><h4>E – environmental</h4></div>
-                                <div class="cell">Energy consumption</div>
-                                <div class="cell">Looking at the impact of leaving equipment on stand-by for long
-                                    periods; vehicle fuel consumption
-                                </div>
-
-                                <div class="cell">Ecodesign</div>
-                                <div class="cell">Supporting the design and installation of eco-friendly equipment,
-                                    affecting products such as boilers, air conditioning and water-using equipment
-                                </div>
-
-                                <div class="cell span-item-line"></div>
-
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </section>
+
+
+
+        </div>
+        </section>
 
         </article>
 
     </div>
 
-</div>
+    </div>
 </body>
+
 </html>
