@@ -150,68 +150,8 @@ $table-font-size: 90%;
 }
 
 ////   TABLES   ////
-div.table--t9-u1-22,
-div.table--t7-u2-6 {
-  @include tables(3, "top", (20%, 35%, 45%));
-  min-width: 45em;
-  h3,
-  h4 {
-    font-size: 100%;
-  }
-}
 
-div.table--t8-u1-9 {
-  @include tables(7, "top", (28%, 9%, 13%, 13%, 13%, 16%, 8%));
-  min-width: 46em;
-  font-size: 85%;
-  h3 {
-    font-size: 100%;
-    font-weight: bold;
-  }
-}
-div.table--t8-u1-8 {
-  @include tables(5, "top");
-  min-width: 39em;
-  font-size: 87%;
-  h3 {
-    font-size: 100%;
-    font-weight: bold;
-  }
-}
 
-div.table--t2-u1-10b,
-div.table--t2-u1-12b {
-  @include tables(3, "left", (10%, 45%, 45%));
-  min-width: 21em;
-}
-
-div.table--t2-u1-10a,
-div.table--t2-u1-12a {
-  @include tables(2, null, (15%, 85%), false);
-  min-width: 21em;
-}
-
-div.table--t2-u1-8a,
-div.table--t3-u3-6 {
-  @include tables(3, "top");
-  min-width: 33em;
-}
-
-div.table--t8-u1-5,
-div.table--t10-u1-4 {
-  @include tables(4, "top");
-  min-width: 32em;
-}
-
-div.table--t2-u1-18 {
-  @include tables(1, "top");
-  min-width: 30em;
-  .cell > span {
-    border-left: solid 1px #33cbe6;
-    float: right;
-    padding: 0 5px;
-  }
-}
 
 /* --------- */
 
@@ -260,6 +200,77 @@ div.table {
     }
   }
 }
+
+
+div.table--t9-u1-22,
+div.table--t7-u2-6 {
+  @include tables(3, "top", (20%, 35%, 45%));
+  min-width: 45em;
+  h3,
+  h4 {
+    font-size: 100%;
+  }
+}
+
+div.table--t8-u1-9 {
+  @include tables(7, "top", (28%, 9%, 13%, 13%, 13%, 16%, 8%));
+  min-width: 46em;
+  font-size: 85%;
+  h3 {
+    font-size: 100%;
+    font-weight: bold;
+  }
+}
+div.table--t8-u1-8 {
+  @include tables(5, "top");
+  min-width: 39em;
+  font-size: 87%;
+  h3 {
+    font-size: 100%;
+    font-weight: bold;
+  }
+}
+
+div.table--t2-u1-10b,
+div.table--t2-u1-12b {
+  @include tables(3, "left", (10%, 45%, 45%));
+  min-width: 21em;
+}
+
+div.table--t2-u1-10a,
+div.table--t2-u1-12a {
+  @include tables(2, null, (15%, 85%), false);
+  min-width: 21em;
+}
+
+
+div.table--t2-u1-8a,
+div.table--t3-u3-6 {
+  @include tables(3, "top");
+  min-width: 33em;
+  h3 {
+    font-size: 100%;
+    font-weight: bold;
+  }
+}
+
+div.table--t8-u1-5,
+div.table--t10-u1-4 {
+  @include tables(4, "top");
+  min-width: 32em;
+}
+
+div.table--t2-u1-18 {
+  @include tables(1, "top");
+  min-width: 30em;
+  .cell > span {
+    border-left: solid 1px #33cbe6;
+    float: right;
+    padding: 0 5px;
+  }
+}
+
+
 
 div.table--1fr-2fr-2fr-2fr {
   display: grid;
@@ -1228,6 +1239,12 @@ div.table--t2-u1-14 {
     //  margin: 0;
     //}
 
+    h3,
+    h4 {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
     &:nth-child(-n + 2) {
       background-color: $table-fill-col;
       //border-bottom: $table-line;
@@ -1608,7 +1625,6 @@ div.table--t12-u1-25 {
       background-color: $table-fill-col2;
       //border-right: $table-line;
     }
-
     //padding: 0.5rem;
   }
 
@@ -1646,6 +1662,7 @@ div.table--t3-u2-27 {
     &:nth-child(-n + 2) {
       border-bottom: $table-line;
     }
+    border-bottom: $table-line;
 
     p {
       margin: 0 0 0.8em 0;
@@ -1700,9 +1717,9 @@ div.table--t7-u2-14 {
   .cell {
     border-bottom: $table-line;
 
-    &:nth-last-child(-n + 2) {
-      border-bottom: none;
-    }
+    //&:nth-last-child(-n + 2) {
+    //  border-bottom: none;
+    //}
   }
 }
 
@@ -1745,11 +1762,10 @@ div.table--t5-u1-10,
 div.table--t5-u1-12a {
   /* ADAPTED FROM TABLE ABOVE*/
   .cell {
-    border-bottom: $table-line;
 
-    &:nth-last-child(-n + 2) {
-      border-bottom: none;
-    }
+    //&:nth-last-child(-n + 2) {
+    //  border-bottom: none;
+    //}
 
     p {
       margin: 0 0 0.8em 0;
@@ -1758,7 +1774,13 @@ div.table--t5-u1-12a {
         margin: 0;
       }
     }
+
+    border-bottom: $table-line;
   }
+}
+
+div.table--t3-u2-30{
+  border-bottom: $table-line;
 }
 
 div.table--t5-u1-12b {
@@ -1766,9 +1788,9 @@ div.table--t5-u1-12b {
   .cell {
     border-bottom: $table-line;
 
-    &:nth-last-child(-n + 2) {
-      border-bottom: none;
-    }
+    //&:nth-last-child(-n + 2) {
+    //  border-bottom: none;
+    //}
 
     p {
       margin: 0 0 0.8em 0;
@@ -2306,8 +2328,19 @@ div.table--t9-u1-14 {
 div.table--t13-u2-20 {
   /* ADAPTED FROM TABLE ABOVE*/
   .cell {
+    background-color: yellow;
     &:nth-last-child(-n + 2) {
       border-bottom: $table-line;
+
+      h3,
+      h4 {
+        align-self: left;
+        justify-content: left;
+        width: 100%;
+        font-weight: bold;
+        margin: 0;
+      }
+
     }
   }
 }
