@@ -45,6 +45,7 @@ class App {
     this.slideCount = 0;
     this.quizCount = 0;
     this.displayModeBtns = document.getElementsByName("displayMode");
+    this.spreadBreakPoint = 900;
   }
 
   setView() {
@@ -239,7 +240,7 @@ class App {
     if (isLeft) pageToHide = nextPageNode;
     if (isRight) pageToHide = prevPageNode;
 
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < this.spreadBreakPoint) {
       //TODO SAME AS tablet-landscape-up
       if (pageToHide) pageToHide.classList.add("hidden");
     } else {
@@ -346,9 +347,9 @@ class App {
       // desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${
       //   this.slideCount
       //   }`;
-      if(pageNumOffset==1) {
+      if (pageNumOffset == 1) {
         desc.textContent = `${this.getPageNumber() + 1} / ${this.slideCount}`;
-      }else{
+      } else {
         desc.textContent = `${this.getPageNumber() + 1}—${this.getPageNumber() + pageNumOffset} / ${this.slideCount}`;
       }
 
@@ -445,14 +446,17 @@ class App {
     }
   }
   previousClick() {
-    if (
-      this.getPageNode(this.getPageNumber()).classList.contains("right") &&
-      this.getPageNode(this.getPageNumber(-1)) &&
-      !this.getPageNode(this.getPageNumber(-1)).classList.contains("hidden")
-    ) {
-      this.navigateToPage(this.getPageNumber(-2));
-    } else {
+    if (window.innerWidth < this.spreadBreakPoint) {
       this.navigateToPage(this.getPageNumber(-1));
+    } else {
+      if (this.getPageNode(this.getPageNumber(-1))
+        && this.getPageNode(this.getPageNumber(-1)).classList.contains("right")
+        && this.getPageNode(this.getPageNumber(-2)).classList.contains("left")
+      ) {
+        this.navigateToPage(this.getPageNumber(-2))
+      } else {
+        this.navigateToPage(this.getPageNumber(-1))
+      }
     }
   }
 
