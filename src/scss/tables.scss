@@ -1694,9 +1694,9 @@ div.table--t3-u2-24 {
 div.table--t3-u2-25 {
   /* ADAPTED FROM TABLE ABOVE*/
   .cell {
-    &:nth-child(-n + 2) {
-      border-bottom: none;
-    }
+    //&:nth-child(-n + 2) {
+    //  border-bottom: none;
+    //}
 
     p {
       margin: 0 0 0.8em 0;
