@@ -24,18 +24,27 @@
   //align-items: center;
   //justify-content: space-between;
 }
+main {
+  overflow-y: auto;
+  margin: 36px 0 60px 0;
+  height: calc(100% - 96px);
+}
 .l-wrapper {
+  //margin: 0 auto;
   display: flex;
   justify-content: normal;
-  //margin: 36px auto 54px auto;
+  margin: 0 auto;
   max-width: 1800px;
-  height: calc(100% - 90px);
-  overflow-y: auto;
-  overflow-x: hidden;
+  //height: calc(100% - 90px);
+  overflow-y: visible;
+  //overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  position: absolute;
-  top: 36px;
+  //position: absolute;
+  //top: 36px;
   width: 100%;
+  height: 100%;
+  position: relative;
+
   //height: calc(100% - 90px);
   //overflow-y: auto;
   //overflow-x: hidden;
@@ -62,6 +71,8 @@
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
+  //max-width: 1800px;
+  //margin: 0 auto;
   //overflow: visible;
   /*border: red solid 1px;*/
 }
