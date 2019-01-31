@@ -33,6 +33,8 @@ const vinylPaths = require("vinyl-paths");
 const print = require("gulp-print").default;
 const async = require("async");
 const tap = require("gulp-tap");
+const zip = require('gulp-zip');
+
 var runSequence = require("run-sequence");
 //gulp.watch = watch;
 //const gaze = require('gaze');
@@ -392,6 +394,11 @@ gulp.task("build-packs", () => {
         .pipe(gulp.dest(htmlDest))
     );
     //.pipe(notify({ message: `html copy task complete` }))
+      jsBundleStreams.push(
+          gulp.src(`packs/${folder}/**/*`)
+              .pipe(zip(`${folder}.zip`))
+              .pipe(gulp.dest('packs/zips'))
+      );
   });
 
   return merge(jsBundleStreams);
