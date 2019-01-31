@@ -1,6 +1,7 @@
 import { qs, $log, $on } from "./util";
 import EventEmitter from 'events'
-import Event from 'events'
+import Event from 'events';
+import anime from 'animejs';
 
 export default class Timeline extends Event {
   constructor(el, anim) {

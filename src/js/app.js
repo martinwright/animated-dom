@@ -45,6 +45,7 @@ class App {
     this.slideCount = 0;
     this.quizCount = 0;
     this.displayModeBtns = document.getElementsByName("displayMode");
+    this.spreadBreakPoint = 900;
   }
 
   setView() {
@@ -178,14 +179,17 @@ class App {
 
   isNextPageVisible() {
     const currentPageNum = this.getPageNumber();
+    console.log('currentPageNum', currentPageNum);
     let nextPageNode = this.getPageNode(currentPageNum + 1);
     if (
       nextPageNode &&
       nextPageNode.classList.contains("right") &&
       !nextPageNode.classList.contains("hidden")
     ) {
+      console.log('right not hidden');
       return true;
     } else {
+      console.log('no right page');
       return false;
     }
   }
@@ -225,7 +229,7 @@ class App {
   }
 
   doResize() {
-    //console.log('****** doResize');
+    console.log('****** doResize');
     const thisPageNode = this.getPageNode(this.getPageNumber()),
       nextPageNode = this.getPageNode(this.getPageNumber(1)),
       prevPageNode = this.getPageNode(this.getPageNumber(-1)),
@@ -236,13 +240,14 @@ class App {
     if (isLeft) pageToHide = nextPageNode;
     if (isRight) pageToHide = prevPageNode;
 
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < this.spreadBreakPoint) {
       //TODO SAME AS tablet-landscape-up
       if (pageToHide) pageToHide.classList.add("hidden");
     } else {
       if (pageToHide) pageToHide.classList.remove("hidden");
     }
     //this.resetNavigationStates();
+    this.updateProgressBar();
   }
 
   addPageNumber(el, num) {
@@ -334,13 +339,20 @@ class App {
     const bar = qs(".nav-bar__progress-bar"),
       desc = qs(".nav-bar__progress-txt"),
       pageNumOffset = this.isNextPageVisible() ? 2 : 1;
+    console.log('pageNumOffset', pageNumOffset);
 
     if (this.display === "slides") {
       bar.style.width =
         ((this.getPageNumber() + pageNumOffset) / this.slideCount) * 100 + "%";
-      desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${
-        this.slideCount
-        }`;
+      // desc.textContent = `${this.getPageNumber() + pageNumOffset} / ${
+      //   this.slideCount
+      //   }`;
+      if (pageNumOffset == 1) {
+        desc.textContent = `${this.getPageNumber() + 1} / ${this.slideCount}`;
+      } else {
+        desc.textContent = `${this.getPageNumber() + 1}—${this.getPageNumber() + pageNumOffset} / ${this.slideCount}`;
+      }
+
     } else if (this.display === "quiz") {
       let width = (bar.style.width =
         ((this.getPageNumber() - this.slideCount + pageNumOffset) /
@@ -434,14 +446,17 @@ class App {
     }
   }
   previousClick() {
-    if (
-      this.getPageNode(this.getPageNumber()).classList.contains("right") &&
-      this.getPageNode(this.getPageNumber(-1)) &&
-      !this.getPageNode(this.getPageNumber(-1)).classList.contains("hidden")
-    ) {
-      this.navigateToPage(this.getPageNumber(-2));
-    } else {
+    if (window.innerWidth < this.spreadBreakPoint) {
       this.navigateToPage(this.getPageNumber(-1));
+    } else {
+      if (this.getPageNode(this.getPageNumber(-1))
+        && this.getPageNode(this.getPageNumber(-1)).classList.contains("right")
+        && this.getPageNode(this.getPageNumber(-2)).classList.contains("left")
+      ) {
+        this.navigateToPage(this.getPageNumber(-2))
+      } else {
+        this.navigateToPage(this.getPageNumber(-1))
+      }
     }
   }
 

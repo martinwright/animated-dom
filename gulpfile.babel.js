@@ -542,7 +542,7 @@ gulp.task("styles", () => {
 gulp.task("folders", () => {
   return (
     gulp
-      .src("src/**/**")
+      .src(["src/**/**", "!src/partials/**"])
       .pipe(newer("build"))
       /*.pipe(critical.stream({
             'base': 'build/',

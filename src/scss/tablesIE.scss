@@ -26,6 +26,38 @@ div.table--t3-u2-29_ie {
   }
 }
 
+div.table--t2-u1-20_ie {
+  table {
+    width: 100%;
+    font-size: $table-font-size;
+    border-collapse: collapse;
+  }
+
+  table, td, th {
+    border: $table-line;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    vertical-align: top;
+  }
+
+  td:first-child {
+    text-align: left;
+  }
+
+  th h3{
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  tr:first-child {
+    background-color: $table-fill-col;
+  }
+}
+
+
 div.table--t3-u3-6_ie {
   table {
     width: 100%;
@@ -174,6 +206,40 @@ div.table--t5-u1-25_ie {
   }
 }
 
+div.table--t7-u2-12_ie {
+  table {
+    width: 100%;
+    font-size: $table-font-size;
+    border-collapse: collapse;
+  }
+
+  table, td, th {
+    border: $table-line;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    vertical-align: top;
+    ul{
+      margin: 0;
+    }
+  }
+
+  td:first-child {
+    text-align: left;
+  }
+
+  th h3{
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  tr:first-child {
+    background-color: $table-fill-col;
+  }
+}
+
 
 
 
@@ -235,3 +301,66 @@ div.table--t11-u1-11_ie, div.table--t12-u1-7_ie {
     background-color: $table-fill-col;
   }
 }
+
+
+div.table--t13-u2-11_ie {
+   table {
+     width: 100%;
+     font-size: $table-font-size;
+     border-collapse: collapse;
+     text-align: left;
+   }
+
+   table, td, th {
+     border: $table-line;
+   }
+
+   th, td {
+     text-align: left;
+     padding: 8px;
+     vertical-align: top;
+     text-align: left;
+   }
+
+
+   h3{
+     font-weight: bold;
+     font-size: 1.2em;
+   }
+
+   tr:first-child, td:first-child {
+     background-color: $table-fill-col;
+   }
+ }
+
+
+div.table--t13-u2-20_ie {
+  table {
+    width: 100%;
+    font-size: $table-font-size;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  table, td, th {
+    border: $table-line;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+
+  h3,h4{
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  tr:first-child {
+    background-color: $table-fill-col;
+  }
+}
+
