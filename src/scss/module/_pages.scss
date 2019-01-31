@@ -86,12 +86,7 @@ h2.sub-heading--right {
   position: relative;
   display: block;
   padding-bottom: 1em;
-  height: max-content;
-  overflow: hidden;
-  //overflow-x: hidden;
-  //overflow-y: hidden;
-  //height: 100%;
-  
+
   @include for-size(tablet-landscape-up) {
     display: flex;
     flex-direction: row;
@@ -124,7 +119,6 @@ section {
   flex-basis: 0;
   padding: 1em 1em 0 1em;
   overflow: visible;
-      height: max-content;
   //border: yellow solid 1px;
 }
 section.mobileHelper--1 {

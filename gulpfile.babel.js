@@ -43,6 +43,52 @@ const glob = require("glob");
 /* ----------------- */
 /* Combine HTMLs
 /* ----------------- */
+/* ----------------- */
+/* Copy Index.html from /partials
+/* ----------------- */
+gulp.task("delete-index-prom", function (done) {
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let indexFile = "build/" + pack.topic + "-" + pack.unit + "/index.html";
+
+    jsBundleStreams.push(
+      gulp
+        .src(indexFile)
+        .pipe(print(filepath => `delete-index: ${filepath}`))
+        .pipe(vinylPaths(del))
+    );
+  });
+
+  return merge(jsBundleStreams);
+});
+/* ----------------- */
+/* Copy Index.html from /partials
+/* ----------------- */
+gulp.task("copy-index-prom", function (done) {
+  let jsBundleStreams = [];
+  packConfig.packs.map(pack => {
+    let dir = "build/" + pack.topic + "-" + pack.unit;
+
+    jsBundleStreams.push(
+      gulp
+        .src("src/partials/index.html")
+        //.pipe(newer(dir))
+        .pipe(
+          plumber({
+            errorHandler: onError
+          })
+        )
+        .pipe(print(filepath => `copy-index: ${filepath}`))
+        .pipe(gulp.dest(dir))
+    );
+  });
+
+  return merge(jsBundleStreams);
+});
+/* ----------------- */
+/* build-html-combined
+/* ----------------- */
 gulp.task("build-html-combined-prom", function (done) {
   let courseName = packConfig.course,
     jsBundleStreams = [];
@@ -103,7 +149,7 @@ gulp.task("build-html-combined-prom", function (done) {
         )
 
         .pipe(replace(/<!DOCTYPE html>/g, ""))
-        //.pipe(print(filepath => `build-html-combined: ${filepath}`))
+        .pipe(print(filepath => `build-html-combined: ${filepath}`))
         .pipe(concat("combined.html"))
         .pipe(
           tap(function (file) {
@@ -139,30 +185,7 @@ gulp.task("delete-index-prom", function (done) {
   return merge(jsBundleStreams);
 });
 
-/* ----------------- */
-/* Copy Index.html from /partials
-/* ----------------- */
-gulp.task("copy-index-prom", function (done) {
-  let jsBundleStreams = [];
-  packConfig.packs.map(pack => {
-    let dir = "build/" + pack.topic + "-" + pack.unit;
 
-    jsBundleStreams.push(
-      gulp
-        .src("src/partials/index.html")
-        //.pipe(newer(dir))
-        .pipe(
-          plumber({
-            errorHandler: onError
-          })
-        )
-        //.pipe(print(filepath => `copy-index: ${filepath}`))
-        .pipe(gulp.dest(dir))
-    );
-  });
-
-  return merge(jsBundleStreams);
-});
 
 /* ----------------- */
 /* Insert partials
@@ -394,11 +417,11 @@ gulp.task("build-packs", () => {
         .pipe(gulp.dest(htmlDest))
     );
     //.pipe(notify({ message: `html copy task complete` }))
-      jsBundleStreams.push(
-          gulp.src(`packs/${folder}/**/*`)
-              .pipe(zip(`${folder}.zip`))
-              .pipe(gulp.dest('packs/zips'))
-      );
+    jsBundleStreams.push(
+      gulp.src(`packs/${folder}/**/*`)
+        .pipe(zip(`${folder}.zip`))
+        .pipe(gulp.dest('packs/zips'))
+    );
   });
 
   return merge(jsBundleStreams);

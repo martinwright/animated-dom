@@ -5,6 +5,161 @@
       "topic": "t1",
       "unit": "u1",
       "title": "Professionalism"
+    },
+    {
+      "topic": "t1",
+      "unit": "u2",
+      "title": "Integrity, reliability, positivity and self-motivation"
+    },
+    {
+      "topic": "t2",
+      "unit": "u1",
+      "title": "Personal development planning"
+    },
+    {
+      "topic": "t2",
+      "unit": "u2",
+      "title": "Coaching and mentoring"
+    },
+    {
+      "topic": "t2",
+      "unit": "u3",
+      "title": "Motivate and influence"
+    },
+    {
+      "topic": "t3",
+      "unit": "u1",
+      "title": "Communicating effectively"
+    },
+    {
+      "topic": "t3",
+      "unit": "u2",
+      "title": "Interpersonal skills"
+    },
+    {
+      "topic": "t3",
+      "unit": "u3",
+      "title": "Digital and social media"
+    },
+    {
+      "topic": "t4",
+      "unit": "u1",
+      "title": "Personal organisation"
+    },
+    {
+      "topic": "t4",
+      "unit": "u2",
+      "title": "Accuracy and proofing"
+    },
+    {
+      "topic": "t5",
+      "unit": "u1",
+      "title": "Effective teamwork"
+    },
+    {
+      "topic": "t5",
+      "unit": "u2",
+      "title": "Cross-team working"
+    },
+    {
+      "topic": "t5",
+      "unit": "u3",
+      "title": "Managing challenging conversations"
+    },
+    {
+      "topic": "t5",
+      "unit": "u4",
+      "title": "Customer and stakeholder relationship management"
+    },
+    {
+      "topic": "t6",
+      "unit": "u1",
+      "title": "Problem-solving techniques"
+    },
+    {
+      "topic": "t7",
+      "unit": "u1",
+      "title": "Managing resources"
+    },
+    {
+      "topic": "t7",
+      "unit": "u2",
+      "title": "Business process improvements"
+    },
+    {
+      "topic": "t8",
+      "unit": "u1",
+      "title": "Decision-making techniques"
+    },
+    {
+      "topic": "t9",
+      "unit": "u1",
+      "title": "Change in the workplace"
+    },
+    {
+      "topic": "t10",
+      "unit": "u1",
+      "title": "Organisations and sectors"
+    },
+    {
+      "topic": "t10",
+      "unit": "u2",
+      "title": "Your organisation"
+    },
+    {
+      "topic": "t10",
+      "unit": "u3",
+      "title": "Organisational culture and strategy"
+    },
+    {
+      "topic": "t10",
+      "unit": "u4",
+      "title": "Understand the market"
+    },
+    {
+      "topic": "t10",
+      "unit": "u5",
+      "title": "Supply chains"
+    },
+    {
+      "topic": "t11",
+      "unit": "u1",
+      "title": "Set and monitor budgets"
+    },
+    {
+      "topic": "t12",
+      "unit": "u1",
+      "title": "Organising meetings and events"
+    },
+    {
+      "topic": "t13",
+      "unit": "u1",
+      "title": "Project lifecycle and roles"
+    },
+    {
+      "topic": "t13",
+      "unit": "u2",
+      "title": "Delivering projects"
+    },
+    {
+      "topic": "t13",
+      "unit": "u3",
+      "title": "Managing project risks and issues"
+    },
+    {
+      "topic": "t14",
+      "unit": "u1",
+      "title": "Legislation and regulations"
+    },
+    {
+      "topic": "t15",
+      "unit": "u1",
+      "title": "Producing business documents"
+    },
+    {
+      "topic": "t16",
+      "unit": "u1",
+      "title": "Equality, diversity and inclusion"
     }
   ]
 }
