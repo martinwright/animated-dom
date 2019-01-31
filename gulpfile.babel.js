@@ -253,21 +253,22 @@ gulp.task("partials-prom", function (done) {
 /* ----------------- */
 /* Build Packs
 /* ----------------- */
-gulp.task("build-packs", () => {
+function getDir(pack) {
+  let title = pack.title.toLowerCase();
+  title = title.replace(/,/g, "");
+  title = title.replace(/\s/g, "-");
+  let folder = pack.topic + "-" + pack.unit + "-" + title;
+  return "packs/" + folder;
+}
+
+gulp.task("build-packs-1", () => {
   if (!fs.existsSync("packs"))
     fs.mkdirSync("packs"), console.log("📁  folder created:", "packs");
 
-  let jsBundleStreams = [],
-    courseName = packConfig.course;
+  let jsBundleStreams = [];
 
   packConfig.packs.map(pack => {
-    // set pack folder name
-    let title = pack.title.toLowerCase();
-    title = title.replace(/,/g, "");
-    title = title.replace(/\s/g, "-");
-    let folder = pack.topic + "-" + pack.unit + "-" + title;
-    let dir = "packs/" + folder;
-    //console.log('📁  dir:', dir);
+    let dir = getDir(pack);
 
     // Create pack folder and Contents folder
     if (!fs.existsSync(dir))
@@ -283,8 +284,19 @@ gulp.task("build-packs", () => {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(packDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-2", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
     // Add imsmanifest
+    let dir = getDir(pack);
+
     let manifestSrc = `src/${pack.topic}-${pack.unit}/imsmanifest.xml`,
       manifestDest = `${dir}`;
     jsBundleStreams.push(
@@ -294,14 +306,25 @@ gulp.task("build-packs", () => {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(manifestDest))
     );
+  });
 
-    dir = dir + "/content";
-    if (!fs.existsSync(dir))
-      fs.mkdirSync(dir), console.log("📁  folder created:", dir);
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-3", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
+
+    if (!fs.existsSync(contentDir))
+      fs.mkdirSync(contentDir), console.log("📁  folder created:", contentDir);
 
     // Add CSS from build to to pack if newer
     let cssSrc = `build/css/**`,
-      cssDest = `${dir}/css`;
+      cssDest = `${contentDir}/css`;
 
     if (!fs.existsSync(cssDest))
       fs.mkdirSync(cssDest), console.log("📁  folder created:", cssDest);
@@ -310,25 +333,46 @@ gulp.task("build-packs", () => {
       gulp
         .src(cssSrc)
         //.pipe(newer(cssDest))
-        //.pipe(plumber({ errorHandler: onError }))
+        .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(cssDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-4", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     // Add JS from build to to pack if newer
     let jsSrc = `build/js/**`,
-      jsDest = `${dir}/js`;
+      jsDest = `${contentDir}/js`;
     jsBundleStreams.push(
       gulp
         .src(jsSrc)
-        .pipe(newer(jsDest))
+        //.pipe(newer(jsDest))
         .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(jsDest))
     );
-    //.pipe(notify({ message: `js copy ${pack} task complete` })));
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-5", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     // Add Libs from build to to pack if newer
     let libSrc = `build/libs/**`,
-      libDest = `${dir}/libs`;
+      libDest = `${contentDir}/libs`;
     jsBundleStreams.push(
       gulp
         .src(libSrc)
@@ -336,11 +380,21 @@ gulp.task("build-packs", () => {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(libDest))
     );
-    //.pipe(notify({ message: `libs copy ${pack} task complete` })));
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-6", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     // Add Libs from build to to pack if newer
     let venSrc = `build/vendor/**`,
-      venDest = `${dir}/vendor`;
+      venDest = `${contentDir}/vendor`;
     jsBundleStreams.push(
       gulp
         .src(venSrc)
@@ -348,56 +402,111 @@ gulp.task("build-packs", () => {
         .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(venDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-7", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     // Add Images from build to to pack if newer
     let imgSrc = `build/images/${pack.topic}-${pack.unit}/**`,
-      imgDest = `${dir}/images/${pack.topic}-${pack.unit}`;
+      imgDest = `${contentDir}/images/${pack.topic}-${pack.unit}`;
     jsBundleStreams.push(
       gulp
         .src(imgSrc)
-        .pipe(newer(imgDest))
+        //.pipe(newer(imgDest))
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(imagemin())
+        //.pipe(imagemin())
         .pipe(gulp.dest(imgDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-8", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     let navSrc = `build/images/_nav/**/*`,
-      navDest = `${dir}/images/_nav`;
+      navDest = `${contentDir}/images/_nav`;
     jsBundleStreams.push(
       gulp
         .src(navSrc)
-        .pipe(newer(navDest))
+        //.pipe(newer(navDest))
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(imagemin())
+        //.pipe(imagemin())
         .pipe(gulp.dest(navDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-9", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     let shapesSrc = `build/images/_shapes/**`,
-      shapesDest = `${dir}/images/_shapes`;
+      shapesDest = `${contentDir}/images/_shapes`;
     jsBundleStreams.push(
       gulp
         .src(shapesSrc)
-        .pipe(newer(shapesDest))
+        //.pipe(newer(shapesDest))
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(imagemin())
+        //.pipe(imagemin())
         .pipe(gulp.dest(shapesDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-10", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     let iquizSrc = `build/${pack.topic}-${pack.unit}/iquiz_assets/**`,
-      iquizDest = `${dir}/iquiz_assets`;
+      iquizDest = `${contentDir}/iquiz_assets`;
     jsBundleStreams.push(
       gulp
         .src(iquizSrc)
-        .pipe(newer(iquizDest))
+        //.pipe(newer(iquizDest))
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(imagemin())
+        //.pipe(imagemin())
         .pipe(gulp.dest(iquizDest))
     );
+  });
 
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-11", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let contentDir = dir + "/content";
     // Add HTML from build to to pack if newer
     // TODO update build paths
     let htmlSrc = `build/${pack.topic}-${pack.unit}/index.html`,
-      htmlDest = `${dir}`;
+      htmlDest = `${contentDir}`;
     jsBundleStreams.push(
       gulp
         .src(htmlSrc)
@@ -410,15 +519,26 @@ gulp.task("build-packs", () => {
         .pipe(
           replace(
             /<title>[\W\w\s\n\r]*<\/title>/g,
-            `<title>${courseName} | ${pack.title}</title>`
+            `<title>${packConfig.course} | ${pack.title}</title>`
           )
         )
         .pipe(plumber({ errorHandler: onError }))
         .pipe(gulp.dest(htmlDest))
     );
-    //.pipe(notify({ message: `html copy task complete` }))
+  });
+
+  return merge(jsBundleStreams);
+});
+
+gulp.task("build-packs-12", () => {
+
+  let jsBundleStreams = [];
+
+  packConfig.packs.map(pack => {
+    let dir = getDir(pack);
+    let folder = dir.replace('packs/', '');
     jsBundleStreams.push(
-      gulp.src(`packs/${folder}/**/*`)
+      gulp.src(`${dir}/**/*`)
         .pipe(zip(`${folder}.zip`))
         .pipe(gulp.dest('packs/zips'))
     );
@@ -427,26 +547,10 @@ gulp.task("build-packs", () => {
   return merge(jsBundleStreams);
 });
 
-/* ----------------- */
-/* Pack Libs
-/* ----------------- */
-gulp.task("pack-libs", () => {
-  // Copy folders
-  for (let i = 1; i <= 32; i++) {
-    gulp
-      .src("build/libs/**")
-      .pipe(
-        plumber({
-          errorHandler: onError
-        })
-      )
-      .pipe(gulp.dest(`packs/unit-${i}/libs`));
-    //.pipe(notify({ message: `Libs copy unit-${i}/libs complete` }))
-    /*.pipe(gulp.src('build/js/!**'))
-        .pipe(gulp.dest(`packs/unit-${i}/js`))
-        .pipe(notify({message: `Libs copy unit-${i}/js complete`}));*/
-  }
-});
+
+
+
+
 
 /* ----------------- */
 /* Libs
@@ -464,6 +568,7 @@ gulp.task("fonts", () => {
   // Copy vendor files
   gulp
     .src("src/scss/fonts/*")
+    .pipe(newer('build/css/fonts'))
     .pipe(
       plumber({
         errorHandler: onError
@@ -480,7 +585,7 @@ gulp.task("vendor", () => {
   // Copy vendor files
   gulp
     .src("src/vendor/**")
-    //.pipe(newer('build/vendor'))
+    .pipe(newer('build/vendor'))
     .pipe(
       plumber({
         errorHandler: onError
@@ -540,7 +645,7 @@ gulp.task("images", () => {
       //.pipe(changed(imgDst))
       //.pipe(imagemin())
       .pipe(gulp.dest(imgDst))
-      .pipe(notify({ message: "Images task complete" }))
+    //.pipe(notify({ message: "Images task complete" }))
   );
 });
 
@@ -560,10 +665,8 @@ gulp.task("styles", () => {
     .pipe(autoprefixer({ grid: true, browsers: ["last 4 versions"] }))
     .pipe(plugins().sourcemaps.write())
     .pipe(gulp.dest("./build/css/"))
-    .pipe(notify({ message: "styles task complete" }))
-    .pipe(gulp.dest("../Infuze-Quiz/_temp/build/css/"))
-    .pipe(notify({ message: "styles task complete" }))
-
+    //.pipe(gulp.dest("../Infuze-Quiz/_temp/build/css/"))
+    //.pipe(notify({ message: "styles task complete" }))
     .pipe(browserSync.stream());
 });
 /* ----------------- */
@@ -572,15 +675,8 @@ gulp.task("styles", () => {
 gulp.task("folders", () => {
   return (
     gulp
-      .src(["src/**/**", "!src/partials/**"])
+      .src(["src/**/**", "!src/partials/**", "!src/imsmanifest/**"])
       .pipe(newer("build"))
-      /*.pipe(critical.stream({
-            'base': 'build/',
-            'inline': true,
-            'extract': true,
-            'minify': true,
-            'css': ['./build/css/style.css']
-        }))*/
       .pipe(gulp.dest("build"))
       .pipe(browserSync.stream())
   );
@@ -704,7 +800,7 @@ gulp.task("jsmin", () => {
 /* ----------------- */
 
 gulp.task(
-  "development",
+  "dev",
   ["scripts", "styles", "images", "html", "json", "combine", "libs"],
   () => {
     browserSync({
@@ -733,6 +829,19 @@ gulp.task(
   }
 );
 
+gulp.task("default", ["dev"]);
+
+gulp.task("build", [
+  "folders",
+  "html",
+  "json",
+  "images",
+  "jsmin",
+  "libs",
+  "vendor",
+  "fonts"
+]);
+
 gulp.task("combine", function (callback) {
   runSequence(
     "html",
@@ -744,15 +853,21 @@ gulp.task("combine", function (callback) {
   );
 });
 
-gulp.task("default", ["development"]);
-gulp.task("build", [
-  "folders",
-  "html",
-  "json",
-  "images",
-  "jsmin",
-  "libs",
-  "vendor",
-  "fonts"
-]);
-gulp.task("packs", ["build-packs"]);
+gulp.task("packs", function (callback) {
+  runSequence(
+    "build-packs-1",
+    "build-packs-2",
+    "build-packs-3",
+    "build-packs-4",
+    "build-packs-5",
+    "build-packs-6",
+    "build-packs-7",
+    "build-packs-8",
+    "build-packs-9",
+    "build-packs-10",
+    "build-packs-11",
+    "build-packs-12",
+    callback
+  );
+});
+
