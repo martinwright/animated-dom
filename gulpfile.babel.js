@@ -323,7 +323,7 @@ gulp.task("build-packs-3", () => {
       fs.mkdirSync(contentDir), console.log("📁  folder created:", contentDir);
 
     // Add CSS from build to to pack if newer
-    let cssSrc = `build/css/**`,
+    let cssSrc = ['build/css/**', '!build/css/*.map'],
       cssDest = `${contentDir}/css`;
 
     if (!fs.existsSync(cssDest))
@@ -349,7 +349,7 @@ gulp.task("build-packs-4", () => {
     let dir = getDir(pack);
     let contentDir = dir + "/content";
     // Add JS from build to to pack if newer
-    let jsSrc = `build/js/**`,
+    let jsSrc = ['build/js/**', '!build/js/*.map'],
       jsDest = `${contentDir}/js`;
     jsBundleStreams.push(
       gulp
@@ -371,7 +371,7 @@ gulp.task("build-packs-5", () => {
     let dir = getDir(pack);
     let contentDir = dir + "/content";
     // Add Libs from build to to pack if newer
-    let libSrc = `build/libs/**`,
+    let libSrc = ['build/libs/**', '!build/libs/iquiz/css/*.map', '!build/libs/iquiz/js/*.map'],
       libDest = `${contentDir}/libs`;
     jsBundleStreams.push(
       gulp
@@ -751,7 +751,6 @@ gulp.task("scripts", () => {
             },
             "useBuiltIns": true
           }],
-
         ]
       })
     ]
