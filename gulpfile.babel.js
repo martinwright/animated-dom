@@ -809,7 +809,7 @@ gulp.task("jsmin", () => {
 
 gulp.task(
   "dev",
-  ["scripts", "styles", "images", "html", "json", "combine", "libs"],
+  ["scripts", "styles", "images", "html", "json", "combine"],
   () => {
     browserSync({
       server: {
@@ -845,7 +845,6 @@ gulp.task("build", [
   "json",
   "images",
   "jsmin",
-  "libs",
   "vendor",
   "fonts"
 ]);
