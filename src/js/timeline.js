@@ -6,7 +6,7 @@ import anime from 'animejs';
 export default class Timeline extends Event {
   constructor(el, anim) {
     super();
-    //console.log('????????? anim', anim);
+    //$log('????????? anim', anim);
     this.elementsList = el;
     this.animationJson = anim;
     this.timeline;
@@ -16,14 +16,14 @@ export default class Timeline extends Event {
   }
 
   getAnimProp(page, step, prop, defaultVal) {
-    //console.log('>>>>>>>>> page', page);
-    //console.log('>>>>>>>>> step', step);
-    //console.log('>>>>>>>>> prop', prop);
-    //console.log('getAnimProp: ', step);
+    //$log('>>>>>>>>> page', page);
+    //$log('>>>>>>>>> step', step);
+    //$log('>>>>>>>>> prop', prop);
+    //$log('getAnimProp: ', step);
     //return defaultVal;
 
     try {
-      //console.log('this.animationJson.screens[page]: ', this.animationJson.screens[page].steps[String(step)][prop]);
+      //$log('this.animationJson.screens[page]: ', this.animationJson.screens[page].steps[String(step)][prop]);
       let returnValue = this.animationJson.screens[page].steps[String(step)][
         prop
       ];
@@ -33,13 +33,13 @@ export default class Timeline extends Event {
       //return defaultVal;
       return returnValue;
     } catch (e) {
-      //console.log('catch: ', e);
+      //$log('catch: ', e);
       return defaultVal;
     }
   }
 
   startAmnimation() {
-    //console.log('????????? setAnimations start');
+    //$log('????????? setAnimations start');
     //this.timeline.play();
     this.timeline.reverse();
     this.timeline.play();
@@ -50,7 +50,7 @@ export default class Timeline extends Event {
   }
 
   setup() {
-    //console.log('????????? setAnimations setup');
+    //$log('????????? setAnimations setup');
     let defaultDuration = this.animationJson.params
       ? this.animationJson.params.defaultDuration
       : "300",
@@ -74,23 +74,23 @@ export default class Timeline extends Event {
         animPage = el.pageNumber;
 
       defaultType = "slide-left";
-      //console.log('*********** el.nodeName: ', el.nodeName);
+      //$log('*********** el.nodeName: ', el.nodeName);
       if (/IMG/.test(el.nodeName)) {
-        //console.log('*********** el: ', qs('img', el).src);
+        //$log('*********** el: ', qs('img', el).src);
         let img = qs("img", el);
         if (el.src) {
           let [fileName, ...rest] = el.src.split("/").reverse();
-          //console.log('*********** fileName: ', fileName);
+          //$log('*********** fileName: ', fileName);
           if (fileName && /^cir-.*\.svg$/.test(fileName)) {
-            //console.log('*********** CIRCLE: ', fileName);
+            //$log('*********** CIRCLE: ', fileName);
             defaultType = "zoom-out";
           }
           if (fileName && /^(dia|dec|hex|pen|squ)-.*\.svg$/.test(fileName)) {
-            //console.log('*********** DIAMOND: ', fileName);
+            //$log('*********** DIAMOND: ', fileName);
             defaultType = "roll-from-right";
           }
           if (fileName && /^.*\.(jpg|png)$/.test(fileName)) {
-            //console.log('*********** JPG: ', fileName);
+            //$log('*********** JPG: ', fileName);
             defaultType = "zoom-in";
           }
         }
@@ -105,8 +105,8 @@ export default class Timeline extends Event {
 
       //document.querySelectorAll('#myDiv img')[0].src
 
-      //console.log('animStep: ', animStep);
-      //console.log('animPage: ', animPage);
+      //$log('animStep: ', animStep);
+      //$log('animPage: ', animPage);
       //defaultOffset = defaultOffset + 500;
       let offset =
         el.dataset.offset ||
@@ -273,10 +273,10 @@ export default class Timeline extends Event {
 
     });
 
-    console.log("#################### myTimeline this.timeline ", this.timeline);
+    $log("#################### myTimeline this.timeline ", this.timeline);
 
     this.timeline.begin = () => {
-      console.log("#################### myTimeline begin ");
+      $log("#################### myTimeline begin ");
       this.status = 'started';
       this.emit('started', 'started');
 
@@ -295,7 +295,7 @@ export default class Timeline extends Event {
       //wrapper.classList.remove('hidden');
 
       //(document.getElementsByClassName("wrapper")[0]).classList.remove('hidden');
-      console.log("#################### myTimeline complete ");
+      $log("#################### myTimeline complete ");
       this.status = 'complete';
       this.emit('complete', 'complete');
 

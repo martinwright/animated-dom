@@ -14,7 +14,7 @@ import npmDist from "gulp-npm-dist";
 import replace from "gulp-replace";
 import "babel-polyfill";
 import autoprefixer from "gulp-autoprefixer";
-
+const uglify = require('gulp-uglify');
 const newer = require("gulp-newer");
 import fs from "fs";
 import log from "fancy-log";
@@ -658,12 +658,12 @@ gulp.task("styles", () => {
     .pipe(plugins().sourcemaps.init())
     .pipe(
       plugins()
-        .sass()
+        .sass({ outputStyle: 'compressed' })
         .on("error", plugins().sass.logError)
     )
     .pipe(concat("style.css")) // this is what was missing
     .pipe(autoprefixer({ grid: true, browsers: ["last 4 versions"] }))
-    .pipe(plugins().sourcemaps.write())
+    .pipe(plugins().sourcemaps.write('.', { sourceRoot: '../../src/scss', includeContent: false }))
     .pipe(gulp.dest("./build/css/"))
     //.pipe(gulp.dest("../Infuze-Quiz/_temp/build/css/"))
     //.pipe(notify({ message: "styles task complete" }))
@@ -744,7 +744,15 @@ gulp.task("scripts", () => {
     debug: true,
     transform: [
       babelify.configure({
-        presets: ["env", "react"]
+        presets: [
+          ["env", {
+            "targets": {
+              "browsers": ["last 2 versions", "ie >= 11"]
+            },
+            "useBuiltIns": true
+          }],
+
+        ]
       })
     ]
   })
@@ -764,7 +772,8 @@ gulp.task("scripts", () => {
     .pipe(source("bundle.js"))
     .pipe(buffer())
     .pipe(plugins().sourcemaps.init({ loadMaps: true }))
-    .pipe(plugins().sourcemaps.write("."))
+    .pipe(uglify())
+    .pipe(plugins().sourcemaps.write('.', { sourceRoot: '../../', includeContent: false }))
     .pipe(gulp.dest("./build/js/"))
     .pipe(browserSync.stream());
 });
@@ -805,11 +814,11 @@ gulp.task(
   () => {
     browserSync({
       server: {
-        baseDir: "build/"
+        baseDir: "./"
       },
       port: 3032,
       //startPath: "/t3-u2/index.html",
-      startPath: "/t10-u1/index.html",
+      startPath: "./build/t10-u1/index.html",
       snippetOptions: {
         rule: {
           match: /<\/body>/i,

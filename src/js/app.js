@@ -6,10 +6,12 @@ import { SCORM } from "pipwerks-scorm-api-wrapper";
 //import { Base64 } from 'js-base64';
 
 DocReady(() => {
-  //console.log("DocReady");
+  //$log("DocReady");
   const app = new App();
   SCORM.init();
+  $log("set loadHandler");
   const loadHandler = () => app.setView();
+  $log("set debounce");
   const debounce = (fn, time) => {
     let timeout;
     return function () {
@@ -49,6 +51,7 @@ class App {
   }
 
   setView() {
+    $log('setView: ');
     function getJsonFileName(loc) {
       let [fileName, foldername, ...rest] = loc.href.split("/").reverse();
       let pathItems = loc.href.split("/");
@@ -58,28 +61,28 @@ class App {
       return retPath;
     }
     function validateResponse(response) {
-      //console.log('APP: validateResponse: ', response);
+      //$log('APP: validateResponse: ', response);
       if (!response.ok) {
         throw Error(response.statusText);
       }
       return response;
     }
     function readResponseAsJSON(response) {
-      //console.log('APP: readResponseAsJSON: ', response);
+      //$log('APP: readResponseAsJSON: ', response);
       return response.json();
     }
     function logResult(result) {
-      //console.log('APP: logResult: ', result);
+      //$log('APP: logResult: ', result);
       return result;
     }
     function logError(error) {
-      //console.log('Looks like there was a problem: \n', error);
+      //$log('Looks like there was a problem: \n', error);
     }
     function setAminProps(response) {
-      //console.log('****** setAminProps response', response);
+      //$log('****** setAminProps response', response);
       this.animations = response;
     }
-    //console.log('****** loadAnimationSeq start');
+    //$log('****** loadAnimationSeq start');
 
     this.definePages();
     this.hidePages();
@@ -104,6 +107,7 @@ class App {
   }
 
   definePages() {
+    $log('definePages');
     [...this.allSlides] = document.querySelectorAll(".container--layout-1");
     [...this.allQuestions] = document.querySelectorAll(".container--iquiz");
     this.slideCount = this.allSlides.length;
@@ -111,6 +115,8 @@ class App {
 
     this.quizFirstPage = this.slideCount;
     this.quizCurrentPage = this.slideCount;
+    $log('this.quizFirstPage ', this.quizFirstPage);
+    $log('this.quizCurrentPage ', this.quizCurrentPage);
   }
   hidePages() {
     // Set wrapper and pages to hidden
@@ -123,7 +129,7 @@ class App {
     });
   }
   continueStartUp(json = {}) {
-    //console.log('****** continueStartUp ');
+    //$log('****** continueStartUp ');
     this.animationJson = json;
     this.setStateValues();
     this.setNavigationEvents();
@@ -136,6 +142,7 @@ class App {
 
   setStateValues() {
     const quiz = /\#q(\d+)/.exec(location.hash);
+    $log('setStateValues quiz ', quiz);
     if (quiz) {
       this.quizCurrentPage = +quiz[1];
       this.display = "quiz";
@@ -143,12 +150,14 @@ class App {
       qs("#quizRadio").checked = true;
     }
     const slide = /\#s(\d+)/.exec(location.hash);
+    $log('setStateValues slide ', slide);
     if (slide) {
       this.slidesCurrentPage = +slide[1];
       this.display = "slides";
       this.currentNodeSelection = this.allSlides;
       qs("#slidesRadio").checked = true;
     }
+    $log('setStateValues allSlides ', this.currentNodeSelection);
   }
 
   setNavigationEvents() {
@@ -173,23 +182,23 @@ class App {
   }
 
   freezeVp(e) {
-    console.log("APP freezeVp ", e);
+    $log("APP freezeVp ", e);
     e.preventDefault();
   }
 
   isNextPageVisible() {
     const currentPageNum = this.getPageNumber();
-    console.log('currentPageNum', currentPageNum);
+    $log('currentPageNum', currentPageNum);
     let nextPageNode = this.getPageNode(currentPageNum + 1);
     if (
       nextPageNode &&
       nextPageNode.classList.contains("right") &&
       !nextPageNode.classList.contains("hidden")
     ) {
-      console.log('right not hidden');
+      $log('right not hidden');
       return true;
     } else {
-      console.log('no right page');
+      $log('no right page');
       return false;
     }
   }
@@ -229,7 +238,7 @@ class App {
   }
 
   doResize() {
-    console.log('****** doResize');
+    $log('****** doResize');
     const thisPageNode = this.getPageNode(this.getPageNumber()),
       nextPageNode = this.getPageNode(this.getPageNumber(1)),
       prevPageNode = this.getPageNode(this.getPageNumber(-1)),
@@ -255,7 +264,7 @@ class App {
   }
 
   startQuiz(e) {
-    console.log("****** startQuiz ", e.target);
+    $log("****** startQuiz ", e.target);
     if (!this.quizFirstPage) {
       return;
     }
@@ -277,7 +286,7 @@ class App {
   }
 
   displayModeChanged(e) {
-    //Array.from(this.displayModeBtns).forEach(v => v.checked ? console.log(v.getAttribute('value')) : null)
+    //Array.from(this.displayModeBtns).forEach(v => v.checked ? $log(v.getAttribute('value')) : null)
     let checkedEl = Array.from(this.displayModeBtns).find(el => {
       if (el.checked) return true;
     });
@@ -326,6 +335,8 @@ class App {
   }
 
   getPageNode(page) {
+    $log('getPageNode ', page);
+    $log('getPageNode ', this.currentNodeSelection);
     const pageNamePrefix = this.display === "slides" ? "page-" : "question-";
     let node = this.currentNodeSelection.find(
       n => n.id === pageNamePrefix + page
@@ -339,7 +350,7 @@ class App {
     const bar = qs(".nav-bar__progress-bar"),
       desc = qs(".nav-bar__progress-txt"),
       pageNumOffset = this.isNextPageVisible() ? 2 : 1;
-    console.log('pageNumOffset', pageNumOffset);
+    $log('pageNumOffset', pageNumOffset);
 
     if (this.display === "slides") {
       bar.style.width =
@@ -427,7 +438,7 @@ class App {
   }
 
   toggleAnimation(e) {
-    //console.log('****** toggleAnimation ', e.target.checked);
+    //$log('****** toggleAnimation ', e.target.checked);
     this.showAnimations = e.target.checked;
   }
   replayAnimation() {

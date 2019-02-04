@@ -10,11 +10,11 @@ export function qs(selector, scope) {
 }
 
 export function $logt(msg, val = '') {
-    console.log('>>>>>>>>>>>>> APP TABLE: ' + val);
-    console.table(msg);
+    //console.log('>>>>>>>>>>>>> APP TABLE: ' + val);
+    //console.table(msg);
 }
 export function $log(msg, val = '') {
-    console.log('>>>>>>>>>>>>> APP: ' + msg + ' ', val);
+    //console.log('>>>>>>>>>>>>> APP: ' + msg + ' ', val);
 }
 
 /**
