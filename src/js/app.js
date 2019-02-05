@@ -1,4 +1,4 @@
-//import "babel-polyfill";
+import "babel-polyfill";
 import { $on, qs, $log, $logt } from "./util";
 import DocReady from "./windowLoaded";
 import Timeline from "./timeline";
@@ -257,6 +257,14 @@ class App {
     }
     //this.resetNavigationStates();
     this.updateProgressBar();
+
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    let navBar = document.querySelector('.l-nav-bar')
+
+    $log('****** navBar ', navBar);
+    navBar.style.setProperty('--vh', `${vh}px`);
   }
 
   addPageNumber(el, num) {

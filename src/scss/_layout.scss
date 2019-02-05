@@ -19,6 +19,7 @@
   z-index: 1;
   bottom: 0;
   height: 60px;
+  top: calc(var(--vh, 1vh) * 100 - 60px);
   //padding: 0 .5rem;
   //display: flex;
   //align-items: center;
@@ -30,13 +31,17 @@
   justify-content: normal;
   //margin: 36px auto 54px auto;
   //max-width: 1800px;
-  height: calc(100% - 90px);
+  
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   position: absolute;
   top: 36px;
   width: 100%;
+
+  height: calc(100% - 90px); /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100 - 90px);
+  
   //height: calc(100% - 90px);
   //overflow-y: auto;
   //overflow-x: hidden;
