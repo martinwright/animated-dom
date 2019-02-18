@@ -1,4 +1,4 @@
-import "babel-polyfill";
+//import "babel-polyfill";
 import { $on, qs, $log, $logt } from "./util";
 import DocReady from "./windowLoaded";
 import Timeline from "./timeline";
@@ -141,6 +141,7 @@ class App {
   }
 
   setStateValues() {
+    location.hash = location.hash || "#s0";
     const quiz = /\#q(\d+)/.exec(location.hash);
     $log('setStateValues quiz ', quiz);
     if (quiz) {
@@ -203,7 +204,9 @@ class App {
     }
   }
   displayPage() {
+    $log('displayPage');
     const currentPageNum = this.getPageNumber();
+    $log('displayPage currentPageNum ', currentPageNum);
     const currentPageNode = this.getPageNode(currentPageNum);
 
     const isLeft = currentPageNode.classList.contains("left"),
@@ -333,6 +336,8 @@ class App {
   }
 
   getPageNumber(offset = 0) {
+    $log('getPageNumber ', this.display);
+
     const pagePrefix = this.display === "slides" ? "s" : "q";
     let currentHash = location.hash || "#s0";
     if (this.display === "slides") {
@@ -343,6 +348,7 @@ class App {
   }
 
   getPageNode(page) {
+    //debugger;
     $log('getPageNode ', page);
     $log('getPageNode ', this.currentNodeSelection);
     const pageNamePrefix = this.display === "slides" ? "page-" : "question-";
