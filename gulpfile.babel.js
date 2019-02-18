@@ -675,7 +675,7 @@ gulp.task("styles", () => {
 gulp.task("folders", () => {
   return (
     gulp
-      .src(["src/**/**", "!src/partials/**", "!src/imsmanifest/**"])
+      .src(["src/**/**", "!src/partials/**/*", "!src/imsmanifest/**", "!src/scss/**/*"])
       .pipe(newer("build"))
       .pipe(gulp.dest("build"))
       .pipe(browserSync.stream())
