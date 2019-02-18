@@ -5,7 +5,7 @@
 Use node 10.7.0
 nvm use 10.7.0
 
-Gulp commands :
+Gulp commands (do in order) :
 
 gulp build
 Copies all assets into build folder
