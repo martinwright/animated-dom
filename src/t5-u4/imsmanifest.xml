@@ -15,7 +15,7 @@
 
   <metadata>
     <schema>ADL SCORM</schema>
-    <schemaversion>2004 3rd Edition</schemaversion>
+    <schemaversion>1.2</schemaversion>
   </metadata>
   <organizations default="ORG-infuze_business-admin-l3_t5-u4">
     <organization identifier="ORG-infuze_business-admin-l3_t5-u4">
@@ -27,8 +27,8 @@
   </organizations>
 
   <resources>
-    <resource identifier="index_resource" type="webcontent" adlcp:scormType="sco"  href="content/popup.html">
-      <file href="content/popup.html"/>
+    <resource identifier="index_resource" type="webcontent" adlcp:scormType="sco"  href="content/index.html">
+      <file href="content/index.html"/>
     </resource>
   </resources>
 </manifest>

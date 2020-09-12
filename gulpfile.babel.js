@@ -34,6 +34,7 @@ const print = require("gulp-print").default;
 const async = require("async");
 const tap = require("gulp-tap");
 const zip = require('gulp-zip');
+const purgeSourcemaps = require('gulp-purge-sourcemaps');
 
 var runSequence = require("run-sequence");
 //gulp.watch = watch;
@@ -664,6 +665,7 @@ gulp.task("styles", () => {
     .pipe(concat("style.css")) // this is what was missing
     .pipe(autoprefixer({ grid: true, browsers: ["last 4 versions"] }))
     .pipe(plugins().sourcemaps.write('.', { sourceRoot: '../../src/scss', includeContent: false }))
+      .pipe(purgeSourcemaps())
     .pipe(gulp.dest("./build/css/"))
     //.pipe(gulp.dest("../Infuze-Quiz/_temp/build/css/"))
     //.pipe(notify({ message: "styles task complete" }))
@@ -773,6 +775,7 @@ gulp.task("scripts", () => {
     .pipe(plugins().sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
     .pipe(plugins().sourcemaps.write('.', { sourceRoot: '../../', includeContent: false }))
+      .pipe(purgeSourcemaps())
     .pipe(gulp.dest("./build/js/"))
     .pipe(browserSync.stream());
 });

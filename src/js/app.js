@@ -8,7 +8,9 @@ import { SCORM } from "pipwerks-scorm-api-wrapper";
 DocReady(() => {
   //$log("DocReady");
   const app = new App();
-  SCORM.init();
+  // SCORM.version = "1.2";
+  
+  // let scormSuccess = SCORM.init();
   $log("set loadHandler");
   const loadHandler = () => app.setView();
   $log("set debounce");
@@ -32,8 +34,10 @@ DocReady(() => {
 
 class App {
   constructor() {
-    this.textElementTimeline;
-    this.shapeElementTimeline;
+    // this.textElementTimeline;
+    // this.shapeElementTimeline;
+    this.textElementTimeline = null;
+    this.shapeElementTimeline = null;
     this.animationJson;
     this.throttled = false;
     this.showAnimations = true;
@@ -48,6 +52,11 @@ class App {
     this.quizCount = 0;
     this.displayModeBtns = document.getElementsByName("displayMode");
     this.spreadBreakPoint = 900;
+    //
+    this.userVisitedPages = new Array([],[]);
+    this.scormSuccess;
+    this.scormStatus;
+    this.scormSuspendData;
   }
 
   setView() {
@@ -112,6 +121,8 @@ class App {
     [...this.allQuestions] = document.querySelectorAll(".container--iquiz");
     this.slideCount = this.allSlides.length;
     this.quizCount = this.allQuestions.length;
+    //console.log('this.slideCount:', this.slideCount);
+    //console.log('this.quizCount:', this.quizCount);
 
     this.quizFirstPage = this.slideCount;
     this.quizCurrentPage = this.slideCount;
@@ -129,16 +140,45 @@ class App {
     });
   }
   continueStartUp(json = {}) {
-    //$log('****** continueStartUp ');
     this.animationJson = json;
+    this.setUpScorm();
     this.setStateValues();
     this.setNavigationEvents();
     this.displayPage();
     this.doResize();
-    this.resetNavigationStates();
-    this.createAnimationTimelines();
-    if (this.showAnimations) this.playTimelines();
+    //console.log('****** continueStartUp ');
+    //this.resetNavigationStates();
+    this.createAnimationTimelines('continueStartUp');
+    if (this.showAnimations==true) this.playTimelines();
   }
+
+  setUpScorm(){
+    //console.log('setUpScorm ');
+    this.scormSuccess = SCORM.init();
+     //console.log('this.scormSuccess:', this.scormSuccess);
+     if(this.scormSuccess == true){
+       //console.log('this.scormSuccess:TRUE so get status');
+       this.scormStatus = SCORM.get("cmi.core.lesson_status");
+       this.scormSuspendData = SCORM.get("cmi.suspend_data");
+       //console.log('scormSuspendData:', this.scormSuspendData);
+       if(this.scormSuspendData){
+         if(this.scormSuspendData.length>0){
+           this.userVisitedPages = JSON.parse(this.scormSuspendData);
+         }
+       }
+     }
+    //console.log('this.scormStatus:', this.scormStatus);
+  }
+
+  doScorm1(){
+    //console.log('doScorm1');
+    SCORM.set("cmi.core.lesson_status", "completed");
+  }
+  doScorm2(){
+    //console.log('doScorm2');
+    SCORM.set("cmi.core.lesson_status", "passed");
+  }
+
 
   setStateValues() {
     location.hash = location.hash || "#s0";
@@ -180,6 +220,9 @@ class App {
     //qs("body").addEventListener("touchmove", this.freezeVp, false);
     qs(".l-nav-bar").addEventListener("touchmove", this.freezeVp, false);
     qs(".l-header").addEventListener("touchmove", this.freezeVp, false);
+    // test
+    // qs(".scorm1").onclick = e => this.doScorm1();
+    // qs(".scorm2").onclick = e => this.doScorm2();
   }
 
   freezeVp(e) {
@@ -206,7 +249,8 @@ class App {
   displayPage() {
     $log('displayPage');
     const currentPageNum = this.getPageNumber();
-    $log('displayPage currentPageNum ', currentPageNum);
+    //console.log('displayPage currentPageNum ', currentPageNum);
+
     const currentPageNode = this.getPageNode(currentPageNum);
 
     const isLeft = currentPageNode.classList.contains("left"),
@@ -228,7 +272,53 @@ class App {
     qs(".js-wrapper").classList.remove("hidden");
   }
 
+  setUserPageVisit(type, pageNum){
+    let updateData = false;
+    // UPDATE LOCAL ARRAY
+    switch (type) {
+      case 'slide':
+        if (!this.userVisitedPages[0].includes(pageNum)) {
+          this.userVisitedPages[0].push(pageNum);
+          updateData = true;
+        }
+        break;
+      case 'quiz':
+        if (!this.userVisitedPages[1].includes(pageNum)) {
+          this.userVisitedPages[1].push(pageNum);
+          updateData = true;
+        }
+        break;
+    }
+    //console.log('setUserPageVisit:', this.userVisitedPages);
+    // UPDATE LMS
+    if(updateData == true){
+      let s = JSON.stringify(this.userVisitedPages);
+      SCORM.set("cmi.suspend_data", s);
+    }
+
+    if(this.userVisitedPages[0].length == this.slideCount){
+      console.log('ALL SLIDE PAGES VISITED');
+      if(this.scormStatus != "completed" && this.scormStatus != "passed"){
+        SCORM.set("cmi.core.lesson_status", "completed");
+        this.scormStatus = "completed";
+        updateData = true;
+      }
+    }
+    if(this.userVisitedPages[1].length == this.quizCount){
+      console.log('ALL QUIZ PAGES VISITED');
+      if(this.scormStatus == "completed"){
+        SCORM.set("cmi.core.lesson_status", "passed");
+        this.scormStatus = "passed";
+        updateData = true;
+      }
+    }
+    if(updateData == true){
+      SCORM.save(); //MAKE SURE LMS SAVES DATA NOT CACHE ONLY
+    }
+  }
+
   hashChangedHandler() {
+    //console.log('****** hashChangedHandler');
     this.setStateValues();
     this.hidePages();
     this.displayPage();
@@ -236,12 +326,12 @@ class App {
     this.resetNavigationStates();
     this.setPageNumber(this.getPageNumber());
     //document.querySelector("body").scrollTop = 0;
-    if (this.showAnimations) this.createAnimationTimelines();
-    if (this.showAnimations) this.playTimelines();
+    if (this.showAnimations==true) this.createAnimationTimelines('hashChangedHandler');
+    if (this.showAnimations==true) this.playTimelines();
   }
 
   doResize() {
-    $log('****** doResize');
+    //console.log('****** doResize');
     const thisPageNode = this.getPageNode(this.getPageNumber()),
       nextPageNode = this.getPageNode(this.getPageNumber(1)),
       prevPageNode = this.getPageNode(this.getPageNumber(-1)),
@@ -275,7 +365,7 @@ class App {
   }
 
   startQuiz(e) {
-    $log("****** startQuiz ", e.target);
+    //console.log("****** startQuiz ", e.target);
     if (!this.quizFirstPage) {
       return;
     }
@@ -292,11 +382,12 @@ class App {
     this.displayPage();
     this.doResize();
     this.resetNavigationStates();
-    if (this.showAnimations) this.createAnimationTimelines();
-    if (this.showAnimations) this.playTimelines();
+    // if (this.showAnimations==true) this.createAnimationTimelines('startQuiz');
+    // if (this.showAnimations==true) this.playTimelines();
   }
 
   displayModeChanged(e) {
+    //console.log("****** displayModeChanged ");
     //Array.from(this.displayModeBtns).forEach(v => v.checked ? $log(v.getAttribute('value')) : null)
     let checkedEl = Array.from(this.displayModeBtns).find(el => {
       if (el.checked) return true;
@@ -314,8 +405,8 @@ class App {
       this.displayPage();
       this.doResize();
       this.resetNavigationStates();
-      if (this.showAnimations) this.createAnimationTimelines();
-      if (this.showAnimations) this.playTimelines();
+      // if (this.showAnimations==true) this.createAnimationTimelines('displayModeChanged');
+      // if (this.showAnimations==true) this.playTimelines();
     }
   }
 
@@ -359,7 +450,7 @@ class App {
   }
 
   updateProgressBar() {
-    //$log("updateProgressBar quiz ", this.display);
+    //console.log("updateProgressBar quiz ", this.display);
 
     const bar = qs(".nav-bar__progress-bar"),
       desc = qs(".nav-bar__progress-txt"),
@@ -374,8 +465,11 @@ class App {
       //   }`;
       if (pageNumOffset == 1) {
         desc.textContent = `${this.getPageNumber() + 1} / ${this.slideCount}`;
+        this.setUserPageVisit('slide', `${this.getPageNumber() + 1}`);
       } else {
         desc.textContent = `${this.getPageNumber() + 1}—${this.getPageNumber() + pageNumOffset} / ${this.slideCount}`;
+        this.setUserPageVisit('slide', `${this.getPageNumber() + 1}`);
+        this.setUserPageVisit('slide', `${this.getPageNumber() + pageNumOffset}`);
       }
 
     } else if (this.display === "quiz") {
@@ -384,14 +478,13 @@ class App {
           this.quizCount) *
         100 +
         "%");
-      desc.textContent = `${this.getPageNumber() -
-        this.slideCount +
-        pageNumOffset} / ${this.quizCount}`;
+      desc.textContent = `${this.getPageNumber() - this.slideCount + pageNumOffset} / ${this.quizCount}`;
+      this.setUserPageVisit('quiz', `${this.getPageNumber() - this.slideCount + pageNumOffset}`);
     }
   }
 
   resetNavigationStates() {
-    //$log("resetNavigationStates 22");
+    //console.log("resetNavigationStates");
     let thisPageNode = this.getPageNode(this.getPageNumber()),
       nextPageNode = this.getPageNode(this.getPageNumber(1)),
       prevPageNode = this.getPageNode(this.getPageNumber(-1));
@@ -456,8 +549,11 @@ class App {
     this.showAnimations = e.target.checked;
   }
   replayAnimation() {
-    if (this.textElementTimeline) this.textElementTimeline.replayAnimation();
-    if (this.shapeElementTimeline) this.shapeElementTimeline.replayAnimation();
+    // if (this.textElementTimeline) this.textElementTimeline.replayAnimation();
+    // if (this.shapeElementTimeline) this.shapeElementTimeline.replayAnimation();
+    if (this.textElementTimeline != null) this.textElementTimeline.replayAnimation();
+    if (this.shapeElementTimeline != null) this.shapeElementTimeline.replayAnimation();
+
   }
   nextClick() {
     if (
@@ -486,8 +582,17 @@ class App {
   }
 
   playTimelines() {
-    if (this.textElementTimeline) this.textElementTimeline.startAmnimation();
-    if (this.shapeElementTimeline) this.shapeElementTimeline.startAmnimation();
+    // if (this.textElementTimeline) this.textElementTimeline.startAmnimation();
+    // if (this.shapeElementTimeline) this.shapeElementTimeline.startAmnimation();
+    //console.log(">>>>>>>>>>>>>> playTimelines ");
+    if (this.textElementTimeline != null) {
+      $log(">>>>>>>>>>>>>> PLAY textElementTimeline ");
+      this.textElementTimeline.startAmnimation();
+    }
+    if (this.shapeElementTimeline != null) {
+      $log(">>>>>>>>>>>>>> PLAY shapeElementTimeline ");
+      this.shapeElementTimeline.startAmnimation();
+    }
   }
 
   disableNav() {
@@ -495,6 +600,7 @@ class App {
     qs(".js-back").setAttribute("disabled", "");
   }
   enableNav() {
+    //console.log('****** enableNav ');
     this.resetNavigationStates();
   }
 
@@ -518,8 +624,8 @@ class App {
     //window.scrollTo(0, 1);
   }
 
-  createAnimationTimelines() {
-    //$log(">>>>>>>>>>>>>> createAnimationTimelines");
+  createAnimationTimelines(r) {
+    //console.log(">>>>>>>>>>>>>> createAnimationTimelines:", r);
     const defaultDuration = "200",
       defaultOffset = "-=50",
       currentPageNum = this.getPageNumber(),
@@ -653,6 +759,7 @@ class App {
       return obj1.dataset.animate - obj2.dataset.animate;
     }
 
+    this.textElementTimeline = null;
     if (completeTextNodeList.length) {
       //$logt(completeTextNodeList, 'completeTextNodeList');
       this.textElementTimeline = new Timeline(
@@ -663,6 +770,7 @@ class App {
       this.textElementTimeline.on('complete', this.onTimelineFinished.bind(this));
       this.textElementTimeline.setup();
     }
+    this.shapeElementTimeline = null;
     if (completeShapeNodeList.length) {
       //$logt(completeShapeNodeList, 'completeShapeNodeList');
       this.shapeElementTimeline = new Timeline(

@@ -7,12 +7,9 @@ nvm use 10.7.0
 
 Gulp commands (do in order) :
 
-gulp build
-Copies all assets into build folder
+`gulp build` - Copies all assets into build folder
 
-gulp
-Combines & watches script files (html/css/js) into build folder
+`gulp` - Combines & watches script files (html/css/js) into build folder
 
-gulp packs
-creates packs based on pack-config.json - into packs folder & zips
+`gulp packs` - creates packs based on pack-config.json - into packs folder & zips
 
